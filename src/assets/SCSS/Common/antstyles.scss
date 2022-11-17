@@ -1,0 +1,23 @@
+ .ant-input-suffix {
+    display: none;
+   
+    
+
+}
+ .ant-input-suffix {
+    display: none !important;
+    
+}
+.ant-radio-wrapper:hover .ant-radio, .ant-radio:hover .ant-radio-inner, .ant-radio-input:focus + .ant-radio-inner {
+    border-color: none;
+}
+input[type="radio" i]:focus-visible {
+    outline-offset: 0px;
+}
+:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+.ant-radio-input:focus + .ant-radio-inner {
+    box-shadow: none !important;
+}
