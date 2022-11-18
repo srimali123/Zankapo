@@ -21,3 +21,20 @@ input[type="radio" i]:focus-visible {
 .ant-radio-input:focus + .ant-radio-inner {
     box-shadow: none !important;
 }
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active,
+input:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: $gray3 !important;
+  background-color: #ffffff !important;
+  font-weight: 400;
+ 
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+  
+}
