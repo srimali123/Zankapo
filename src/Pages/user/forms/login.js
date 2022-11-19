@@ -7,11 +7,12 @@ import logoBlue from "../../../assets/Images/common/bluelogo.png";
 export default function Login(props) {
   const [open, setOpen] = useState(false);
   const antIcon = (
-    <LoadingOutlined style={{ fontSize: 30, color: "white" }} spin />
+    <LoadingOutlined style={{ fontSize: 35, color: "white" }} spin />
   );
   return (
     <div>
       <Modal
+    
         wrapClassName="loadingModal"
         open={open}
         onOk={() => setOpen(false)}
