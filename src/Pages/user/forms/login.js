@@ -1,20 +1,21 @@
-import React, { useState }  from "react";
-import { LoadingOutlined } from '@ant-design/icons';
-import { Checkbox, Button, Row, Col,Spin, Input, Radio,Modal } from "antd";
+import React, { useState } from "react";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Checkbox, Button, Row, Col, Spin, Input, Radio, Modal } from "antd";
 import loginImg from "../../../assets/Images/common/bottomcover.png";
 import logo from "../../../assets/Images/common/LOGO.png";
 import logoBlue from "../../../assets/Images/common/bluelogo.png";
 export default function Login(props) {
   const [open, setOpen] = useState(false);
-  const antIcon = <LoadingOutlined style={{ fontSize: 30, color:"white" }} spin />;
+  const antIcon = (
+    <LoadingOutlined style={{ fontSize: 30, color: "white" }} spin />
+  );
   return (
     <div>
-       <Modal
-       wrapClassName="loadingModal"
+      <Modal
+        wrapClassName="loadingModal"
         open={open}
         onOk={() => setOpen(false)}
         onCancel={() => setOpen(false)}
-       
       >
         <Spin indicator={antIcon} />;
       </Modal>
@@ -42,15 +43,23 @@ export default function Login(props) {
                 <Input.Password className="loginInput " />
 
                 <div className="detailLogin">
-                <Radio className="radio">Remember for 30 days</Radio>
-               
-                <a href="#" className="forgetPsswordText">Forgot password</a>
+                  <Radio className="radio">Remember for 30 days</Radio>
+
+                  <a href="#" className="forgetPsswordText">
+                    Forgot password
+                  </a>
                 </div>
-                <Button className="loginBtn" onClick={() => setOpen(true)}>Login</Button>
-                <p className="haventAccText">Do not have an account? <a href="#" className="registerLink">Register here </a></p>
+                <Button className="loginBtn" onClick={() => setOpen(true)}>
+                  Login
+                </Button>
+                <p className="haventAccText">
+                  Do not have an account?{" "}
+                  <a href="#" className="registerLink">
+                    Register here{" "}
+                  </a>
+                </p>
               </div>
             </div>
-
 
             {/* forget password */}
             {/* <div className="loginModal forgetPasswordModal">
@@ -93,7 +102,6 @@ export default function Login(props) {
               </div>
               <p className="footerText newPasswordFooter">2022 copyright Sankapo</p>
             </div> */}
-
           </div>
 
           <div

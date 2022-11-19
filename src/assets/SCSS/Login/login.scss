@@ -1,31 +1,27 @@
-
 .loadingModal .ant-modal {
- top:0 !important;
- margin: 0 !important;
-position: fixed;
-width:100%;
-height: 100vh;
+  top: 0 !important;
+  margin: 0 !important;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
   .ant-modal-content {
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: black;
-width: 100%;
-height: 100vh;
-position: fixed;
-overflow-y: hidden;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    overflow-y: hidden;
     .ant-modal-header {
       display: none;
-
     }
     .ant-modal-body {
-      
     }
     .ant-modal-footer {
-display: none;
+      display: none;
     }
   }
- 
 }
 .loginPageConatiner {
   background-color: $darkblue;
@@ -45,7 +41,6 @@ display: none;
     height: 55px;
     margin-top: 16px;
     margin-left: 16px;
-   
   }
 
   .loginModalContainer {
@@ -54,7 +49,7 @@ display: none;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-   
+
     .loginModal {
       background-color: $white;
       padding: 50px 25px;
@@ -92,7 +87,6 @@ display: none;
           margin-top: 4px;
           text-align: center;
         }
-       
       }
       .loginModalContent {
         .labelLogin {
@@ -168,27 +162,26 @@ display: none;
     }
     .forgetPasswordModal {
       padding: 50px 25px 16px 25px;
-     
-      .forgetmodalTop {
 
-      .forgetSubHead {
+      .forgetmodalTop {
+        .forgetSubHead {
+          color: $gray4;
+        }
+      }
+      .footerText {
+        text-align: center;
         color: $gray4;
+        font-weight: 500;
+        font-size: 16px;
+        margin-top: 60px;
+        margin-bottom: 0;
+        font-family: $poppins;
       }
     }
-    .footerText {
-      text-align: center;
-      color: $gray4;
-      font-weight: 500;
-      font-size: 16px;
-      margin-top: 60px;
-      margin-bottom: 0;
-      font-family: $poppins;
+    .newPasswordModal {
+      .newPasswordFooter {
+        margin-top: 170px;
+      }
     }
-  }
-  .newPasswordModal {
-    .newPasswordFooter {
-      margin-top: 170px;
-    }
-  }
   }
 }
