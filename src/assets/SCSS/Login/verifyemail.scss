@@ -1,0 +1,55 @@
+.verifyPageConatiner {
+  .logo {
+    height: 50px;
+    margin-left: 25px;
+  }
+  .headerContainer {
+    box-shadow: 3px 4px 44px rgba(0, 0, 0, 0.03);
+    width: 100%;
+    height: 150px;
+    align-items: center;
+    display: flex;
+  }
+  .verifyContentContainer {
+    padding: 25px;
+  }
+  .verifyTextUser {
+    font-size: 16px;
+    font-weight: 400;
+    color: $blue1;
+    font-family: $lato;
+    margin-bottom: 0;
+  }
+  .resetPasswordText {
+    color: $orange2;
+    font-size: 30px;
+    font-weight: 400;
+    font-family: $lato;
+    margin-top: 25px;
+  }
+
+  .socialSection {
+    width: 550px;
+    text-align: center;
+    margin-top: 166px;
+    .socialsectionText {
+      color: $blue1;
+      font-size: 12px;
+      font-weight: 400;
+      margin-bottom: 0;
+    }
+    .urlSocial{
+        color: $orange2;
+
+    }
+    .socialMediaGroup {
+       
+    .socialIcon {
+        height: 18px;
+        width: 18px;
+        margin-left: 8px;
+        align-self: center;
+    }
+}
+  }
+}

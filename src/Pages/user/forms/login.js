@@ -1,18 +1,30 @@
-import React from "react";
-import { Checkbox, Button, Row, Col, Input, Radio, } from "antd";
+import React, { useState }  from "react";
+import { LoadingOutlined } from '@ant-design/icons';
+import { Checkbox, Button, Row, Col,Spin, Input, Radio,Modal } from "antd";
 import loginImg from "../../../assets/Images/common/bottomcover.png";
 import logo from "../../../assets/Images/common/LOGO.png";
 import logoBlue from "../../../assets/Images/common/bluelogo.png";
 export default function Login(props) {
+  const [open, setOpen] = useState(false);
+  const antIcon = <LoadingOutlined style={{ fontSize: 30, color:"white" }} spin />;
   return (
     <div>
+       <Modal
+       wrapClassName="loadingModal"
+        open={open}
+        onOk={() => setOpen(false)}
+        onCancel={() => setOpen(false)}
+       
+      >
+        <Spin indicator={antIcon} />;
+      </Modal>
       <Row className="loginPageConatiner">
         <img src={logo} alt="new" className="logo" />
 
         <Col xs={24} sm={24} md={24} lg={24} xl={24}>
           <div className="loginModalContainer">
             {/* login modal */}
-            {/* <div className="loginModal">
+            <div className="loginModal">
               <div className="loginModaTop">
                 <img src={logoBlue} alt="new" className="logoBue" />
                 <p className="loginHead">Log in to your account</p>
@@ -34,10 +46,10 @@ export default function Login(props) {
                
                 <a href="#" className="forgetPsswordText">Forgot password</a>
                 </div>
-                <Button className="loginBtn">Login</Button>
+                <Button className="loginBtn" onClick={() => setOpen(true)}>Login</Button>
                 <p className="haventAccText">Do not have an account? <a href="#" className="registerLink">Register here </a></p>
               </div>
-            </div> */}
+            </div>
 
 
             {/* forget password */}
@@ -55,15 +67,15 @@ export default function Login(props) {
                   placeholder="Enter your email"
                   className="loginInput emailInput"
                 />
-               
-                <Button className="loginBtn">Continue</Button>
-               
+               <a href="/A">
+                <Button  className="loginBtn">Continue</Button>
+               </a>
               </div>
               <p className="footerText">2022 copyright Sankapo</p>
             </div> */}
 
             {/* create new passowrd */}
-            <div className="loginModal forgetPasswordModal newPasswordModal">
+            {/* <div className="loginModal forgetPasswordModal newPasswordModal">
               <div className="loginModaTop forgetmodalTop">
                 <img src={logoBlue} alt="new" className="logoBue" />
                 <p className="loginHead">Create a new password</p>
@@ -80,7 +92,7 @@ export default function Login(props) {
                
               </div>
               <p className="footerText newPasswordFooter">2022 copyright Sankapo</p>
-            </div>
+            </div> */}
 
           </div>
 

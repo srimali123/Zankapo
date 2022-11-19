@@ -6,15 +6,17 @@ import {
   Route,
 } from "react-router-dom";
 import Login from '../Pages/user/forms/login';
+import VerifyEmail from '../Pages/verifyEmail';
 export default function AppRoutes() {
     
 
     return (
         <BrowserRouter>
     <Routes>
-      <Route path="/" element={<Login/>}> 
+      <Route path="/" element={<Login/>}/> 
+      <Route path="/A" element={<VerifyEmail/>}/> 
         
-      </Route>
+      
  </Routes>
   </BrowserRouter>
     )
