@@ -17,9 +17,12 @@ export default function Login(props) {
         open={open}
         onOk={() => setOpen(false)}
         onCancel={() => setOpen(false)}
+        width={"100%"}
+     
       >
         <Spin indicator={antIcon} />;
       </Modal>
+     
       <Row className="loginPageConatiner">
         <img src={logo} alt="new" className="logo" />
 
@@ -35,6 +38,7 @@ export default function Login(props) {
                 </p>
               </div>
               <div className="loginModalContent">
+                
                 <p className="labelLogin">Email</p>
                 <Input
                   placeholder="Enter your email"
@@ -113,6 +117,7 @@ export default function Login(props) {
           ></div>
         </Col>
       </Row>
+     
     </div>
   );
 }
