@@ -1,0 +1,211 @@
+.loadingModal .ant-modal {
+  top: 0 !important;
+  margin: 0 !important;
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  .ant-modal-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    overflow-y: hidden;
+    opacity: 0.6;
+    .ant-modal-header {
+      display: none;
+    }
+    .ant-modal-body {
+    }
+    .ant-modal-footer {
+      display: none;
+    }
+  }
+}
+.registerPageConatiner {
+  background-color: $darkblue;
+  position: relative;
+  overflow-y: hidden;
+  height: 100vh;
+
+  .leftSectionLogin {
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 589px;
+    width: 100%;
+    position: fixed;
+    top: 32%;
+    left: 0px;
+  }
+  .logo {
+    height: 34px;
+    margin-top: 16px;
+    margin-left: 16px;
+  }
+  .modalColoumnRegister {
+    .registerModalContainer {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      // register modal styles
+      .registerModal {
+        background-color: $white;
+        padding: 18px 25px;
+        max-width: 470px;
+        width: 100%;
+        z-index: 1;
+        box-shadow: 0px 23.5px 28.2px -4.7px rgba(16, 24, 40, 0.1),
+          0px 9.4px 9.4px -4.7px rgba(16, 24, 40, 0.04);
+        border-radius: 14px;
+
+        display: flex;
+        flex-direction: column;
+        .RegisterModalTop {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          .logoBlue {
+            max-width: 194px;
+            width: 100%;
+            height: 44px;
+          }
+          .registerHead {
+            color: $black1;
+            font-size: 20px;
+            font-weight: 600;
+            font-family: $railWay;
+            text-align: center;
+            margin-top: 10px;
+            margin-bottom: 0 !important;
+          }
+          .registerSubHead {
+            color: $gray1;
+            font-size: 16px;
+            font-weight: 400;
+            font-family: $poppins;
+            margin-top: 4px;
+            text-align: center;
+          }
+        }
+        .registerModalContent {
+          .labelRegister {
+            font-size: 16px;
+            font-weight: 500;
+            font-family: $inter;
+            color: $gray2;
+            padding: 0 !important;
+            margin-bottom: 5px;
+          }
+          .registerInput {
+            width: 100%;
+            height: 52px;
+            border: 1.175px solid #d0d5dd;
+            box-shadow: 0px 1.175px 2.35px rgba(16, 24, 40, 0.05);
+            border-radius: 9.4px;
+            font-size: 14px;
+            color: $gray3;
+          }
+
+          .passwordText,
+          .secondText {
+            margin-top: 10px;
+          }
+
+          .registerBtn {
+            width: 100%;
+            height: 52px;
+            border: 1.175px solid #f98f21;
+            box-shadow: 0px 1.175px 2.35px rgba(16, 24, 40, 0.05);
+            border-radius: 9.4px;
+            background-color: $orange2;
+            color: $white;
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 0px;
+          }
+          .mustText {
+            font-size: 16px;
+            font-weight: 400;
+            font-family: $inter;
+            margin-top: 7px;
+            color: $gray1;
+          }
+          .registerLink {
+            color: $orange1;
+            font-weight: 600;
+          }
+        }
+      }
+
+      // personl detail modal styles
+      .signupPersonalDetailModal {
+        padding: 20px 25px 16px 25px;
+
+        .signupPersonalModalTop {
+          padding: 15px 0px 10px 0px;
+          .forgetSubHead {
+            color: $gray4;
+          }
+        }
+        .personaletailModalContent .personalRegisterBtn {
+          margin-top: 20px;
+        }
+      }
+
+      // confirm modal styles
+      .confirmModal {
+        padding: 15px 20px 119px 20px;
+        .confirmModalTop {
+          .confirmsubHead {
+            text-align: left;
+          }
+        }
+        .verifiedcontent .verifiedLoginBtn {
+          width: 100%;
+        }
+      }
+
+      // verifed modal styles
+      .verfiedModal {
+        padding: 15px 20px 25px 20px;
+        .verifiedcontent {
+          align-items: center;
+          display: flex;
+          justify-content: center;
+
+          .verifyRegisterLink  {
+          
+              margin-top: 80px;
+            
+          }
+        }
+      }
+    }
+  }
+}
+
+@include tablet-portrait {
+  .registerPageConatiner {
+    height: 100vh;
+    .leftSectionLogin {
+      height: 343px;
+      width: 100%;
+      left: 0px;
+      top: 67%;
+    }
+  }
+}
+
+@include tablet-landscape {
+  .registerPageConatiner {
+    height: 100vh;
+    .leftSectionLogin {
+      height: 431px;
+      width: 100%;
+      top: 44%;
+    }
+  }
+}

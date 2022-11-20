@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { LoadingOutlined } from "@ant-design/icons";
 import { Checkbox, Button, Row, Col, Spin, Input, Radio, Modal } from "antd";
-import loginImg from "../../../assets/Images/common/bottomcover.png";
-import logo from "../../../assets/Images/common/LOGO.png";
-import logoBlue from "../../../assets/Images/common/bluelogo.png";
+import loginImg from "../../../../assets/Images/common/bottomcover.png";
+import logo from "../../../../assets/Images/common/LOGO.png";
+import logoBlue from "../../../../assets/Images/common/bluelogo.png";
 export default function Login(props) {
   const [open, setOpen] = useState(false);
   const antIcon = (
@@ -26,7 +26,7 @@ export default function Login(props) {
       <Row className="loginPageConatiner">
         <img src={logo} alt="new" className="logo" />
 
-        <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+        <Col xs={24} sm={24} md={24} lg={24} xl={24} className="modalColoumn">
           <div className="loginModalContainer">
             {/* login modal */}
             <div className="loginModal">
@@ -50,7 +50,7 @@ export default function Login(props) {
                 <div className="detailLogin">
                   <Radio className="radio">Remember for 30 days</Radio>
 
-                  <a href="#" className="forgetPsswordText">
+                  <a href="/A" className="forgetPsswordText">
                     Forgot password
                   </a>
                 </div>
@@ -59,7 +59,7 @@ export default function Login(props) {
                 </Button>
                 <p className="haventAccText">
                   Do not have an account?{" "}
-                  <a href="#" className="registerLink">
+                  <a href="/B" className="registerLink">
                     Register here{" "}
                   </a>
                 </p>

@@ -3,7 +3,7 @@
   margin: 0 !important;
   position: fixed;
   width: 100%;
-      height: 100vh;
+  height: 100vh;
   .ant-modal-content {
     display: flex;
     justify-content: center;
@@ -43,9 +43,9 @@
     margin-top: 16px;
     margin-left: 16px;
   }
+.modalColoumn {
 
   .loginModalContainer {
-   
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,7 +54,8 @@
     .loginModal {
       background-color: $white;
       padding: 50px 25px;
-      width: 470px;
+      max-width: 470px;
+      width: 100%;
       z-index: 1;
       box-shadow: 0px 23.5px 28.2px -4.7px rgba(16, 24, 40, 0.1),
         0px 9.4px 9.4px -4.7px rgba(16, 24, 40, 0.04);
@@ -68,7 +69,8 @@
         flex-direction: column;
         align-items: center;
         .logoBue {
-          width: 194px;
+          max-width: 194px;
+          width: 100%;
           height: 44px;
         }
         .loginHead {
@@ -116,6 +118,7 @@
           display: flex;
           justify-content: space-between;
           margin-top: 15px;
+          align-items: center;
 
           .ant-radio-inner {
             border-radius: 0;
@@ -134,10 +137,12 @@
             font-size: 16px;
             color: $gray2;
             font-weight: 500;
+            font-family: $inter;
           }
         }
         .loginBtn {
-          width: 414px;
+          max-width: 414px;
+          width: 100%;
           height: 52px;
           border: 1.175px solid #f98f21;
           box-shadow: 0px 1.175px 2.35px rgba(16, 24, 40, 0.05);
@@ -184,5 +189,33 @@
         margin-top: 170px;
       }
     }
+  }
+}
+}
+
+@include tablet-portrait{
+  .loginPageConatiner {
+ height: 100vh;
+    .leftSectionLogin {
+      height: 343px;
+    width: 100%;
+    left: 0px;
+    top: 67%;
+    }
+   
+  
+  }
+}
+
+@include tablet-landscape{
+  .loginPageConatiner {
+ height: 100vh;
+    .leftSectionLogin {
+      height: 431px;
+      width: 100%;
+      top:44%
+    }
+   
+  
   }
 }
