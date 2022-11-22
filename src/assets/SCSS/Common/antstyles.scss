@@ -38,3 +38,41 @@ input:-webkit-autofill:focus {
     transition: background-color 600000s 0s, color 600000s 0s;
   
 }
+ .ant-input:focus {
+    border-color: none;
+    box-shadow:none !important;
+    border-right-width: 0px;
+    outline: 0;
+}
+.ant-input {
+    ::placeholder {
+        opacity: 1;
+        color: red;
+    }
+}
+
+::placeholder {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: $poppins;
+    color: $gray7 !important;
+    opacity: 1 !important;
+  }
+  
+  :-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    font-size: 16px;
+    font-weight: 500;
+    font-family: $poppins;
+    color: $gray7 !important;
+    opacity: 1 !important;
+  }
+  
+  ::-ms-input-placeholder {
+    /* Microsoft Edge */
+    font-size: 16px;
+    font-weight: 500;
+    font-family: $poppins;
+    color: $gray7 !important;
+    opacity: 1 !important;
+  }

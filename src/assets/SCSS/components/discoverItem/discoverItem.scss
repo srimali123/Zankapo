@@ -1,0 +1,27 @@
+.outerMain {
+    max-width: 100px;
+    width:100%;
+text-align: center;
+.outerContainer {
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 129px;
+  width: 100px;
+  height: 100px;
+  margin-right: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.itemTitle {
+    color:$gray8;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 300;
+  margin-bottom: 50px;
+  width: 120px;
+    font-family: $poppins;
+    
+}
+}

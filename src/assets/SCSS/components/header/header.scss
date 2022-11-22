@@ -1,0 +1,100 @@
+.headerMaincontainer {
+  position: fixed;
+  top:0;
+  width: 100%;
+  height: 64px;
+  background-color: $white;
+  padding-right: 40px;
+  padding-left: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+overflow-x: hidden;
+  .headerSectionOne {
+    display: flex;
+    align-items: center;
+
+    .menu {
+      height: 44px;
+    }
+    .logoHeader {
+      height: 28px;
+      margin-left: 3px;
+    }
+  }
+
+  .headerSectionTwo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    .translateContainer {
+      background-color: $gray5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 34px;
+      width: 52px;
+      margin-right: 16px;
+      .translateImg {
+        height: 28px;
+        width: 28px;
+      }
+    }
+    .addBtn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $green1;
+      height: 34px;
+      width: 132px;
+      font-size: 14px;
+      font-weight: 600;
+      font-family: $poppins;
+      color: $white;
+      border: none;
+      margin-right: 20px;
+    }
+    .addIcon {
+      height: 24px;
+      width: 24px;
+      margin-right: 12px;
+    }
+    .profileConfimContainer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .profileContainer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+    .userIcon {
+      height: 24px;
+      width: 24px;
+      margin-right: 15px;
+      margin-left: 0px;
+    }
+    .link {
+      font-size: 14px;
+      font-weight: 500;
+      color: $gray7;
+      font-family: $poppins;
+      &:hover,
+      &:focus {
+        color: $orange3;
+      }
+    }
+
+    .confirmcontainerAfterLogin {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .customLink {
+    }
+  }
+}
