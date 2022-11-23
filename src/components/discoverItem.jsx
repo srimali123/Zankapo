@@ -8,7 +8,8 @@ const DiscoverItem = (props) => {
       <div className="outerContainer">
         <img src={image} style={{ height: 52, width: 52 }} />
       </div>
-      <a href="https://www.merriam-webster.com/dictionary/cloth" className='itemTitle'>{link}</a>
+      <a href="#" className='itemTitle'>{link}</a>
+      
     </div>
   );
 };

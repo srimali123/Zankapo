@@ -22,6 +22,9 @@ const Images = {
     houseHold: require("../Images/discoverItems/Household.png"),
     mobile: require("../Images/discoverItems/MobilePhones.png"),
   },
+  populaAd: {
+    ad1: require("../Images/popularAd/ad1.png"),
+  }
 };
 
 export { Images };

@@ -8,11 +8,6 @@ import login from "../../assets/Images/common/addicon.png";
 import userfilled from "../../assets/Images/common/usercoloured.png";
 import userOutline from "../../assets/Images/common/useroutline.png";
 
-
-import {
-  FaUserCircle,
-  FaRegUserCircle,
-} from "@react-icons/all-files/fa/FaRegUserCircle";
 export default function Header(props) {
   return (
     <div>
@@ -38,29 +33,24 @@ export default function Header(props) {
               </button>
               {/* when user didnt register or login */}
               <div className="profileConfimContainer">
-              <div  className="profileContainer">
-               
-              <img  src={userfilled} className="userIcon"/>
-              <a href="#" className="link">Register</a>
-              </div>
-              
-            
-              <div  className="profileContainer">
-               
-                <img  src={userOutline} className="userIcon"/>
-              <a href="#" className="link">Login</a>
+                <div className="profileContainer">
+                  <img src={userfilled} className="userIcon" />
+                  <a href="/register" className="link">
+                    Register
+                  </a>
+                </div>
 
-            
-              </div>
-
-             
-              
-              
+                <div className="profileContainer">
+                  <img src={userOutline} className="userIcon" />
+                  <a href="/login" className="link">
+                    Login
+                  </a>
+                </div>
               </div>
 
               {/* after when user login or regsiter */}
-            
-            {/* <div className="confirmcontainerAfterLogin">
+
+              {/* <div className="confirmcontainerAfterLogin">
               <div  className="profileContainer">  <a href="#" className="link customLink">Buying</a></div>
               <div  className="profileContainer"> <a href="#" className="link customLink">Selling</a></div>
           
@@ -72,15 +62,8 @@ export default function Header(props) {
             
               </div>
             </div> */}
-              
-               
-
-           
             </div>
           </div>
-
-         
-
         </Col>
       </Row>
     </div>
