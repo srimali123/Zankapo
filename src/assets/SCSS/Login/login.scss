@@ -27,8 +27,8 @@
 .loginPageConatiner {
   background-color: $darkblue;
   position: relative;
-  overflow-y: hidden;
-
+  overflow-y: auto;
+  height: 100vh;
   .leftSectionLogin {
     background-repeat: no-repeat;
     background-size: cover;
@@ -42,180 +42,334 @@
     height: 55px;
     margin-top: 16px;
     margin-left: 16px;
+    position: fixed;
+    z-index: 1;
   }
-.modalColoumn {
-
-  .loginModalContainer {
+  .modalColoumn {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
-    .loginModal {
-      background-color: $white;
-      padding: 50px 25px;
-      max-width: 470px;
-      width: 100%;
+    .loginModalContainer {
       z-index: 1;
-      box-shadow: 0px 23.5px 28.2px -4.7px rgba(16, 24, 40, 0.1),
-        0px 9.4px 9.4px -4.7px rgba(16, 24, 40, 0.04);
-      border-radius: 14px;
 
-      display: flex;
-      flex-direction: column;
-      .loginModaTop {
+      .loginModal {
+        background-color: $white;
+        padding: 40px 25px;
+        max-width: 470px;
+        width: 100%;
+        z-index: 1;
+        box-shadow: 0px 23.5px 28.2px -4.7px rgba(16, 24, 40, 0.1),
+          0px 9.4px 9.4px -4.7px rgba(16, 24, 40, 0.04);
+        border-radius: 14px;
         display: flex;
-        justify-content: center;
         flex-direction: column;
-        align-items: center;
-        .logoBue {
-          max-width: 194px;
-          width: 100%;
-          height: 44px;
-        }
-        .loginHead {
-          color: $black1;
-          font-size: 20px;
-          font-weight: 600;
-          font-family: $railWay;
-          text-align: center;
-          margin-top: 12px;
-          margin-bottom: 0 !important;
-        }
-        .loginSubHead {
-          color: $gray1;
-          font-size: 16px;
-          font-weight: 400;
-          font-family: $poppins;
-          margin-top: 4px;
-          text-align: center;
-        }
-      }
-      .loginModalContent {
-        .labelLogin {
-          font-size: 16px;
-          font-weight: 500;
-          font-family: $inter;
-          color: $gray2;
-          padding: 0 !important;
-          margin-bottom: 7px;
-        }
-        .loginInput {
-          width: 100%;
-          height: 52px;
-          border: 1.175px solid #d0d5dd;
-          box-shadow: 0px 1.175px 2.35px rgba(16, 24, 40, 0.05);
-          border-radius: 9.4px;
-          font-size: 14px;
-          color: $gray3;
-        }
-
-        .passwordText {
-          margin-top: 18px;
-        }
-
-        .detailLogin {
+        .loginModaTop {
           display: flex;
-          justify-content: space-between;
-          margin-top: 15px;
+          justify-content: center;
+          flex-direction: column;
           align-items: center;
-
-          .ant-radio-inner {
-            border-radius: 0;
-            border: 1.175px solid #d0d5dd;
-            border-radius: 4.7px;
-            height: 18px;
-            width: 18px;
+          .logoBue {
+            max-width: 194px;
+            width: 100%;
+            height: 44px;
           }
-          .forgetPsswordText {
-            font-size: 16px;
+          .loginHead {
+            color: $black1;
+            font-size: 20px;
             font-weight: 600;
-            font-family: $inter;
-            color: $orange1;
+            font-family: $railWay;
+            text-align: center;
+            margin-top: 12px;
+            margin-bottom: 0 !important;
           }
-          .radio {
+          .loginSubHead {
+            color: $gray1;
             font-size: 16px;
-            color: $gray2;
+            font-weight: 400;
+            font-family: $poppins;
+            margin-top: 4px;
+            text-align: center;
+          }
+        }
+        .loginModalContent {
+          .labelLogin {
+            font-size: 16px;
             font-weight: 500;
             font-family: $inter;
+            color: $gray2;
+            padding: 0 !important;
+            margin-bottom: 7px;
+          }
+          .loginInput {
+            width: 100%;
+            height: 52px;
+            border: 1.175px solid #d0d5dd;
+            box-shadow: 0px 1.175px 2.35px rgba(16, 24, 40, 0.05);
+            border-radius: 9.4px;
+            font-size: 14px;
+            color: $gray3;
+          }
+
+          .passwordText {
+            margin-top: 18px;
+          }
+
+          .detailLogin {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 15px;
+            align-items: center;
+
+            .ant-radio-inner {
+              border-radius: 0;
+              border: 1.175px solid #d0d5dd;
+              border-radius: 4.7px;
+              height: 18px;
+              width: 18px;
+            }
+            .forgetPsswordText {
+              font-size: 16px;
+              font-weight: 600;
+              font-family: $inter;
+              color: $orange1;
+            }
+            .radio {
+              font-size: 16px;
+              color: $gray2;
+              font-weight: 500;
+              font-family: $inter;
+            }
+          }
+          .loginBtn {
+            width: 100%;
+            height: 52px;
+            border: 1.175px solid #f98f21;
+            box-shadow: 0px 1.175px 2.35px rgba(16, 24, 40, 0.05);
+            border-radius: 9.4px;
+            background-color: $orange2;
+            color: $white;
+            font-weight: 600;
+            font-size: 16px;
+            margin-top: 20px;
+          }
+          .haventAccText {
+            font-size: 16px;
+            font-weight: 400;
+            font-family: $poppins;
+            margin-top: 20px;
+            color: $gray4;
+          }
+          .registerLink {
+            color: $orange1;
+            font-weight: 600;
           }
         }
-        .loginBtn {
-          max-width: 414px;
-          width: 100%;
-          height: 52px;
-          border: 1.175px solid #f98f21;
-          box-shadow: 0px 1.175px 2.35px rgba(16, 24, 40, 0.05);
-          border-radius: 9.4px;
-          background-color: $orange2;
-          color: $white;
-          font-weight: 600;
+        .footerText {
+          display: none;
+          text-align: center;
+          color: $gray4;
+          font-weight: 500;
           font-size: 16px;
-          margin-top: 20px;
-        }
-        .haventAccText {
-          font-size: 16px;
-          font-weight: 400;
+          margin-top: 60px;
+          margin-bottom: 0;
           font-family: $poppins;
-          margin-top: 20px;
-          color: $gray4;
-        }
-        .registerLink {
-          color: $orange1;
-          font-weight: 600;
         }
       }
-    }
-    .forgetPasswordModal {
-      padding: 50px 25px 16px 25px;
-
-      .forgetmodalTop {
-        .forgetSubHead {
-          color: $gray4;
+      .forgetPasswordModal {
+        padding: 50px 25px 16px 25px;
+        height: 498px;
+        .forgetmodalTop {
+          .forgetSubHead {
+            color: $gray4;
+          }
+        }
+        .footerText {
+          display: flex;
+          margin-top: 90px;
+          justify-content: center;
         }
       }
-      .footerText {
-        text-align: center;
-        color: $gray4;
-        font-weight: 500;
-        font-size: 16px;
-        margin-top: 60px;
-        margin-bottom: 0;
-        font-family: $poppins;
-      }
-    }
-    .newPasswordModal {
-      .newPasswordFooter {
-        margin-top: 170px;
+      .newPasswordModal {
+        .newPasswordFooter {
+          display: flex;
+          margin-top: 70px;
+        }
       }
     }
   }
 }
-}
 
-@include tablet-portrait{
+@include mobile {
   .loginPageConatiner {
- height: 100vh;
+    background-color: $white;
+    overflow-y: hidden;
     .leftSectionLogin {
-      height: 343px;
-    width: 100%;
-    left: 0px;
-    top: 67%;
+      display: none;
     }
-   
-  
+    .logo {
+      display: none;
+    }
+    .modalColoumn {
+      padding: 0;
+      .loginModalContainer {
+        padding: 0;
+
+        .loginModal {
+          padding: 60px 10px;
+          box-shadow: none;
+          border-radius: 0px;
+
+          .loginModaTop {
+            .logoBue {
+              max-width: 194px;
+              width: 172px;
+              height: 38px;
+            }
+            .loginHead {
+              font-size: 16px;
+            }
+            .loginSubHead {
+              font-size: 14px;
+
+              margin-bottom: 30px;
+            }
+          }
+          .loginModalContent {
+            .detailLogin {
+              .forgetPsswordText {
+                font-size: 14px;
+              }
+              .radio {
+                font-size: 14px;
+              }
+            }
+
+            .haventAccText {
+              font-size: 14px;
+            }
+          }
+          .footerText {
+            display: flex;
+
+            margin-top: 150px;
+
+            justify-content: center;
+          }
+        }
+        .forgetPasswordModal {
+          padding: 50px 25px 16px 25px;
+
+          .forgetmodalTop {
+            .forgetSubHead {
+              color: $gray4;
+            }
+          }
+          .footerText {
+            margin-top: 200px;
+          }
+        }
+        .newPasswordModal {
+          .newPasswordFooter {
+            margin-top: 185px;
+          }
+        }
+      }
+    }
   }
 }
 
-@include tablet-landscape{
+@include tablet-portrait {
   .loginPageConatiner {
- height: 100vh;
+    .leftSectionLogin {
+      height: 622px;
+      width: 768px;
+      right: -200px;
+      top: 54%;
+      background-position: center;
+      background-size: contain;
+    }
+    .modalColoumn {
+      height: 100vh;
+      .loginModalContainer {
+        z-index: 1;
+
+        .loginModal {
+          padding: 90px 50px;
+          max-width: 550px;
+
+          .loginModaTop {
+            .logoBue {
+              max-width: 227px;
+              height: 55px;
+            }
+            .loginHead {
+              font-size: 23px;
+            }
+            .loginSubHead {
+              font-size: 19px;
+            }
+          }
+          .loginModalContent {
+            .loginInput {
+              font-size: 16px;
+            }
+            .labelLogin {
+              font-size: 19px;
+            }
+
+            .detailLogin {
+              .forgetPsswordText {
+                font-size: 19px;
+              }
+              .radio {
+                font-size: 19px;
+              }
+            }
+            .loginBtn {
+              width: 100%;
+              height: 61px;
+
+              font-size: 18px;
+              margin-top: 30px;
+            }
+            .haventAccText {
+              font-size: 18px;
+            }
+          }
+        }
+        .forgetPasswordModal {
+          padding: 85px 25px 40px 25px;
+          height: 580px;
+
+          .forgetmodalTop {
+            .forgetSubHead {
+              color: $gray4;
+            }
+          }
+          .footerText {
+            margin-top: 70px;
+          }
+        }
+        .newPasswordModal {
+          height: 782px;
+          .newPasswordFooter {
+            margin-top: 250px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include tablet-landscape {
+  .loginPageConatiner {
+    height: 100vh;
     .leftSectionLogin {
       height: 431px;
       width: 100%;
-      top:44%
+      top: 44%;
     }
-   
-  
   }
 }

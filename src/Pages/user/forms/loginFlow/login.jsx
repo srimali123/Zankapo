@@ -75,6 +75,7 @@ export default function Login(props) {
                     </a>
                   </p>
                 </div>
+                <p className="footerText">2022 copyright Sankapo</p>
               </div>
             )}
 
@@ -138,6 +139,7 @@ export default function Login(props) {
               backgroundImage: `url(${loginImg})`,
             }}
           ></div>
+          
         </Col>
       </Row>
     </div>

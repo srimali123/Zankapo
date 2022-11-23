@@ -27,8 +27,8 @@
 .registerPageConatiner {
   background-color: $darkblue;
   position: relative;
-  overflow-y: hidden;
   height: 100vh;
+  overflow-y: auto;
 
   .leftSectionLogin {
     background-repeat: no-repeat;
@@ -43,24 +43,27 @@
     height: 34px;
     margin-top: 16px;
     margin-left: 16px;
+    position: fixed;
+    z-index: 1;
   }
   .modalColoumnRegister {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     .registerModalContainer {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
+      z-index: 1;
 
       // register modal styles
       .registerModal {
         background-color: $white;
-        padding: 18px 25px;
+        padding: 10px 25px;
         max-width: 470px;
         width: 100%;
         z-index: 1;
         box-shadow: 0px 23.5px 28.2px -4.7px rgba(16, 24, 40, 0.1),
           0px 9.4px 9.4px -4.7px rgba(16, 24, 40, 0.04);
         border-radius: 14px;
-
         display: flex;
         flex-direction: column;
         .RegisterModalTop {
@@ -176,10 +179,112 @@
           display: flex;
           justify-content: center;
 
-          .verifyRegisterLink  {
-          
+          .verifyRegisterLink {
+            margin-top: 80px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@include mobile {
+  .registerPageConatiner {
+    background-color: $white;
+    overflow-y: hidden;
+
+    .leftSectionLogin {
+      display: none;
+    }
+    .logo {
+      display: none;
+    }
+    .modalColoumnRegister {
+      .registerModalContainer {
+        z-index: 1;
+
+        // register modal styles
+        .registerModal {
+          border-radius: 0;
+          box-shadow: none;
+          .RegisterModalTop {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            .logoBlue {
+              max-width: 194px;
+              width: 172px;
+              height: 38px;
+            }
+            .registerHead {
+              font-size: 20px;
+              margin-top: 20px;
+            }
+            .registerSubHead {
+              margin-top: 15px;
+              font-size: 16px;
+              text-align: left;
+              margin-bottom: 20px;
+            }
+          }
+          .registerModalContent {
+            .labelRegister {
+              font-size: 14px;
+            }
+
+            .passwordText,
+            .secondText {
+              margin-top: 20px;
+            }
+
+            .registerBtn {
+              margin-top: 20px;
+            }
+            .mustText {
+              font-size: 14px;
+            }
+          }
+        }
+
+        // personl detail modal styles
+        .signupPersonalDetailModal {
+          padding: 20px 25px 16px 25px;
+
+          .signupPersonalModalTop {
+            padding: 15px 0px 10px 0px;
+            .forgetSubHead {
+              color: $gray4;
+            }
+          }
+          .personaletailModalContent .personalRegisterBtn {
+            margin-top: 20px;
+          }
+        }
+
+        // confirm modal styles
+        .confirmModal {
+          padding: 15px 20px 119px 20px;
+          .confirmModalTop {
+            .confirmsubHead {
+              text-align: left;
+            }
+          }
+          .verifiedcontent .verifiedLoginBtn {
+            width: 100%;
+          }
+        }
+
+        // verifed modal styles
+        .verfiedModal {
+          padding: 15px 20px 25px 20px;
+          .verifiedcontent {
+            align-items: center;
+            display: flex;
+            justify-content: center;
+
+            .verifyRegisterLink {
               margin-top: 80px;
-            
+            }
           }
         }
       }
