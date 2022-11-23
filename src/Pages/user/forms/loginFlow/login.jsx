@@ -108,7 +108,7 @@ export default function Login(props) {
             )}
 
             {/* create new passowrd */}
-            {createPasswordShowModal && (
+            {createPasswordShowModal ? (
               <div className="loginModal forgetPasswordModal newPasswordModal">
                 <div className="loginModaTop forgetmodalTop">
                   <img src={logoBlue} alt="new" className="logoBue" />
@@ -129,7 +129,7 @@ export default function Login(props) {
                   2022 copyright Sankapo
                 </p>
               </div>
-            )}
+            ) : undefined}
           </div>
 
           <div
