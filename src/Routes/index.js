@@ -10,8 +10,8 @@ export default function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        {/* <Route path="/" element={<Login />} /> */}
-        <Route path="/" element={<HomePage/>} />
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<Login />} />
         <Route path="/verifyemail" element={<VerifyEmail />} />
         <Route path="/register" element={<Register />} />
         <Route path="/verifyemailregister" element={<VerifyEmailRegister />} />
