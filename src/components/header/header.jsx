@@ -9,10 +9,7 @@ import userfilled from "../../assets/Images/common/usercoloured.png";
 import userOutline from "../../assets/Images/common/useroutline.png";
 
 
-import {
-  FaUserCircle,
-  FaRegUserCircle,
-} from "@react-icons/all-files/fa/FaRegUserCircle";
+
 export default function Header(props) {
   return (
     <div>
