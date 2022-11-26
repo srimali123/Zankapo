@@ -1,0 +1,53 @@
+.cardMainContainer {
+  display: flex;
+  max-width: 391px;
+  flex-direction: column;
+  align-items: center;
+
+  .cardSectionOne {
+    .cardImg {
+      height: 356px;
+      width: 391px;
+    }
+  }
+
+  .cardSectionTwo {
+    position: absolute;
+    width: 280px;
+    height: 134px;
+    background-color: $blue3;
+
+    padding: 12px;
+    bottom: -60px;
+
+    .titleone {
+      font-size: 24px;
+      font-weight: 500;
+      font-family: $railWay;
+      color: $white;
+      margin: 0 !important;
+    }
+    .cardBtn {
+      height: 56px;
+      width: 172px;
+      background-color: $orange2;
+      color: $white;
+    //   margin: 0 !important;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      border: none;
+      margin-top: 5px;
+      font-size: 15px;
+      font-family: $poppins;
+      font-weight: 500;
+
+      &:hover,
+      &:focus {
+        box-shadow: none;
+        outline: 0;
+      }
+    }
+  }
+}

@@ -11,6 +11,17 @@ const Images = {
     translate: require("../Images/common/translate.png"),
     userColoured: require("../Images/common/usercoloured.png"),
     userOutline: require("../Images/common/useroutline.png"),
+    forward:require("../Images/common/forward icon.png"),
+    ad2:require("../Images/common/ad22.png"),
+    insta:require("../Images/common/instanew.png"),
+    facebook:require("../Images/common/FacebookNew.png"),
+    twitter:require("../Images/common/twitterNeww.png"),
+    linkedin:require("../Images/common/LinkedinNew.png"),
+    line:require("../Images/common/Line.png"),
+    playBtn:require("../Images/common/googlePlay.png"),
+    appleBtn:require("../Images/common/appleBtn.png"),
+
+
   },
   discover: {
     cloths: require("../Images/discoverItems/Clothes.png"),

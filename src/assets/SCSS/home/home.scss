@@ -1,130 +1,246 @@
-.homeMaincontainer {
-  .banner {
-    background-repeat: no-repeat;
-    background-size: cover;
-    overflow-y: auto;
-    width: 100%;
-    height: 100vh;
-    .centerContent {
+.mainCont {
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+  .homeMaincontainer {
+    .banner {
+      background-repeat: no-repeat;
+      background-size: cover;
+      overflow-y: auto;
+      width: 100%;
       height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-
-      .bannerLogo {
-        height: 53px;
-      }
-      .centerContentText {
-        font-size: 16px;
-        font-weight: 400;
-        color: $white;
-        font-family: $poppins;
-        text-align: center;
-        margin-top: 16px;
-        max-width: 572px;
-        width: 100%;
-        margin-bottom: 48px;
-       
-      }
-      .serchSection {
-        width: 100%;
-        max-width: 566px;
-        height: 64px;
+      .centerContent {
+        height: 100vh;
         display: flex;
-        justify-content:center;
+        justify-content: center;
         align-items: center;
-        .orangeSection {
-          background-color: $orange2;
-          width: 170px;
-          display: flex;
-          flex-direction: row;
-          align-items: center;
-          justify-content: space-between;
-          height: 64px;
-          padding-right: 20px;
-          padding-left: 20px;
-          .down {
-            height: 24px;
-            width: 24px;
-          }
-          .searchCategoryText{
-            margin: 0;
-            font-size: 16px;
-            font-weight: 500;
-            font-family: $poppins;
-            color: $white;
-          }
+        flex-direction: column;
+
+        .bannerLogo {
+          height: 53px;
         }
-        .whiteSection {
-          width: 420px;
+        .centerContentText {
+          font-size: 16px;
+          font-weight: 400;
+          color: $white;
+          font-family: $poppins;
+          text-align: center;
+          margin-top: 16px;
+          max-width: 572px;
+          width: 100%;
+          margin-bottom: 48px;
+        }
+        .serchSection {
+          width: 100%;
+          max-width: 566px;
           height: 64px;
-          background-color: $white;
           display: flex;
-          flex-direction: row;
+          justify-content: center;
           align-items: center;
-          justify-content: space-between;
-          padding-right: 20px;
-          padding-left: 20px;
-
-          .search {
-            height:24px;
-            width:24px;
+          .orangeSection {
+            background-color: $orange2;
+            width: 170px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+            padding-right: 20px;
+            padding-left: 20px;
+            .down {
+              height: 24px;
+              width: 24px;
+            }
+            .searchCategoryText {
+              margin: 0;
+              font-size: 16px;
+              font-weight: 500;
+              font-family: $poppins;
+              color: $white;
+            }
+            .menu {
+              background-color: red;
+            }
           }
-          .searchTextInput {
-            border: none;
-            margin: 0;
-            font-size: 16px;
-            font-weight: 500;
-            font-family: $poppins;
-            color: $gray7;
-            // opacity: 1;
+          .whiteSection {
+            width: 420px;
+            height: 64px;
+            background-color: $white;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding-right: 20px;
+            padding-left: 20px;
 
-            // ::placeholder {
-            //     font-size: 16px;
-            //     font-weight: 500;
-            //     font-family: $poppins;
-            //     color: red;
-            // }
+            .search {
+              height: 24px;
+              width: 24px;
+            }
+            .searchTextInput {
+              border: none;
+              margin: 0;
+              font-size: 16px;
+              font-weight: 500;
+              font-family: $poppins;
+              color: $gray7;
+              // opacity: 1;
+
+              // ::placeholder {
+              //     font-size: 16px;
+              //     font-weight: 500;
+              //     font-family: $poppins;
+              //     color: red;
+              // }
+            }
           }
         }
       }
     }
-  }
-  .blueconatainer {
-    width: 100%;
-    background-color: $blue2;
-    height: 46px;
-    padding-left: 70px;
-    padding-right: 70px;
-    display: flex;
-    justify-content: space-between;
-align-items: center;
-    .blueContText {
+    .blueconatainer {
+      width: 100%;
+      background-color: $blue2;
+      height: 46px;
+      padding-left: 70px;
+      padding-right: 70px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .blueContText {
         font-size: 12px;
         font-weight: 600;
         font-family: $poppins;
         color: $white;
         margin: 0;
+      }
     }
-  }
-// banner styles end
+    // banner styles end
 
-  .middlecontainer {
-    background-color: $gray10;
-    padding: 90px 72px ;
+    .middlecontainer {
+      background-color: $gray10;
+      padding: 90px 72px 90px 72px;
 
-
-    .discoverItemText {
+      .discoverItemText {
         font-size: 24px;
         font-weight: 700;
         font-family: $railWay;
         color: $black2;
         margin-bottom: 24px;
+      }
+
+      .secondSectionText {
+        margin-top: 200px;
+      }
+      .addSection {
+        display: flex;
+        justify-content: center;
+        .seeMoreBtn {
+          height: 56px;
+          max-width: 164px;
+          width: 100%;
+          background-color: $orange2;
+          color: $gray11;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 16px;
+          font-weight: 600;
+          border: none;
+          box-shadow: none;
+          margin-top: 78px;
+          margin-bottom: 70px;
+          &:hover,
+          &:focus {
+            box-shadow: none;
+            outline: 0;
+          }
+        }
+        .forwardIcon {
+          height: 24px;
+          width: 24px;
+          margin-left: 16px;
+        }
+      }
+
+      .thirdsectionText {
+        margin-top: 0;
+        margin-left: 0;
+      }
+      .trendingSection {
+        margin-bottom: 103px;
+      }
     }
 
-    .secondSectionText {
-      margin-top: 200px;
+    // footer
+    .footerContainer {
+      padding: 50px 72px 25px 72px;
+      background-color: $white;
+      height: 422px;
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+      align-items: flex-start;
+      .footerContent {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        width: 25%;
+        .footerMainHead {
+          font-size: 24px;
+          font-weight: 700;
+          color: $darkBlue1;
+          font-family: $railWay;
+          margin: 0;
+          margin-bottom: 17px;
+        }
+        .footerLink {
+          font-size: 16px;
+          font-weight: 500;
+          font-family: $poppins;
+          color: $gray12;
+          margin-bottom: 12px;
+        }
+      }
+
+      .socialMediaContainer {
+        border: 1.5px solid $gray5;
+        height: max-content;
+        border-right: none;
+        border-left: none;
+        padding: 22px;
+        display: flex;
+      
+
+        width: 682px;
+        .socialMediaSection {
+          width: 220px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .socialIcon {
+            height: 37px;
+            width: 37px;
+          }
+          .line {
+           
+          }
+        }
+        .btnSectionFooter {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 400px;
+          .FooterBtn {
+            height: 40px;
+            width: 128px;
+            margin-left: 35px;
+          }
+        }
+      }
     }
   }
+}
+
+@include mobile {
 }

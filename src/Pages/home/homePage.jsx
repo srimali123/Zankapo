@@ -1,13 +1,59 @@
 import React from "react";
-import { Row, Col, Button, Input } from "antd";
+import { Row, Col, Button, Input, Dropdown, Menu, Space } from "antd";
 import Header from "../../components/header/header";
 import DiscoverItem from "../../components/discoverItem";
-import {Images} from "../../assets/Images/images.js";
+import { Images } from "../../assets/Images/images.js";
 import PopularAds from "../../components/popularAds";
+import { DownOutlined, SmileOutlined } from "@ant-design/icons";
+import Card from "../../components/card";
+const menu = (
+  <Menu
+    className="menu"
+    items={[
+      {
+        key: "1",
+        label: (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.antgroup.com"
+          >
+            1st menu item
+          </a>
+        ),
+      },
+      {
+        key: "2",
+        label: (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.antgroup.com"
+          >
+            1st menu item
+          </a>
+        ),
+      },
+      {
+        key: "3",
+        label: (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.antgroup.com"
+          >
+            1st menu item
+          </a>
+        ),
+      },
+    ]}
+  />
+);
+
 export default function HomePage(props) {
   return (
     <div>
-      <Row>
+      <Row className="mainCont">
         <Col
           xs={24}
           sm={24}
@@ -31,10 +77,19 @@ export default function HomePage(props) {
                 sellers to list their products.{" "}
               </p>
               <div className="serchSection">
+                {/* <p className="searchCategoryText">category</p>
+                  <img src={Images.common.down} className="down" /> */}
                 <div className="orangeSection">
-                  <p className="searchCategoryText">category</p>
-                  <img src={Images.common.down} className="down" />
+                  <Dropdown overlay={menu} trigger={["click"]}>
+                    <p className="searchCategoryText">category</p>
+                  </Dropdown>
+                  <img
+                    src={Images.common.down}
+                    className="down"
+                    onClick={(e) => e.preventDefault()}
+                  />
                 </div>
+
                 <div className="whiteSection">
                   <Input
                     placeholder="What do you want to buy?"
@@ -58,128 +113,352 @@ export default function HomePage(props) {
             <p className="discoverItemText">Discover our categories</p>
             <Row gutter={0}>
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                <Row gutter={[0,64]} >
+                <Row gutter={[0, 64]}>
                   <Col xs={6} sm={6} md={6} lg={6} xl={3}>
                     <DiscoverItem
-                    image={Images.discover.cloths}
-                    link={'Clothes'}
+                      image={Images.discover.cloths}
+                      link={"Clothes"}
                     />
                   </Col>
                   <Col xs={6} sm={6} md={6} lg={6} xl={3}>
-                  <DiscoverItem
-                    image={Images.discover.houseHold}
-                    link={'Household'}
+                    <DiscoverItem
+                      image={Images.discover.houseHold}
+                      link={"Household"}
                     />
                   </Col>
                   <Col xs={6} sm={6} md={6} lg={6} xl={3}>
-                  <DiscoverItem
-                    image={Images.discover.electronics}
-                    link={'Electronics'}
+                    <DiscoverItem
+                      image={Images.discover.electronics}
+                      link={"Electronics"}
                     />
                   </Col>
                   <Col xs={6} sm={6} md={6} lg={6} xl={3}>
-                  <DiscoverItem
-                    image={Images.discover.house}
-                    link={'Property'}
+                    <DiscoverItem
+                      image={Images.discover.house}
+                      link={"Property"}
                     />
                   </Col>
                   <Col xs={6} sm={6} md={6} lg={6} xl={3}>
-                  <DiscoverItem
-                    image={Images.discover.computer}
-                    link={'Computers'}
+                    <DiscoverItem
+                      image={Images.discover.computer}
+                      link={"Computers"}
                     />
                   </Col>
                   <Col xs={6} sm={6} md={6} lg={6} xl={3}>
-                  <DiscoverItem
-                    image={Images.discover.collection}
-                    link={'Collectibles'}
+                    <DiscoverItem
+                      image={Images.discover.collection}
+                      link={"Collectibles"}
                     />
                   </Col>
                   <Col xs={6} sm={6} md={6} lg={6} xl={3}>
-                  <DiscoverItem
-                    image={Images.discover.cars}
-                    link={'Vehicles'}
+                    <DiscoverItem
+                      image={Images.discover.cars}
+                      link={"Vehicles"}
                     />
                   </Col>
                   <Col xs={6} sm={6} md={6} lg={6} xl={3}>
-                  <DiscoverItem
-                    image={Images.discover.mobile}
-                    link={'Mobile phones'}
+                    <DiscoverItem
+                      image={Images.discover.mobile}
+                      link={"Mobile phones"}
                     />
                   </Col>
-
                 </Row>
               </Col>
             </Row>
 
-            <p className="discoverItemText secondSectionText">Popular ads now</p>
-            <Row gutter={0}>
+            {/* popular adds */}
+            <p className="discoverItemText secondSectionText">
+              Popular ads now
+            </p>
+            <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                <Row gutter={[20,64]} >
+                <Row gutter={[20, 10]}>
                   <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                   <PopularAds
-                   image={Images.populaAd.ad1}
-                   description={'Play station 5 console With all accesories'}
-                   price={'K27,000'}
-                   />
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                   <PopularAds
-                   image={Images.populaAd.ad1}
-                   description={'Play station 5 console With all accesories'}
-                   price={'K27,000'}
-                   />
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                   <PopularAds
-                   image={Images.populaAd.ad1}
-                   description={'Play station 5 console With all accesories'}
-                   price={'K27,000'}
-                   />
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                   <PopularAds
-                   image={Images.populaAd.ad1}
-                   description={'Play station 5 console With all accesories'}
-                   price={'K27,000'}
-                   />
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                   <PopularAds
-                   image={Images.populaAd.ad1}
-                   description={'Play station 5 console With all accesories'}
-                   price={'K27,000'}
-                   />
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                   <PopularAds
-                   image={Images.populaAd.ad1}
-                   description={'Play station 5 console With all accesories'}
-                   price={'K27,000'}
-                   />
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                   <PopularAds
-                   image={Images.populaAd.ad1}
-                   description={'Play station 5 console With all accesories'}
-                   price={'K27,000'}
-                   />
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                   <PopularAds
-                   image={Images.populaAd.ad1}
-                   description={'Play station 5 console With all accesories'}
-                   price={'K27,000'}
-                   />
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
                   </Col>
-                
+                </Row>
+              </Col>
+              <Button className="seeMoreBtn">
+                See More
+                <img src={Images.common.forward} className="forwardIcon" />
+              </Button>
+            </Row>
 
+            {/* recently add */}
+            <p className="discoverItemText secondSectionText thirdsectionText">
+              Recently added
+            </p>
+            <Row gutter={0} className="addSection">
+              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                <Row gutter={[20, 10]}>
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
+                  </Col>
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
+                  </Col>
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
+                  </Col>
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
+                  </Col>
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
+                  </Col>
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
+                  </Col>
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
+                  </Col>
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
+                  </Col>
+                </Row>
+              </Col>
+              <Button className="seeMoreBtn">
+                See More
+                <img src={Images.common.forward} className="forwardIcon" />
+              </Button>
+            </Row>
+
+            {/*  Houses for rent */}
+
+            <p className="discoverItemText secondSectionText thirdsectionText">
+              Houses for rent
+            </p>
+            <Row gutter={0} className="addSection">
+              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                <Row gutter={[20, 10]}>
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
+                  </Col>
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
+                  </Col>
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
+                  </Col>
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
+                  </Col>
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
+                  </Col>
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
+                  </Col>
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
+                  </Col>
+                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                    <PopularAds
+                      image={Images.populaAd.ad1}
+                      description={"Play station 5 console With all accesories"}
+                      price={"K27,000"}
+                    />
+                  </Col>
+                </Row>
+              </Col>
+              <Button className="seeMoreBtn">
+                See More
+                <img src={Images.common.forward} className="forwardIcon" />
+              </Button>
+            </Row>
+
+            {/* This is trending */}
+            <p className="discoverItemText secondSectionText thirdsectionText">
+              This is Trending
+            </p>
+            <Row gutter={0} className="addSection trendingSection">
+              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                <Row gutter={[10, 50]}>
+                  <Col xs={24} sm={24} md={12} lg={8} xl={8}>
+                    <Card image={Images.common.ad2} title={"Wrist watches"} />
+                  </Col>
+                  <Col xs={24} sm={24} md={12} lg={8} xl={8}>
+                    <Card image={Images.common.ad2} title={"Salaula shoes"} />
+                  </Col>
+                  <Col xs={24} sm={24} md={12} lg={8} xl={8}>
+                    <Card image={Images.common.ad2} title={"Home Goods"} />
+                  </Col>
                 </Row>
               </Col>
             </Row>
-
-
           </div>
+
+          <Row gutter={[0, 10]} className="footerContainer">
+            <Col xs={12} sm={12} md={6} lg={6} xl={6} className="footerContent">
+              <p className="footerMainHead">Buy</p>
+              <a href="#" className="footerLink">
+                How to shop
+              </a>
+              <a href="#" className="footerLink">
+                Categories
+              </a>
+              <a href="#" className="footerLink">
+                Popular Brands
+              </a>
+            </Col>
+            <Col xs={12} sm={12} md={6} lg={6} xl={6} className="footerContent">
+              <p className="footerMainHead">Sell</p>
+              <a href="#" className="footerLink">
+                How to sell
+              </a>
+              <a href="#" className="footerLink">
+                Prices
+              </a>
+              <a href="#" className="footerLink">
+                Popular Brands
+              </a>
+            </Col>
+            <Col xs={12} sm={12} md={6} lg={6} xl={6} className="footerContent">
+              <p className="footerMainHead">Contact</p>
+              <a href="#" className="footerLink">
+                FAQ
+              </a>
+              <a href="#" className="footerLink">
+                Privacy policy
+              </a>
+            </Col>
+            <Col xs={12} sm={12} md={6} lg={6} xl={6} className="footerContent">
+              <p className="footerMainHead">Information</p>
+              <a href="#" className="footerLink">
+                Terms of service
+              </a>
+            </Col>
+
+            <Row className="socialMediaContainer">
+              <Col  xs={12} sm={12} md={6} lg={12} xl={12} className="socialMediaSection">
+              <a><img src={Images.common.insta} className="socialIcon"/></a>
+              <a><img src={Images.common.facebook} className="socialIcon"/></a>
+              <a><img src={Images.common.twitter} className="socialIcon"/></a>
+              <a><img src={Images.common.linkedin}  className="socialIcon"/></a>
+
+
+              <img src={Images.common.line} className="line"/>
+              </Col>
+           
+              <Col  xs={12} sm={12} md={6} lg={12} xl={12} className="btnSectionFooter">
+<a> <img src={Images.common.playBtn} className="FooterBtn"/></a>
+<a> <img src={Images.common.appleBtn} className="FooterBtn"/></a>
+              </Col>
+            </Row>
+          </Row>
         </Col>
       </Row>
     </div>
