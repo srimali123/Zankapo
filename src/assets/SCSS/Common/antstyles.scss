@@ -1,25 +1,23 @@
- .ant-input-suffix {
-    display: none;
-   
-    
-
+.ant-input-suffix {
+  display: none;
 }
- .ant-input-suffix {
-    display: none !important;
-    
+.ant-input-suffix {
+  display: none !important;
 }
-.ant-radio-wrapper:hover .ant-radio, .ant-radio:hover .ant-radio-inner, .ant-radio-input:focus + .ant-radio-inner {
-    border-color: none;
+.ant-radio-wrapper:hover .ant-radio,
+.ant-radio:hover .ant-radio-inner,
+.ant-radio-input:focus + .ant-radio-inner {
+  border-color: none;
 }
 input[type="radio" i]:focus-visible {
-    outline-offset: 0px;
+  outline-offset: 0px;
 }
 :focus-visible {
-    outline: none;
-    box-shadow: none;
+  outline: none;
+  box-shadow: none;
 }
 .ant-radio-input:focus + .ant-radio-inner {
-    box-shadow: none !important;
+  box-shadow: none !important;
 }
 
 input:-webkit-autofill,
@@ -30,60 +28,212 @@ input:-webkit-autofill:focus {
   -webkit-text-fill-color: $gray3 !important;
   background-color: #ffffff !important;
   font-weight: 400;
- 
 }
 
 input:-webkit-autofill,
 input:-webkit-autofill:focus {
-    transition: background-color 600000s 0s, color 600000s 0s;
-  
+  transition: background-color 600000s 0s, color 600000s 0s;
 }
- .ant-input:focus {
-    border-color: none;
-    box-shadow:none !important;
-    border-right-width: 0px;
-    outline: 0;
+.ant-input:focus {
+  border-color: none;
+  box-shadow: none !important;
+  border-right-width: 0px;
+  outline: 0;
 }
 .ant-input {
-    ::placeholder {
-        opacity: 1;
-        color: red;
-    }
+  ::placeholder {
+    opacity: 1;
+    color: red;
+  }
 }
 
 ::placeholder {
-    font-size: 16px;
-    font-weight: 500;
-    font-family: $poppins;
-    color: $gray7 !important;
-    opacity: 1 !important;
+  font-size: 16px;
+  font-weight: 500;
+  font-family: $poppins;
+  color: $gray7 !important;
+  opacity: 1 !important;
+
+  @include mobile {
+    font-size: 14px;
   }
-  
-  :-ms-input-placeholder {
-    /* Internet Explorer 10-11 */
-    font-size: 16px;
-    font-weight: 500;
-    font-family: $poppins;
-    color: $gray7 !important;
-    opacity: 1 !important;
-  }
-  
-  ::-ms-input-placeholder {
-    /* Microsoft Edge */
-    font-size: 16px;
-    font-weight: 500;
-    font-family: $poppins;
-    color: $gray7 !important;
-    opacity: 1 !important;
-  }
-
-  
-.ant-dropdown  {
-
-
-width: 165px;
-    left: 392px !important;
-    top: 445px !important;
-    // max-width:max-content
-
 }
+
+:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  font-size: 16px;
+  font-weight: 500;
+  font-family: $poppins;
+  color: $gray7 !important;
+  opacity: 1 !important;
+}
+
+::-ms-input-placeholder {
+  /* Microsoft Edge */
+  font-size: 16px;
+  font-weight: 500;
+  font-family: $poppins;
+  color: $gray7 !important;
+  opacity: 1 !important;
+}
+
+.ant-dropdown {
+  width: 165px;
+  left: 392px !important;
+  top: 445px !important;
+  // max-width:max-content
+
+  @include tablet-portrait {
+    width: 165px;
+    left: 101px !important;
+    top: 366px !important;
+  }
+
+  @include tablet-landscape {
+    width: 165px;
+    left: 229px !important;
+    top: 411px !important;
+  }
+}
+
+.howItsWorkMobile {
+  .ant-carousel {
+    color: rgba(0, 0, 0, 0.85);
+    font-family: $poppins;
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    margin: -10px 10px auto 0px;
+    padding: 0px 0px 30px 0px;
+
+    height: 350px;
+    width: 100%;
+
+    .ant-carousel .slick-slide img {
+      align-items: center;
+      display: flex;
+      height: auto;
+      width: "100%";
+    }
+    .ant-carousel .slick-dots li button {
+      background: red;
+      border-radius: 99px;
+      border: 0;
+      cursor: pointer;
+      display: block;
+      font-size: 0;
+      height: 40px;
+      margin-left: 12px;
+      margin-top: 25px;
+      opacity: 1;
+      outline: none;
+      padding: 20;
+      transition: all 10s;
+      width: 10px;
+      height: 10px;
+    }
+
+    .slick-dots li button {
+   
+      background: $gray13;
+      opacity: 1;
+      height: 15px;
+      width: 15px;
+      border-radius: 50px;
+      margin-top: 20px;
+    }
+    .slick-dots li.slick-active button {
+      background: black;
+      opacity: 1;
+    }
+  }
+}
+
+.thisIsTrendingMobile {
+  .ant-carousel {
+    color: rgba(0, 0, 0, 0.85);
+    font-family: $poppins;
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    margin: -10px 10px auto 0px;
+    padding: 0px 0px 30px 0px;
+
+    height: 350px;
+    width: 100%;
+
+    .ant-carousel .slick-slide img {
+      align-items: center;
+      display: flex;
+      height: auto;
+      width: "100%";
+    }
+    .ant-carousel .slick-dots li button {
+      background: red;
+      border-radius: 99px;
+      border: 0;
+      cursor: pointer;
+      display: block;
+      font-size: 0;
+      height: 40px;
+      margin-left: 12px;
+      margin-top: 25px;
+      opacity: 1;
+      outline: none;
+      padding: 20;
+      transition: all 10s;
+      width: 10px;
+      height: 10px;
+    }
+
+    .slick-dots li button {
+      background: $gray13;
+      opacity: 1;
+      height: 15px;
+      width: 15px;
+      border-radius: 50px;
+      margin-top: 20px;
+    }
+    .slick-dots li.slick-active button {
+      background: black;
+      opacity: 1;
+    }
+  }
+}
+// @include mobile {
+//   .howItsWorkMobile {
+//     .ant-carousel {
+//       box-sizing: border-box;
+//       color: rgba(230, 25, 25, 0.85);
+//       font-family: $poppins;
+//       font-size: 14px;
+//       font-variant: tabular-nums;
+//       line-height: 1.5715;
+//       list-style: none;
+//       margin: 0px 0px 0px 0px;
+//       padding: 0px;
+//       text-align: center;
+//     }
+//     .ant-carousel .slick-slide img {
+//       height: 700px;
+//       margin-left: 0px;
+//       width: 700px;
+//     }
+//     .ant-carousel .slick-dots li button {
+//       background: $blue2;
+//       cursor: pointer;
+//       display: block;
+//       font-size: 0;
+//       height: 15px;
+//       margin-left: 5px;
+//       margin-top: 10px;
+//       opacity: 1;
+//       outline: none;
+//       padding: 0;
+//       transition: all 0s;
+//       width: 15px;
+//     }
+//   }
+// }

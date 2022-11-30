@@ -120,6 +120,9 @@
       background-color: $gray10;
       padding: 90px 72px 90px 72px;
 
+      .discoverCol {
+        margin-right: 0px;
+      }
       .discoverItemText {
         font-size: 24px;
         font-weight: 700;
@@ -130,6 +133,12 @@
 
       .secondSectionText {
         margin-top: 200px;
+      }
+      .howItsWorkMobile {
+       display: none;
+      }
+      .thisIsTrendingMobile{
+        display: none;
       }
       .addSection {
         display: flex;
@@ -169,39 +178,48 @@
       .trendingSection {
         margin-bottom: 103px;
       }
+      .howItsWork {
+        margin-bottom: 120px;
+      }
     }
 
     // footer
-    .footerContainer {
-      padding: 50px 72px 25px 72px;
+    .mainFooterContainer {
+      padding: 40px 72px 20px 72px;
       background-color: $white;
-      height: 422px;
-      display: flex;
+      // height: 430px;
       width: 100%;
-      justify-content: space-between;
-      align-items: flex-start;
-      .footerContent {
+      display: flex;
+      flex-direction: column;
+
+      .footerContainer {
         display: flex;
-        flex-direction: column;
-        justify-content: flex-start;
-        width: 25%;
-        .footerMainHead {
-          font-size: 24px;
-          font-weight: 700;
-          color: $darkBlue1;
-          font-family: $railWay;
-          margin: 0;
-          margin-bottom: 17px;
-        }
-        .footerLink {
-          font-size: 16px;
-          font-weight: 500;
-          font-family: $poppins;
-          color: $gray12;
-          margin-bottom: 12px;
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+        align-items: flex-start;
+        .footerContent {
+          display: flex;
+          flex-direction: column;
+          justify-content: flex-start;
+          width: 25%;
+          .footerMainHead {
+            font-size: 24px;
+            font-weight: 700;
+            color: $darkBlue1;
+            font-family: $railWay;
+            margin: 0;
+            margin-bottom: 17px;
+          }
+          .footerLink {
+            font-size: 16px;
+            font-weight: 500;
+            font-family: $poppins;
+            color: $gray12;
+            margin-bottom: 12px;
+          }
         }
       }
-
       .socialMediaContainer {
         border: 1.5px solid $gray5;
         height: max-content;
@@ -209,8 +227,8 @@
         border-left: none;
         padding: 22px;
         display: flex;
-      
-
+        flex-direction: row;
+        margin-top: 20px;
         width: 682px;
         .socialMediaSection {
           width: 220px;
@@ -223,7 +241,6 @@
             width: 37px;
           }
           .line {
-           
           }
         }
         .btnSectionFooter {
@@ -238,9 +255,399 @@
           }
         }
       }
+      .footerText {
+        margin-top: 22px;
+        font-size: 16px;
+        font-weight: 400;
+        color: $gray8;
+      }
     }
   }
 }
 
 @include mobile {
+  .mainCont {
+    .homeMaincontainer {
+      .banner {
+        height: 342px;
+        .centerContent {
+          height: 342px;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+
+          .bannerLogo {
+            height: 37px;
+            margin-bottom: 20px;
+            margin-top: 50px;
+          }
+          .centerContentText {
+            display: none;
+            height: 0;
+          }
+          .serchSection {
+            width: 100%;
+
+            .orangeSection {
+              display: none;
+              height: 0;
+            }
+            .whiteSection {
+              width: 328px;
+              height: 44px;
+
+              .search {
+                height: 16px;
+                width: 16px;
+              }
+              .searchTextInput {
+                font-size: 14px;
+                font-weight: 400;
+                font-family: $poppins;
+                color: $gray7;
+              }
+            }
+          }
+        }
+      }
+      .blueconatainer {
+        height: 16px;
+
+        .blueContText {
+          display: none;
+        }
+      }
+      // banner styles end
+
+      .middlecontainer {
+        padding: 30px 20px 30px 20px;
+
+        .discoverItemText {
+          font-size: 16px;
+        }
+
+        .secondSectionText {
+          margin-top: 70px;
+        }
+        .howItsWorkWeb {
+        display: none;
+        }
+        .howItsWorkMobile {
+         display: flex;
+         flex-direction: column;
+        }
+        .thisIsTrendingWeb {
+          display: none;
+        }
+        .thisIsTrendingMobile {
+          display: flex;
+          flex-direction: column;
+        }
+        .addSection {
+          display: flex;
+          justify-content: center;
+          .seeMoreBtn {
+            height: 44px;
+            max-width: 155px;
+            width: 100%;
+            font-size: 14px;
+            margin-top: 48px;
+            margin-bottom: 70px;
+          }
+          .forwardIcon {
+            height: 17px;
+            width: 17px;
+            margin-left: 16px;
+          }
+        }
+
+        .thirdsectionText {
+          margin-top: 0;
+          margin-left: 0;
+        }
+        .trendingSection {
+          margin-bottom: 103px;
+        }
+        .howItsWork {
+          margin-bottom: 120px;
+        }
+      }
+
+      // footer
+      .mainFooterContainer {
+        padding: 30px 10px 30px 20px;
+
+        .footerContainer {
+          .footerContent {
+            .footerMainHead {
+              font-size: 16px;
+            }
+            .footerLink {
+              font-size: 14px;
+            }
+          }
+        }
+        .socialMediaContainer {
+          border: none;
+          padding-top: 5px;
+          display: flex;
+          flex-direction: row;
+          margin-top: 20px;
+          margin-bottom: 0;
+          width: 100%;
+          align-items: center;
+          justify-content: center;
+          .socialMediaSection {
+            width: 100%;
+
+            .socialIcon {
+              height: 18px;
+              width: 18px;
+            }
+            .line {
+              display: none;
+            }
+          }
+          .btnSectionFooter {
+            display: none;
+          }
+        }
+        .footerText {
+          margin-top: 0px;
+          font-size: 16px;
+          font-weight: 400;
+          color: $gray8;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+@include tablet-portrait {
+  .mainCont {
+    .homeMaincontainer {
+      .banner {
+        width: 100%;
+        height: 500px;
+        .centerContent {
+          height: 500px;
+          .bannerLogo {
+            height: 53px;
+          }
+          .centerContentText {
+            width: 68%;
+          }
+        }
+      }
+      .blueconatainer {
+        height: 36px;
+        padding-left: 20px;
+        padding-right: 20px;
+      }
+      // banner styles end
+
+      .middlecontainer {
+        padding: 38px 40px 38px 40px;
+
+        .discoverItemText {
+          font-size: 20px;
+        }
+
+        .secondSectionText {
+          margin-top: 90px;
+        }
+        .secondSectionText {
+          margin-top: 90px;
+        }
+        .thirdsectionText {
+          margin-top: 20px;
+          margin-left: 0;
+        }
+        .trendingSection {
+          margin-bottom: 103px;
+        }
+
+        .addSection {
+          .seeMoreBtn {
+            height: 48px;
+            max-width: 164px;
+            width: 100%;
+          }
+          .forwardIcon {
+            height: 15px;
+            width: 15px;
+            margin-left: 16px;
+          }
+        }
+
+        .howItsWork {
+          margin-bottom: 130px;
+        }
+      }
+
+      // footer
+      .mainFooterContainer {
+        padding: 38px 40px 38px 40px;
+
+        .footerContainer {
+          .footerContent {
+            .footerMainHead {
+              font-size: 16px;
+            }
+            .footerLink {
+              font-size: 14px;
+            }
+          }
+        }
+        .socialMediaContainer {
+          border: 1.5px solid $gray5;
+          height: max-content;
+          border-right: none;
+          border-left: none;
+          padding: 22px;
+          display: flex;
+          flex-direction: row;
+          margin-top: 20px;
+          width: 682px;
+          .socialMediaSection {
+            width: 300px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            .socialIcon {
+              height: 37px;
+              width: 37px;
+              margin-right: 20px;
+            }
+            .line {
+              margin-left: 10px;
+              margin-right: 40px;
+            }
+          }
+          .btnSectionFooter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 500px;
+            .FooterBtn {
+              height: 40px;
+              width: 128px;
+              margin-left: 120px;
+            }
+            .appleBtn {
+              margin-left: 20px;
+            }
+          }
+        }
+        .footerText {
+          margin-bottom: 0px;
+          align-items: center;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
+
+@include tablet-landscape {
+  .mainCont {
+    .homeMaincontainer {
+      .banner {
+        width: 100%;
+        height: 600px;
+        .centerContent {
+          height: 600px;
+        }
+      }
+      .blueconatainer {
+        height: 50px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      // banner styles end
+
+      .middlecontainer {
+        padding: 50px 50px 50px 50px;
+
+        .discoverItemText {
+          font-size: 22px;
+        }
+
+        .secondSectionText {
+          margin-top: 90px;
+        }
+        .thirdsectionText {
+          margin-top: 20px;
+          margin-left: 0;
+        }
+        .trendingSection {
+          margin-bottom: 103px;
+        }
+
+        .addSection {
+          .seeMoreBtn {
+            height: 50px;
+            max-width: 170px;
+            width: 100%;
+          }
+          .forwardIcon {
+            height: 16px;
+            width: 16px;
+            margin-left: 16px;
+          }
+        }
+
+        .howItsWork {
+          margin-bottom: 130px;
+        }
+      }
+
+      // footer
+      .mainFooterContainer {
+        padding: 50px 50px 50px 50px;
+
+        .footerContainer {
+          .footerContent {
+            .footerMainHead {
+              font-size: 17px;
+            }
+            .footerLink {
+              font-size: 15px;
+            }
+          }
+        }
+        .socialMediaContainer {
+          .socialMediaSection {
+            .socialIcon {
+              height: 38px;
+              width: 38px;
+              margin-right: 20px;
+            }
+            .line {
+              margin-left: 10px;
+              margin-right: 0px;
+            }
+          }
+          .btnSectionFooter {
+            .FooterBtn {
+              height: 40px;
+              width: 128px;
+              margin-left: 50px;
+            }
+            .appleBtn {
+              margin-left: 30px;
+            }
+          }
+        }
+        .footerText {
+          margin-bottom: 0px;
+          margin-top: 30px;
+          align-items: center;
+          text-align: center;
+        }
+      }
+    }
+  }
 }

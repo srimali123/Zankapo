@@ -6,9 +6,9 @@ const DiscoverItem = (props) => {
   return (
     <div className="outerMain">
       <div className="outerContainer">
-        <img src={image} style={{ height: 52, width: 52 }} />
+        <img src={image}  className="discoverImg"/>
       </div>
-      <a href="#" className='itemTitle'>{link}</a>
+      <a href="#" className='itemTitle' style={{...style}}>{link}</a>
       
     </div>
   );

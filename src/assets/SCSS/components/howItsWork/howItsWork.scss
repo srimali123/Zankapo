@@ -1,19 +1,19 @@
-.cardMainContainer {
+.howItsWorkMainContainer {
   display: flex;
-  max-width: 391px;
+  max-width: 590px;
   flex-direction: column;
   align-items: center;
 
   .cardSectionOne {
     .cardImg {
-      height: 356px;
-      width: 391px;
+      height: 496px;
+      width: 590px;
     }
   }
 
   .cardSectionTwo {
     position: absolute;
-    width: 280px;
+    width: 549px;
     height: 134px;
     background-color: $blue3;
     padding: 12px;
@@ -28,7 +28,7 @@
     }
     .cardBtn {
       height: 56px;
-      width: 172px;
+      width: 137px;
       background-color: $orange2;
       color: $white;
       //   margin: 0 !important;
@@ -52,108 +52,109 @@
 }
 
 @include mobile {
-  .cardMainContainer {
+  .howItsWorkMainContainer {
     display: flex;
-    width: 320px;
+    max-width: 330px;
     flex-direction: column;
     align-items: center;
     height: 400px;
+
     .cardSectionOne {
-      
       .cardImg {
-        height: 320px;
-        width: 318px;
+        height: 300px;
+        width: 320px;
       }
     }
 
     .cardSectionTwo {
-      position: absolute;
-      width: 250px;
-      height: 92px;
-      background-color: $blue3;
+      width: 278px;
+      height: 101px;
       padding: 12px;
-      bottom: 40px;
+      bottom: 51px;
 
       .titleone {
-        font-size: 17px;
+        font-size: 18px;
       }
       .cardBtn {
         height: 32px;
-        width: 110px;
+        width: 94px;
+        background-color: $orange2;
+        color: $white;
+        //   margin: 0 !important;
+        display: flex;
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        border: none;
+        margin-top: 5px;
+        font-size: 15px;
+        font-family: $poppins;
+        font-weight: 500;
 
-        font-size: 14px;
+        &:hover,
+        &:focus {
+          box-shadow: none;
+          outline: 0;
+        }
       }
     }
   }
 }
 
 @include tablet-portrait {
-  .cardMainContainer {
-    display: flex;
-    max-width: 330px;
-    flex-direction: column;
-    align-items: center;
-  margin-bottom: 50px;
+  .howItsWorkMainContainer {
+    max-width: 335px;
+
     .cardSectionOne {
       .cardImg {
-        height: 296px;
-        width: 330px;
+        height: 346px;
+        width: 335px;
       }
     }
-  
+
     .cardSectionTwo {
       position: absolute;
-      width: 270px;
-      height: 110px;
-      bottom: 0px;
-  
+      width: 294px;
+      height: 96px;
+      bottom: -40px;
+
       .titleone {
         font-size: 16px;
-      
       }
       .cardBtn {
-        height: 37px;
+        height: 40px;
         width: 130px;
         font-size: 14px;
-      
-  
-        
       }
     }
   }
 }
 
 @include tablet-landscape {
-  .cardMainContainer {
-   
-    max-width: 280px;
-  margin-bottom: 50px;
+  .howItsWorkMainContainer {
+    max-width: 430px;
+
     .cardSectionOne {
       .cardImg {
-        height: 280px;
-        width: 280px;
+        height: 390px;
+        width: 430px;
       }
     }
-  
+
     .cardSectionTwo {
       position: absolute;
-      width: 240px;
+      width: 304px;
       height: 100px;
-      bottom: 0px;
-  
+      bottom: -40px;
+
       .titleone {
-        font-size: 16px;
-      
+        font-size: 17px;
       }
       .cardBtn {
-        height: 37px;
+        height: 40px;
         width: 130px;
         font-size: 14px;
-      
-  
-        
       }
     }
   }
 }
-

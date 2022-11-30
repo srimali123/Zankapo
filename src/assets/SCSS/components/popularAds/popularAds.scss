@@ -14,3 +14,52 @@
     color:$black;
     font-weight: 600;
 }
+.popularAddImg {
+    height: 290px;
+    width: "100%";
+}
+
+@include mobile {
+    .descriptionText {
+        font-size: 13px;
+      
+    }
+    .priceText {
+        font-size: 16px;
+        
+    }
+    .popularAddImg {
+        height: 154px;
+        width: "100%";
+    }
+}
+
+@include tablet-portrait {
+    .descriptionText {
+        font-size: 14px;
+       
+    }
+    .priceText {
+        font-size: 18px;
+        
+    }
+    .popularAddImg {
+        height: 224px;
+        width: "100%";
+    }
+}
+
+@include tablet-landscape {
+    .descriptionText {
+        font-size: 14px;
+       
+    }
+    .priceText {
+        font-size: 18px;
+        
+    }
+    .popularAddImg {
+        height: 210px;
+        width: "100%";
+    }
+}
