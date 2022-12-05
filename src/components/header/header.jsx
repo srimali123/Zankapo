@@ -7,7 +7,7 @@ import add from "../../assets/Images/common/addicon.png";
 import login from "../../assets/Images/common/addicon.png";
 import userfilled from "../../assets/Images/common/usercoloured.png";
 import userOutline from "../../assets/Images/common/useroutline.png";
-
+import { Link } from "react-router-dom";
 export default function Header(props) {
   return (
     <div>
@@ -25,10 +25,10 @@ export default function Header(props) {
                   <img src={translate} alt="new" className="translateImg" />
                 </a>
               </div>
-              <button className="addBtn">
-                <a href="#">
+              <button href="#" className="addBtn">
+                <Link to={"/placeAd"} >
                   <img src={add} className="addIcon" />
-                </a>
+                </Link>
                 Place Ad
               </button>
               {/* when user didnt register or login */}

@@ -7,6 +7,7 @@ import PopularAds from "../../components/popularAds";
 import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 import Card from "../../components/card";
 import HowItsWork from "../../components/howItsWork";
+import Footer from "../../components/footer/footer";
 const contentStyle = {
   margin: 0,
   height: '160px',
@@ -495,8 +496,8 @@ export default function HomePage(props) {
 
 
           </div>
-
-          <Row gutter={[0, 10]} className="mainFooterContainer">
+<Footer/>
+          {/* <Row gutter={[0, 10]} className="mainFooterContainer">
             <Row gutter={[20, 30]} className="footerContainer">
               <Col
                 xs={12}
@@ -611,7 +612,7 @@ export default function HomePage(props) {
             </Row>
 
             <p className="footerText">Sankapo © 2022</p>
-          </Row>
+          </Row> */}
         </Col>
       </Row>
     </div>

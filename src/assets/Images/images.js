@@ -3,7 +3,6 @@ const Images = {
     addIcon: require("../Images/common/addicon.png"),
     blueLogo: require("../Images/common/bluelogo.png"),
     down: require("../Images/common/Down.png"),
-    blueLogo: require("../Images/common/bluelogo.png"),
     banner: require("../Images/common/Hero.png"),
     orangeColorLogo: require("../Images/common/logoOrange.png"),
     menu: require("../Images/common/menu.png"),
@@ -20,6 +19,7 @@ const Images = {
     line:require("../Images/common/Line.png"),
     playBtn:require("../Images/common/googlePlay.png"),
     appleBtn:require("../Images/common/appleBtn.png"),
+    adLogo:require("../Images/common/addlogo.png"),
 
 
   },
