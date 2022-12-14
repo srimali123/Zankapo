@@ -20,7 +20,14 @@ const Images = {
     playBtn:require("../Images/common/googlePlay.png"),
     appleBtn:require("../Images/common/appleBtn.png"),
     adLogo:require("../Images/common/addlogo.png"),
-
+    camera:require("../Images/common/camera.png"),
+    greenAdd:require("../Images/common/greenPlus.png"),
+    mobileAcc:require("../Images/common/userfilled.png"),
+    darkdrop:require("../Images/common/darkDropdown.png"),
+    bulb:require("../Images/common/Bulb.png"), 
+    clock:require("../Images/common/Clock.png"),
+    smallMenu:require("../Images/common/menuSmall.png"),
+   
 
   },
   discover: {

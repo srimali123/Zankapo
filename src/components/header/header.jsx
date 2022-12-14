@@ -1,47 +1,142 @@
-import React from "react";
-import { Row, Col, Button } from "antd";
-import logoBlue from "../../assets/Images/common/bluelogo.png";
-import menu from "../../assets/Images/common/menu.png";
-import translate from "../../assets/Images/common/translate.png";
-import add from "../../assets/Images/common/addicon.png";
-import login from "../../assets/Images/common/addicon.png";
-import userfilled from "../../assets/Images/common/usercoloured.png";
-import userOutline from "../../assets/Images/common/useroutline.png";
+import React, { useState } from "react";
+import { Row, Col, Button, Modal } from "antd";
 import { Link } from "react-router-dom";
+import { Images } from "../../assets/Images/images";
 export default function Header(props) {
+  const [isShown, setIsShown] = useState(false);
+  const handleClick = (event) => {
+    setIsShown((current) => !current);
+  };
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const showModal = () => {
+    setIsModalOpen(true);
+  };
+  const handleOk = () => {
+    setIsModalOpen(false);
+  };
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
   return (
     <div>
+      {/* menu modal */}
+
+      <Modal
+        wrapClassName="menuModal"
+        open={isModalOpen}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
+        <div className="modalContainer">
+          <div className="modalCont">
+            <Link to="/" className="linkModal">
+              <img
+                src={Images.common.bulb}
+                alt="bulb"
+                className="headerMenuIcon"
+              />
+              Popular on sankapo
+            </Link>
+          </div>
+          <div className="modalCont">
+            {" "}
+            <Link to="/" className="linkModal">
+              <img
+                src={Images.common.clock}
+                alt="clock"
+                className="headerMenuIcon"
+              />
+              Last chance bid
+            </Link>
+          </div>
+          <div className="modalCont customCont">
+            {" "}
+            <Link onClick={handleClick} className="linkModal">
+              <img
+                src={Images.common.smallMenu}
+                alt="menu"
+                className="headerMenuIcon"
+              />
+              Categories
+            </Link>
+            {isShown && (
+              <div className="linkContainer">
+                <Link to={"/placeAd"} className="linkNew">
+                  Clothes
+                </Link>
+                <Link to="/" className="linkNew">
+                  Household
+                </Link>
+                <Link to="/" className="linkNew">
+                  Real esate
+                </Link>
+                <Link to="/" className="linkNew">
+                  Collectibles
+                </Link>
+                <Link to="/" className="linkNew">
+                  Vehicles
+                </Link>
+                <Link to="/" className="linkNew">
+                  Computers
+                </Link>
+                <Link to="/" className="linkNew">
+                  Mobile phones
+                </Link>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <p className="footerText">Sankapo ©2022</p>
+      </Modal>
       <Row>
         <Col xs={24} sm={24} md={24} lg={24} xl={24}>
           <div className="headerMaincontainer">
             <div className="headerSectionOne">
-              <img src={menu} alt="new" className="menu" />
-              <img src={logoBlue} alt="new" className="logoHeader" />
+              <Link to="/">
+                <img
+                  src={Images.common.menu}
+                  alt="new"
+                  className="menu"
+                  onClick={showModal}
+                />
+              </Link>
+              <Link to="/">
+                <img
+                  src={Images.common.blueLogo}
+                  alt="new"
+                  className="logoHeader"
+                />
+              </Link>
             </div>
 
             <div className="headerSectionTwo">
               <div className="translateContainer">
-                <a href="#">
-                  <img src={translate} alt="new" className="translateImg" />
-                </a>
+                <Link to="#">
+                  <img
+                    src={Images.common.translate}
+                    alt="new"
+                    className="translateImg"
+                  />
+                </Link>
               </div>
               <button href="#" className="addBtn">
-                <Link to={"/placeAd"} >
-                  <img src={add} className="addIcon" />
+                <Link to={"/placeAd"}>
+                  <img src={Images.common.addIcon} className="addIcon" />
                 </Link>
                 Place Ad
               </button>
               {/* when user didnt register or login */}
               <div className="profileConfimContainer">
                 <div className="profileContainer">
-                  <img src={userfilled} className="userIcon" />
+                  <img src={Images.common.userColoured} className="userIcon" />
                   <a href="/register" className="link">
                     Register
                   </a>
                 </div>
 
                 <div className="profileContainer">
-                  <img src={userOutline} className="userIcon" />
+                  <img src={Images.common.userOutline} className="userIcon" />
                   <a href="/login" className="link">
                     Login
                   </a>
@@ -56,12 +151,34 @@ export default function Header(props) {
           
             <div  className="profileContainer">
                
-                <img  src={userOutline} className="userIcon"/>
+                <img  src={Images.common.userOutline} className="userIcon"/>
               <a href="#" className="link">Aliyon</a>
 
             
               </div>
             </div> */}
+
+              {/* mobile view */}
+
+              <div className="mobileHeader">
+                <Link to="/createAd">
+                  <img
+                    src={Images.common.greenAdd}
+                    className="userIconMobile"
+                  />
+                </Link>
+                <div>
+                  <img src={Images.common.mobileAcc} className="userIconAcc" />
+                  <Link to="/">
+                    <img
+                      src={Images.common.darkdrop}
+                      className="userIconAccDrop"
+                    />
+                  </Link>
+                </div>
+              </div>
+
+              {/* mobile view end */}
             </div>
           </div>
         </Col>

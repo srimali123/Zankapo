@@ -1,7 +1,7 @@
 .headerMaincontainer {
   position: fixed;
-  z-index: 1;
-  top:0;
+  z-index:99;
+  top: 0;
   width: 100%;
   height: 64px;
   background-color: $white;
@@ -10,13 +10,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-overflow-x: hidden;
+  overflow-x: hidden;
   .headerSectionOne {
     display: flex;
     align-items: center;
 
     .menu {
       height: 44px;
+      display: none;
     }
     .logoHeader {
       height: 28px;
@@ -97,6 +98,196 @@ overflow-x: hidden;
     }
     .customLink {
     }
+
+    .mobileHeader {
+      display: none;
+    }
   }
 }
 
+@include mobile {
+  .headerMaincontainer {
+    padding-right: 16px;
+    padding-left: 16px;
+
+    .headerSectionOne {
+      display: flex;
+      align-items: center;
+
+      .menu {
+        display: flex;
+        height: 44px;
+      }
+      .logoHeader {
+        display: none;
+      }
+    }
+
+    .headerSectionTwo {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      .translateContainer {
+        display: none;
+      }
+      .addBtn {
+        display: none;
+      }
+
+      .profileConfimContainer {
+        display: none;
+      }
+      .profileContainer {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        margin-right: 10px;
+        margin-left: 10px;
+      }
+      .userIcon {
+        height: 24px;
+        width: 24px;
+        margin-right: 15px;
+        margin-left: 0px;
+      }
+      .link {
+        font-size: 14px;
+        font-weight: 500;
+        color: $gray7;
+        font-family: $poppins;
+        &:hover,
+        &:focus {
+          color: $orange3;
+        }
+      }
+
+      .confirmcontainerAfterLogin {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .customLink {
+      }
+
+      .mobileHeader {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+
+        .userIconMobile {
+          height: 26px;
+          width: 26px;
+          margin-right: 20px;
+        }
+        .userIconAcc {
+          height: 26px;
+          width: 26px;
+        }
+        .userIconAccDrop {
+          height: 9px;
+          width: 13px;
+          margin-left: 12px;
+        }
+      }
+    }
+  }
+}
+
+.menuModal {
+
+
+
+ 
+  .ant-modal {
+    margin: 0 auto;
+    max-width: 100%;
+ 
+    position: fixed;
+  
+    .ant-modal-content {
+      background-color: #f2f2f2;
+    
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+
+      .ant-modal-close .ant-modal-close-x {
+      }
+      .ant-modal-header {
+        display: none;
+        height: 44px;
+        .ant-modal-title {
+          display: none;
+        }
+      }
+      .ant-modal-body {
+        background-color: #f2f2f2;
+        padding: 40px 20px 40px 20px;
+        height: 100%;
+        .modalContainer {
+          display: flex;
+          flex-direction: column;
+          padding: 20px 4px 0px 4px;
+          position: relative;
+          height: 100%;
+          .headerMenuIcon {
+            height: 20px;
+            width: 20px;
+            margin-right: 13px;
+          }
+          .modalCont {
+            height: 60px;
+            display: flex;
+            align-items: center;
+            flex-direction: row;
+           padding-left: 10px;
+            width: 200px;
+            border-bottom: 0.5px solid $gray15;
+          }
+          .customCont {
+            border-bottom: none;
+            flex-direction: column;
+            align-items: flex-start;
+         margin-top: 15px;
+            .linkContainer {
+              display: flex;
+             margin-top: 15px;
+              flex-direction: column;
+              padding-left: 32px;
+
+              .linkNew {
+                font-size: 14px;
+                font-weight: 600;
+                font-family: $railWay;
+                color: $gray7;
+                margin-bottom: 20px;
+              }
+            }
+          
+          }
+          .linkModal {
+            color: $gray7;
+            font-size: 16px;
+            font-weight: 600;
+            font-family: $railWay;
+            display: flex;
+          
+          }
+         
+        }
+
+        .footerText {
+          text-align: center;
+          color: $gray15;
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+      .ant-modal-footer {
+        display: none;
+      }
+    }
+  }
+}
