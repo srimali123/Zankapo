@@ -8,6 +8,7 @@ import VerifyEmailRegister from "../Pages/user/forms/RegisterFlow/verifyEmail";
 import HomePage from "../Pages/home/homePage";
 import PostNewAd from "../Pages/product/postNewAd";
 import CreateNewAd from "../Pages/product/createNewAd";
+import PreviewAd from "../Pages/product/previewAd";
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -19,6 +20,7 @@ export default function AppRoutes() {
         <Route path="/verifyemailregister" element={<VerifyEmailRegister />} />
         <Route path="/placeAd" element={<PostNewAd/>} />
         <Route path="/createAd" element={<CreateNewAd/>} />
+        <Route path="/PreviewAd" element={<PreviewAd/>} />
 
       </Routes>
     </BrowserRouter>

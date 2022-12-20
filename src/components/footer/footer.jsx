@@ -119,7 +119,7 @@ export default function Footer(props) {
               </Col>
             </Row>
 
-            <p className="footerText">Sankapo © 2022</p>
+            <p className="customFooterText">2022 copyright Zambian Market</p>
           </Row>
     </div>
   );

@@ -1,0 +1,97 @@
+.createAdMainContainerPreview {
+ height: 100%;
+  overflow-x: hidden;
+  width: 100%;
+  .createAdContainerPreview {
+  display: none;
+
+    .placeAdLogo {
+      height: 50px;
+    }
+    .cancelLink {
+      color: $gray7;
+      font-size: 20px;
+      font-weight: 500;
+      font-family: $railWay;
+    }
+    .backbtnImg {
+        height: 18px;
+        width:18px;
+        
+    }
+  }
+
+  .contentTwo {
+    background-color: $white;
+    width: 100%;
+    height: 530px;
+    padding: 49px 20px;
+    overflow-y: auto;
+    .adPreview {
+      font-size: 20px;
+      font-weight: 600;
+      color: $gray8;
+      font-family: $railWay;
+    }
+    .previewCont {
+      width: 100%;
+      height: 335px;
+      background-color: $blue4;
+      border: none;
+      margin-bottom: 16px;
+    }
+  }
+}
+
+@include mobile {
+  .createAdMainContainerPreview {
+    .createAdContainerPreview {
+        width: 100%;
+        background-color: $white;
+        height: 64px;
+        padding-left: 16px;
+        padding-right: 16px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      border-bottom: 1.5px solid $gray14;
+      .cancelLink {
+        font-size: 16px;
+      }
+      
+    }
+    .contentTwo {
+      background-color: $white;
+      width: 100%;
+      height: 100%;
+      padding: 49px 16px;
+      overflow-y: auto;
+      .adPreview {
+        font-size: 16px;
+      
+      }
+      .previewCont {
+        width: 100%;
+        height: 206px;
+        background-color: $blue4;
+        border: none;
+        margin-bottom: 16px;
+      }
+      .shipingButton {
+        width: 100%;
+        height: 56px;
+        background-color: $orange2;
+        display: flex;
+        justify-content: center;
+        padding: 0;
+        align-items: center;
+        color: $white;
+        font-size: 16px;
+        font-weight: 600;
+        align-self: center;
+        margin-top: 110px;
+        border: 1px solid $orange2;
+      }
+    }
+  }
+}

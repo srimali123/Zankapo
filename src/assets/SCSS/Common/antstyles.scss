@@ -47,10 +47,12 @@ input:-webkit-autofill:focus {
   }
 }
 .ant-btn {
-box-shadow: none;
-}
-.ant-btn:hover, .ant-btn:focus{
   box-shadow: none;
+}
+.shipingButton.ant-btn:hover,
+.shipingButton.ant-btn:focus {
+  box-shadow: none;
+ 
 }
 
 ::placeholder {
@@ -83,7 +85,7 @@ box-shadow: none;
   opacity: 1 !important;
 }
 
-.ant-dropdown {
+.homedropdown {
   width: 165px;
   left: 392px !important;
   top: 445px !important;
@@ -100,6 +102,51 @@ box-shadow: none;
     left: 229px !important;
     top: 411px !important;
   }
+}
+// .selectDropddown {
+//   top: 500px !important;
+//   left: 112px !important;
+//   width: 142px;
+//   margin-bottom: 30px;
+// }
+
+// checkbox
+.checkCreateProduct {
+  color: $black3;
+
+  .ant-checkbox-checked .ant-checkbox-inner {
+    background-color: $orange2;
+    border-radius: 4px;
+    border: $orange2;
+    box-shadow: none;
+
+    &:hover,
+    &:focus {
+      border: 1px solid #d1d1d6;
+    }
+  }
+  .ant-checkbox-wrapper:hover .ant-checkbox-inner,
+  .ant-checkbox:hover .ant-checkbox-inner {
+    border: $orange2;
+    box-shadow: none;
+  }
+  .ant-checkbox-checked::after {
+    border: $orange2;
+  }
+  .ant-checkbox-checked::before {
+    border: $orange2;
+  }
+
+  .ant-checkbox-wrapper:hover .ant-checkbox-inner,
+  .ant-checkbox:hover .ant-checkbox-inner,
+  .ant-checkbox-input:focus + .ant-checkbox-inner {
+    border-color: $gray16;
+  }
+}
+
+.shipingButton .ant-btn:active {
+  border: none !important;
+  box-shadow: none;
 }
 
 .howItsWorkMobile {
@@ -141,7 +188,6 @@ box-shadow: none;
     }
 
     .slick-dots li button {
-   
       background: $gray13;
       opacity: 1;
       height: 15px;
@@ -245,36 +291,80 @@ box-shadow: none;
 // }
 
 .ant-tabs {
-width:100%;
+  width: 100%;
 
-
-
-.ant-tabs-tab {
- width:50%;
-color: $black;
-&:hover{
-  color: $black;
-}
-.ant-tabs-tab-btn {
-  width:328px;
-  text-align: center;
-  font-size: 20px;
-  font-weight: 600;
-  font-family: $railWay;
-color: $black !important;
-  &:focus,&:active,&:hover   {
+  .ant-tabs-tab {
+    width: 100%;
     color: $black;
+    &:hover {
+      color: $black;
+    }
+    .ant-tabs-tab-btn {
+      width: 339px;
+      text-align: center;
+      font-size: 20px;
+      font-weight: 600;
+      font-family: $railWay;
+      color: $black !important;
+      &:focus,
+      &:active,
+      &:hover {
+        color: $black;
+      }
+    }
   }
- 
+  .ant-tabs-ink-bar {
+    background: $black !important;
+  }
 }
 
+@include mobile {
+  .ant-tabs {
+    width: 100%;
 
+    .ant-tabs-tab {
+      width: 50%;
 
+      .ant-tabs-tab-btn {
+        width: 142px;
+
+        font-size: 14px;
+      }
+    }
+   
+  }
 }
-.ant-tabs-ink-bar{
-background:$black!important;
 
+@include tablet-portrait {
+  .ant-tabs {
+    width: 100%;
 
+    .ant-tabs-tab {
+      width: 50%;
 
+      .ant-tabs-tab-btn {
+        width: 167px;
+
+        font-size: 14px;
+      }
+    }
+   
+  }
 }
+
+@include tablet-landscape {
+  .ant-tabs {
+    width: 100%;
+
+    .ant-tabs-tab {
+      width: 50%;
+
+      .ant-tabs-tab-btn {
+        width: 262px;
+
+        font-size: 14px;
+      }
+    }
+   
+  }
 }

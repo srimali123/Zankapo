@@ -1,6 +1,6 @@
 .headerMaincontainer {
   position: fixed;
-  z-index:99;
+  z-index: 99;
   top: 0;
   width: 100%;
   height: 64px;
@@ -195,26 +195,16 @@
 }
 
 .menuModal {
-
-
-
- 
   .ant-modal {
     margin: 0 auto;
     max-width: 100%;
- 
+    top: 0;
     position: fixed;
-  
+
     .ant-modal-content {
       background-color: #f2f2f2;
-    
-      position: fixed;
-      width: 100%;
-      height: 100%;
-      top: 0;
+      height: 100vh;
 
-      .ant-modal-close .ant-modal-close-x {
-      }
       .ant-modal-header {
         display: none;
         height: 44px;
@@ -242,7 +232,7 @@
             display: flex;
             align-items: center;
             flex-direction: row;
-           padding-left: 10px;
+            padding-left: 10px;
             width: 200px;
             border-bottom: 0.5px solid $gray15;
           }
@@ -250,10 +240,10 @@
             border-bottom: none;
             flex-direction: column;
             align-items: flex-start;
-         margin-top: 15px;
+            margin-top: 15px;
             .linkContainer {
               display: flex;
-             margin-top: 15px;
+              margin-top: 15px;
               flex-direction: column;
               padding-left: 32px;
 
@@ -265,7 +255,6 @@
                 margin-bottom: 20px;
               }
             }
-          
           }
           .linkModal {
             color: $gray7;
@@ -273,9 +262,7 @@
             font-weight: 600;
             font-family: $railWay;
             display: flex;
-          
           }
-         
         }
 
         .footerText {
