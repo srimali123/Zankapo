@@ -93,7 +93,7 @@ export default function HomePage(props) {
                 {/* <p className="searchCategoryText">category</p>
                   <img src={Images.common.down} className="down" /> */}
                 <div className="orangeSection">
-                  <Dropdown overlay={menu} trigger={["click"]}>
+                  <Dropdown overlay={menu} trigger={["click"]} overlayClassName="homedropdown">
                     <p className="searchCategoryText">category</p>
                   </Dropdown>
                   <img

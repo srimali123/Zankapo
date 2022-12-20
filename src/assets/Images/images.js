@@ -27,6 +27,7 @@ const Images = {
     bulb:require("../Images/common/Bulb.png"), 
     clock:require("../Images/common/Clock.png"),
     smallMenu:require("../Images/common/menuSmall.png"),
+    back:require("../Images/common/Forward Arrow.png"),
    
 
   },
