@@ -95,3 +95,21 @@
     }
   }
 }
+
+@include tablet-portrait {
+  .createAdMainContainerPreview {
+    display: none;
+    
+   
+  }
+
+}
+
+@include tablet-landscape {
+  .createAdMainContainerPreview {
+    display: none;
+    
+   
+  }
+
+}
