@@ -130,16 +130,16 @@ export default function Header(props) {
               <div className="profileConfimContainer">
                 <div className="profileContainer">
                   <img src={Images.common.userColoured} className="userIcon" />
-                  <a href="/register" className="link">
+                  <Link to="/register" className="link">
                     Register
-                  </a>
+                  </Link>
                 </div>
 
                 <div className="profileContainer">
                   <img src={Images.common.userOutline} className="userIcon" />
-                  <a href="/login" className="link">
+                  <Link to="/login" className="link">
                     Login
-                  </a>
+                  </Link>
                 </div>
               </div>
 

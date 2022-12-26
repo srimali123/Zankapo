@@ -1,0 +1,1 @@
+export { authenticate, setAuthenticate } from './AuthSlice';
