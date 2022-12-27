@@ -1,8 +1,17 @@
 import React, { useState } from "react";
+
 import { Row, Col, Button, Modal } from "antd";
 import { Link } from "react-router-dom";
 import { Images } from "../../assets/Images/images";
+
+import { useSelector } from "react-redux";
+
 export default function Header(props) {
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.user);
+
+  console.log("Autheticated >>", isAuthenticated);
+
   const [isShown, setIsShown] = useState(false);
   const handleClick = (event) => {
     setIsShown((current) => !current);
@@ -127,36 +136,48 @@ export default function Header(props) {
                 Place Ad
               </button>
               {/* when user didnt register or login */}
-              <div className="profileConfimContainer">
-                <div className="profileContainer">
-                  <img src={Images.common.userColoured} className="userIcon" />
-                  <Link to="/register" className="link">
-                    Register
-                  </Link>
+              {isAuthenticated ? (
+                <div className="confirmcontainerAfterLogin">
+                  <div className="profileContainer">
+                    {" "}
+                    <a href="#" className="link customLink">
+                      Buying
+                    </a>
+                  </div>
+                  <div className="profileContainer">
+                    {" "}
+                    <a href="#" className="link customLink">
+                      Selling
+                    </a>
+                  </div>
+
+                  <div className="profileContainer">
+                    <img src={Images.common.userOutline} className="userIcon" />
+                    <a href="#" className="link">
+                      {user.fullname}
+                    </a>
+                  </div>
                 </div>
+              ) : (
+                <div className="profileConfimContainer">
+                  <div className="profileContainer">
+                    <img
+                      src={Images.common.userColoured}
+                      className="userIcon"
+                    />
+                    <Link to="/register" className="link">
+                      Register
+                    </Link>
+                  </div>
 
-                <div className="profileContainer">
-                  <img src={Images.common.userOutline} className="userIcon" />
-                  <Link to="/login" className="link">
-                    Login
-                  </Link>
+                  <div className="profileContainer">
+                    <img src={Images.common.userOutline} className="userIcon" />
+                    <Link to="/login" className="link">
+                      Login
+                    </Link>
+                  </div>
                 </div>
-              </div>
-
-              {/* after when user login or regsiter */}
-
-              {/* <div className="confirmcontainerAfterLogin">
-              <div  className="profileContainer">  <a href="#" className="link customLink">Buying</a></div>
-              <div  className="profileContainer"> <a href="#" className="link customLink">Selling</a></div>
-          
-            <div  className="profileContainer">
-               
-                <img  src={Images.common.userOutline} className="userIcon"/>
-              <a href="#" className="link">Aliyon</a>
-
-            
-              </div>
-            </div> */}
+              )}
 
               {/* mobile view */}
 
@@ -167,7 +188,7 @@ export default function Header(props) {
                     className="userIconMobile"
                   />
                 </Link>
-                <div>
+                {/* <div>
                   <img src={Images.common.mobileAcc} className="userIconAcc" />
                   <Link to="/">
                     <img
@@ -175,7 +196,7 @@ export default function Header(props) {
                       className="userIconAccDrop"
                     />
                   </Link>
-                </div>
+                </div> */}
               </div>
 
               {/* mobile view end */}

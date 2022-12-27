@@ -1,28 +1,45 @@
 import React, { useState } from "react";
 
 import { LoadingOutlined } from "@ant-design/icons";
-import { Button, Row, Col, Spin, Input, Radio, Modal } from "antd";
+import { Button, Row, Col, Spin, Input, Radio, Modal, Checkbox } from "antd";
 
 import loginImg from "../../../../assets/Images/common/bottomcover.png";
 import logo from "../../../../assets/Images/common/LOGO.png";
 import logoBlue from "../../../../assets/Images/common/bluelogo.png";
 
 import * as AuthService from "../../../../Services/AuthService";
-import { authenticate, setAuthenticate } from "../../../../Redux/Slices/Auth";
+import { setAuthenticate } from "../../../../Redux/Slices/Auth";
 import { saveUser } from "../../../../Redux/Slices/User";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
+import { useEffect } from "react";
 
 export default function Login(props) {
   const [open, setOpen] = useState(false);
-
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  const { isAuthenticating } = useSelector((state) => state.auth);
   const [userCredential, setUserCredential] = useState({
     email: "",
     password: "",
   });
+  const [checked, setChecked] = useState(false);
+
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { isAuthenticating } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    const GetSavedUserCredentials = async () => {
+      const savedUserName = await AuthService.getUsernameKey();
+      const savedPassword = await AuthService.getPassword();
+
+      setUserCredential({
+        ...userCredential,
+        email: savedUserName,
+        password: savedPassword,
+      });
+    };
+
+    GetSavedUserCredentials();
+  }, []);
 
   //input handling
   const onInputHandler = (e) => {
@@ -32,6 +49,12 @@ export default function Login(props) {
   //login function
   const onLogin = async (e) => {
     e.preventDefault();
+
+    if (checked) {
+      await AuthService.rememberUsernameKey(userCredential.email);
+      await AuthService.rememberPassword(userCredential.password);
+    }
+
     setOpen(true);
     let response = await AuthService.loginUser(
       userCredential.email,
@@ -78,35 +101,45 @@ export default function Login(props) {
                 </p>
               </div>
               <div className="loginModalContent">
-                <p className="labelLogin">Email</p>
-                <Input
-                  name="email"
-                  placeholder="Enter your email"
-                  className="loginInput emailInput"
-                  value={userCredential.email}
-                  onChange={onInputHandler}
-                />
-                <p className="labelLogin passwordText">Password</p>
-                <Input.Password
-                  name="password"
-                  className="loginInput "
-                  value={userCredential.password}
-                  onChange={onInputHandler}
-                />
+                <form onSubmit={onLogin}>
+                  <p className="labelLogin">Email</p>
+                  <Input
+                    name="email"
+                    placeholder="Enter your email"
+                    className="loginInput emailInput"
+                    value={userCredential.email}
+                    onChange={onInputHandler}
+                    type="email"
+                    required
+                  />
+                  <p className="labelLogin passwordText">Password</p>
+                  <Input.Password
+                    name="password"
+                    className="loginInput "
+                    value={userCredential.password}
+                    onChange={onInputHandler}
+                  />
 
-                <div className="detailLogin">
-                  <Radio className="radio">Remember for 30 days</Radio>
+                  <div className="detailLogin">
+                    <Checkbox
+                      className="radio"
+                      checked={checked}
+                      onChange={() => setChecked(!checked)}
+                    >
+                      Remember for 30 days
+                    </Checkbox>
 
-                  <a className="forgetPsswordText">Forgot password</a>
-                </div>
-                <Button className="loginBtn" onClick={onLogin}>
-                  Login
-                </Button>
+                    <a className="forgetPsswordText">Forgot password</a>
+                  </div>
+                  <Button className="loginBtn" htmlType="submit">
+                    Login
+                  </Button>
+                </form>
                 <p className="haventAccText">
                   Do not have an account?{" "}
-                  <a href="/register" className="registerLink">
+                  <Link to="/register" className="registerLink">
                     Register here{" "}
-                  </a>
+                  </Link>
                 </p>
               </div>
               <p className="footerText">2022 copyright Sankapo</p>
