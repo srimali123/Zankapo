@@ -63,13 +63,23 @@ export default function Login(props) {
     );
 
     //401 user not found
-    //404 request issue
     if (response.success) {
       dispatch(setAuthenticate({ token: response.data.access_token }));
       dispatch(saveUser({ user: response.data.user }));
       setOpen(false);
       navigate("/");
+    } else {
+      if (response.status == 401) {
+        console.log("Error :", response.message);
+      }
+      if (response.status == 403) {
+        console.log("Error :", response.message);
+      }
+      if (response.status == 404) {
+        console.log("Error :", response.message);
+      }
     }
+    setOpen(false);
   };
 
   const antIcon = (

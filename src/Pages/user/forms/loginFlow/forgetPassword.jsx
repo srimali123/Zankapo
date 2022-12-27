@@ -1,11 +1,35 @@
 import React from "react";
-import { Button, Input, Row, Col } from "antd";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 
+import { Button, Input, Row, Col } from "antd";
 import logoBlue from "../../../../assets/Images/common/bluelogo.png";
 import loginImg from "../../../../assets/Images/common/bottomcover.png";
 import logo from "../../../../assets/Images/common/LOGO.png";
+import Loader from "../../../../components/spinner";
+
+import * as userService from "../../../../Services/UserService";
 
 export default function ForgetPassword() {
+  const [email, setEmail] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
+
+  const onSendEmail = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    let response = await userService.sendVerificationEmail(email);
+
+    if (response.success) {
+      setLoading(false);
+      navigate("/verifyemail");
+    } else {
+      console.log("Error :", response.message);
+    }
+    setLoading(false);
+  };
+
   return (
     <div>
       <Row className="loginPageConatiner">
@@ -25,13 +49,22 @@ export default function ForgetPassword() {
                 </p>
               </div>
               <div className="loginModalContent">
-                <p className="labelLogin">Email</p>
-                <Input
-                  placeholder="Enter your email"
-                  className="loginInput emailInput"
-                />
+                <form onSubmit={onSendEmail}>
+                  <p className="labelLogin">Email</p>
+                  <Input
+                    placeholder="Enter your email"
+                    className="loginInput emailInput"
+                    value={email}
+                    name="email"
+                    type="email"
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
 
-                <Button className="loginBtn">Continue</Button>
+                  <Button className="loginBtn" htmlType="submit">
+                    {loading ? <Loader loading={loading} /> : "Continue"}
+                  </Button>
+                </form>
               </div>
               <p className="footerText">2022 copyright Sankapo</p>
             </div>

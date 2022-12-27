@@ -6,6 +6,12 @@ export const registerUser = async (data, token) => {
   return await httpClient.post(url, data, token);
 };
 
-export const changePassword = async (password, token) =>{
-    const url = `${Config.API_BASE_URL}api/auth/signup`;
-}
+export const sendVerificationEmail = async (email) => {
+  const url = `${Config.API_BASE_URL}api/auth/password/email`;
+  return await httpClient.post(url, { email: email });
+};
+
+export const changePassword = async (password, token) => {
+  const url = `${Config.API_BASE_URL}api/auth/password/reset'`;
+  return await httpClient.post(url, password);
+};
