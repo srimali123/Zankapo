@@ -13,13 +13,6 @@ import "antd/dist/antd.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-// store.subscribe(() => {
-//   localStorage.setItem(
-//     "http://localhost:3000",
-//     JSON.stringify(store.getState())
-//   );
-// });
-
 root.render(
   <React.StrictMode>
     <Provider store={store}>

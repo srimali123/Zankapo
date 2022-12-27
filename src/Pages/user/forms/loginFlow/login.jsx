@@ -26,6 +26,7 @@ export default function Login(props) {
   const dispatch = useDispatch();
   const { isAuthenticating } = useSelector((state) => state.auth);
 
+  //use effect
   useEffect(() => {
     const GetSavedUserCredentials = async () => {
       const savedUserName = await AuthService.getUsernameKey();
@@ -61,6 +62,8 @@ export default function Login(props) {
       userCredential.password
     );
 
+    //401 user not found
+    //404 request issue
     if (response.success) {
       dispatch(setAuthenticate({ token: response.data.access_token }));
       dispatch(saveUser({ user: response.data.user }));
@@ -129,7 +132,9 @@ export default function Login(props) {
                       Remember for 30 days
                     </Checkbox>
 
-                    <a className="forgetPsswordText">Forgot password</a>
+                    <Link to={"/forgetpassword"} className="forgetPsswordText">
+                      Forgot password
+                    </Link>
                   </div>
                   <Button className="loginBtn" htmlType="submit">
                     Login
