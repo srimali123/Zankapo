@@ -1,1 +1,1 @@
-export { authenticate, setAuthenticate } from './AuthSlice';
+export { authenticate, setAuthenticate, reset } from "./AuthSlice";
