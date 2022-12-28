@@ -27,7 +27,7 @@
   .createAdMiddleContainer {
     background-color: $gray14;
     height: 90.2vh;
-   
+
     padding: 25px 72px;
     display: flex;
     flex-direction: column;
@@ -151,7 +151,7 @@
             margin-top: 30px;
           }
           .terms {
-          padding-top: 20px;
+            padding-top: 20px;
           }
         }
         .shippingSection {
@@ -195,14 +195,13 @@
           }
           .previewBtn {
             display: none;
-            
           }
         }
         .houseAdCont {
           margin-top: 28px;
           .createDrop {
             background-color: $blue4;
-         
+
             height: 64px;
             justify-content: space-between;
             padding-right: 20px;
@@ -360,11 +359,9 @@
     }
 
     .createAdMiddleContainer {
-     
       padding: 19px 0px;
-     
+
       .subAdContainer {
-        
         .col {
           padding: 0px !important;
 
@@ -373,14 +370,11 @@
             height: 100%;
             .createAdTopic {
               font-size: 16px;
-              
             }
             .inputCreateAd {
-             
               font-size: 14px;
-             
             }
-            
+
             .categoryInput {
               margin-top: 25px;
             }
@@ -389,39 +383,31 @@
               padding-top: 20px;
             }
             .imagesTopic {
-              
               font-size: 14px;
-             
             }
             .ImgesCont {
-             
               .cameraIcon {
                 height: 33px;
                 width: 33px;
               }
-             
             }
-          
-          
+
             .usedBtn {
               width: 142px;
               height: 52px;
-             
             }
             .divider {
               display: none;
             }
             .tabsSection {
-            
               padding-bottom: 80px;
               .tabInput {
                 width: 181px;
                 margin-top: 10px;
               }
               .tabText {
-                font-size:14px;
+                font-size: 14px;
                 font-weight: 500;
-               
               }
               .terms {
                 width: 100%;
@@ -429,20 +415,17 @@
             }
             .shippingSection {
               margin-top: 50px;
-            
+
               .shippingText {
-               
                 font-size: 16px;
-              
               }
               .offerText {
                 font-size: 14px;
-               
               }
 
               .shipingText {
                 font-size: 14px;
-               margin-bottom: 80px;
+                margin-bottom: 80px;
               }
               .shipingButton {
                 width: 100%;
@@ -456,7 +439,7 @@
                 width: 100%;
                 background-color: $white;
                 color: $orange2;
-             border: 1px solid $orange2;
+                border: 1px solid $orange2;
               }
             }
             .houseAdCont {
@@ -575,27 +558,21 @@
     }
 
     .createAdMiddleContainer {
-     
       padding: 42px 16px;
-     height: 93.7vh;
+      height: 93.7vh;
       .subAdContainer {
-        
         .col {
-      
           .contentOne {
             width: 409px;
             height: 880px;
             overflow-y: auto;
             .createAdTopic {
               font-size: 16px;
-              
             }
             .inputCreateAd {
-             
               font-size: 14px;
-             
             }
-            
+
             .categoryInput {
               margin-top: 25px;
             }
@@ -604,39 +581,31 @@
               padding-top: 20px;
             }
             .imagesTopic {
-              
               font-size: 14px;
-             
             }
             .ImgesCont {
-             
               .cameraIcon {
                 height: 33px;
                 width: 33px;
               }
-             
             }
-          
-          
+
             .usedBtn {
               width: 142px;
               height: 52px;
-             
             }
             .divider {
               display: none;
             }
             .tabsSection {
-            
               padding-bottom: 80px;
               .tabInput {
                 width: 181px;
                 margin-top: 10px;
               }
               .tabText {
-                font-size:14px;
+                font-size: 14px;
                 font-weight: 500;
-               
               }
               .terms {
                 width: 100%;
@@ -644,20 +613,17 @@
             }
             .shippingSection {
               margin-top: 50px;
-            
+
               .shippingText {
-               
                 font-size: 16px;
-              
               }
               .offerText {
                 font-size: 14px;
-               
               }
 
               .shipingText {
                 font-size: 14px;
-               margin-bottom: 80px;
+                margin-bottom: 80px;
               }
               .shipingButton {
                 width: 179px;
@@ -761,7 +727,7 @@
         }
         .contentTwo {
           display: flex;
-          width:287px;
+          width: 287px;
           flex-direction: column;
         }
       }
@@ -770,7 +736,7 @@
 }
 
 @include tablet-landscape {
-   .createAdMainContainer {
+  .createAdMainContainer {
     height: 100vh;
     .createAdContainer {
       padding-left: 16px;
@@ -785,27 +751,21 @@
     }
 
     .createAdMiddleContainer {
-     
       padding: 42px 16px;
-     height: 100%;
+      height: 100%;
       .subAdContainer {
-        
         .col {
-      
           .contentOne {
             width: 100%;
             height: 880px;
             overflow-y: auto;
             .createAdTopic {
               font-size: 16px;
-              
             }
             .inputCreateAd {
-             
               font-size: 14px;
-             
             }
-            
+
             .categoryInput {
               margin-top: 25px;
             }
@@ -814,39 +774,31 @@
               padding-top: 20px;
             }
             .imagesTopic {
-              
               font-size: 14px;
-             
             }
             .ImgesCont {
-             
               .cameraIcon {
                 height: 33px;
                 width: 33px;
               }
-             
             }
-          
-          
+
             .usedBtn {
               width: 142px;
               height: 52px;
-             
             }
             .divider {
               display: none;
             }
             .tabsSection {
-            
               padding-bottom: 80px;
               .tabInput {
                 width: 181px;
                 margin-top: 10px;
               }
               .tabText {
-                font-size:14px;
+                font-size: 14px;
                 font-weight: 500;
-               
               }
               .terms {
                 width: 100%;
@@ -854,27 +806,24 @@
             }
             .shippingSection {
               margin-top: 50px;
-            
+
               .shippingText {
-               
                 font-size: 16px;
-              
               }
               .offerText {
                 font-size: 14px;
-               
               }
 
               .shipingText {
                 font-size: 14px;
-               margin-bottom: 80px;
+                margin-bottom: 80px;
               }
               .shipingButton {
                 width: 179px;
                 border-radius: 0px;
               }
               .previewBtn {
-                display: none;;
+                display: none;
               }
             }
             .houseAdCont {
@@ -971,7 +920,7 @@
         }
         .contentTwo {
           display: flex;
-          width:100%;
+          width: 100%;
           height: 100%;
           flex-direction: column;
         }

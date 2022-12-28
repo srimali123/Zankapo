@@ -5,54 +5,7 @@ import { Link } from "react-router-dom";
 import { Images } from "../../assets/Images/images";
 import { DownOutlined, LogoutOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
-const onClick = ({ key }) => {
-  message.info(`Click on item ${key}`);
-};
 
-const menu = (
-  <Menu
-    className="menu"
-    items={[
-      {
-        key: "1",
-        label: (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.antgroup.com"
-          >
-            1st menu item
-          </a>
-        ),
-      },
-      {
-        key: "2",
-        label: (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.antgroup.com"
-          >
-            1st menu item
-          </a>
-        ),
-      },
-      {
-        key: "3",
-        label: (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.antgroup.com"
-          >
-            Logout
-          </a>
-        ),
-        icon: <LogoutOutlined />,
-      },
-    ]}
-  />
-);
 import { useDispatch } from "react-redux";
 import { clearUser } from "../../Redux/Slices/User/UserSlice";
 import { reset } from "../../Redux/Slices/Auth";
@@ -80,6 +33,55 @@ export default function Header(props) {
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+  const onClick = ({ key }) => {
+    message.info(`Click on item ${key}`);
+  };
+
+  const menu = (
+    <Menu
+      className="menu"
+      items={[
+        {
+          key: "1",
+          label: (
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.antgroup.com"
+            >
+              1st menu item
+            </a>
+          ),
+        },
+        {
+          key: "2",
+          label: (
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.antgroup.com"
+            >
+              1st menu item
+            </a>
+          ),
+        },
+        {
+          key: "3",
+          label: (
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => logout()}
+            >
+              Logout
+            </a>
+          ),
+          icon: <LogoutOutlined />,
+        },
+      ]}
+    />
+  );
 
   const logout = async () => {
     await dispatch(clearUser());
@@ -218,7 +220,7 @@ export default function Header(props) {
                       className="userIcon"
                     />
                     <a href="#" className="link nameLink">
-                      {/* {user.fullname} */}Aliyon
+                      {user.fullname}
                       <Dropdown
                         overlay={menu}
                         trigger={["click"]}

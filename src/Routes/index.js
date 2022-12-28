@@ -16,6 +16,7 @@ import PostNewAd from "../Pages/product/postNewAd";
 import CreateNewAd from "../Pages/product/createNewAd";
 import PreviewAd from "../Pages/product/previewAd";
 import BuyProduct from "../Pages/product/buyProduct/buyProduct";
+
 export default function AppRoutes() {
   return (
     <BrowserRouter>
@@ -31,7 +32,7 @@ export default function AppRoutes() {
         <Route path="/placeAd" element={<PostNewAd />} />
         <Route path="/createAd" element={<CreateNewAd />} />
         <Route path="/PreviewAd" element={<PreviewAd />} />
-        <Route path="/buyProduct" element={ <BuyProduct/>} />
+        <Route path="/buyProduct" element={<BuyProduct />} />
       </Routes>
     </BrowserRouter>
   );

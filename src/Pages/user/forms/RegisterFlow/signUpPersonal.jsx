@@ -51,8 +51,8 @@ export default function SignUpPersonal(props) {
 
     if (response.success) {
       console.log("New user has been addedd successfully!");
-      dispatch(saveUser({ user: response.data.data.userData }));
-      dispatch(setAuthenticate({ token: response.data.data.token }));
+      dispatch(saveUser({ user: response?.data?.data?.userData }));
+      dispatch(setAuthenticate({ token: response?.data?.data?.token }));
       dispatch(clearUser());
       setLoading(false);
       navigate("/");
@@ -60,6 +60,7 @@ export default function SignUpPersonal(props) {
       if (response.status === 403) {
         console.log("Sorry, User with the provided email is already exists!");
       }
+      setLoading(false);
     }
     setLoading(false);
   };

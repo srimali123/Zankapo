@@ -1,20 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Button, Input, Dropdown, Menu, Carousel } from "antd";
 import Header from "../../components/header/header";
 import DiscoverItem from "../../components/discoverItem";
 import { Images } from "../../assets/Images/images.js";
 import PopularAds from "../../components/popularAds";
-import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 import Card from "../../components/card";
 import HowItsWork from "../../components/howItsWork";
 import Footer from "../../components/footer/footer";
+
+import { saveAdvertisments } from "../../Redux/Slices/Advertisment";
+import { useSelector, useDispatch } from "react-redux";
+import * as advertismentService from "../../Services/AdvertismentService";
+
 const contentStyle = {
   margin: 0,
-  height: '160px',
-  color: '#fff',
-  lineHeight: '160px',
-  textAlign: 'center',
-  background: '#364d79',
+  height: "160px",
+  color: "#fff",
+  lineHeight: "160px",
+  textAlign: "center",
+  background: "#364d79",
 };
 const onChange = (currentSlide) => {
   console.log(currentSlide);
@@ -64,6 +68,27 @@ const menu = (
 );
 
 export default function HomePage(props) {
+  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+
+  const fetchAdvertisments = async () => {
+    setLoading(true);
+    let response = await advertismentService.fetchAllAdvertisments();
+
+    if (response.success) {
+      dispatch(saveAdvertisments({ advertisments: response?.data?.data }));
+      console.log("fetched");
+      setLoading(false);
+    } else {
+      console.log("Error", response.message);
+    }
+    setLoading(false);
+  };
+
+  useEffect(() => {
+    fetchAdvertisments();
+  }, []);
+
   return (
     <div>
       <Row className="mainCont">
@@ -93,7 +118,11 @@ export default function HomePage(props) {
                 {/* <p className="searchCategoryText">category</p>
                   <img src={Images.common.down} className="down" /> */}
                 <div className="orangeSection">
-                  <Dropdown overlay={menu} trigger={["click"]} overlayClassName="homedropdown">
+                  <Dropdown
+                    overlay={menu}
+                    trigger={["click"]}
+                    overlayClassName="homedropdown"
+                  >
                     <p className="searchCategoryText">Category</p>
                   </Dropdown>
                   <img
@@ -122,7 +151,6 @@ export default function HomePage(props) {
 
           {/* banner section end */}
           <div className="middlecontainer">
-            
             {/* discover categories */}
             <p className="discoverItemText">Discover our categories</p>
             <Row gutter={0}>
@@ -132,46 +160,74 @@ export default function HomePage(props) {
                     <DiscoverItem
                       image={Images.discover.cloths}
                       link={"Clothes"}
-                      style={{marginRight:25}}
+                      style={{ marginRight: 25 }}
                     />
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={3} className="discoverCol">
+                  <Col
+                    xs={6}
+                    sm={6}
+                    md={6}
+                    lg={6}
+                    xl={3}
+                    className="discoverCol"
+                  >
                     <DiscoverItem
                       image={Images.discover.houseHold}
                       link={"Household"}
                     />
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={3} >
+                  <Col xs={6} sm={6} md={6} lg={6} xl={3}>
                     <DiscoverItem
                       image={Images.discover.electronics}
                       link={"Electronics"}
                     />
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={3} >
+                  <Col xs={6} sm={6} md={6} lg={6} xl={3}>
                     <DiscoverItem
                       image={Images.discover.house}
                       link={"Property"}
                     />
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={3} >
+                  <Col xs={6} sm={6} md={6} lg={6} xl={3}>
                     <DiscoverItem
                       image={Images.discover.computer}
                       link={"Computers"}
                     />
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={3} className="discoverCol">
+                  <Col
+                    xs={6}
+                    sm={6}
+                    md={6}
+                    lg={6}
+                    xl={3}
+                    className="discoverCol"
+                  >
                     <DiscoverItem
                       image={Images.discover.collection}
                       link={"Collectibles"}
                     />
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={3} className="discoverCol">
+                  <Col
+                    xs={6}
+                    sm={6}
+                    md={6}
+                    lg={6}
+                    xl={3}
+                    className="discoverCol"
+                  >
                     <DiscoverItem
                       image={Images.discover.cars}
                       link={"Vehicles"}
                     />
                   </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={3} className="discoverCol">
+                  <Col
+                    xs={6}
+                    sm={6}
+                    md={6}
+                    lg={6}
+                    xl={3}
+                    className="discoverCol"
+                  >
                     <DiscoverItem
                       image={Images.discover.mobile}
                       link={"Mobile phones"}
@@ -397,107 +453,112 @@ export default function HomePage(props) {
 
             {/* how its work */}
             <div className="howItsWorkWeb">
-            <p className="discoverItemText secondSectionText thirdsectionText">
-              how it works
-            </p>
-            <Row gutter={0} className="addSection trendingSection howItsWork">
-              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                <Row gutter={[20, 50]}>
-                  <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                   <HowItsWork image={Images.common.ad2} title={"How to buy"}/>
-                  </Col>
-                  <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                  <HowItsWork image={Images.common.ad2} title={"How to buy"}/>
-                  </Col>
-                </Row>
-              </Col>
-            </Row>
+              <p className="discoverItemText secondSectionText thirdsectionText">
+                how it works
+              </p>
+              <Row gutter={0} className="addSection trendingSection howItsWork">
+                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                  <Row gutter={[20, 50]}>
+                    <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                      <HowItsWork
+                        image={Images.common.ad2}
+                        title={"How to buy"}
+                      />
+                    </Col>
+                    <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                      <HowItsWork
+                        image={Images.common.ad2}
+                        title={"How to buy"}
+                      />
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
             </div>
-     {/* how its work end */}
+            {/* how its work end */}
 
             {/* how its work mobile */}
             <div className="howItsWorkMobile">
-            <p className="discoverItemText secondSectionText thirdsectionText">
-              how it works
-            </p>
-           
-            <Row gutter={0} className="addSection trendingSection howItsWork">
-           
-              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                <Row>
-                <Carousel   swipeToSlide draggable afterChange={onChange}>
-     
-   
-                  <Col xs={24} sm={24} md={24} lg={24} xl={24} >
-                   <HowItsWork image={Images.common.ad2} title={"How to buy"}/>
-                  </Col>
-                  <Col xs={24} sm={24} md={24} lg={24} xl={24} >
-                  <HowItsWork image={Images.common.ad2} title={"How to buy"}/>
-                  </Col>
-                   </Carousel>
-     
-                  
-                </Row>
-              </Col>
-          
-            </Row>
-            
+              <p className="discoverItemText secondSectionText thirdsectionText">
+                how it works
+              </p>
+
+              <Row gutter={0} className="addSection trendingSection howItsWork">
+                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                  <Row>
+                    <Carousel swipeToSlide draggable afterChange={onChange}>
+                      <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                        <HowItsWork
+                          image={Images.common.ad2}
+                          title={"How to buy"}
+                        />
+                      </Col>
+                      <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                        <HowItsWork
+                          image={Images.common.ad2}
+                          title={"How to buy"}
+                        />
+                      </Col>
+                    </Carousel>
+                  </Row>
+                </Col>
+              </Row>
             </div>
 
-
-
-                   {/* how its work mobile end */}
+            {/* how its work mobile end */}
 
             {/* This is trending web*/}
             <div className="thisIsTrendingWeb">
-            <p className="discoverItemText secondSectionText thirdsectionText">
-              This is Trending
-            </p>
-            <Row gutter={0} className="addSection trendingSection">
-              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                <Row gutter={[10, 50]}>
-                  <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                    <Card image={Images.common.ad2} title={"Wrist watches"} />
-                  </Col>
-                  <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                    <Card image={Images.common.ad2} title={"Salaula shoes"} />
-                  </Col>
-                  <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                    <Card image={Images.common.ad2} title={"Home Goods"} />
-                  </Col>
-                  
-                </Row>
-              </Col>
-            </Row>
+              <p className="discoverItemText secondSectionText thirdsectionText">
+                This is Trending
+              </p>
+              <Row gutter={0} className="addSection trendingSection">
+                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                  <Row gutter={[10, 50]}>
+                    <Col xs={24} sm={24} md={12} lg={8} xl={8}>
+                      <Card image={Images.common.ad2} title={"Wrist watches"} />
+                    </Col>
+                    <Col xs={24} sm={24} md={12} lg={8} xl={8}>
+                      <Card image={Images.common.ad2} title={"Salaula shoes"} />
+                    </Col>
+                    <Col xs={24} sm={24} md={12} lg={8} xl={8}>
+                      <Card image={Images.common.ad2} title={"Home Goods"} />
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
             </div>
 
             <div className="thisIsTrendingMobile">
-            <p className="discoverItemText secondSectionText thirdsectionText">
-              This is Trending
-            </p>
-            <Row gutter={0} className="addSection trendingSection">
-              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                <Row gutter={[10, 50]}>
-                <Carousel   swipeToSlide draggable afterChange={onChange}>
-                  <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                    <Card image={Images.common.ad2} title={"Wrist watches"} />
-                  </Col>
-                  <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                    <Card image={Images.common.ad2} title={"Salaula shoes"} />
-                  </Col>
-                  <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                    <Card image={Images.common.ad2} title={"Home Goods"} />
-                  </Col>
-                  </Carousel>
-                </Row>
-              </Col>
-            </Row>
+              <p className="discoverItemText secondSectionText thirdsectionText">
+                This is Trending
+              </p>
+              <Row gutter={0} className="addSection trendingSection">
+                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                  <Row gutter={[10, 50]}>
+                    <Carousel swipeToSlide draggable afterChange={onChange}>
+                      <Col xs={24} sm={24} md={12} lg={8} xl={8}>
+                        <Card
+                          image={Images.common.ad2}
+                          title={"Wrist watches"}
+                        />
+                      </Col>
+                      <Col xs={24} sm={24} md={12} lg={8} xl={8}>
+                        <Card
+                          image={Images.common.ad2}
+                          title={"Salaula shoes"}
+                        />
+                      </Col>
+                      <Col xs={24} sm={24} md={12} lg={8} xl={8}>
+                        <Card image={Images.common.ad2} title={"Home Goods"} />
+                      </Col>
+                    </Carousel>
+                  </Row>
+                </Col>
+              </Row>
             </div>
-
-
-
           </div>
-<Footer/>
+          <Footer />
           {/* <Row gutter={[0, 10]} className="mainFooterContainer">
             <Row gutter={[20, 30]} className="footerContainer">
               <Col

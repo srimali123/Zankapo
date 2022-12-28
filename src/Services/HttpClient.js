@@ -127,7 +127,7 @@ export const post = (url, data, authToken = null) => {
   return client.post(url, data, config);
 };
 
-export const postImage = (url, data, authToken = null) => {
+export const _post = (url, data, authToken = null) => {
   let config = { headers: getMultipartHeaders(authToken) };
   console.debug("POST " + url);
   return client.post(url, data, config);
