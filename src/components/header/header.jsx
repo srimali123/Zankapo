@@ -1,10 +1,60 @@
 import React, { useState } from "react";
 
-import { Row, Col, Button, Modal } from "antd";
+import { Row, Col, Button, Modal, Dropdown, message,Menu } from "antd";
 import { Link } from "react-router-dom";
 import { Images } from "../../assets/Images/images";
-
+import { DownOutlined, LogoutOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
+const onClick = ({ key }) => {
+  message.info(`Click on item ${key}`);
+};
+
+
+
+const menu = (
+  <Menu
+    className="menu"
+    items={[
+      {
+        key: "1",
+        label: (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.antgroup.com"
+          >
+            1st menu item
+          </a>
+        ),
+      },
+      {
+        key: "2",
+        label: (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.antgroup.com"
+          >
+            1st menu item
+          </a>
+        ),
+      },
+      {
+        key: "3",
+        label: (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.antgroup.com"
+          >
+           Logout
+          </a>
+        ),
+        icon: <LogoutOutlined />,
+      },
+    ]}
+  />
+);
 
 export default function Header(props) {
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -120,7 +170,6 @@ export default function Header(props) {
             </div>
 
             <div className="headerSectionTwo">
-              
               <div className="translateContainer">
                 <Link to="#">
                   <img
@@ -137,30 +186,41 @@ export default function Header(props) {
                 Place Ad
               </button>
               {/* when user didnt register or login */}
-              {isAuthenticated ? (
-                <div className="confirmcontainerAfterLogin">
-                  <div className="profileContainer">
-                    {" "}
-                    <a href="#" className="link customLink">
-                      Buying
-                    </a>
-                  </div>
-                  <div className="profileContainer">
-                    {" "}
-                    <a href="#" className="link customLink">
-                      Selling
-                    </a>
-                  </div>
-
-                  <div className="profileContainer">
-                    <img src={Images.common.userOutline} className="userIcon" />
-                    <a href="#" className="link">
-                      {user.fullname}
-                    </a>
-                  </div>
+              {/* {isAuthenticated ? ( */}
+              <div className="confirmcontainerAfterLogin">
+                <div className="profileContainer">
+                  {" "}
+                  <Link to="/buyProduct" className="link customLink">
+                    Buying
+                  </Link>
                 </div>
-              ) : (
-                <div className="profileConfimContainer">
+                <div className="profileContainer">
+                  {" "}
+                  <a href="#" className="link customLink">
+                    Selling
+                  </a>
+                </div>
+
+               
+                  <div className="profileContainer">
+                    <img
+                      src={Images.common.userColoured}
+                      className="userIcon"
+                    />
+                    <a href="#" className="link nameLink">
+                      {/* {user.fullname} */}Aliyon
+                      <Dropdown overlay={menu} trigger={["click"]} overlayClassName="profileDropDown"  >
+                      <img
+                        src={Images.common.orangeDrop}
+                        className="userIconDrop"
+                      />
+                      </Dropdown>
+                    </a>
+                  </div>
+                
+              </div>
+              {/* // ) : ( */}
+              {/* <div className="profileConfimContainer">
                   <div className="profileContainer">
                     <img
                       src={Images.common.userColoured}
@@ -177,8 +237,8 @@ export default function Header(props) {
                       Login
                     </Link>
                   </div>
-                </div>
-              )}
+                </div> */}
+              {/* )} */}
 
               {/* mobile view */}
 
