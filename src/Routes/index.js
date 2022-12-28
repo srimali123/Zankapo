@@ -15,7 +15,6 @@ import HomePage from "../Pages/home/homePage";
 import PostNewAd from "../Pages/product/postNewAd";
 import CreateNewAd from "../Pages/product/createNewAd";
 import PreviewAd from "../Pages/product/previewAd";
-
 export default function AppRoutes() {
   return (
     <BrowserRouter>

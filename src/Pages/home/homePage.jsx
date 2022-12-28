@@ -94,7 +94,7 @@ export default function HomePage(props) {
                   <img src={Images.common.down} className="down" /> */}
                 <div className="orangeSection">
                   <Dropdown overlay={menu} trigger={["click"]} overlayClassName="homedropdown">
-                    <p className="searchCategoryText">category</p>
+                    <p className="searchCategoryText">Category</p>
                   </Dropdown>
                   <img
                     src={Images.common.down}
@@ -122,6 +122,7 @@ export default function HomePage(props) {
 
           {/* banner section end */}
           <div className="middlecontainer">
+            
             {/* discover categories */}
             <p className="discoverItemText">Discover our categories</p>
             <Row gutter={0}>

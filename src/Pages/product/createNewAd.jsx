@@ -1,5 +1,6 @@
-import React from "react";
+import React,{useCallback} from "react";
 import { Images } from "../../assets/Images/images";
+import {useDropzone} from 'react-dropzone'
 import {
   Row,
   Col,
@@ -62,6 +63,10 @@ const items = [
   },
 ];
 export default function CreateNewAd() {
+  const onDrop = useCallback(acceptedFiles => {
+    // Do something with the files
+  }, [])
+  const {getRootProps, getInputProps, isDragActive} = useDropzone({onDrop})
   return (
     <div className="createAdMainContainer">
       <Row>
@@ -208,15 +213,21 @@ export default function CreateNewAd() {
                     </Row>
 
                     <p className="imagesTopic">Images</p>
-                    <div className="inputCreateAd ImgesCont">
+                    <div className="inputCreateAd ImgesCont" {...getRootProps()}>
                       <img
                         src={Images.common.camera}
                         className="cameraIcon"
                         alt="camera"
+                      
                       />
-                      <Link to="/" className="dropText">
+                        {
+        isDragActive ?
+          <p className="dropText">  Drop your images here</p> : <p className="dropText">  Drop your images here</p>
+         
+      }
+                      {/* <Link   to="" className="dropText">
                         Drop your images here
-                      </Link>
+                      </Link> */}
                     </div>
 
                     <div className="residentialCont">

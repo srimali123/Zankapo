@@ -1,17 +1,52 @@
 import React, { useState } from "react";
-
-import { Row, Col, Button, Modal } from "antd";
+import { Row, Col, Button, Input, Dropdown, Menu, Modal } from "antd";
 import { Link } from "react-router-dom";
-import { Images } from "../../assets/Images/images";
-
-import { useSelector } from "react-redux";
-
-export default function Header(props) {
-  const { isAuthenticated } = useSelector((state) => state.auth);
-  const { user } = useSelector((state) => state.user);
-
-  console.log("Autheticated >>", isAuthenticated);
-
+import { Images } from "../../../assets/Images/images";
+import Footer from "../../../components/footer/footer";
+const menu = (
+  <Menu
+    className="menu"
+    items={[
+      {
+        key: "1",
+        label: (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.antgroup.com"
+          >
+            1st menu item
+          </a>
+        ),
+      },
+      {
+        key: "2",
+        label: (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.antgroup.com"
+          >
+            1st menu item
+          </a>
+        ),
+      },
+      {
+        key: "3",
+        label: (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.antgroup.com"
+          >
+            1st menu item
+          </a>
+        ),
+      },
+    ]}
+  />
+);
+export default function BuyProductHeader() {
   const [isShown, setIsShown] = useState(false);
   const handleClick = (event) => {
     setIsShown((current) => !current);
@@ -27,9 +62,7 @@ export default function Header(props) {
     setIsModalOpen(false);
   };
   return (
-    <div>
-      {/* menu modal */}
-
+    <div className="buyProductContainer">
       <Modal
         wrapClassName="menuModal"
         open={isModalOpen}
@@ -98,9 +131,10 @@ export default function Header(props) {
 
         <p className="footerText">Sankapo ©2022</p>
       </Modal>
+      <div className="headerContainerMain">
       <Row>
         <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-          <div className="headerMaincontainer">
+          <div className="headerMaincontainerProduct">
             <div className="headerSectionOne">
               <Link to="/">
                 <img
@@ -120,7 +154,36 @@ export default function Header(props) {
             </div>
 
             <div className="headerSectionTwo">
-              
+              <div className="centerContent">
+                <div className="serchSection">
+                  {/* <p className="searchCategoryText">category</p>
+                  <img src={Images.common.down} className="down" /> */}
+                  <div className="orangeSection">
+                    <Dropdown
+                      overlay={menu}
+                      trigger={["click"]}
+                      overlayClassName="hederdropdown"
+                    >
+                      <p className="searchCategoryText">Category</p>
+                    </Dropdown>
+                    <img
+                      src={Images.common.down}
+                      className="down"
+                      onClick={(e) => e.preventDefault()}
+                    />
+                  </div>
+
+                  <div className="whiteSection">
+                    <Input
+                      placeholder="What do you want to buy?"
+                      className="searchTextInput"
+                    />
+
+                    <img src={Images.common.search} className="search" />
+                  </div>
+                </div>
+              </div>
+
               <div className="translateContainer">
                 <Link to="#">
                   <img
@@ -137,48 +200,36 @@ export default function Header(props) {
                 Place Ad
               </button>
               {/* when user didnt register or login */}
-              {isAuthenticated ? (
-                <div className="confirmcontainerAfterLogin">
-                  <div className="profileContainer">
-                    {" "}
-                    <a href="#" className="link customLink">
-                      Buying
-                    </a>
-                  </div>
-                  <div className="profileContainer">
-                    {" "}
-                    <a href="#" className="link customLink">
-                      Selling
-                    </a>
-                  </div>
-
-                  <div className="profileContainer">
-                    <img src={Images.common.userOutline} className="userIcon" />
-                    <a href="#" className="link">
-                      {user.fullname}
-                    </a>
-                  </div>
+              {/* <div className="profileConfimContainer">
+                <div className="profileContainer">
+                  <img src={Images.common.userColoured} className="userIcon" />
+                  <a href="/register" className="link">
+                    Register
+                  </a>
                 </div>
-              ) : (
-                <div className="profileConfimContainer">
-                  <div className="profileContainer">
-                    <img
-                      src={Images.common.userColoured}
-                      className="userIcon"
-                    />
-                    <Link to="/register" className="link">
-                      Register
-                    </Link>
-                  </div>
 
-                  <div className="profileContainer">
-                    <img src={Images.common.userOutline} className="userIcon" />
-                    <Link to="/login" className="link">
-                      Login
-                    </Link>
-                  </div>
+                <div className="profileContainer">
+                  <img src={Images.common.userOutline} className="userIcon" />
+                  <a href="/login" className="link">
+                    Login
+                  </a>
                 </div>
-              )}
+              </div> */}
+
+              {/* after when user login or regsiter */}
+
+              <div className="confirmcontainerAfterLogin">
+              <div  className="profileContainer">  <a href="#" className="link customLink">Buying</a></div>
+              <div  className="profileContainer"> <a href="#" className="link customLink">Selling</a></div>
+          
+            <div  className="profileContainer">
+               
+                <img  src={Images.common.userOutline} className="userIcon"/>
+              <a href="#" className="link productlink">Aliyon</a>
+
+            
+              </div>
+            </div>
 
               {/* mobile view */}
 
@@ -205,6 +256,27 @@ export default function Header(props) {
           </div>
         </Col>
       </Row>
+      <Row>
+        <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+          <div className="grayContainer">
+            <div className="iconCont">
+              <img src={Images.common.home} className="hederIcon" />
+              <img src={Images.common.forwardNew} className="hederIconForward" />
+              <Link to="/createAd"className="clothsLink">Cloths</Link>
+            </div>
+            <div className="iconCont backCont">
+             
+              <Link to="/" className="clothsLink backlink">Back</Link>
+              <img src={Images.common.forwardNew} className="hederIconForward" />
+            
+            </div>
+          </div>
+        </Col>
+      </Row>
+      </div>
+      
+      
+     
     </div>
   );
 }

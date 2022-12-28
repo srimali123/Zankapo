@@ -28,6 +28,10 @@ const Images = {
     clock:require("../Images/common/Clock.png"),
     smallMenu:require("../Images/common/menuSmall.png"),
     back:require("../Images/common/Forward Arrow.png"),
+    home:require("../Images/common/homeIcon.png"),
+    forwardNew:require("../Images/common/ForwardArrow.png"),
+    poster:require("../Images/common/product.png"),
+
    
 
   },
