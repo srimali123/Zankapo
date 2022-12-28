@@ -23,7 +23,7 @@ export default function ForgetPassword() {
 
     if (response.success) {
       setLoading(false);
-      navigate("/verifyemail");
+      navigate("/verifyemaillogin");
     } else {
       console.log("Error :", response.message);
     }

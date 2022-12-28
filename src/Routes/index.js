@@ -4,10 +4,13 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Login from "../Pages/user/forms/loginFlow/login";
 import ForgetPassword from "../Pages/user/forms/loginFlow/forgetPassword";
+import CreatePassword from "../Pages/user/forms/loginFlow/createPassword";
+import VerifyEmail from "../Pages/user/forms/loginFlow/verifyEmail";
 
 import Register from "../Pages/user/forms/RegisterFlow/register";
-import VerifyEmail from "../Pages/user/forms/loginFlow/verifyEmail";
+import SignUpPersonal from "../Pages/user/forms/RegisterFlow/signUpPersonal";
 import VerifyEmailRegister from "../Pages/user/forms/RegisterFlow/verifyEmail";
+
 import HomePage from "../Pages/home/homePage";
 import PostNewAd from "../Pages/product/postNewAd";
 import CreateNewAd from "../Pages/product/createNewAd";
@@ -20,8 +23,10 @@ export default function AppRoutes() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
         <Route path="/forgetpassword" element={<ForgetPassword />} />
-        <Route path="/verifyemail" element={<VerifyEmail />} />
+        <Route path="/verifyemaillogin" element={<VerifyEmail />} />
+        <Route path="/createpassword" element={<CreatePassword />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/personal" element={<SignUpPersonal />} />
         <Route path="/verifyemailregister" element={<VerifyEmailRegister />} />
         <Route path="/placeAd" element={<PostNewAd />} />
         <Route path="/createAd" element={<CreateNewAd />} />

@@ -1,25 +1,48 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import { LoadingOutlined } from "@ant-design/icons";
-import {
-  Checkbox,
-  Button,
-  Row,
-  Col,
-  Spin,
-  Input,
-  Radio,
-  Modal,
-  DatePicker,
-} from "antd";
+import { Button, Row, Col, Spin, Input, Modal } from "antd";
 import loginImg from "../../../../assets/Images/common/bottomcover.png";
 import logo from "../../../../assets/Images/common/LOGO.png";
 import logoBlue from "../../../../assets/Images/common/bluelogo.png";
 
+import * as userService from "../../../../Services/UserService";
+import { saveUser } from "../../../../Redux/Slices/Signup/UserSlice";
+import { useDispatch, useSelector } from "react-redux";
+
 export default function Register(props) {
-  const onChange = (date, dateString) => {
-    console.log(date, dateString);
-  };
   const [open, setOpen] = useState(false);
+  const [userData, setUserData] = useState({
+    email: "",
+    phonenumber: "",
+    nrc: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { savedUser } = useSelector((state) => state.register);
+
+  //input handling
+  const onInputHandler = (e) => {
+    setUserData({ ...userData, [e.target.name]: e.target.value });
+  };
+
+  //user register
+  const onSignup = async (e) => {
+    e.preventDefault();
+    dispatch(saveUser({ savedUser: { ...savedUser, ...userData } }));
+    navigate("/personal");
+  };
+
+  //set saved reg flow data
+  useEffect(() => {
+    const GetSavedUser = () => {
+      setUserData({ ...userData, ...savedUser });
+    };
+    GetSavedUser();
+  }, []);
+
   const antIcon = (
     <LoadingOutlined style={{ fontSize: 35, color: "white" }} spin />
   );
@@ -58,30 +81,53 @@ export default function Register(props) {
                 </p>
               </div>
               <div className="registerModalContent">
-                <p className="labelRegister">Email*</p>
-                <Input
-                  placeholder="Enter your email"
-                  className="registerInput emailInput"
-                />
-                <p className="labelRegister secondText">Phone number*</p>
-                <Input
-                  placeholder="+260"
-                  className="registerInput emailInput"
-                />
+                <form onSubmit={onSignup}>
+                  <p className="labelRegister">Email*</p>
+                  <Input
+                    name="email"
+                    placeholder="Enter your email"
+                    className="registerInput emailInput"
+                    type="email"
+                    value={userData.email}
+                    onChange={onInputHandler}
+                    required
+                  />
+                  <p className="labelRegister secondText">Phone number*</p>
+                  <Input
+                    name="phonenumber"
+                    placeholder="+260"
+                    className="registerInput emailInput"
+                    type="text"
+                    value={userData.phonenumber}
+                    onChange={onInputHandler}
+                    required
+                  />
 
-                <p className="labelRegister secondText">NRC Number*</p>
-                <Input
-                  placeholder="eg. 617394/10/1"
-                  className="registerInput emailInput"
-                />
+                  <p className="labelRegister secondText">NRC Number*</p>
+                  <Input
+                    name="nrc"
+                    placeholder="eg. 617394/10/1"
+                    className="registerInput emailInput"
+                    type="text"
+                    value={userData.nrc}
+                    onChange={onInputHandler}
+                    required
+                  />
 
-                <p className="labelRegister passwordText">Password</p>
-                <Input.Password className="registerInput " />
-                <p className="mustText">Must be at least 8 characters.</p>
+                  <p className="labelRegister passwordText">Password</p>
+                  <Input.Password
+                    className="registerInput "
+                    name="password"
+                    value={userData.password}
+                    onChange={onInputHandler}
+                    required
+                  />
+                  <p className="mustText">Must be at least 8 characters.</p>
 
-                <Button className="registerBtn" >
-                  Continue
-                </Button>
+                  <Button className="registerBtn" htmlType="submit">
+                    Continue
+                  </Button>
+                </form>
               </div>
             </div>
 
@@ -173,10 +219,7 @@ export default function Register(props) {
               </a>
             </div>
               </div> */}
-
-
-            </div>
-         
+          </div>
 
           <div
             className="leftSectionLogin"
