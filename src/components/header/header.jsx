@@ -1,31 +1,92 @@
 import React, { useState } from "react";
 
-import { Row, Col, Button, Modal } from "antd";
+import { Row, Col, Button, Modal, Dropdown, message, Menu } from "antd";
 import { Link } from "react-router-dom";
 import { Images } from "../../assets/Images/images";
-
+import { DownOutlined, LogoutOutlined } from "@ant-design/icons";
 import { useSelector } from "react-redux";
+const onClick = ({ key }) => {
+  message.info(`Click on item ${key}`);
+};
+
+const menu = (
+  <Menu
+    className="menu"
+    items={[
+      {
+        key: "1",
+        label: (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.antgroup.com"
+          >
+            1st menu item
+          </a>
+        ),
+      },
+      {
+        key: "2",
+        label: (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.antgroup.com"
+          >
+            1st menu item
+          </a>
+        ),
+      },
+      {
+        key: "3",
+        label: (
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.antgroup.com"
+          >
+            Logout
+          </a>
+        ),
+        icon: <LogoutOutlined />,
+      },
+    ]}
+  />
+);
+import { useDispatch } from "react-redux";
+import { clearUser } from "../../Redux/Slices/User/UserSlice";
+import { reset } from "../../Redux/Slices/Auth";
 
 export default function Header(props) {
   const { isAuthenticated } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.user);
 
-  console.log("Autheticated >>", isAuthenticated);
+  const dispatch = useDispatch();
 
   const [isShown, setIsShown] = useState(false);
   const handleClick = (event) => {
     setIsShown((current) => !current);
   };
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const showModal = () => {
     setIsModalOpen(true);
   };
+
   const handleOk = () => {
     setIsModalOpen(false);
   };
+
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+
+  const logout = async () => {
+    await dispatch(clearUser());
+    await dispatch(reset());
+    window.location.assign("/");
+  };
+
   return (
     <div>
       {/* menu modal */}
@@ -120,7 +181,6 @@ export default function Header(props) {
             </div>
 
             <div className="headerSectionTwo">
-              
               <div className="translateContainer">
                 <Link to="#">
                   <img
@@ -141,9 +201,9 @@ export default function Header(props) {
                 <div className="confirmcontainerAfterLogin">
                   <div className="profileContainer">
                     {" "}
-                    <a href="#" className="link customLink">
+                    <Link to="/buyProduct" className="link customLink">
                       Buying
-                    </a>
+                    </Link>
                   </div>
                   <div className="profileContainer">
                     {" "}
@@ -153,9 +213,22 @@ export default function Header(props) {
                   </div>
 
                   <div className="profileContainer">
-                    <img src={Images.common.userOutline} className="userIcon" />
-                    <a href="#" className="link">
-                      {user.fullname}
+                    <img
+                      src={Images.common.userColoured}
+                      className="userIcon"
+                    />
+                    <a href="#" className="link nameLink">
+                      {/* {user.fullname} */}Aliyon
+                      <Dropdown
+                        overlay={menu}
+                        trigger={["click"]}
+                        overlayClassName="profileDropDown"
+                      >
+                        <img
+                          src={Images.common.orangeDrop}
+                          className="userIconDrop"
+                        />
+                      </Dropdown>
                     </a>
                   </div>
                 </div>

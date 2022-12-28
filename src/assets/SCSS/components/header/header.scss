@@ -77,18 +77,27 @@
     .userIcon {
       height: 24px;
       width: 24px;
-      margin-right: 15px;
+      margin-right: 10px;
       margin-left: 0px;
+    }
+    .userIconDrop {
+      height: 8px;
+      width: 15px;
+      margin-left: 10px;
     }
     .link {
       font-size: 14px;
       font-weight: 500;
       color: $gray7;
       font-family: $poppins;
+    
       &:hover,
       &:focus {
         color: $orange3;
       }
+    }
+    .nameLink {
+      color:  $orange3;
     }
 
     .confirmcontainerAfterLogin {
