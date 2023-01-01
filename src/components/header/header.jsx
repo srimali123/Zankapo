@@ -50,7 +50,7 @@ export default function Header(props) {
               rel="noopener noreferrer"
               href="https://www.antgroup.com"
             >
-              1st menu item
+              My listing
             </a>
           ),
         },
@@ -62,7 +62,7 @@ export default function Header(props) {
               rel="noopener noreferrer"
               href="https://www.antgroup.com"
             >
-              1st menu item
+              My profile
             </a>
           ),
         },
@@ -83,9 +83,11 @@ export default function Header(props) {
     />
   );
 
+  //logout function
   const logout = async () => {
     await dispatch(clearUser());
     await dispatch(reset());
+    await dispatch();
     window.location.assign("/");
   };
 
@@ -201,12 +203,12 @@ export default function Header(props) {
               {/* when user didnt register or login */}
               {isAuthenticated ? (
                 <div className="confirmcontainerAfterLogin">
-                  <div className="profileContainer">
+                  {/* <div className="profileContainer">
                     {" "}
                     <Link to="/buyProduct" className="link customLink">
                       Buying
                     </Link>
-                  </div>
+                  </div> */}
                   <div className="profileContainer">
                     {" "}
                     <a href="#" className="link customLink">
@@ -220,7 +222,7 @@ export default function Header(props) {
                       className="userIcon"
                     />
                     <a href="#" className="link nameLink">
-                      {user.fullname}
+                      {user?.fullname}
                       <Dropdown
                         overlay={menu}
                         trigger={["click"]}
@@ -247,7 +249,10 @@ export default function Header(props) {
                   </div>
 
                   <div className="profileContainer">
-                    <img src={Images.common.userOutline} className="userIcon" />
+                    <img
+                      src={Images.common.userColoured}
+                      className="userIcon"
+                    />
                     <Link to="/login" className="link">
                       Login
                     </Link>

@@ -6,7 +6,9 @@ export const createAdvertisment = async (data, token) => {
   return await httpClient._post(url, data, token);
 };
 
-export const fetchAllAdvertisments = async () => {
+export const fetchAdvertisments = async () => {
   const url = `${Config.API_BASE_URL}api/add/show`;
-  return await httpClient.get(url);
+  const response = await httpClient.get(url);
+
+  return response;
 };

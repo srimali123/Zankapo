@@ -7,6 +7,7 @@ import logoBlue from "../../../../assets/Images/common/bluelogo.png";
 import loginImg from "../../../../assets/Images/common/bottomcover.png";
 import logo from "../../../../assets/Images/common/LOGO.png";
 import Loader from "../../../../components/spinner";
+import { toast } from "react-toastify";
 
 import * as userService from "../../../../Services/UserService";
 
@@ -25,7 +26,7 @@ export default function ForgetPassword() {
       setLoading(false);
       navigate("/verifyemaillogin");
     } else {
-      console.log("Error :", response.message);
+      toast.error(response.message);
     }
     setLoading(false);
   };

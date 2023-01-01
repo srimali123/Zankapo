@@ -1,1 +1,1 @@
-export { saveAdvertisments, clearAdvertisments } from "./AdvertismentSlice";
+export { clearAdvertisments } from "./AdvertismentSlice";

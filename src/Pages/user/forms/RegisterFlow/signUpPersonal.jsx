@@ -6,6 +6,7 @@ import logoBlue from "../../../../assets/Images/common/bluelogo.png";
 import logo from "../../../../assets/Images/common/LOGO.png";
 import loginImg from "../../../../assets/Images/common/bottomcover.png";
 import Loader from "../../../../components/spinner";
+import { toast } from "react-toastify";
 
 import { useSelector, useDispatch } from "react-redux";
 import * as userService from "../../../../Services/UserService";
@@ -58,7 +59,7 @@ export default function SignUpPersonal(props) {
       navigate("/");
     } else {
       if (response.status === 403) {
-        console.log("Sorry, User with the provided email is already exists!");
+        toast.error("Sorry, User with the provided email is already exists!");
       }
       setLoading(false);
     }

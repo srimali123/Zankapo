@@ -7,10 +7,13 @@ import PopularAds from "../../components/popularAds";
 import Card from "../../components/card";
 import HowItsWork from "../../components/howItsWork";
 import Footer from "../../components/footer/footer";
+import Loader from "../../components/spinner";
+import { toast } from "react-toastify";
 
-import { saveAdvertisments } from "../../Redux/Slices/Advertisment";
+import { clearAdvertisments } from "../../Redux/Slices/Advertisment";
 import { useSelector, useDispatch } from "react-redux";
-import * as advertismentService from "../../Services/AdvertismentService";
+import { fetchAdvertisments } from "../../Redux/Slices/Advertisment/AdvertismentSlice";
+import { category } from "../../Utils";
 
 const contentStyle = {
   margin: 0,
@@ -23,71 +26,39 @@ const contentStyle = {
 const onChange = (currentSlide) => {
   console.log(currentSlide);
 };
-const menu = (
-  <Menu
-    className="menu"
-    items={[
-      {
-        key: "1",
-        label: (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.antgroup.com"
-          >
-            1st menu item
-          </a>
-        ),
-      },
-      {
-        key: "2",
-        label: (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.antgroup.com"
-          >
-            1st menu item
-          </a>
-        ),
-      },
-      {
-        key: "3",
-        label: (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.antgroup.com"
-          >
-            1st menu item
-          </a>
-        ),
-      },
-    ]}
-  />
-);
 
 export default function HomePage(props) {
-  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
+  const { advertisments, isLoading, message, isError } = useSelector(
+    (state) => state.advertisments
+  );
 
-  const fetchAdvertisments = async () => {
-    setLoading(true);
-    let response = await advertismentService.fetchAllAdvertisments();
-
-    if (response.success) {
-      dispatch(saveAdvertisments({ advertisments: response?.data?.data }));
-      console.log("fetched");
-      setLoading(false);
-    } else {
-      console.log("Error", response.message);
-    }
-    setLoading(false);
-  };
+  const menu = (
+    <Menu
+      className="menu"
+      items={category.map((item, key) => {
+        return {
+          key: key,
+          label: (
+            <a rel="noopener noreferrer" onClick={() => console.log(item.name)}>
+              {" "}
+              {item.name}{" "}
+            </a>
+          ),
+        };
+      })}
+    />
+  );
 
   useEffect(() => {
-    fetchAdvertisments();
-  }, []);
+    if (isError) {
+      toast.error(message);
+    }
+    dispatch(fetchAdvertisments());
+    return () => {
+      dispatch(clearAdvertisments());
+    };
+  }, [dispatch]);
 
   return (
     <div>
@@ -244,7 +215,21 @@ export default function HomePage(props) {
             <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Row gutter={[20, 10]}>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                  {advertisments
+                    ? advertisments.map((item, key) => {
+                        return (
+                          <Col key={key} xs={12} sm={12} md={8} lg={6} xl={6}>
+                            <PopularAds
+                              image={Images.populaAd.ad1}
+                              description={item.description}
+                              price={`K${item.buy}`}
+                            />
+                          </Col>
+                        );
+                      })
+                    : null}
+
+                  {/* <Col xs={12} sm={12} md={8} lg={6} xl={6}>
                     <PopularAds
                       image={Images.populaAd.ad1}
                       description={"Play station 5 console With all accesories"}
@@ -292,14 +277,7 @@ export default function HomePage(props) {
                       description={"Play station 5 console With all accesories"}
                       price={"K27,000"}
                     />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
+                  </Col> */}
                 </Row>
               </Col>
               <Button className="seeMoreBtn">

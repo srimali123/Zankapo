@@ -1,5 +1,8 @@
 export default {
   advertisments: null,
+  message: "",
+  isLoading: false,
+  isError: false,
   //   advertisments: {
   //     id: 0,
   //     title: "",
