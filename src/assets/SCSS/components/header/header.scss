@@ -5,6 +5,8 @@
   width: 100%;
   height: 64px;
   background-color: $white;
+  border-top: 5px solid #F84F3966;
+  border-image: repeating-linear-gradient( 90deg,  rgba(248, 79, 57, 0.7) ,rgba(248, 79, 57, 0.4), rgba(248, 79, 57, 0.8)) 10;
   padding-right: 40px;
   padding-left: 40px;
   display: flex;
@@ -272,6 +274,103 @@
             font-family: $railWay;
             display: flex;
           }
+        }
+
+        .footerText {
+          text-align: center;
+          color: $gray15;
+          font-size: 12px;
+          font-weight: 500;
+        }
+      }
+      .ant-modal-footer {
+        display: none;
+      }
+    }
+  }
+}
+
+.dropDownModal {
+  .ant-modal {
+    margin: 0 auto;
+    max-width: 100%;
+    top: 0;
+    position: fixed;
+    background-color: $white;
+    .ant-modal-content {
+      background-color: $white;
+      height: 100vh;
+
+      .ant-modal-header {
+        display: none;
+        height: 44px;
+        .ant-modal-title {
+          display: none;
+        }
+      }
+      .ant-modal-body {
+        background-color: $white;
+        padding: 0 !important;
+        // padding: 20px 20px 20px 20px;
+        height: 100%;
+        .modalContainer {
+          display: flex;
+          flex-direction: column;
+          // padding: 40px 16px 40px 16px;
+          position: relative;
+          height: 100%;
+          .profileMainContOne {
+            border-bottom: 1px solid #F2F2F2;
+              padding: 60px 40px 30px 40px;
+          }
+          .profileMainContTwo {
+            padding: 20px 40px 30px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            height: 100%;
+          }
+          .contentLink {
+            font-size: 16px;
+            font-weight: 600;
+            font-family: $poppins;
+            color: $gray7;
+           
+          }
+          .orangeDropText {
+            font-size: 16px;
+            font-weight: 600;
+            color: $orange2;
+            font-family: $poppins;
+            
+          }
+          .logout {
+            margin-right: 10px;
+           
+          }
+          .profileOuter {
+            background-color: $white;
+            width: 130px;
+            height: 130px;
+            border-radius:100%;
+           
+          }
+          .profilePic {
+            background-repeat: no-repeat;
+            background-size: contain;
+           background-position: center;
+            width: 130px;
+            height: 130px;
+          }
+          .profileName {
+            font-size: 18px;
+            color: $black;
+            font-weight: 500;
+            font-family: $poppins;
+           margin-left: 10px;
+           margin-top: 20px;
+          }
+        
         }
 
         .footerText {

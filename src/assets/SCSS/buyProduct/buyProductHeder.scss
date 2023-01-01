@@ -2,9 +2,14 @@
   position: fixed;
   z-index: 99;
   width: 100%;
+  overflow-x: hidden;
+  
   .headerMaincontainerProduct {
     width: 100%;
+    overflow-y: hidden;
     height: 64px;
+    border-top: 5px solid #F84F3966;
+    border-image: repeating-linear-gradient( 90deg,  rgba(248, 79, 57, 0.7) ,rgba(248, 79, 57, 0.4), rgba(248, 79, 57, 0.8)) 10;
     background-color: $white;
     padding-right: 40px;
     padding-left: 40px;
@@ -159,6 +164,17 @@
           color: $orange3;
         }
       }
+      .userIconDrop {
+        height: 8px;
+        width: 15px;
+        margin-left: 10px;
+      }
+      .nameLink {
+        font-size: 14px;
+        color:  $orange3;
+        font-weight: 500;
+        font-family: $poppins;
+      }
 
       .confirmcontainerAfterLogin {
         display: flex;
@@ -215,7 +231,14 @@
     }
   }
 }
-
+.logout {
+  height: 20px;
+  width: 20px;
+}
+a .logoutText {
+  font-size: 16px;
+  color:$orange2;
+}
 @include mobile {
   .headerContainerMain {
     .headerMaincontainerProduct {
@@ -276,6 +299,12 @@
           &:focus {
             color: $orange3;
           }
+        }
+        .nameLink {
+          font-size: 14px;
+          color:  $orange3;
+          font-weight: 500;
+          font-family: $poppins;
         }
 
         .confirmcontainerAfterLogin {
@@ -343,20 +372,19 @@
         .profileContainer {
           display: flex;
           align-items: center;
-          justify-content: center;
+       
 
-          margin-right: 10px;
+          margin-right: 15px;
           margin-left: 10px;
 
-          .productlink {
-            display: none;
-          }
+         
         }
         .userIcon {
           height: 24px;
           width: 24px;
           margin-right: 15px;
           margin-left: 0px;
+          
         }
         .link {
           font-size: 14px;
@@ -368,6 +396,12 @@
             color: $orange3;
           }
         }
+        .userIconDrop {
+          
+          height: 8px;
+          width: 15px;
+          margin-left: 10px;
+        }
 
         .confirmcontainerAfterLogin {
           display: flex;
@@ -375,6 +409,12 @@
           align-items: center;
         }
         .customLink {
+        }
+        .nameLink {
+          font-size: 14px;
+          color:  $orange3;
+          font-weight: 500;
+          font-family: $poppins;
         }
 
         .mobileHeader {
@@ -447,9 +487,7 @@
           margin-right: 10px;
           margin-left: 10px;
 
-          .productlink {
-            display: none;
-          }
+        
         }
         .userIcon {
           height: 24px;
@@ -466,6 +504,12 @@
           &:focus {
             color: $orange3;
           }
+        }
+        .nameLink {
+          font-size: 14px;
+          color:  $orange3;
+          font-weight: 500;
+          font-family: $poppins;
         }
 
         .confirmcontainerAfterLogin {
