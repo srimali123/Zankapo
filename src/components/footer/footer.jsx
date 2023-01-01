@@ -4,8 +4,9 @@ import { Images } from "../../assets/Images/images";
 
 export default function Footer(props) {
   return (
-    <div>
-      <Row gutter={[0, 10]} className="mainFooterContainer">
+   
+      <div  className="mainFooterContainer">
+      
             <Row gutter={[20, 30]} className="footerContainer">
               <Col
                 xs={12}
@@ -119,8 +120,10 @@ export default function Footer(props) {
               </Col>
             </Row>
 
-            <p className="customFooterText">2022 copyright Zambian Market</p>
-          </Row>
-    </div>
+          
+         
+          <p className="customFooterText">2022 copyright Zambian Market</p>
+          </div>
+   
   );
 }

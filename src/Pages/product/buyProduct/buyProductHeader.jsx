@@ -3,6 +3,7 @@ import { Row, Col, Button, Input, Dropdown, Menu, Modal } from "antd";
 import { Link } from "react-router-dom";
 import { Images } from "../../../assets/Images/images";
 import Footer from "../../../components/footer/footer";
+import { DownOutlined, LogoutOutlined } from "@ant-design/icons";
 const menu = (
   <Menu
     className="menu"
@@ -15,7 +16,7 @@ const menu = (
             rel="noopener noreferrer"
             href="https://www.antgroup.com"
           >
-            1st menu item
+           My listings
           </a>
         ),
       },
@@ -27,7 +28,7 @@ const menu = (
             rel="noopener noreferrer"
             href="https://www.antgroup.com"
           >
-            1st menu item
+           My profile
           </a>
         ),
       },
@@ -39,9 +40,23 @@ const menu = (
             rel="noopener noreferrer"
             href="https://www.antgroup.com"
           >
-            1st menu item
+          Notifications
           </a>
         ),
+      },
+      {
+        key: "4",
+        label: (
+          <a
+          className="logoutText"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://www.antgroup.com"
+          >
+         Logout
+          </a>
+        ),
+        icon: <img src={Images.common.logout} className="logout"/>,
       },
     ]}
   />
@@ -60,6 +75,17 @@ export default function BuyProductHeader() {
   };
   const handleCancel = () => {
     setIsModalOpen(false);
+  };
+
+  const [isModalOpenTwo, setIsModalOpenTwo] = useState(false);
+  const showModalTwo = () => {
+    setIsModalOpenTwo(true);
+  };
+  const handleOkTwo = () => {
+    setIsModalOpenTwo(false);
+  };
+  const handleCancelTwo = () => {
+    setIsModalOpenTwo(false);
   };
   return (
     <div className="buyProductContainer">
@@ -127,6 +153,46 @@ export default function BuyProductHeader() {
               </div>
             )}
           </div>
+        </div>
+
+        <p className="footerText">Sankapo ©2022</p>
+      </Modal>
+       {/* /dropdownModal */}
+       <Modal
+        wrapClassName="dropDownModal"
+        open={isModalOpenTwo}
+        onOk={handleOkTwo}
+        onCancel={handleCancelTwo}
+      >
+        <div className="modalContainer">
+          <div className="profileMainContOne">
+          <div className="profileOuter">
+        <div  className="profilePic"
+            style={{
+              backgroundImage: `url(${Images.common.profilePic})`,
+            }}>
+          
+        </div>
+      
+        
+        </div>
+        <p className="profileName">Aliyon Tembo</p>
+        </div>
+        <div className="profileMainContTwo">
+          <div>
+          <Link className="contentLink"><p>My listings</p></Link>
+<Link className="contentLink"><p>My profile</p></Link>
+<Link className="contentLink"><p>Notifications</p></Link>
+
+          </div>
+          <div>
+
+          <Link className="orangeDropText"><img src={Images.common.logout} className="logout"/>Logout</Link>
+          </div>
+
+
+
+        </div>
         </div>
 
         <p className="footerText">Sankapo ©2022</p>
@@ -223,9 +289,21 @@ export default function BuyProductHeader() {
               <div  className="profileContainer"> <a href="#" className="link customLink">Selling</a></div>
           
             <div  className="profileContainer">
+            
                
-                <img  src={Images.common.userOutline} className="userIcon"/>
-              <a href="#" className="link productlink">Aliyon</a>
+                   <img  src={Images.common.userColoured} className="userIcon"/>
+              <a href="#" className=" productlink nameLink">Aliyon
+  <Dropdown overlay={menu} trigger={["click"]} overlayClassName="profileDropDown" className="profileDrop"  >
+                      <img
+                        src={Images.common.orangeDrop}
+                        className="userIconDrop"
+                        onClick={showModalTwo}
+                      />
+                      </Dropdown>
+              
+              </a>
+              
+               
 
             
               </div>

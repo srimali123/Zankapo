@@ -93,12 +93,38 @@ input:-webkit-autofill:focus {
 }
 
 .profileDropDown {
- 
+
   top: 55px !important;
-  width:165px;
-  height: 500px ;
+  min-width:165px;
+  max-width: 100%;
+  z-index: 1;
   right: 0px !important;
   left: 1180px !important;
+  .ant-dropdown-menu-title-content   {
+    color: $gray7;
+    font-size: 16px;
+    font-weight: 600;
+  
+      }
+
+  .ant-dropdown-menu-title-content  .logoutText {
+color: $orange2;
+font-size: 16px;
+font-weight: 600;
+margin-top: 150px;
+  }
+  @include tablet-portrait {
+    width: 165px;
+    left: 601px !important;
+    top: 60px !important;
+  }
+
+  @include tablet-landscape {
+    width: 165px;
+    left: 854px !important;
+    top: 61px !important;
+
+  }
   
 }
 

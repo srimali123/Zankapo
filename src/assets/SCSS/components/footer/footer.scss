@@ -1,11 +1,17 @@
 
  .mainFooterContainer {
-    padding: 40px 72px 20px 72px;
-    background-color: $white;
-    // height: 430px;
+    padding: 40px 72px 10px 72px;
+position: relative;
+
+    // background-color: $white;
+    height: max-content;
     width: 100%;
     display: flex;
     flex-direction: column;
+    border-top: 5px solid #F84F3966;
+background-color:$white;
+
+border-image: repeating-linear-gradient( 90deg,  rgba(248, 79, 57, 0.7) ,rgba(248, 79, 57, 0.4), rgba(248, 79, 57, 0.8)) 10;
 
     .footerContainer {
       display: flex;
@@ -78,12 +84,13 @@
     //   color: $gray8;
     // }
     .customFooterText {
-      margin-top: 22px;
+      margin-top: 30px;
       font-size: 16px;
       font-weight: 700;
       color: $black;
     }
   }
+
 
 
 

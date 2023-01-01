@@ -1,86 +1,821 @@
-.middleContainerProduct {
-  padding: 20px 40px 20px 40px;
-background-color:white;
-top:110px;
-  height: 100vh;
+.mainProductConatainer {
+  overflow-x: hidden;
   width: 100%;
-  position: relative;
-
-  .productContainerMain {
+  height: 100%;
+  .middleContainerProduct {
+    padding: 20px 70px 115px 70px;
+    background-color: white;
+    top: 110px;
     width: 100%;
-    height: max-content;
-   border: 1px solid $gray19;
-   padding: 37px 20px 37px 20px;
+    position: relative;
+  
+    .productContainerMain {
+      width: 100%;
+      height: max-content;
+      border: 1px solid $gray19;
+      padding: 20px 20px 150px 20px;
+margin-bottom: 40px;
+      .posterCon {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: bottom left center;
+        height: 564px;
+        width: 100%;
+      }
+      .posterText {
+        font-size: 20px;
+        font-weight: 500;
+        font-family: $poppins;
+        color: $black;
+        width: 433px;
+      }
+      .conditionText {
+        font-size: 16px;
+        font-weight: 600;
+        font-family: $poppins;
+        color: $black;
+      }
+      .conditonSubText {
+        font-size: 14px;
+        font-weight: 400;
+        color: $black;
+        font-family: $poppins;
+      }
+      .spanCondition {
+        font-size: 14px;
+        font-weight: 500;
+        color: $gray7;
+        font-family: $poppins;
+        margin-left: 10px;
+      }
+      .priceContainner {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+      .btnContainer {
+        display: flex;
+        flex-direction: column;
+      }
+      .priceText {
+        font-size: 14px;
+        font-weight: 500;
+        font-family: $poppins;
+        color: $gray7;
+        margin-top: 3px;
+      }
+      .priceNew {
+        font-size: 20px;
+        font-weight: 600;
+        font-family: $poppins;
+        color: $black;
+        margin-left: 10px;
+      }
+      .priceDetail {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: row;
+        width: 200px;
+      }
+      .priceDetailText {
+        display: flex;
+        flex-direction: column;
+       
+       
+      }
+      .contextText {
+        font-size: 14px;
+        font-weight: 400;
+        color: $black;
+        font-family: $poppins;
+        width: 150px;
+      }
+      .orangeBtnBuy {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 44px;
+        width: 394px;
+        border: 1px solid $gray7;
+        border-radius: 4px;
+        margin-bottom: 16px;
+        color: $gray7;
+        font-weight: 500;
+        font-size: 16px;
+        font-family: $poppins;
 
-   .posterCon {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    height: 425px;
-    width: 100%;
-   }
-   .posterText {
-    font-size: 20px;
-    font-weight: 500;
-    font-family: $poppins;
-    color: $black;
-    width: 433px;
-   }
-   .conditionText {
-    font-size: 16px;
-    font-weight: 600;
-    font-family:$poppins;
-    color: $black;
-   }
-   .spanCondition {
-    font-size:14px;
-    font-weight:500;
-    color: $gray7;
-    font-family:$poppins;
-    margin-left: 10px;
-   }
-   .priceContainner {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-   }
-   .btnContainer {
-    display: flex;
-    flex-direction: column;
-   }
-   .priceText {
-    font-size: 14px;
-    font-weight: 500;
-    font-family: $poppins;
-    color: $gray7;
-   }
-   .priceNew {
-    font-size: 20px;
-    font-weight: 500;
-    font-family: $poppins;
-    color: $black;
-    margin-left: 10px;
-   }
-   .orangeBtnBuy {
-    height: 56px;
-    width: 178px;
-    border: 2px solid $orange2 ;
-    border-radius: 41px;
-    margin-bottom: 16px;
-    color: $orange2;
-    font-weight: 500;
-    font-size: 16px;
-    font-family: $poppins;
+        &:hover {
+          background-color: $orange2;
+          border: 1px solid $orange2;
+          color: $white;
+        }
 
-    &:hover,&:focus,&:active {
-      background-color: $orange2;
-      color: $white;
+       
+      }
+      .messageIcon {
+        height: 24px;
+        width:24px;
+        margin-right: 5px;
+       
+      
+       
+      }
+      .orangeBtnBuy:hover .messageIcon{
+        filter: brightness(0) invert(1);  
+     }
+      
+      .sellerDetails {
+        font-size: 16px;
+        font-weight: 500;
+        font-family: $poppins;
+        color: $black;
+      }
+
+      .grayBoxPaymnt {
+        width: 108px;
+        height: 58px;
+        padding: 10px 5px;
+        background-color: $gray20;
+        border-radius: 10px;
+        box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+      }
+      .paymentOption {
+        height: 38px;
+        width: 100%;
+      }
+      .sellerName {
+        font-size: 14px;
+        font-weight: 400;
+        font-family: $poppins;
+        color: $gray7;
+      }
+      .starContainer {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+      }
+      .ratingValue {
+        margin-bottom: 0;
+        margin-left: 10px;
+        color: $black;
+        font-size: 14px;
+        font-family: $poppins;
+        font-weight: 400;
+      }
+      .location {
+        height: 24px;
+        width: 24px;
+      }
+
+      .stopContiner {
+        display: flex;
+        align-items: center;
+        flex-direction: row;
+        margin-top: 10px;
+        margin-bottom: 15px;
+      }
+      .stopWatch {
+        height: 24px;
+        width: 24px;
+      }
+      .stopText {
+        color:$gray15 ;
+        font-size: 14px;
+        font-weight: 400;
+        font-family: $poppins;
+        margin-bottom: 0 !important;
+        margin-left: 5px;
+      }
+      .descripText {
+        font-size: 18px;
+        font-weight: 500;
+        color: $black;
+        font-family: $poppins;
+        margin-top: 14px;
+      }
+      .btnUsed {
+        height: 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $black;
+        font-size: 14px;
+        font-family: $poppins;
+        width: 132px;
+        border: 1px solid #000000;
+  background-color: $white;
+      }
+      .context {
+        font-size: 12px;
+        font-family: $poppins;
+        font-weight: 400;
+        color: $black;
+        width: 340px;
+        margin-top: 20px;
+      }
+      .stopmobilecontent {
+        display: none;
+      }
     }
-   }
+    .serchText {
+      font-size: 20px;
+      font-weight: 500;
+      font-family: $poppins;
+      color: $black;
+    }
+    
+    .advertisemntBtn {
+      background-color:$gray5;
+      width: 152px;
+      height: 26px;
+      color: $black;
+      font-size: 14px;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: $poppins;
+      border: none;
+    }
+    .advertisementContainer {
+      width: 100%;
+      height: 399px;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+
+      
+    }
   }
-  .advertisementContainer {
+}
+
+
+@include mobile {
+  .mainProductConatainer {
+    overflow-x: hidden;
     width: 100%;
-    background-color: yellow;
-    height: 200px;
+    height: 100%;
+    .middleContainerProduct {
+      padding: 0px 16px 115px 16px;
+      background-color: white;
+      top: 110px;
+      width: 100%;
+      position: relative;
+    
+      .productContainerMain {
+        width: 100%;
+        height: max-content;
+        border: none;
+        padding: 20px 00px 0px 0px;
+      
+        .posterCon {
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+          height: 290px;
+          width: 100%;
+        }
+        .posterText {
+          font-size: 16px;
+          margin-top: 10px;
+          width: 333px;
+        }
+        .conditionText {
+          font-size: 14px;
+       
+        }
+        .spanCondition {
+          font-size: 14px;
+         
+        }
+        .priceContainner {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-between;
+        }
+        .btnContainer {
+          display: flex;
+          flex-direction: column;
+        }
+        .priceText {
+          font-size: 16px;
+         
+        }
+        .priceNew {
+          font-size: 24px;
+          font-weight: 500;
+          font-family: $poppins;
+          color: $black;
+          margin-left: 10px;
+        }
+        .orangeBtnBuy {
+          height: 52px;
+          width: 100%;
+         
+  
+          &:hover {
+            background-color: $orange2;
+            color: $white;
+          }
+        }
+  
+        .grayBoxPaymnt {
+          width: 108px;
+          height: 58px;
+          padding: 10px 5px;
+          background-color: $gray20;
+          border-radius: 10px;
+          box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        }
+        .paymentOption {
+          height: 38px;
+          width: 100%;
+        }
+        .sellerName {
+          font-size: 14px;
+          font-weight: 400;
+          font-family: $poppins;
+          color: $gray7;
+        }
+        .starContainer {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+        }
+        .ratingValue {
+          margin-bottom: 0;
+          margin-left: 10px;
+          color: $black;
+          font-size: 14px;
+          font-family: $poppins;
+          font-weight: 400;
+        }
+        .location {
+          height: 24px;
+          width: 24px;
+        }
+  
+        .stopContiner {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          margin-top: 10px;
+        }
+        .stopWatch {
+          height: 24px;
+          width: 24px;
+        }
+        .stopText {
+          color:$gray4 ;
+          font-size: 14px;
+          font-weight: 400;
+          font-family: $poppins;
+          margin-bottom: 0 !important;
+          margin-left: 5px;
+        }
+        .descripText {
+          font-size: 18px;
+          font-weight: 500;
+          color: $black;
+          font-family: $poppins;
+          margin-top: 14px;
+        }
+        .btnUsed {
+          height: 38px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: $black;
+          font-size: 14px;
+          font-family: $poppins;
+          width: 132px;
+          border: 1px solid #000000;
+    background-color: $white;
+        }
+        .context {
+          font-size: 12px;
+          font-family: $poppins;
+          font-weight: 400;
+          color: $black;
+          width: 300px;
+          margin-top: 20px;
+        }
+        
+      }
+      .serchText {
+        font-size: 16px;
+      
+      }
+      .advertisemntBtn {
+       display: none;
+      }
+      .advertisementContainer {
+        display: none;
+  
+        
+      }
+    }
+  }
+}
+
+@include tablet-portrait {
+  .mainProductConatainer {
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    .middleContainerProduct {
+      padding: 20px 30px 115px 10px;
+      background-color: white;
+      top: 110px;
+      width: 100%;
+      position: relative;
+    
+      .productContainerMain {
+        width: 100%;
+        height: max-content;
+        border: none;
+        padding: 37px 20px 0px 20px;
+        bottom: 150px;
+        .posterCon {
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+          height: 425px;
+          width: 100%;
+        }
+        .posterText {
+          font-size: 14px;
+          font-weight: 500;
+          font-family: $poppins;
+          color: $black;
+          width: 353px;
+        }
+        .conditionText {
+          font-size: 16px;
+          font-weight: 600;
+          font-family: $poppins;
+          color: $black;
+        }
+        .conditonSubText {
+          font-size: 14px;
+          font-weight: 400;
+          color: $black;
+          font-family: $poppins;
+        }
+        .spanCondition {
+          font-size: 14px;
+          font-weight: 500;
+          color: $gray7;
+          font-family: $poppins;
+          margin-left: 10px;
+        }
+        .priceContainner {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        .btnContainer {
+          display: flex;
+          flex-direction: column;
+        }
+        .priceText {
+          font-size: 14px;
+          font-weight: 500;
+          font-family: $poppins;
+          color: $gray7;
+          margin-top: 3px;
+        }
+        .priceNew {
+          font-size: 20px;
+          font-weight: 500;
+          font-family: $poppins;
+          color: $black;
+          margin-left: 10px;
+        }
+        .priceDetail {
+          display: flex;
+          align-items: flex-start;
+          flex-direction: row;
+          width: 200px;
+        }
+        .priceDetailText {
+          display: flex;
+          flex-direction: column;
+         
+         
+        }
+        .contextText {
+          font-size: 14px;
+          font-weight: 400;
+          color: $black;
+          font-family: $poppins;
+          width: 150px;
+        }
+        .orangeBtnBuy {
+          height: 44px;
+         
+         margin-left: 40px;
+  
+          &:hover {
+            background-color: $orange2;
+            color: $white;
+          }
+        }
+  
+        .grayBoxPaymnt {
+          width: 108px;
+          height: 58px;
+          padding: 10px 5px;
+          background-color: $gray20;
+          border-radius: 10px;
+          box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        }
+        .paymentOption {
+          height: 38px;
+          width: 100%;
+        }
+        .sellerName {
+          font-size: 14px;
+          font-weight: 400;
+          font-family: $poppins;
+          color: $gray7;
+        }
+        .starContainer {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+        }
+        .ratingValue {
+          margin-bottom: 0;
+          margin-left: 10px;
+          color: $black;
+          font-size: 14px;
+          font-family: $poppins;
+          font-weight: 400;
+        }
+        .location {
+          height: 24px;
+          width: 24px;
+        }
+  
+        .stopContiner {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          margin-top: 10px;
+        }
+        .stopWatch {
+          height: 24px;
+          width: 24px;
+        }
+        .stopText {
+          color:$gray4 ;
+          font-size: 14px;
+          font-weight: 400;
+          font-family: $poppins;
+          margin-bottom: 0 !important;
+          margin-left: 5px;
+        }
+        .descripText {
+          font-size: 18px;
+          font-weight: 500;
+          color: $black;
+          font-family: $poppins;
+          margin-top: 14px;
+        }
+        .btnUsed {
+          height: 38px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: $black;
+          font-size: 14px;
+          font-family: $poppins;
+          width: 132px;
+          border: 1px solid #000000;
+    background-color: $white;
+        }
+        .context {
+          font-size: 12px;
+          font-family: $poppins;
+          font-weight: 400;
+          color: $black;
+          width: 300px;
+          margin-top: 20px;
+        }
+       
+       
+      }
+      .serchRow {
+        padding-left: 20px;
+      }
+    .serchText {
+        font-size: 20px;
+        font-weight: 500;
+        font-family: $poppins;
+        color: $black;
+      }
+      .advertisemntBtn {
+      display: none;
+      }
+      .advertisementContainer {
+       display: none;
+  
+        
+      }
+    }
+  }
+}
+
+@include tablet-landscape {
+  .mainProductConatainer {
+    overflow-x: hidden;
+    width: 100%;
+    height: 100%;
+    .middleContainerProduct {
+      padding: 20px 30px 115px 30px;
+      background-color: white;
+      top: 110px;
+      width: 100%;
+      position: relative;
+    
+      .productContainerMain {
+       
+        .posterCon {
+         
+        }
+        .posterText {
+          font-size: 17px;
+          width: 343px;
+        }
+        .conditionText {
+          
+        }
+        .conditonSubText {
+         
+        }
+        .spanCondition {
+        }
+        .priceContainner {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+        .btnContainer {
+          display: flex;
+          flex-direction: column;
+        }
+        .priceText {
+          font-size: 15px;
+          font-weight: 500;
+          font-family: $poppins;
+          color: $gray7;
+          margin-top: 3px;
+        }
+        .priceNew {
+          font-size: 20px;
+          font-weight: 500;
+          font-family: $poppins;
+          color: $black;
+          margin-left: 10px;
+        }
+        .priceDetail {
+          display: flex;
+          align-items: flex-start;
+          flex-direction: row;
+          width: 200px;
+        }
+        .priceDetailText {
+          display: flex;
+          flex-direction: column;
+         
+         
+        }
+        .contextText {
+          font-size: 14px;
+          font-weight: 400;
+          color: $black;
+          font-family: $poppins;
+          width: 150px;
+        }
+        .orangeBtnBuy {
+        
+        }
+  
+        .grayBoxPaymnt {
+          width: 108px;
+          height: 58px;
+          padding: 10px 5px;
+          background-color: $gray20;
+          border-radius: 10px;
+          box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.15);
+        }
+        .paymentOption {
+          height: 38px;
+          width: 100%;
+        }
+        .sellerName {
+          font-size: 14px;
+          font-weight: 400;
+          font-family: $poppins;
+          color: $gray7;
+        }
+        .starContainer {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+        }
+        .ratingValue {
+          margin-bottom: 0;
+          margin-left: 10px;
+          color: $black;
+          font-size: 14px;
+          font-family: $poppins;
+          font-weight: 400;
+        }
+        .location {
+          height: 24px;
+          width: 24px;
+        }
+  
+        .stopContiner {
+          display: flex;
+          align-items: center;
+          flex-direction: row;
+          margin-top: 10px;
+        }
+        .stopWatch {
+          height: 24px;
+          width: 24px;
+        }
+        .stopText {
+          color:$gray4 ;
+          font-size: 14px;
+          font-weight: 400;
+          font-family: $poppins;
+          margin-bottom: 0 !important;
+          margin-left: 5px;
+        }
+        .descripText {
+          font-size: 18px;
+          font-weight: 500;
+          color: $black;
+          font-family: $poppins;
+          margin-top: 14px;
+        }
+        .btnUsed {
+          height: 38px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: $black;
+          font-size: 14px;
+          font-family: $poppins;
+          width: 132px;
+          border: 1px solid #000000;
+    background-color: $white;
+        }
+        .context {
+          font-size: 12px;
+          font-family: $poppins;
+          font-weight: 400;
+          color: $black;
+          width: 300px;
+          margin-top: 20px;
+        }
+        .stopmobilecontent {
+          display: none;
+        }
+      }
+      .serchText {
+        font-size: 20px;
+        font-weight: 500;
+        font-family: $poppins;
+        color: $black;
+      }
+      .advertisemntBtn {
+        background-color:$gray5;
+        width: 152px;
+        height: 26px;
+        color: $black;
+        font-size: 14px;
+        font-weight: 400;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: $poppins;
+        border: none;
+      }
+      .advertisementContainer {
+        width: 100%;
+        height: 399px;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+  
+        
+      }
+    }
   }
 }

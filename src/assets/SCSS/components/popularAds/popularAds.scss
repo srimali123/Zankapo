@@ -15,8 +15,8 @@
     font-weight: 600;
 }
 .popularAddImg {
-    height: 290px;
-    width: "100%";
+    height: 100%;
+    width: 290px;
 }
 
 @include mobile {
@@ -29,8 +29,8 @@
         
     }
     .popularAddImg {
-        height: 154px;
-        width: "100%";
+        height: 100%;
+        width: 150px;
     }
 }
 
@@ -44,8 +44,8 @@
         
     }
     .popularAddImg {
-        height: 224px;
-        width: "100%";
+        height: 100%;
+        width:220px;
     }
 }
 
@@ -59,7 +59,7 @@
         
     }
     .popularAddImg {
-        height: 210px;
-        width: "100%";
+        height: 100%;
+        width: 220px;
     }
 }
