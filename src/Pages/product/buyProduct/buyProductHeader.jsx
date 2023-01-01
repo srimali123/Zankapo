@@ -297,7 +297,7 @@ export default function BuyProductHeader() {
                       <img
                         src={Images.common.orangeDrop}
                         className="userIconDrop"
-                        onClick={showModalTwo}
+                        
                       />
                       </Dropdown>
               
@@ -320,12 +320,13 @@ export default function BuyProductHeader() {
                 </Link>
                 <div>
                   <img src={Images.common.mobileAcc} className="userIconAcc" />
-                  <Link to="/">
+                 
                     <img
                       src={Images.common.darkdrop}
                       className="userIconAccDrop"
+                      onClick={showModalTwo}
                     />
-                  </Link>
+                 
                 </div>
               </div>
 
