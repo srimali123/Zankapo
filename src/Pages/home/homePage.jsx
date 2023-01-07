@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Button, Input, Dropdown, Menu, Carousel } from "antd";
+import { Row, Col, Button, Input, Dropdown, Menu, Carousel, Space } from "antd";
 import Header from "../../components/header/header";
 import DiscoverItem from "../../components/discoverItem";
 import { Images } from "../../assets/Images/images.js";
@@ -13,7 +13,7 @@ import { toast } from "react-toastify";
 import { clearAdvertisments } from "../../Redux/Slices/Advertisment";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAdvertisments } from "../../Redux/Slices/Advertisment/AdvertismentSlice";
-import { category } from "../../Utils";
+import { Category } from "../../Utils/Constants";
 
 const contentStyle = {
   margin: 0,
@@ -28,6 +28,8 @@ const onChange = (currentSlide) => {
 };
 
 export default function HomePage(props) {
+  const [next, setNext] = useState(4);
+  const [isMoreLoading, setMoreLoading] = useState(false);
   const dispatch = useDispatch();
   const { advertisments, isLoading, message, isError } = useSelector(
     (state) => state.advertisments
@@ -36,7 +38,7 @@ export default function HomePage(props) {
   const menu = (
     <Menu
       className="menu"
-      items={category.map((item, key) => {
+      items={Category.map((item, key) => {
         return {
           key: key,
           label: (
@@ -59,6 +61,15 @@ export default function HomePage(props) {
       dispatch(clearAdvertisments());
     };
   }, [dispatch]);
+
+  //see more
+  const showMoreItems = async () => {
+    setMoreLoading(true);
+    setTimeout(() => {
+      setNext((prevvalue) => prevvalue + 16);
+      setMoreLoading(false);
+    }, 1000);
+  };
 
   return (
     <div>
@@ -94,13 +105,17 @@ export default function HomePage(props) {
                     trigger={["click"]}
                     overlayClassName="homedropdown"
                   >
-                    <p className="searchCategoryText">Category</p>
+                    <div className="searchCategoryText">
+                      Category
+                      <Space>
+                        <img
+                          src={Images.common.down}
+                          className="down"
+                          onClick={(e) => e.preventDefault()}
+                        />
+                      </Space>
+                    </div>
                   </Dropdown>
-                  <img
-                    src={Images.common.down}
-                    className="down"
-                    onClick={(e) => e.preventDefault()}
-                  />
                 </div>
 
                 <div className="whiteSection">
@@ -215,75 +230,37 @@ export default function HomePage(props) {
             <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Row gutter={[20, 10]}>
-                  {advertisments
-                    ? advertisments.map((item, key) => {
-                        return (
-                          <Col key={key} xs={12} sm={12} md={8} lg={6} xl={6}>
-                            <PopularAds
-                              image={Images.populaAd.ad1}
-                              description={item.description}
-                              price={`K${item.buy}`}
-                            />
-                          </Col>
-                        );
-                      })
-                    : null}
-
-                  {/* <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col> */}
+                  {advertisments ? (
+                    advertisments.slice(0, next).map((item, key) => {
+                      return (
+                        <Col key={key} xs={12} sm={12} md={8} lg={6} xl={6}>
+                          <PopularAds
+                            image={Images.populaAd.ad1}
+                            description={item.title}
+                            price={`K${item.buy}`}
+                          />
+                        </Col>
+                      );
+                    })
+                  ) : (
+                    <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                      <p>Popular ads 0</p>
+                    </Col>
+                  )}
                 </Row>
               </Col>
-              <Button className="seeMoreBtn">
-                See More
-                <img src={Images.common.forward} className="forwardIcon" />
-              </Button>
+              {advertisments?.length > next &&
+                (isMoreLoading ? (
+                  <Loader
+                    loading={isMoreLoading}
+                    color="rgba(249, 143, 33, 1)"
+                  />
+                ) : (
+                  <Button className="seeMoreBtn" onClick={showMoreItems}>
+                    See More
+                    <img src={Images.common.forward} className="forwardIcon" />
+                  </Button>
+                ))}
             </Row>
 
             {/* recently add */}
@@ -293,68 +270,37 @@ export default function HomePage(props) {
             <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Row gutter={[20, 10]}>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
+                  {advertisments ? (
+                    advertisments.slice(0, next).map((item, key) => {
+                      return (
+                        <Col key={key} xs={12} sm={12} md={8} lg={6} xl={6}>
+                          <PopularAds
+                            image={Images.populaAd.ad1}
+                            description={item.title}
+                            price={`K${item.buy}`}
+                          />
+                        </Col>
+                      );
+                    })
+                  ) : (
+                    <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                      <p>Recently added 0</p>
+                    </Col>
+                  )}
                 </Row>
               </Col>
-              <Button className="seeMoreBtn">
-                See More
-                <img src={Images.common.forward} className="forwardIcon" />
-              </Button>
+              {advertisments?.length > next &&
+                (isMoreLoading ? (
+                  <Loader
+                    loading={isMoreLoading}
+                    color="rgba(249, 143, 33, 1)"
+                  />
+                ) : (
+                  <Button className="seeMoreBtn" onClick={showMoreItems}>
+                    See More
+                    <img src={Images.common.forward} className="forwardIcon" />
+                  </Button>
+                ))}
             </Row>
 
             {/*  Houses for rent */}
@@ -537,122 +483,6 @@ export default function HomePage(props) {
             </div>
           </div>
           <Footer />
-          {/* <Row gutter={[0, 10]} className="mainFooterContainer">
-            <Row gutter={[20, 30]} className="footerContainer">
-              <Col
-                xs={12}
-                sm={12}
-                md={6}
-                lg={6}
-                xl={6}
-                className="footerContent"
-              >
-                <p className="footerMainHead">Buy</p>
-                <a href="#" className="footerLink">
-                  How to shop
-                </a>
-                <a href="#" className="footerLink">
-                  Categories
-                </a>
-                <a href="#" className="footerLink">
-                  Popular Brands
-                </a>
-              </Col>
-              <Col
-                xs={12}
-                sm={12}
-                md={6}
-                lg={6}
-                xl={6}
-                className="footerContent"
-              >
-                <p className="footerMainHead">Sell</p>
-                <a href="#" className="footerLink">
-                  How to sell
-                </a>
-                <a href="#" className="footerLink">
-                  Prices
-                </a>
-                <a href="#" className="footerLink">
-                  Popular Brands
-                </a>
-              </Col>
-              <Col
-                xs={12}
-                sm={12}
-                md={6}
-                lg={6}
-                xl={6}
-                className="footerContent"
-              >
-                <p className="footerMainHead">Contact</p>
-                <a href="#" className="footerLink">
-                  FAQ
-                </a>
-                <a href="#" className="footerLink">
-                  Privacy policy
-                </a>
-              </Col>
-              <Col
-                xs={12}
-                sm={12}
-                md={6}
-                lg={6}
-                xl={6}
-                className="footerContent"
-              >
-                <p className="footerMainHead">Information</p>
-                <a href="#" className="footerLink">
-                  Terms of service
-                </a>
-              </Col>
-            </Row>
-            <Row className="socialMediaContainer">
-              <Col
-                xs={12}
-                sm={12}
-                md={6}
-                lg={12}
-                xl={12}
-                className="socialMediaSection"
-              >
-                <a>
-                  <img src={Images.common.insta} className="socialIcon" />
-                </a>
-                <a>
-                  <img src={Images.common.facebook} className="socialIcon" />
-                </a>
-                <a>
-                  <img src={Images.common.twitter} className="socialIcon" />
-                </a>
-                <a>
-                  <img src={Images.common.linkedin} className="socialIcon" />
-                </a>
-
-                <img src={Images.common.line} className="line" />
-              </Col>
-
-              <Col
-                xs={12}
-                sm={12}
-                md={6}
-                lg={12}
-                xl={12}
-                className="btnSectionFooter"
-              >
-                <a>
-                  {" "}
-                  <img src={Images.common.playBtn} className="FooterBtn" />
-                </a>
-                <a>
-                  {" "}
-                  <img src={Images.common.appleBtn} className="FooterBtn appleBtn" />
-                </a>
-              </Col>
-            </Row>
-
-            <p className="footerText">Sankapo © 2022</p>
-          </Row> */}
         </Col>
       </Row>
     </div>

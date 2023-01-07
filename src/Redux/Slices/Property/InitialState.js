@@ -1,5 +1,5 @@
 export default {
-  advertisments: [],
+  property: [],
   message: "",
   isLoading: false,
   isError: false,

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 
-import { Row, Col, Button, Modal, Dropdown, message, Menu } from "antd";
+import { Row, Col, Modal, Dropdown, Menu } from "antd";
 import { Link } from "react-router-dom";
 import { Images } from "../../assets/Images/images";
-import { DownOutlined, LogoutOutlined } from "@ant-design/icons";
 
 import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../../Redux/Slices/User/UserSlice";
@@ -327,7 +326,7 @@ export default function Header(props) {
               {/* mobile view */}
 
               <div className="mobileHeader">
-                <Link to="/createAd">
+                <Link to="/placeAd">
                   <img
                     src={Images.common.greenAdd}
                     className="userIconMobile"

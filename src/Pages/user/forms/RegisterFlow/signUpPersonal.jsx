@@ -14,7 +14,7 @@ import { clearUser } from "../../../../Redux/Slices/Signup/UserSlice";
 import { saveUser } from "../../../../Redux/Slices/User";
 import { setAuthenticate } from "../../../../Redux/Slices/Auth";
 
-export default function SignUpPersonal(props) {
+export default function SignUpPersonal() {
   const [loading, setLoading] = useState(false);
   const [personalData, setPersonalData] = useState({
     fullname: "",

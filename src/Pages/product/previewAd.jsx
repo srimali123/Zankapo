@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 export default function PreviewAd() {
   return (
     <div className="createAdMainContainerPreview">
-          <Row>
+      <Row>
         <Col xs={24} sm={24} md={24} lg={24} xl={24}>
           <div className="createAdContainerPreview">
             <div>
@@ -13,7 +13,12 @@ export default function PreviewAd() {
             </div>
             <div>
               <Link to={"/createAd"} href="#" className="cancelLink">
-               Back <img src={Images.common.back} className="backbtnImg" alt="back" />
+                Back{" "}
+                <img
+                  src={Images.common.back}
+                  className="backbtnImg"
+                  alt="back"
+                />
               </Link>
             </div>
           </div>
@@ -21,15 +26,14 @@ export default function PreviewAd() {
       </Row>
 
       <div className="contentTwo">
-    <p className="adPreview">Ad Preview</p>
-                  <div className="previewCont"></div>
-                  <p className="adPreview">Title</p>
-                  <p className="adPreview">Description</p>
-                  <p className="adPreview">Price</p>
+        <p className="adPreview">Ad Preview</p>
+        <div className="previewCont"></div>
+        <p className="adPreview">Title</p>
+        <p className="adPreview">Description</p>
+        <p className="adPreview">Price</p>
 
-                  <Button className="shipingButton ">Post Ad</Button>
+        <Button className="shipingButton ">Post Ad</Button>
+      </div>
     </div>
-    </div>
-  
   );
 }
