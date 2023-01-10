@@ -67,9 +67,25 @@ export default function CreateNewAd() {
     }
   }, []);
 
-  // const handleFileEvent = async (e) =>{
-  //   setImages(e.target.files);
-  // }
+  const handleFileEvent = async (e) => {
+    let tmp = images;
+
+    tmp.push(e.target.files[0]);
+    setImages(tmp);
+  };
+
+  //react dripzone property
+  const {
+    acceptedFiles,
+    fileRejections,
+    getRootProps,
+    getInputProps,
+    isDragActive,
+  } = useDropzone({
+    onDrop,
+    accept: { "image/png": [".png", ".jpeg", ".jpg", ".HEIC"] },
+    maxFiles: 5,
+  });
 
   const thumbs = images.map((file) => (
     <div style={Styles.thumb} key={file.name}>
@@ -91,20 +107,6 @@ export default function CreateNewAd() {
     return () =>
       images.forEach((file) => URL.revokeObjectURL(URL.createObjectURL(file)));
   }, []);
-
-  //react dripzone property
-  const {
-    acceptedFiles,
-    fileRejections,
-    getRootProps,
-    getInputProps,
-    isDragActive,
-    isDragAccept,
-  } = useDropzone({
-    onDrop,
-    accept: { "image/png": [".png", ".jpeg", "jpg"] },
-    maxFiles: 5,
-  });
 
   const fileRejectionItems = fileRejections.map(({ file, errors }) => (
     <li key={file.path}>
@@ -709,9 +711,16 @@ export default function CreateNewAd() {
                         <p className="imagesTopic">Images</p>
                         <div
                           className="inputCreateAd ImgesCont"
-                          {...getRootProps({ isDragAccept })}
+                          {...getRootProps()}
                         >
-                          <input {...getInputProps()} />
+                          {/* <input
+                            type="file"
+                            id="file"
+                            name="file[]"
+                            accept="image/png"
+                            multiple
+                            onChange={handleFileEvent}
+                          /> */}
                           <img
                             src={Images.common.camera}
                             className="cameraIcon"
@@ -720,14 +729,6 @@ export default function CreateNewAd() {
                           <p className="dropText">Drop your images here</p>
                         </div>
                         <aside style={Styles.thumbsContainer}>{thumbs}</aside>
-                        {/* <input
-                          type="file"
-                          id="file"
-                          name="file[]"
-                          accept="image/png"
-                          multiple
-                          onChange={handleFileEvent}
-                        /> */}
                         <p className="conditionText">Conditions</p>
                         <div className="btnGroup">
                           <Button

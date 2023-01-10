@@ -300,7 +300,8 @@ export default function HomePage(props) {
                 <Row gutter={[20, 10]}>
                   {advertisments ? (
                     advertisments.slice(0, next).map((item, key) => {
-                      jsonObj = JSON.parse(item?.images);
+                      jsonObj =
+                        item.images.length !== 0 && JSON.parse(item?.images);
                       return (
                         <Col key={key} xs={12} sm={12} md={8} lg={6} xl={6}>
                           <PopularAds
@@ -393,7 +394,7 @@ export default function HomePage(props) {
                     <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                       <HowItsWork
                         image={Images.common.ad2}
-                        title={"How to buy"}
+                        title={"How to post Ads"}
                       />
                     </Col>
                   </Row>
@@ -421,7 +422,7 @@ export default function HomePage(props) {
                       <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                         <HowItsWork
                           image={Images.common.ad2}
-                          title={"How to buy"}
+                          title={"How to post Ads"}
                         />
                       </Col>
                     </Carousel>
@@ -433,7 +434,7 @@ export default function HomePage(props) {
             {/* how its work mobile end */}
 
             {/* This is trending web*/}
-            <div className="thisIsTrendingWeb">
+            {/* <div className="thisIsTrendingWeb">
               <p className="discoverItemText secondSectionText thirdsectionText">
                 This is Trending
               </p>
@@ -452,9 +453,9 @@ export default function HomePage(props) {
                   </Row>
                 </Col>
               </Row>
-            </div>
+            </div> */}
 
-            <div className="thisIsTrendingMobile">
+            {/* <div className="thisIsTrendingMobile">
               <p className="discoverItemText secondSectionText thirdsectionText">
                 This is Trending
               </p>
@@ -481,7 +482,7 @@ export default function HomePage(props) {
                   </Row>
                 </Col>
               </Row>
-            </div>
+            </div> */}
           </div>
           <Footer />
         </Col>

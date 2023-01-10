@@ -65,6 +65,7 @@ export default function Login(props) {
 
     //401 user not found
     if (response.success) {
+      toast.success(response?.data?.message);
       dispatch(setAuthenticate({ token: response.data.access_token }));
       dispatch(saveUser({ user: response.data.user }));
       setOpen(false);
