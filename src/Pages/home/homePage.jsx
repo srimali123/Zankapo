@@ -13,7 +13,11 @@ import { toast } from "react-toastify";
 import { clearAdvertisments } from "../../Redux/Slices/Advertisment";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAdvertisments } from "../../Redux/Slices/Advertisment/AdvertismentSlice";
+import { fetchProperty } from "../../Redux/Slices/Property/PropertySlice";
+import { clearProperty } from "../../Redux/Slices/Property";
 import { Category } from "../../Utils/Constants";
+import { Config } from "../../Config";
+import { useNavigate } from "react-router-dom";
 
 const contentStyle = {
   margin: 0,
@@ -27,13 +31,17 @@ const onChange = (currentSlide) => {
   console.log(currentSlide);
 };
 
+let jsonObj;
+
 export default function HomePage(props) {
   const [next, setNext] = useState(4);
   const [isMoreLoading, setMoreLoading] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { advertisments, isLoading, message, isError } = useSelector(
     (state) => state.advertisments
   );
+  const { property } = useSelector((state) => state.property);
 
   const menu = (
     <Menu
@@ -57,8 +65,10 @@ export default function HomePage(props) {
       toast.error(message);
     }
     dispatch(fetchAdvertisments());
+    dispatch(fetchProperty());
     return () => {
       dispatch(clearAdvertisments());
+      dispatch(clearProperty());
     };
   }, [dispatch]);
 
@@ -69,6 +79,12 @@ export default function HomePage(props) {
       setNext((prevvalue) => prevvalue + 16);
       setMoreLoading(false);
     }, 1000);
+  };
+
+  //naviage to specific ad
+  const onAdNavigateHandler = (id) => {
+    console.log("Ad id>>", id);
+    navigate(`/buyproduct/${id}`);
   };
 
   return (
@@ -225,26 +241,38 @@ export default function HomePage(props) {
 
             {/* popular adds */}
             <p className="discoverItemText secondSectionText">
-              Popular ads now
+              Popular ads now ({advertisments?.length})
             </p>
             <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Row gutter={[20, 10]}>
                   {advertisments ? (
-                    advertisments.slice(0, next).map((item, key) => {
-                      return (
-                        <Col key={key} xs={12} sm={12} md={8} lg={6} xl={6}>
-                          <PopularAds
-                            image={Images.populaAd.ad1}
-                            description={item.title}
-                            price={`K${item.buy}`}
-                          />
-                        </Col>
-                      );
-                    })
+                    advertisments
+                      .slice(0, next)
+                      .sort((a, b) =>
+                        a.title
+                          .toLowerCase()
+                          .localeCompare(b.title.toLowerCase())
+                      )
+                      .map((item, key) => {
+                        jsonObj =
+                          item.images.length !== 0 && JSON.parse(item?.images);
+                        return (
+                          <Col key={key} xs={12} sm={12} md={8} lg={6} xl={6}>
+                            <PopularAds
+                              image={`${Config.API_BASE_URL}uploads/images/${jsonObj[0]}`}
+                              description={item.title}
+                              price={`K${item.buy}`}
+                              onAdNavigateHandler={() =>
+                                onAdNavigateHandler(item.id)
+                              }
+                            />
+                          </Col>
+                        );
+                      })
                   ) : (
                     <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                      <p>Popular ads 0</p>
+                      <p>Popular ads (0)</p>
                     </Col>
                   )}
                 </Row>
@@ -265,26 +293,30 @@ export default function HomePage(props) {
 
             {/* recently add */}
             <p className="discoverItemText secondSectionText thirdsectionText">
-              Recently added
+              Recently added ({advertisments?.length})
             </p>
             <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Row gutter={[20, 10]}>
                   {advertisments ? (
                     advertisments.slice(0, next).map((item, key) => {
+                      jsonObj = JSON.parse(item?.images);
                       return (
                         <Col key={key} xs={12} sm={12} md={8} lg={6} xl={6}>
                           <PopularAds
-                            image={Images.populaAd.ad1}
+                            image={`${Config.API_BASE_URL}/uploads/images/${jsonObj[0]}`}
                             description={item.title}
                             price={`K${item.buy}`}
+                            onAdNavigateHandler={() =>
+                              onAdNavigateHandler(item.id)
+                            }
                           />
                         </Col>
                       );
                     })
                   ) : (
                     <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                      <p>Recently added 0</p>
+                      <p>Recently added (0)</p>
                     </Col>
                   )}
                 </Row>
@@ -306,73 +338,42 @@ export default function HomePage(props) {
             {/*  Houses for rent */}
 
             <p className="discoverItemText secondSectionText thirdsectionText">
-              Houses for rent
+              Houses for rent ({property?.length})
             </p>
             <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Row gutter={[20, 10]}>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
-                  <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                    <PopularAds
-                      image={Images.populaAd.ad1}
-                      description={"Play station 5 console With all accesories"}
-                      price={"K27,000"}
-                    />
-                  </Col>
+                  {property ? (
+                    property.slice(0, next).map((item, key) => {
+                      return (
+                        <Col key={key} xs={12} sm={12} md={8} lg={6} xl={6}>
+                          <PopularAds
+                            image={Images.populaAd.ad1}
+                            description={item.tittle}
+                            price={`K${item.buy}`}
+                          />
+                        </Col>
+                      );
+                    })
+                  ) : (
+                    <Col xs={12} sm={12} md={8} lg={6} xl={6}>
+                      <p>House for rent (0)</p>
+                    </Col>
+                  )}
                 </Row>
               </Col>
-              <Button className="seeMoreBtn">
-                See More
-                <img src={Images.common.forward} className="forwardIcon" />
-              </Button>
+              {property?.length > next &&
+                (isMoreLoading ? (
+                  <Loader
+                    loading={isMoreLoading}
+                    color="rgba(249, 143, 33, 1)"
+                  />
+                ) : (
+                  <Button className="seeMoreBtn" onClick={showMoreItems}>
+                    See More
+                    <img src={Images.common.forward} className="forwardIcon" />
+                  </Button>
+                ))}
             </Row>
 
             {/* how its work */}

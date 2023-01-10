@@ -57,7 +57,7 @@ const Images = {
     mobile: require("../Images/discoverItems/MobilePhones.png"),
   },
   populaAd: {
-    ad1: require("../Images/popularAd/volvo-1.jpeg"),
+    ad1: require("../Images/popularAd/modern-villa-project-with-innovative-concept.jpeg"),
   },
 };
 

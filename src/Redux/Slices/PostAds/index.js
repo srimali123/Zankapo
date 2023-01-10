@@ -1,1 +1,1 @@
-export { saveAd, clearPostAd } from "./PostAdsSlice";
+export { clearPostAd } from "./PostAdsSlice";

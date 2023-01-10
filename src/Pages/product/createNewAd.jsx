@@ -22,37 +22,6 @@ import { Province } from "../../Utils/Constants";
 
 const { TextArea } = Input;
 
-// const thumbsContainer = {
-//   display: "flex",
-//   flexDirection: "row",
-//   flexWrap: "wrap",
-//   marginTop: 16,
-// };
-
-// const thumb = {
-//   display: "inline-flex",
-//   borderRadius: 2,
-//   border: "1px solid #eaeaea",
-//   marginBottom: 8,
-//   marginRight: 8,
-//   width: 100,
-//   height: 100,
-//   padding: 4,
-//   boxSizing: "border-box",
-// };
-
-// const thumbInner = {
-//   display: "flex",
-//   minWidth: 0,
-//   overflow: "hidden",
-// };
-
-// const img = {
-//   display: "block",
-//   width: "auto",
-//   height: "100%",
-// };
-
 export default function CreateNewAd() {
   const { category } = useParams();
   const [loading, setLoading] = useState(false);
@@ -81,7 +50,6 @@ export default function CreateNewAd() {
     additional: "",
   });
   const [images, setImages] = useState([]);
-  const [imagePreview, setImagePreview] = useState();
   const navigate = useNavigate();
 
   const { user } = useSelector((state) => state.user);
@@ -89,7 +57,6 @@ export default function CreateNewAd() {
 
   const onDrop = useCallback((acceptedFiles) => {
     let tmp = images;
-    console.log(tmp.indexOf(acceptedFiles[0]));
     if (tmp.indexOf(acceptedFiles[0]) > -1 === true) {
       let index = tmp.indexOf(acceptedFiles[0]);
       tmp.splice(index, 1);
@@ -98,8 +65,11 @@ export default function CreateNewAd() {
       tmp.push(acceptedFiles[0]);
       setImages(tmp);
     }
-    console.log(acceptedFiles[0]);
   }, []);
+
+  // const handleFileEvent = async (e) =>{
+  //   setImages(e.target.files);
+  // }
 
   const thumbs = images.map((file) => (
     <div style={Styles.thumb} key={file.name}>
@@ -123,19 +93,33 @@ export default function CreateNewAd() {
   }, []);
 
   //react dripzone property
-  const { acceptedFiles, getRootProps, getInputProps, isDragActive } =
-    useDropzone({
-      onDrop,
-      accept: { "image/png": [".png", ".jpeg"] },
-      maxFiles: 5,
-    });
+  const {
+    acceptedFiles,
+    fileRejections,
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    isDragAccept,
+  } = useDropzone({
+    onDrop,
+    accept: { "image/png": [".png", ".jpeg", "jpg"] },
+    maxFiles: 5,
+  });
+
+  const fileRejectionItems = fileRejections.map(({ file, errors }) => (
+    <li key={file.path}>
+      {file.path} - {file.size} bytes
+      <ul>
+        {errors.map((e) => (
+          <li key={e.code}>{e.message}</li>
+        ))}
+      </ul>
+    </li>
+  ));
 
   //input handling
   const onInputHandler = (e) => {
     setPostAd({ ...postAd, [e.target.name]: e.target.value });
-  };
-  const onSetChange = (checkedValues) => {
-    setPostAd({ ...postAd, residentialType: checkedValues });
   };
 
   //post normal ad
@@ -147,18 +131,25 @@ export default function CreateNewAd() {
     formData.append("title", postAd.title);
     formData.append("category", 1);
     formData.append("description", postAd.description);
-    formData.append("images", images);
+    Array.from(images).forEach((item) => {
+      formData.append("images[]", item);
+    });
     formData.append("condition", postAd.condition);
     formData.append("buy", postAd.buy);
+    formData.append("mobile", user.phonenumber);
+    formData.append("landline", user.phonenumber);
+    formData.append("email", user.email);
+    formData.append("fullname", user.fullname);
     formData.append("owner", user.id);
 
     let response = await advertismentService.createAdvertisment(formData);
 
     if (response.success) {
-      toast.success("Ad Submited successfully");
+      toast.success(response?.data.message);
       setLoading(false);
+      navigate("/");
     } else {
-      toast.error("something error");
+      toast.error(response.message);
     }
 
     setLoading(false);
@@ -172,8 +163,9 @@ export default function CreateNewAd() {
     let formData = new FormData();
     formData.append("tittle", postAd.tittle);
     formData.append("category", 1);
-    formData.append("images", images);
-    formData.append("condition", "good");
+    Array.from(images).forEach((item) => {
+      formData.append("images[]", item);
+    });
     formData.append("buy", postAd.buy);
     formData.append("province", postAd.province);
     formData.append("city", postAd.city);
@@ -184,22 +176,24 @@ export default function CreateNewAd() {
     formData.append("electricity", postAd.electricity);
     formData.append("restroom", postAd.restRoom);
     formData.append("room_arrangement", postAd.roomArrengement);
-    formData.append("bed_space", postAd.numberOfRooms);
+    formData.append("number_of_rooms", postAd.numberOfRooms);
     formData.append("security", postAd.security);
+    formData.append("isRentOrSale", "rent");
+    formData.append("additional_info", postAd.additional);
+    formData.append("owner", user.id);
 
     let response = await advertismentService.createPropertyAdvertisment(
       formData
     );
 
     if (response.success) {
-      toast.success("Ad Submited successfully");
-      setImages([]);
+      toast.success(response?.data.message);
       setLoading(false);
+      navigate("/");
     } else {
       if (response.status === 404) {
         toast.error(response?.message);
       }
-      console.log("Property POST >", response);
     }
 
     setLoading(false);
@@ -249,7 +243,7 @@ export default function CreateNewAd() {
             <Row gutter={[20, 15]} className="subAdContainer">
               <Col xs={24} sm={24} md={14} lg={15} xl={16} className="col">
                 <div className="contentOne">
-                  {category === "Real estate" ? (
+                  {category === "Realestate" ? (
                     <form onSubmit={onSubmitProperty}>
                       {/* house /apartment ad */}
 
@@ -675,7 +669,7 @@ export default function CreateNewAd() {
                       </div>
                     </form>
                   ) : (
-                    <form onSubmit={onSubmit}>
+                    <form onSubmit={onSubmit} encType={"multipart/form-data"}>
                       <p className="createAdTopic">Create New Ad</p>
 
                       <Input
@@ -705,6 +699,7 @@ export default function CreateNewAd() {
                           name="description"
                           value={postAd.description}
                           onChange={onInputHandler}
+                          required
                         />
                         <p className="inputText">
                           Give a brief description about what you are
@@ -714,7 +709,7 @@ export default function CreateNewAd() {
                         <p className="imagesTopic">Images</p>
                         <div
                           className="inputCreateAd ImgesCont"
-                          {...getRootProps()}
+                          {...getRootProps({ isDragAccept })}
                         >
                           <input {...getInputProps()} />
                           <img
@@ -725,6 +720,14 @@ export default function CreateNewAd() {
                           <p className="dropText">Drop your images here</p>
                         </div>
                         <aside style={Styles.thumbsContainer}>{thumbs}</aside>
+                        {/* <input
+                          type="file"
+                          id="file"
+                          name="file[]"
+                          accept="image/png"
+                          multiple
+                          onChange={handleFileEvent}
+                        /> */}
                         <p className="conditionText">Conditions</p>
                         <div className="btnGroup">
                           <Button

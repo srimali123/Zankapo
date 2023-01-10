@@ -31,8 +31,8 @@ export default function AppRoutes() {
         <Route path="/verifyemailregister" element={<VerifyEmailRegister />} />
         <Route path="/placeAd" element={<PostNewAd />} />
         <Route path="/createAd/:category" element={<CreateNewAd />} />
-        <Route path="/PreviewAd" element={<PreviewAd />} />
-        <Route path="/buyProduct" element={<BuyProduct />} />
+        <Route path="/previewAd" element={<PreviewAd />} />
+        <Route path="/buyproduct/:id" element={<BuyProduct />} />
         <Route path="/searchProduct" element={<SearchProduct />} />
       </Routes>
     </BrowserRouter>

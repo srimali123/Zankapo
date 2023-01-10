@@ -4,6 +4,8 @@ import authReducer from "./Slices/Auth/AuthSlice";
 import userReducer from "./Slices/User/UserSlice";
 import regReducer from "./Slices/Signup/UserSlice";
 import advertismentsReducer from "./Slices/Advertisment/AdvertismentSlice";
+import propertyReducer from "./Slices/Property/PropertySlice";
+import advertismentReducer from "./Slices/PostAds/PostAdsSlice";
 
 const appReducer = combineReducers({
   //add reducer here
@@ -11,6 +13,8 @@ const appReducer = combineReducers({
   user: userReducer,
   register: regReducer,
   advertisments: advertismentsReducer,
+  property: propertyReducer,
+  advertisment: advertismentReducer,
 });
 
 const rootReducer: Reducer = (state: RootState, action: AnyAction) => {

@@ -8,6 +8,7 @@ export default {
     images: [],
     buy: "",
     owner: "",
+    town: "",
     isApproved: 0,
     created_at: "",
     update_at: "",

@@ -215,7 +215,7 @@ export default function Header(props) {
               </Link>
             </div>
             <div>
-              <Link className="orangeDropText">
+              <Link className="orangeDropText" onClick={() => logout()}>
                 <img src={Images.common.logout} className="logout" />
                 Logout
               </Link>

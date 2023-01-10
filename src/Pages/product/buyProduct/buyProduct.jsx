@@ -1,16 +1,52 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Images } from "../../../assets/Images/images.js";
 import { Row, Col, Button, Input, Divider, Checkbox } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import BuyProductHeader from "../buyProduct/buyProductHeader";
 import ReactStars from "react-rating-stars-component";
 import { render } from "react-dom";
 import Footer from "../../../components/footer/footer.jsx";
+import { toast } from "react-toastify";
+
+import { clearPostAd } from "../../../Redux/Slices/PostAds";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSingleAdvertisment } from "../../../Redux/Slices/PostAds/PostAdsSlice";
+import { Config } from "../../../Config/index";
+
 import PopularAds from "../../../components/popularAds.jsx";
 const onChange = (checkedValues) => {
   console.log("checked = ", checkedValues);
 };
+
 export default function BuyProduct() {
+  const { id } = useParams();
+  const dispatch = useDispatch();
+  const { advertisment, isLoading, message, isError } = useSelector(
+    (state) => state.advertisment
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+    dispatch(fetchSingleAdvertisment(id));
+    return () => {
+      dispatch(clearPostAd());
+    };
+  }, [dispatch]);
+
+  const onloadImage = () => {
+    let url = Config.API_BASE_URL;
+    let img1 = Images.common.poster;
+    if (advertisment.images.length !== 0) {
+      let jsonObj = JSON.parse(advertisment.images);
+      let img = `${url}uploads/images/${jsonObj[0]}`;
+      return img;
+    }
+  };
+
+  console.log(onloadImage());
+
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
@@ -25,12 +61,14 @@ export default function BuyProduct() {
                 <div className="productContainerMain">
                   <Row gutter={[30, 0]}>
                     <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                      <div
-                        className="posterCon"
-                        style={{
-                          backgroundImage: `url(${Images.common.poster})`,
-                        }}
-                      ></div>
+                      {advertisment.images.length !== 0 ? (
+                        <img
+                          src={onloadImage()}
+                          className="posterCon"
+                          alt="ad-img"
+                        />
+                      ) : null}
+
                       <Divider />
                       <div className="stopWebContent">
                         <div className="stopContiner">
@@ -48,10 +86,7 @@ export default function BuyProduct() {
                           />
                           <p className="stopText">Lusaka</p>
                         </div>
-                        <p className="posterText">
-                          Apple AirPods 3rd Generation Wireless Charging Case -
-                          Genuine Apple Very Good
-                        </p>
+                        <p className="posterText">{advertisment.title}</p>
                         <div className="priceDetail">
                           <div>
                             {" "}
@@ -60,7 +95,7 @@ export default function BuyProduct() {
 
                           <div className="priceDetailText">
                             <p className="priceNew">
-                              K27,000
+                              {`K${advertisment.buy}`}
                               <br />
                             </p>
                           </div>
@@ -100,19 +135,14 @@ export default function BuyProduct() {
 
                         <p className="descripText">Description</p>
                         <Link>
-                          <div className="btnUsed">Used as new</div>
+                          <div className="btnUsed">
+                            {advertisment.condition}
+                          </div>
                         </Link>
-                        <p className="context">
-                          You can use EarPods (sold separately) to listen to
-                          music and videos and to make calls on iPhone. EarPods
-                          feature a microphone, volume buttons, and the center
-                          button. Use the center button to answer and end calls,
-                          control audio and video playback, and use Siri, even
-                          when iPhone is locked
-                        </p>
+                        <p className="context">{advertisment.description}</p>
                       </div>
                     </Col>
-                 
+
                     {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                       <p className="posterText">
                         Apple AirPods 3rd Generation Wireless Charging Case -
@@ -235,39 +265,42 @@ export default function BuyProduct() {
                     </Col> */}
                   </Row>
                 </div>
-              
-                  <Row className="serchRow ">
-                    <Col  xs={24} sm={24} md={24} lg={24} xl={24}>
+
+                <Row className="serchRow ">
+                  <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <p className="serchText">Similar searches</p>
-                <Row gutter={[20,20]}>
-                  <Col xs={12} sm={12} md={8} lg={8} xl={8}>
-                    <PopularAds
-                     image={Images.populaAd.ad1}
-                     description={"Play station 5 console With all accesories"}
-                     price={"K27,000"}/>
-                  </Col>
+                    <Row gutter={[20, 20]}>
+                      <Col xs={12} sm={12} md={8} lg={8} xl={8}>
+                        <PopularAds
+                          image={Images.populaAd.ad1}
+                          description={
+                            "Play station 5 console With all accesories"
+                          }
+                          price={"K27,000"}
+                        />
+                      </Col>
 
-                  <Col xs={12} sm={12} md={8} lg={8} xl={8}>
-                  <PopularAds
-                   image={Images.populaAd.ad1}
-                   description={"Play station 5 console With all accesories"}
-                   price={"K27,000"}/>
+                      <Col xs={12} sm={12} md={8} lg={8} xl={8}>
+                        <PopularAds
+                          image={Images.populaAd.ad1}
+                          description={
+                            "Play station 5 console With all accesories"
+                          }
+                          price={"K27,000"}
+                        />
+                      </Col>
+                      <Col xs={12} sm={12} md={8} lg={8} xl={8}>
+                        <PopularAds
+                          image={Images.populaAd.ad1}
+                          description={
+                            "Play station 5 console With all accesories"
+                          }
+                          price={"K27,000"}
+                        />
+                      </Col>
+                    </Row>
                   </Col>
-                  <Col xs={12} sm={12} md={8} lg={8} xl={8}>
-                  <PopularAds
-                   image={Images.populaAd.ad1}
-                   description={"Play station 5 console With all accesories"}
-                   price={"K27,000"}/>
-                  </Col>
-                  
                 </Row>
-
-                    </Col>
-                  </Row>
-                    
-              
-              
-              
               </Col>
               <Col xs={24} sm={24} md={0} lg={6} xl={6}>
                 <Button className="advertisemntBtn">Advertisement</Button>
