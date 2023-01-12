@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Images } from "../../../assets/Images/images.js";
-import { Row, Col, Button, Input, Divider, Checkbox } from "antd";
+import { Row, Col, Button, Input, Divider, Checkbox, Carousel } from "antd";
 import { Link, useParams } from "react-router-dom";
 import BuyProductHeader from "../buyProduct/buyProductHeader";
 import ReactStars from "react-rating-stars-component";
@@ -17,6 +17,10 @@ import moment from "moment";
 import PopularAds from "../../../components/popularAds.jsx";
 const onChange = (checkedValues) => {
   console.log("checked = ", checkedValues);
+};
+
+const onChange1 = (currentSlide) => {
+  console.log(currentSlide);
 };
 
 export default function BuyProduct() {
@@ -67,13 +71,75 @@ export default function BuyProduct() {
                 <div className="productContainerMain">
                   <Row gutter={[30, 0]}>
                     <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                      {advertisment.images.length !== 0 ? (
+                      {/* <Carousel swipeToSlide draggable afterChange={onChange1}>
+                        <Row><Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                        {advertisment.images.length !== 0 ? (
                         <img
                           src={onloadImage()}
                           className="posterCon"
                           alt="ad-img"
                         />
                       ) : null}
+                        </Col>
+                        <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                        {advertisment.images.length !== 0 ? (
+                        <img
+                          src={onloadImage()}
+                          className="posterCon"
+                          alt="ad-img"
+                        />
+                      ) : null}
+                        </Col>
+                        
+                        
+                        
+                        </Row>
+                        </Carousel>
+                     */}
+                      <div className="buyProductCarousel">
+                        <Row
+                          gutter={0}
+                          className="addSection trendingSection howItsWork"
+                        >
+                          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                            <Row>
+                              <Carousel
+                                swipeToSlide
+                                draggable
+                                afterChange={onChange}
+                              >
+                                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                                  {advertisment.images.length !== 0 ? (
+                                    <img
+                                      src={onloadImage()}
+                                      className="posterCon"
+                                      alt="ad-img"
+                                    />
+                                  ) : null}
+                                </Col>
+                                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                                  {advertisment.images.length !== 0 ? (
+                                    <img
+                                      src={onloadImage()}
+                                      className="posterCon"
+                                      alt="ad-img"
+                                    />
+                                  ) : null}
+                                </Col>
+                                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                                  {advertisment.images.length !== 0 ? (
+                                    <img
+                                      src={onloadImage()}
+                                      className="posterCon"
+                                      alt="ad-img"
+                                    />
+                                  ) : null}
+                                </Col>
+                              </Carousel>
+                            </Row>
+                          </Col>
+                        </Row>
+                      </div>
 
                       <Divider />
                       <div className="stopWebContent">

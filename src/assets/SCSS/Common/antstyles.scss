@@ -239,6 +239,60 @@ input:-webkit-autofill:focus {
   }
 }
 
+
+.buyProductCarousel{
+  .ant-carousel {
+    color: rgba(0, 0, 0, 0.85);
+    font-family: $poppins;
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5715;
+    list-style: none;
+    margin: -10px 10px auto 0px;
+    padding: 0px 0px 0px 0px;
+
+    height: 350px;
+    width: 100%;
+
+    .ant-carousel .slick-slide img {
+      align-items: center;
+      display: flex;
+      height: auto;
+      width: "100%";
+    }
+    .ant-carousel .slick-dots li button {
+      background: red;
+      border-radius: 99px;
+      border: 0;
+      cursor: pointer;
+      display: block;
+      font-size: 0;
+      height: 40px;
+      margin-left: 12px;
+      margin-top: 25px;
+      opacity: 1;
+      outline: none;
+      padding: 20;
+      transition: all 10s;
+      width: 10px;
+      height: 10px;
+    }
+
+    .slick-dots li button {
+      background: $gray13;
+      opacity: 1;
+      height: 15px;
+      width: 15px;
+      border-radius: 50px;
+      margin-top: 27px;
+    }
+    .slick-dots li.slick-active button {
+      background: black;
+      opacity: 1;
+    }
+  }
+}
+
 .thisIsTrendingMobile {
   .ant-carousel {
     color: rgba(0, 0, 0, 0.85);
