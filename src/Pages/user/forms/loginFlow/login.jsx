@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 import { LoadingOutlined } from "@ant-design/icons";
 import { Button, Row, Col, Spin, Input, Radio, Modal, Checkbox } from "antd";
+import { toast } from "react-toastify";
 
 import loginImg from "../../../../assets/Images/common/bottomcover.png";
 import logo from "../../../../assets/Images/common/LOGO.png";
@@ -64,19 +65,20 @@ export default function Login(props) {
 
     //401 user not found
     if (response.success) {
+      toast.success(response?.data?.message);
       dispatch(setAuthenticate({ token: response.data.access_token }));
       dispatch(saveUser({ user: response.data.user }));
       setOpen(false);
       navigate("/");
     } else {
       if (response.status == 401) {
-        console.log("Error :", response.message);
+        toast.error(response.message);
       }
       if (response.status == 403) {
-        console.log("Error :", response.message);
+        toast.error(response.message);
       }
       if (response.status == 404) {
-        console.log("Error :", response.message);
+        toast.error(response.message);
       }
     }
     setOpen(false);

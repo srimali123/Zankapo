@@ -181,5 +181,5 @@ export default function SearchProduct() {
 </Row>
 
     </div>
-  )
+  );
 }

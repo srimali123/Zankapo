@@ -1,65 +1,59 @@
 .descriptionText {
-    font-size: 16px;
-    font-weight: 300;
-    font-family: $poppins;
-    color: $brown;
-    margin-top: 8px;
-    margin-bottom: 10px;
-    max-width: 200px;
-    width: 100%;
+  font-size: 16px;
+  font-weight: 300;
+  font-family: $poppins;
+  color: $brown;
+  margin-top: 8px;
+  margin-bottom: 10px;
+  max-width: 200px;
+  width: 100%;
 }
 .priceText {
-    font-size: 20px;
-    font-family: $poppins;
-    color:$black;
-    font-weight: 600;
+  font-size: 20px;
+  font-family: $poppins;
+  color: $black;
+  font-weight: 600;
 }
 .popularAddImg {
-    height: 100%;
-    width: 290px;
+  height: 200px;
+  width: 290px;
 }
 
 @include mobile {
-    .descriptionText {
-        font-size: 13px;
-      
-    }
-    .priceText {
-        font-size: 16px;
-        
-    }
-    .popularAddImg {
-        height: 100%;
-        width: 150px;
-    }
+  .descriptionText {
+    font-size: 13px;
+  }
+  .priceText {
+    font-size: 16px;
+  }
+  .popularAddImg {
+    height: 100px;
+    width: 150px;
+  }
 }
 
 @include tablet-portrait {
-    .descriptionText {
-        font-size: 14px;
-       
-    }
-    .priceText {
-        font-size: 18px;
-        
-    }
-    .popularAddImg {
-        height: 100%;
-        width:220px;
-    }
+  .descriptionText {
+    font-size: 14px;
+  }
+  .priceText {
+    font-size: 18px;
+  }
+  .popularAddImg {
+    height: 200px;
+    width: 220px;
+  }
 }
 
 @include tablet-landscape {
-    .descriptionText {
-        font-size: 14px;
-       
-    }
-    .priceText {
-        font-size: 18px;
-        
-    }
-    .popularAddImg {
-        height: 100%;
-        width: 220px;
-    }
+  .descriptionText {
+    font-size: 14px;
+  }
+  .priceText {
+    font-size: 18px;
+  }
+  .popularAddImg {
+    height: 200px;
+    width: 220px;
+  }
 }

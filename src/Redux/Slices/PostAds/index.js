@@ -1,0 +1,1 @@
+export { clearPostAd } from "./PostAdsSlice";

@@ -1,16 +1,62 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Images } from "../../../assets/Images/images.js";
-import { Row, Col, Button, Input, Divider, Checkbox } from "antd";
-import { Link } from "react-router-dom";
+import { Row, Col, Button, Input, Divider, Checkbox, Carousel } from "antd";
+import { Link, useParams } from "react-router-dom";
 import BuyProductHeader from "../buyProduct/buyProductHeader";
 import ReactStars from "react-rating-stars-component";
 import { render } from "react-dom";
 import Footer from "../../../components/footer/footer.jsx";
+import { toast } from "react-toastify";
+
+import { clearPostAd } from "../../../Redux/Slices/PostAds";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSingleAdvertisment } from "../../../Redux/Slices/PostAds/PostAdsSlice";
+import { Config } from "../../../Config/index";
+import moment from "moment";
+
 import PopularAds from "../../../components/popularAds.jsx";
 const onChange = (checkedValues) => {
   console.log("checked = ", checkedValues);
 };
+
+const onChange1 = (currentSlide) => {
+  console.log(currentSlide);
+};
+
 export default function BuyProduct() {
+  const { id } = useParams();
+  const [showPhone, setShowPhone] = useState(false);
+  const dispatch = useDispatch();
+  const { advertisment, isLoading, message, isError } = useSelector(
+    (state) => state.advertisment
+  );
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message);
+    }
+    dispatch(fetchSingleAdvertisment(id));
+    return () => {
+      dispatch(clearPostAd());
+    };
+  }, [dispatch]);
+
+  const onloadImage = () => {
+    let url = Config.API_BASE_URL;
+    if (advertisment.images.length !== 0) {
+      let jsonObj = JSON.parse(advertisment.images);
+      let img = `${url}uploads/images/${jsonObj[0]}`;
+      return img;
+    }
+  };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const onSendMessage = () => {
+    window.location = "mailto:anksmll@sankapo.com";
+  };
+
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
@@ -25,12 +71,76 @@ export default function BuyProduct() {
                 <div className="productContainerMain">
                   <Row gutter={[30, 0]}>
                     <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                      <div
-                        className="posterCon"
-                        style={{
-                          backgroundImage: `url(${Images.common.poster})`,
-                        }}
-                      ></div>
+                      {/* <Carousel swipeToSlide draggable afterChange={onChange1}>
+                        <Row><Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                        {advertisment.images.length !== 0 ? (
+                        <img
+                          src={onloadImage()}
+                          className="posterCon"
+                          alt="ad-img"
+                        />
+                      ) : null}
+                        </Col>
+                        <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                        {advertisment.images.length !== 0 ? (
+                        <img
+                          src={onloadImage()}
+                          className="posterCon"
+                          alt="ad-img"
+                        />
+                      ) : null}
+                        </Col>
+                        
+                        
+                        
+                        </Row>
+                        </Carousel>
+                     */}
+                      <div className="buyProductCarousel">
+                        <Row
+                          gutter={0}
+                          className="addSection trendingSection howItsWork"
+                        >
+                          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                            <Row>
+                              <Carousel
+                                swipeToSlide
+                                draggable
+                                afterChange={onChange}
+                              >
+                                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                                  {advertisment.images.length !== 0 ? (
+                                    <img
+                                      src={onloadImage()}
+                                      className="posterCon"
+                                      alt="ad-img"
+                                    />
+                                  ) : null}
+                                </Col>
+                                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                                  {advertisment.images.length !== 0 ? (
+                                    <img
+                                      src={onloadImage()}
+                                      className="posterCon"
+                                      alt="ad-img"
+                                    />
+                                  ) : null}
+                                </Col>
+                                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                                  {advertisment.images.length !== 0 ? (
+                                    <img
+                                      src={onloadImage()}
+                                      className="posterCon"
+                                      alt="ad-img"
+                                    />
+                                  ) : null}
+                                </Col>
+                              </Carousel>
+                            </Row>
+                          </Col>
+                        </Row>
+                      </div>
+
                       <Divider />
                       <div className="stopWebContent">
                         <div className="stopContiner">
@@ -38,7 +148,9 @@ export default function BuyProduct() {
                             src={Images.common.stopWatch}
                             className="stopWatch"
                           />
-                          <p className="stopText">Posted 20 mins ago</p>
+                          <p className="stopText">
+                            Posted {moment(advertisment?.created_at).fromNow()}
+                          </p>
                         </div>
 
                         <div className="stopContiner">
@@ -48,10 +160,7 @@ export default function BuyProduct() {
                           />
                           <p className="stopText">Lusaka</p>
                         </div>
-                        <p className="posterText">
-                          Apple AirPods 3rd Generation Wireless Charging Case -
-                          Genuine Apple Very Good
-                        </p>
+                        <p className="posterText">{advertisment.title}</p>
                         <div className="priceDetail">
                           <div>
                             {" "}
@@ -60,7 +169,7 @@ export default function BuyProduct() {
 
                           <div className="priceDetailText">
                             <p className="priceNew">
-                              K27,000
+                              {`K${advertisment.buy}`}
                               <br />
                             </p>
                           </div>
@@ -76,7 +185,10 @@ export default function BuyProduct() {
                             </Col>
                             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                               <div className="btnContainer">
-                                <Button className="orangeBtnBuy">
+                                <Button
+                                  className="orangeBtnBuy"
+                                  onClick={onSendMessage}
+                                >
                                   <img
                                     src={Images.common.message}
                                     alt="message"
@@ -84,13 +196,19 @@ export default function BuyProduct() {
                                   />
                                   Send Message
                                 </Button>
-                                <Button className="orangeBtnBuy">
+                                <Button
+                                  className="orangeBtnBuy"
+                                  onClick={() => setShowPhone((prev) => !prev)}
+                                >
                                   <img
                                     src={Images.common.mobile}
                                     alt="mobile"
                                     className="messageIcon"
                                   />
-                                  Show phone no
+
+                                  {showPhone
+                                    ? advertisment.mobile
+                                    : " Show phone no"}
                                 </Button>
                               </div>
                             </Col>
@@ -100,19 +218,14 @@ export default function BuyProduct() {
 
                         <p className="descripText">Description</p>
                         <Link>
-                          <div className="btnUsed">Used as new</div>
+                          <div className="btnUsed">
+                            {advertisment.condition}
+                          </div>
                         </Link>
-                        <p className="context">
-                          You can use EarPods (sold separately) to listen to
-                          music and videos and to make calls on iPhone. EarPods
-                          feature a microphone, volume buttons, and the center
-                          button. Use the center button to answer and end calls,
-                          control audio and video playback, and use Siri, even
-                          when iPhone is locked
-                        </p>
+                        <p className="context">{advertisment.description}</p>
                       </div>
                     </Col>
-                 
+
                     {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                       <p className="posterText">
                         Apple AirPods 3rd Generation Wireless Charging Case -
@@ -235,39 +348,42 @@ export default function BuyProduct() {
                     </Col> */}
                   </Row>
                 </div>
-              
-                  <Row className="serchRow ">
-                    <Col  xs={24} sm={24} md={24} lg={24} xl={24}>
+
+                <Row className="serchRow ">
+                  <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <p className="serchText">Similar searches</p>
-                <Row gutter={[20,20]}>
-                  <Col xs={12} sm={12} md={8} lg={8} xl={8}>
-                    <PopularAds
-                     image={Images.populaAd.ad1}
-                     description={"Play station 5 console With all accesories"}
-                     price={"K27,000"}/>
-                  </Col>
+                    <Row gutter={[20, 20]}>
+                      <Col xs={12} sm={12} md={8} lg={8} xl={8}>
+                        <PopularAds
+                          image={Images.populaAd.ad1}
+                          description={
+                            "Play station 5 console With all accesories"
+                          }
+                          price={"K27,000"}
+                        />
+                      </Col>
 
-                  <Col xs={12} sm={12} md={8} lg={8} xl={8}>
-                  <PopularAds
-                   image={Images.populaAd.ad1}
-                   description={"Play station 5 console With all accesories"}
-                   price={"K27,000"}/>
+                      <Col xs={12} sm={12} md={8} lg={8} xl={8}>
+                        <PopularAds
+                          image={Images.populaAd.ad1}
+                          description={
+                            "Play station 5 console With all accesories"
+                          }
+                          price={"K27,000"}
+                        />
+                      </Col>
+                      <Col xs={12} sm={12} md={8} lg={8} xl={8}>
+                        <PopularAds
+                          image={Images.populaAd.ad1}
+                          description={
+                            "Play station 5 console With all accesories"
+                          }
+                          price={"K27,000"}
+                        />
+                      </Col>
+                    </Row>
                   </Col>
-                  <Col xs={12} sm={12} md={8} lg={8} xl={8}>
-                  <PopularAds
-                   image={Images.populaAd.ad1}
-                   description={"Play station 5 console With all accesories"}
-                   price={"K27,000"}/>
-                  </Col>
-                  
                 </Row>
-
-                    </Col>
-                  </Row>
-                    
-              
-              
-              
               </Col>
               <Col xs={24} sm={24} md={0} lg={6} xl={6}>
                 <Button className="advertisemntBtn">Advertisement</Button>

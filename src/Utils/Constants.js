@@ -1,10 +1,23 @@
-export const initialState = {
-    loading : false,
-    isRemember: false,
-    isVerificationCodeSent : '',
-    isVerifiedResponse : null,
-    isAuthenticated : false
-}
+export const Category = [
+  { name: " Clothes" },
+  { name: " Household" },
+  { name: " Electronics" },
+  { name: " Property" },
+  { name: " Computers" },
+  { name: " Collectibles" },
+  { name: " Vehicles" },
+  { name: " Mobile Phones" },
+];
 
-export const CURRENT_USER = 'current_user'; 
-
+export const Province = [
+  { name: "Central" },
+  { name: "Copperbelt" },
+  { name: "Eastern" },
+  { name: "Luapula" },
+  { name: "Lusaka" },
+  { name: "Muchinga" },
+  { name: "North-Western" },
+  { name: "Northern" },
+  { name: "Southern" },
+  { name: "Western" },
+];

@@ -1,89 +1,33 @@
 import React, { useState } from "react";
 
-import { Row, Col, Button, Modal, Dropdown, message, Menu } from "antd";
+import { Row, Col, Modal, Dropdown, Menu } from "antd";
 import { Link } from "react-router-dom";
 import { Images } from "../../assets/Images/images";
-import { DownOutlined, LogoutOutlined } from "@ant-design/icons";
-import { useSelector } from "react-redux";
-const onClick = ({ key }) => {
-  message.info(`Click on item ${key}`);
-};
 
-const menu = (
-  <Menu
-    className="menu"
-    items={[
-      {
-        key: "1",
-        label: (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.antgroup.com"
-          >
-           My listings
-          </a>
-        ),
-      },
-      {
-        key: "2",
-        label: (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.antgroup.com"
-          >
-           My profile
-          </a>
-        ),
-      },
-      {
-        key: "3",
-        label: (
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.antgroup.com"
-          >
-          Notifications
-          </a>
-        ),
-      },
-      {
-        key: "4",
-        label: (
-          <a
-          className="logoutText"
-            target="_blank"
-            rel="noopener noreferrer"
-            href="https://www.antgroup.com"
-          >
-         Logout
-          </a>
-        ),
-        icon: <img src={Images.common.logout} className="logout"/>,
-      },
-    ]}
-  />
-);
+import { useSelector, useDispatch } from "react-redux";
+import { clearUser } from "../../Redux/Slices/User/UserSlice";
+import { reset } from "../../Redux/Slices/Auth";
 
 export default function Header(props) {
   const { isAuthenticated } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.user);
 
-  console.log("Autheticated >>", isAuthenticated);
+  const dispatch = useDispatch();
 
   const [isShown, setIsShown] = useState(false);
   const handleClick = (event) => {
     setIsShown((current) => !current);
   };
   const [isModalOpen, setIsModalOpen] = useState(false);
+
   const showModal = () => {
     setIsModalOpen(true);
   };
+
   const handleOk = () => {
     setIsModalOpen(false);
   };
+
   const handleCancel = () => {
     setIsModalOpen(false);
   };
@@ -99,6 +43,73 @@ export default function Header(props) {
   const handleCancelTwo = () => {
     setIsModalOpenTwo(false);
   };
+
+  const menu = (
+    <Menu
+      className="menu"
+      items={[
+        {
+          key: "1",
+          label: (
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.antgroup.com"
+            >
+              My listings
+            </a>
+          ),
+        },
+        {
+          key: "2",
+          label: (
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.antgroup.com"
+            >
+              My profile
+            </a>
+          ),
+        },
+        {
+          key: "3",
+          label: (
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.antgroup.com"
+            >
+              Notifications
+            </a>
+          ),
+        },
+        {
+          key: "4",
+          label: (
+            <a
+              className="logoutText"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => logout()}
+            >
+              Logout
+            </a>
+          ),
+          icon: <img src={Images.common.logout} className="logout" />,
+        },
+      ]}
+    />
+  );
+
+  //logout function
+  const logout = async () => {
+    await dispatch(clearUser());
+    await dispatch(reset());
+    await dispatch();
+    window.location.assign("/");
+  };
+
   return (
     <div>
       {/* menu modal */}
@@ -181,38 +192,39 @@ export default function Header(props) {
       >
         <div className="modalContainer">
           <div className="profileMainContOne">
-          <div className="profileOuter">
-        <div  className="profilePic"
-            style={{
-              backgroundImage: `url(${Images.common.profilePic})`,
-            }}>
-          
-        </div>
-      
-        
-        </div>
-        <p className="profileName">Aliyon Tembo</p>
-        </div>
-        <div className="profileMainContTwo">
-          <div>
-          <Link className="contentLink"><p>My listings</p></Link>
-<Link className="contentLink"><p>My profile</p></Link>
-<Link className="contentLink"><p>Notifications</p></Link>
-
+            <div className="profileOuter">
+              <div
+                className="profilePic"
+                style={{
+                  backgroundImage: `url(${Images.common.profilePic})`,
+                }}
+              ></div>
+            </div>
+            <p className="profileName">Aliyon Tembo</p>
           </div>
-          <div>
-
-          <Link className="orangeDropText"><img src={Images.common.logout} className="logout"/>Logout</Link>
+          <div className="profileMainContTwo">
+            <div>
+              <Link className="contentLink">
+                <p>My listings</p>
+              </Link>
+              <Link className="contentLink">
+                <p>My profile</p>
+              </Link>
+              <Link className="contentLink">
+                <p>Notifications</p>
+              </Link>
+            </div>
+            <div>
+              <Link className="orangeDropText" onClick={() => logout()}>
+                <img src={Images.common.logout} className="logout" />
+                Logout
+              </Link>
+            </div>
           </div>
-
-
-
-        </div>
         </div>
 
         <p className="footerText">Sankapo ©2022</p>
       </Modal>
-
 
       <Row>
         <Col xs={24} sm={24} md={24} lg={24} xl={24}>
@@ -252,40 +264,43 @@ export default function Header(props) {
                 Place Ad
               </button>
               {/* when user didnt register or login */}
-              {/* {isAuthenticated ? ( */}
-              <div className="confirmcontainerAfterLogin">
-                <div className="profileContainer">
-                  {" "}
-                  <Link to="/buyProduct" className="link customLink">
-                    Buying
-                  </Link>
-                </div>
-                <div className="profileContainer">
-                  {" "}
-                  <a href="#" className="link customLink">
-                    Selling
-                  </a>
-                </div>
+              {isAuthenticated ? (
+                <div className="confirmcontainerAfterLogin">
+                  {/* <div className="profileContainer">
+                    {" "}
+                    <Link to="/buyProduct" className="link customLink">
+                      Buying
+                    </Link>
+                  </div> */}
+                  <div className="profileContainer">
+                    {" "}
+                    <a href="#" className="link customLink">
+                      Selling
+                    </a>
+                  </div>
 
-                <div className="profileContainer">
-                  <img src={Images.common.userColoured} className="userIcon" />
-                  <a href="#" className="link nameLink">
-                    {/* {user.fullname} */}Aliyon
-                    <Dropdown
-                      overlay={menu}
-                      trigger={["click"]}
-                      overlayClassName="profileDropDown"
-                    >
-                      <img
-                        src={Images.common.orangeDrop}
-                        className="userIconDrop"
-                      />
-                    </Dropdown>
-                  </a>
+                  <div className="profileContainer">
+                    <img
+                      src={Images.common.userColoured}
+                      className="userIcon"
+                    />
+                    <a href="#" className="link nameLink">
+                      {user?.fullname}
+                      <Dropdown
+                        overlay={menu}
+                        trigger={["click"]}
+                        overlayClassName="profileDropDown"
+                      >
+                        <img
+                          src={Images.common.orangeDrop}
+                          className="userIconDrop"
+                        />
+                      </Dropdown>
+                    </a>
+                  </div>
                 </div>
-              </div>
-              {/* // ) : ( */}
-              {/* <div className="profileConfimContainer">
+              ) : (
+                <div className="profileConfimContainer">
                   <div className="profileContainer">
                     <img
                       src={Images.common.userColoured}
@@ -297,18 +312,21 @@ export default function Header(props) {
                   </div>
 
                   <div className="profileContainer">
-                    <img src={Images.common.userOutline} className="userIcon" />
+                    <img
+                      src={Images.common.userColoured}
+                      className="userIcon"
+                    />
                     <Link to="/login" className="link">
                       Login
                     </Link>
                   </div>
-                </div> */}
-              {/* )} */}
+                </div>
+              )}
 
               {/* mobile view */}
 
               <div className="mobileHeader">
-                <Link to="/createAd">
+                <Link to="/placeAd">
                   <img
                     src={Images.common.greenAdd}
                     className="userIconMobile"

@@ -6,6 +6,7 @@ import logoBlue from "../../../../assets/Images/common/bluelogo.png";
 import logo from "../../../../assets/Images/common/LOGO.png";
 import loginImg from "../../../../assets/Images/common/bottomcover.png";
 import Loader from "../../../../components/spinner";
+import { toast } from "react-toastify";
 
 import { useSelector, useDispatch } from "react-redux";
 import * as userService from "../../../../Services/UserService";
@@ -13,7 +14,7 @@ import { clearUser } from "../../../../Redux/Slices/Signup/UserSlice";
 import { saveUser } from "../../../../Redux/Slices/User";
 import { setAuthenticate } from "../../../../Redux/Slices/Auth";
 
-export default function SignUpPersonal(props) {
+export default function SignUpPersonal() {
   const [loading, setLoading] = useState(false);
   const [personalData, setPersonalData] = useState({
     fullname: "",
@@ -51,15 +52,16 @@ export default function SignUpPersonal(props) {
 
     if (response.success) {
       console.log("New user has been addedd successfully!");
-      dispatch(saveUser({ user: response.data.data.userData }));
-      dispatch(setAuthenticate({ token: response.data.data.token }));
+      dispatch(saveUser({ user: response?.data?.data?.userData }));
+      dispatch(setAuthenticate({ token: response?.data?.data?.token }));
       dispatch(clearUser());
       setLoading(false);
       navigate("/");
     } else {
       if (response.status === 403) {
-        console.log("Sorry, User with the provided email is already exists!");
+        toast.error("Sorry, User with the provided email is already exists!");
       }
+      setLoading(false);
     }
     setLoading(false);
   };

@@ -25,6 +25,12 @@ export default function VerifyEmail(props) {
                 Hi {user?.fullname}, you have requested to reset your password.
                 check your mailbox.
               </p>
+              <a
+                href="https://mail.google.com/mail/u/0/?tab=rm&ogbl#inbox"
+                target="_blank"
+              >
+                Click here.
+              </a>
             </div>
             <div className="socialSection">
               <p className="socialsectionText">

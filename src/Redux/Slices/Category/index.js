@@ -1,0 +1,1 @@
+export { clearCategory } from "./CategorySlice";

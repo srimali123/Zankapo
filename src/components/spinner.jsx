@@ -7,10 +7,10 @@ const override: CSSProperties = {
   borderColor: "red",
 };
 
-const Loader = ({ loading }) => {
+const Loader = ({ loading, color = "#ffffff" }) => {
   return (
     <BeatLoader
-      color={"#ffffff"}
+      color={color}
       loading={loading}
       cssOverride={override}
       size={10}
