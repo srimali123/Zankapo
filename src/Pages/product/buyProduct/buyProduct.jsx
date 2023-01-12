@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Images } from "../../../assets/Images/images.js";
 import { Row, Col, Button, Input, Divider, Checkbox } from "antd";
 import { Link, useParams } from "react-router-dom";
@@ -12,6 +12,7 @@ import { clearPostAd } from "../../../Redux/Slices/PostAds";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleAdvertisment } from "../../../Redux/Slices/PostAds/PostAdsSlice";
 import { Config } from "../../../Config/index";
+import moment from "moment";
 
 import PopularAds from "../../../components/popularAds.jsx";
 const onChange = (checkedValues) => {
@@ -20,6 +21,7 @@ const onChange = (checkedValues) => {
 
 export default function BuyProduct() {
   const { id } = useParams();
+  const [showPhone, setShowPhone] = useState(false);
   const dispatch = useDispatch();
   const { advertisment, isLoading, message, isError } = useSelector(
     (state) => state.advertisment
@@ -37,15 +39,19 @@ export default function BuyProduct() {
 
   const onloadImage = () => {
     let url = Config.API_BASE_URL;
-    let img1 = Images.common.poster;
     if (advertisment.images.length !== 0) {
       let jsonObj = JSON.parse(advertisment.images);
       let img = `${url}uploads/images/${jsonObj[0]}`;
       return img;
     }
   };
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-  console.log(onloadImage());
+  const onSendMessage = () => {
+    window.location = "mailto:anksmll@sankapo.com";
+  };
 
   const ratingChanged = (newRating) => {
     console.log(newRating);
@@ -76,7 +82,9 @@ export default function BuyProduct() {
                             src={Images.common.stopWatch}
                             className="stopWatch"
                           />
-                          <p className="stopText">Posted 20 mins ago</p>
+                          <p className="stopText">
+                            Posted {moment(advertisment?.created_at).fromNow()}
+                          </p>
                         </div>
 
                         <div className="stopContiner">
@@ -111,7 +119,10 @@ export default function BuyProduct() {
                             </Col>
                             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                               <div className="btnContainer">
-                                <Button className="orangeBtnBuy">
+                                <Button
+                                  className="orangeBtnBuy"
+                                  onClick={onSendMessage}
+                                >
                                   <img
                                     src={Images.common.message}
                                     alt="message"
@@ -119,13 +130,19 @@ export default function BuyProduct() {
                                   />
                                   Send Message
                                 </Button>
-                                <Button className="orangeBtnBuy">
+                                <Button
+                                  className="orangeBtnBuy"
+                                  onClick={() => setShowPhone((prev) => !prev)}
+                                >
                                   <img
                                     src={Images.common.mobile}
                                     alt="mobile"
                                     className="messageIcon"
                                   />
-                                  Show phone no
+
+                                  {showPhone
+                                    ? advertisment.mobile
+                                    : " Show phone no"}
                                 </Button>
                               </div>
                             </Col>

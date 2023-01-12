@@ -289,12 +289,12 @@ export default function BuyProductHeader() {
                 {/* when user didnt register or login */}
                 {isAuthenticated ? (
                   <div className="confirmcontainerAfterLogin">
-                    <div className="profileContainer">
+                    {/* <div className="profileContainer">
                       {" "}
                       <a href="#" className="link customLink">
                         Buying
                       </a>
-                    </div>
+                    </div> */}
                     <div className="profileContainer">
                       {" "}
                       <a href="#" className="link customLink">
