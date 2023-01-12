@@ -30,7 +30,7 @@ export default function AppRoutes() {
         <Route path="/personal" element={<SignUpPersonal />} />
         <Route path="/verifyemailregister" element={<VerifyEmailRegister />} />
         <Route path="/placeAd" element={<PostNewAd />} />
-        <Route path="/createAd/:category" element={<CreateNewAd />} />
+        <Route path="/createAd/:category/:id" element={<CreateNewAd />} />
         <Route path="/previewAd" element={<PreviewAd />} />
         <Route path="/buyproduct/:id" element={<BuyProduct />} />
         <Route path="/searchProduct" element={<SearchProduct />} />

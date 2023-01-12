@@ -1,9 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Images } from "../../assets/Images/images.js";
 import { Row, Col } from "antd";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCategories } from "../../Redux/Slices/Category/CategorySlice";
+import { Config } from "../../Config/index.js";
 
 export default function PostNewAd() {
+  const { categories } = useSelector((state) => state.categories);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
+
   return (
     <div className="postAdMainContainer">
       <Row>
@@ -26,7 +38,31 @@ export default function PostNewAd() {
             <div className="subContainer">
               <p className="mainHead">What do you want to advertise</p>
               <Row gutter={[70, 15]} className="cardContainer">
-                <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                {categories?.map((item, index) => {
+                  return (
+                    <Col xs={24} sm={24} md={12} lg={12} xl={12} key={index}>
+                      <div className="whiteBox marginBox">
+                        <div>
+                          {" "}
+                          <img
+                            className="cardImg"
+                            src={`${Config.API_BASE_URL}uploads/icons/${item.icon}`}
+                          />
+                        </div>
+                        <div>
+                          {" "}
+                          <Link
+                            to={`/createAd/${item.category}/${item.id}`}
+                            className="cardText"
+                          >
+                            {item.category}
+                          </Link>
+                        </div>
+                      </div>
+                    </Col>
+                  );
+                })}
+                {/* <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                   <div className="whiteBox">
                     <div>
                       {" "}
@@ -81,8 +117,8 @@ export default function PostNewAd() {
                       </Link>
                     </div>
                   </div>
-                </Col>
-                <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                </Col> */}
+                {/* <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                   <div className="whiteBox whiteBox2">
                     <div>
                       {" "}
@@ -135,7 +171,7 @@ export default function PostNewAd() {
                       </Link>
                     </div>
                   </div>
-                </Col>
+                </Col> */}
               </Row>
             </div>
           </div>

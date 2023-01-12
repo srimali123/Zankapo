@@ -6,6 +6,7 @@ import regReducer from "./Slices/Signup/UserSlice";
 import advertismentsReducer from "./Slices/Advertisment/AdvertismentSlice";
 import propertyReducer from "./Slices/Property/PropertySlice";
 import advertismentReducer from "./Slices/PostAds/PostAdsSlice";
+import categoryReducer from "./Slices/Category/CategorySlice";
 
 const appReducer = combineReducers({
   //add reducer here
@@ -15,6 +16,7 @@ const appReducer = combineReducers({
   advertisments: advertismentsReducer,
   property: propertyReducer,
   advertisment: advertismentReducer,
+  categories: categoryReducer,
 });
 
 const rootReducer: Reducer = (state: RootState, action: AnyAction) => {
