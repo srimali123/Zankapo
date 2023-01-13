@@ -37,10 +37,10 @@ export default function PostNewAd() {
           <div className="postAdMiddleContainer">
             <div className="subContainer">
               <p className="mainHead">What do you want to advertise</p>
-              <Row gutter={[70, 15]} className="cardContainer">
+              <Row gutter={[50, 15]} className="cardContainer">
                 {categories?.map((item, index) => {
                   return (
-                    <Col xs={24} sm={24} md={12} lg={12} xl={12} key={index}>
+                    <Col xs={24} sm={24} md={12} lg={12} xl={12} key={index} className="colProduct">
                       <div className="whiteBox marginBox">
                         <div>
                           {" "}

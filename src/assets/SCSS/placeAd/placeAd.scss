@@ -44,9 +44,13 @@
         font-size: 24px;
         font-weight: 700;
         font-family: $railWay;
-        margin-right: 210px;
+        margin-right: 330px;
       }
       .cardContainer {
+        justify-content: center;
+        margin-left: 340px !important;
+        margin-right: 400px !important;
+        display: flex;
         .whiteBox {
           height: 72px;
           width: 300px;
@@ -56,7 +60,7 @@
           flex-direction: row;
           justify-content: flex-start;
           align-items: center;
-          // margin-left: 130px;
+         
 
           .cardImg {
             height: 40px;
@@ -75,6 +79,19 @@
         }
         .marginBox {
           margin-top: 18px;
+        }
+        .colProduct {
+          display: flex;
+          justify-content: center;
+      
+       
+         padding-left: 0 !important;
+         padding-right: 0px !important;
+        }
+        .colContMain {
+          background-color: purple;
+          justify-content: center;
+          flex-direction: column;
         }
       }
     }
@@ -99,7 +116,7 @@
       height: 100%;
       padding-top: 31px;
       padding-left: 16px;
-      padding-right: 16px;
+      padding-right: 5px;
       padding-bottom: 16px;
 
       .subContainer {
@@ -110,6 +127,11 @@
           margin-right: 0px;
         }
         .cardContainer {
+        
+          
+        margin-left: 0px !important;
+        margin-right: 10px !important;
+        display: flex;
           .whiteBox {
             width: 100%;
 
@@ -150,7 +172,15 @@
       .subContainer {
         .mainHead {
           font-size: 20px;
-          margin-right: 275px;
+          margin-right: 345px;
+        }
+        .cardContainer {
+        
+          
+          margin-left: 50px !important;
+          margin-right: 50px !important;
+          display: flex;
+          
         }
       }
     }
@@ -173,7 +203,14 @@
         .mainHead {
           font-size: 20px;
 
-          margin-right: 275px;
+          margin-right: 335px;
+        }
+        .cardContainer {
+        
+          
+          margin-left: 190px !important;
+          margin-right: 190px !important;
+          display: flex;
         }
       }
     }
