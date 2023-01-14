@@ -11,7 +11,7 @@ const Images = {
     userColoured: require("../Images/common/usercoloured.png"),
     userOutline: require("../Images/common/useroutline.png"),
     forward: require("../Images/common/forward icon.png"),
-    ad2: require("../Images/common/how.jpg"),
+    ad2: require("../Images/popularAd/ad2.png"),
     insta: require("../Images/common/instanew.png"),
     facebook: require("../Images/common/FacebookNew.png"),
     twitter: require("../Images/common/twitterNeww.png"),

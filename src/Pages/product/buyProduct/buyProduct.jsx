@@ -11,6 +11,7 @@ import { toast } from "react-toastify";
 import { clearPostAd } from "../../../Redux/Slices/PostAds";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleAdvertisment } from "../../../Redux/Slices/PostAds/PostAdsSlice";
+import { fetchCategories } from "../../../Redux/Slices/Category/CategorySlice";
 import { Config } from "../../../Config/index";
 import moment from "moment";
 
@@ -26,32 +27,53 @@ const onChange1 = (currentSlide) => {
 export default function BuyProduct() {
   const { id } = useParams();
   const [showPhone, setShowPhone] = useState(false);
+  const [jsonObj, setJsonObject] = useState({});
   const dispatch = useDispatch();
   const { advertisment, isLoading, message, isError } = useSelector(
     (state) => state.advertisment
   );
+
+  const { categories } = useSelector((state) => state.categories);
+
+  const filterCategory = () => {
+    let filter = categories
+      ?.filter((item) => item.id == id)
+      .map(({ category }) => category);
+
+    return filter[0];
+  };
 
   useEffect(() => {
     if (isError) {
       toast.error(message);
     }
     dispatch(fetchSingleAdvertisment(id));
+    dispatch(fetchCategories());
     return () => {
       dispatch(clearPostAd());
     };
   }, [dispatch]);
 
+  useEffect(() => {
+    onloadImage();
+  }, [jsonObj]);
+
   const onloadImage = () => {
     let url = Config.API_BASE_URL;
-    if (advertisment.images.length !== 0) {
+    if (advertisment?.images.length !== 0) {
       let jsonObj = JSON.parse(advertisment.images);
-      let img = `${url}uploads/images/${jsonObj[0]}`;
-      return img;
+      // let img = `${url}uploads/images/${jsonObj[0]}`;
+      // return img;
+      setJsonObject(jsonObj);
     }
   };
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  Array.from(jsonObj).map((item, index) => {
+    console.log(item);
+  });
 
   const onSendMessage = () => {
     window.location = "mailto:anksmll@sankapo.com";
@@ -64,38 +86,13 @@ export default function BuyProduct() {
     <div>
       <Row className="mainProductConatainer">
         <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-          <BuyProductHeader />
+          <BuyProductHeader category={filterCategory()} />
           <div className="middleContainerProduct">
             <Row gutter={[20, 20]}>
               <Col xs={24} sm={24} md={24} lg={18} xl={18}>
                 <div className="productContainerMain">
                   <Row gutter={[30, 0]}>
                     <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                      {/* <Carousel swipeToSlide draggable afterChange={onChange1}>
-                        <Row><Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                        {advertisment.images.length !== 0 ? (
-                        <img
-                          src={onloadImage()}
-                          className="posterCon"
-                          alt="ad-img"
-                        />
-                      ) : null}
-                        </Col>
-                        <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                        {advertisment.images.length !== 0 ? (
-                        <img
-                          src={onloadImage()}
-                          className="posterCon"
-                          alt="ad-img"
-                        />
-                      ) : null}
-                        </Col>
-                        
-                        
-                        
-                        </Row>
-                        </Carousel>
-                     */}
                       <div className="buyProductCarousel">
                         <Row
                           gutter={0}
@@ -108,33 +105,28 @@ export default function BuyProduct() {
                                 draggable
                                 afterChange={onChange}
                               >
-                                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                                  {advertisment.images.length !== 0 ? (
-                                    <img
-                                      src={onloadImage()}
-                                      className="posterCon"
-                                      alt="ad-img"
-                                    />
-                                  ) : null}
-                                </Col>
-                                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                                  {advertisment.images.length !== 0 ? (
-                                    <img
-                                      src={onloadImage()}
-                                      className="posterCon"
-                                      alt="ad-img"
-                                    />
-                                  ) : null}
-                                </Col>
-                                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                                  {advertisment.images.length !== 0 ? (
-                                    <img
-                                      src={onloadImage()}
-                                      className="posterCon"
-                                      alt="ad-img"
-                                    />
-                                  ) : null}
-                                </Col>
+                                {advertisment?.images.length !== 0
+                                  ? Array.from(
+                                      JSON.parse(advertisment?.images)
+                                    ).map((item, key) => {
+                                      return (
+                                        <Col
+                                          xs={24}
+                                          sm={24}
+                                          md={24}
+                                          lg={24}
+                                          xl={24}
+                                          key={key}
+                                        >
+                                          <img
+                                            src={`${Config.API_BASE_URL}uploads/images/${item}`}
+                                            className="posterCon"
+                                            alt="ad-img"
+                                          />
+                                        </Col>
+                                      );
+                                    })
+                                  : null}
                               </Carousel>
                             </Row>
                           </Col>
@@ -158,9 +150,9 @@ export default function BuyProduct() {
                             src={Images.common.locationNew}
                             className="stopWatch"
                           />
-                          <p className="stopText">Lusaka</p>
+                          <p className="stopText">{advertisment?.town}</p>
                         </div>
-                        <p className="posterText">{advertisment.title}</p>
+                        <p className="posterText">{advertisment?.title}</p>
                         <div className="priceDetail">
                           <div>
                             {" "}
@@ -169,7 +161,7 @@ export default function BuyProduct() {
 
                           <div className="priceDetailText">
                             <p className="priceNew">
-                              {`K${advertisment.buy}`}
+                              {`K${advertisment?.buy}`}
                               <br />
                             </p>
                           </div>
@@ -180,8 +172,12 @@ export default function BuyProduct() {
                           <Row gutter={[0, 30]}>
                             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                               <p className="sellerDetails">About the seller</p>
-                              <p className="sellerName">Aliyon Tembo</p>
-                              <p className="conditonSubText">Lusaka, Zambia</p>
+                              <p className="sellerName">
+                                {advertisment?.sellerName}
+                              </p>
+                              <p className="conditonSubText">
+                                {advertisment?.province}, Zambia
+                              </p>
                             </Col>
                             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                               <div className="btnContainer">
@@ -207,7 +203,7 @@ export default function BuyProduct() {
                                   />
 
                                   {showPhone
-                                    ? advertisment.mobile
+                                    ? advertisment?.mobile
                                     : " Show phone no"}
                                 </Button>
                               </div>
@@ -219,10 +215,10 @@ export default function BuyProduct() {
                         <p className="descripText">Description</p>
                         <Link>
                           <div className="btnUsed">
-                            {advertisment.condition}
+                            {advertisment?.condition}
                           </div>
                         </Link>
-                        <p className="context">{advertisment.description}</p>
+                        <p className="context">{advertisment?.description}</p>
                       </div>
                     </Col>
 

@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../../../Redux/Slices/User";
 import { reset } from "../../../Redux/Slices/Auth";
 
-export default function BuyProductHeader() {
+export default function BuyProductHeader({ category }) {
   const [isShown, setIsShown] = useState(false);
   const { isAuthenticated } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.user);
@@ -387,7 +387,7 @@ export default function BuyProductHeader() {
                   className="hederIconForward"
                 />
                 <Link to="/createAd" className="clothsLink">
-                  Cloths
+                  {category}
                 </Link>
               </div>
               <div className="iconCont backCont">

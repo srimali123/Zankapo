@@ -23,8 +23,9 @@ import { Province } from "../../Utils/Constants";
 const { TextArea } = Input;
 
 export default function CreateNewAd() {
-  const { category } = useParams();
+  const { category, id } = useParams();
   const [loading, setLoading] = useState(false);
+  const [activeTab, setActiveTab] = useState("1");
   const [postAd, setPostAd] = useState({
     id: "",
     title: "",
@@ -124,6 +125,11 @@ export default function CreateNewAd() {
     setPostAd({ ...postAd, [e.target.name]: e.target.value });
   };
 
+  //chnage tab
+  const onChangeTab = (activeKey) => {
+    setActiveTab(activeKey);
+  };
+
   //post normal ad
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -131,7 +137,7 @@ export default function CreateNewAd() {
 
     let formData = new FormData();
     formData.append("title", postAd.title);
-    formData.append("category", 1);
+    formData.append("category", id);
     formData.append("description", postAd.description);
     Array.from(images).forEach((item) => {
       formData.append("images[]", item);
@@ -141,7 +147,10 @@ export default function CreateNewAd() {
     formData.append("mobile", user.phonenumber);
     formData.append("landline", user.phonenumber);
     formData.append("email", user.email);
-    formData.append("fullname", user.fullname);
+    formData.append("sellerName", user.fullname);
+    formData.append("province", user.province);
+    formData.append("city", user.city);
+    formData.append("town", user.town);
     formData.append("owner", user.id);
 
     let response = await advertismentService.createAdvertisment(formData);
@@ -156,6 +165,18 @@ export default function CreateNewAd() {
 
     setLoading(false);
   };
+
+  useEffect(() => {
+    if (category === "Real estate") {
+      if (activeTab === "1") {
+        setPostAd({ ...postAd, isrentorsale: "sell" });
+      } else if (activeTab === "2") {
+        setPostAd({ ...postAd, isrentorsale: "rent" });
+      } else {
+        return;
+      }
+    }
+  }, [activeTab]);
 
   //post real state ad
   const onSubmitProperty = async (e) => {
@@ -180,9 +201,13 @@ export default function CreateNewAd() {
     formData.append("room_arrangement", postAd.roomArrengement);
     formData.append("number_of_rooms", postAd.numberOfRooms);
     formData.append("security", postAd.security);
-    formData.append("isRentOrSale", "rent");
+    formData.append("isRentOrSale", postAd.isrentorsale);
     formData.append("additional_info", postAd.additional);
     formData.append("owner", user.id);
+    formData.append("mobile", user.phonenumber);
+    formData.append("landline", user.phonenumber);
+    formData.append("email", user.email);
+    formData.append("sellerName", user.fullname);
 
     let response = await advertismentService.createPropertyAdvertisment(
       formData
@@ -245,7 +270,7 @@ export default function CreateNewAd() {
             <Row gutter={[20, 15]} className="subAdContainer">
               <Col xs={24} sm={24} md={14} lg={15} xl={16} className="col">
                 <div className="contentOne">
-                  {category === "Realestate" ? (
+                  {category === "Real estate" ? (
                     <form onSubmit={onSubmitProperty}>
                       {/* house /apartment ad */}
 
@@ -617,7 +642,11 @@ export default function CreateNewAd() {
                           </p>
                         </div>
                         <div className="tabsSection">
-                          <Tabs defaultActiveKey="1">
+                          <Tabs
+                            defaultActiveKey="1"
+                            activeKey={activeTab}
+                            onChange={onChangeTab}
+                          >
                             <Tabs.TabPane tab="Sell" key="1">
                               <p className="tabText">Sell on price</p>
                               <Input
@@ -664,8 +693,8 @@ export default function CreateNewAd() {
                               Preview ad
                             </Button>
                           </Link>
-                          <Button className="shipingButton " htmlType="submit">
-                            Post Ad
+                          <Button className="shipingButton" htmlType="submit">
+                            {loading ? <Loader loading={loading} /> : "Post Ad"}
                           </Button>
                         </div>
                       </div>

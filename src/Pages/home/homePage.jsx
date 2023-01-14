@@ -346,10 +346,12 @@ export default function HomePage(props) {
                 <Row gutter={[20, 10]}>
                   {property ? (
                     property.slice(0, next).map((item, key) => {
+                      jsonObj =
+                        item.images.length !== 0 && JSON.parse(item?.images);
                       return (
                         <Col key={key} xs={12} sm={12} md={8} lg={6} xl={6}>
                           <PopularAds
-                            image={Images.populaAd.ad1}
+                            image={`${Config.API_BASE_URL}/uploads/images/${jsonObj[0]}`}
                             description={item.tittle}
                             price={`K${item.buy}`}
                           />
@@ -378,7 +380,7 @@ export default function HomePage(props) {
             </Row>
 
             {/* how its work */}
-            <div className="howItsWorkWeb">
+            {/* <div className="howItsWorkWeb">
               <p className="discoverItemText secondSectionText thirdsectionText">
                 how it works
               </p>
@@ -400,16 +402,16 @@ export default function HomePage(props) {
                   </Row>
                 </Col>
               </Row>
-            </div>
+            </div> */}
             {/* how its work end */}
 
             {/* how its work mobile */}
-            <div className="howItsWorkMobile">
+            {/* <div className="howItsWorkMobile">
               <p className="discoverItemText secondSectionText thirdsectionText">
                 how it works
-              </p>
+              </p> */}
 
-              <Row gutter={0} className="addSection trendingSection howItsWork">
+            {/* <Row gutter={0} className="addSection trendingSection howItsWork">
                 <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                   <Row>
                     <Carousel swipeToSlide draggable afterChange={onChange}>
@@ -429,7 +431,7 @@ export default function HomePage(props) {
                   </Row>
                 </Col>
               </Row>
-            </div>
+            </div> */}
 
             {/* how its work mobile end */}
 

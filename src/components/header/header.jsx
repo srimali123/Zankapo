@@ -257,7 +257,7 @@ export default function Header(props) {
                   />
                 </Link>
               </div>
-              <button href="#" className="addBtn">
+              <button className="addBtn">
                 <Link to={"/placeAd"}>
                   <img src={Images.common.addIcon} className="addIcon" />
                 </Link>
