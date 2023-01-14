@@ -130,6 +130,24 @@
         color: $black2;
         margin-bottom: 24px;
       }
+      .spinnerCont {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+      }
+      .spinner {
+        margin-left: 10px;
+      }
+      .nodataText {
+        text-align: center;
+        font-size: 18px;
+        font-weight: 500;
+        color: $gray1;
+      }
+      .noDataImg {
+        height: 150px;
+        width: 200px;
+      }
 
       .secondSectionText {
         margin-top: 200px;

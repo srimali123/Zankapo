@@ -202,13 +202,25 @@
         background-color: $white;
       }
       .context {
-        font-size: 12px;
+        font-size: 14px;
         font-family: $poppins;
         font-weight: 400;
-        color: $black;
+        color: $gray1;
         width: 340px;
         margin-top: 20px;
       }
+      .AttributesHead {
+        font-size: 16px;
+        font-weight: 500;
+        color: $gray1;
+      }
+      .attributesValue {
+        font-size: 16px;
+        font-weight: 400;
+        color: $black;
+        margin-left: 5px;
+      }
+      
       .stopmobilecontent {
         display: none;
       }

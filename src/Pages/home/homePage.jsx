@@ -240,13 +240,20 @@ export default function HomePage(props) {
             </Row>
 
             {/* popular adds */}
-            <p className="discoverItemText secondSectionText">
-              Popular ads now ({advertisments?.length})
-            </p>
+         
+             
+                {" "}
+                <p className="discoverItemText secondSectionText spinnerCont">
+                  Popular ads now ({advertisments?.length})<span className="spinner"> <Loader  isLoading={true} color={"#F98F21"} /></span>
+                </p>
+           
+
+             
+         
             <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Row gutter={[20, 10]}>
-                  {advertisments ? (
+                  {!advertisments ? (
                     advertisments
                       .slice(0, next)
                       .sort((a, b) =>
@@ -271,9 +278,13 @@ export default function HomePage(props) {
                         );
                       })
                   ) : (
-                    <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                      <p>Popular ads (0)</p>
-                    </Col>
+                    <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                    <div style={{display:'flex',flexDirection:'column', justifyContent:'center', width:'100%', alignItems:'center'}}>
+                      <img src={Images.common.noData} className="noDataImg"/>
+                    <p className="nodataText">No Result Found!</p>
+                    </div>
+                
+                  </Col>
                   )}
                 </Row>
               </Col>
@@ -290,10 +301,11 @@ export default function HomePage(props) {
                   </Button>
                 ))}
             </Row>
+            <div></div>
 
             {/* recently add */}
-            <p className="discoverItemText secondSectionText thirdsectionText">
-              Recently added ({advertisments?.length})
+            <p className="discoverItemText secondSectionText thirdsectionText spinnerCont">
+              Recently added ({advertisments?.length})<span className="spinner"> <Loader  isLoading={true} color={"#F98F21"} /></span>
             </p>
             <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
@@ -316,9 +328,13 @@ export default function HomePage(props) {
                       );
                     })
                   ) : (
-                    <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                      <p>Recently added (0)</p>
-                    </Col>
+                    <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                    <div style={{display:'flex',flexDirection:'column', justifyContent:'center', width:'100%', alignItems:'center'}}>
+                      <img src={Images.common.noData} className="noDataImg"/>
+                    <p className="nodataText">No Result Found!</p>
+                    </div>
+                
+                  </Col>
                   )}
                 </Row>
               </Col>
@@ -338,13 +354,13 @@ export default function HomePage(props) {
 
             {/*  Houses for rent */}
 
-            <p className="discoverItemText secondSectionText thirdsectionText">
-              Houses for rent ({property?.length})
+            <p className="discoverItemText secondSectionText thirdsectionText spinnerCont">
+              Houses for rent ({property?.length}) <span className="spinner"> <Loader  isLoading={true} color={"#F98F21"} /></span>
             </p>
             <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Row gutter={[20, 10]}>
-                  {property ? (
+                  {!property ? (
                     property.slice(0, next).map((item, key) => {
                       jsonObj =
                         item.images.length !== 0 && JSON.parse(item?.images);
@@ -359,8 +375,12 @@ export default function HomePage(props) {
                       );
                     })
                   ) : (
-                    <Col xs={12} sm={12} md={8} lg={6} xl={6}>
-                      <p>House for rent (0)</p>
+                    <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                      <div style={{display:'flex',flexDirection:'column', justifyContent:'center', width:'100%', alignItems:'center'}}>
+                        <img src={Images.common.noData} className="noDataImg"/>
+                      <p className="nodataText">No Result Found!</p>
+                      </div>
+                  
                     </Col>
                   )}
                 </Row>

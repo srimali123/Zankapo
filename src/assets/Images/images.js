@@ -45,6 +45,8 @@ const Images = {
     mobile: require("../Images/common/mobile4n.png"),
     logout: require("../Images/common/logoutImg.png"),
     profilePic: require("../Images/common/uploadProfile.png"),
+    noData: require("../Images/common/noData.png"),
+
   },
   discover: {
     cloths: require("../Images/discoverItems/Clothes.png"),
