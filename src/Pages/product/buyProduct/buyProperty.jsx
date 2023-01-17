@@ -8,9 +8,9 @@ import { render } from "react-dom";
 import Footer from "../../../components/footer/footer.jsx";
 import { toast } from "react-toastify";
 
-import { clearPostAd } from "../../../Redux/Slices/PostAds";
+import { clearProperty } from "../../../Redux/Slices/Property";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchSingleAdvertisment } from "../../../Redux/Slices/PostAds/PostAdsSlice";
+import { fetchSingleProperty } from "../../../Redux/Slices/Property/PropertySlice";
 import { fetchCategories } from "../../../Redux/Slices/Category/CategorySlice";
 import { Config } from "../../../Config/index";
 import moment from "moment";
@@ -20,13 +20,13 @@ const onChange = (checkedValues) => {
   console.log("checked = ", checkedValues);
 };
 
-export default function BuyProduct() {
+export default function BuyProperty() {
   const { id } = useParams();
   const [showPhone, setShowPhone] = useState(false);
   const [jsonObj, setJsonObject] = useState({});
   const dispatch = useDispatch();
-  const { advertisment, isLoading, message, isError } = useSelector(
-    (state) => state.advertisment
+  const { property, isLoading, message, isError } = useSelector(
+    (state) => state.property
   );
 
   const { isAuthenticated } = useSelector((state) => state.auth);
@@ -45,10 +45,10 @@ export default function BuyProduct() {
     if (isError) {
       toast.error(message);
     }
-    dispatch(fetchSingleAdvertisment(id));
+    dispatch(fetchSingleProperty(id));
     dispatch(fetchCategories());
     return () => {
-      dispatch(clearPostAd());
+      dispatch(clearProperty());
     };
   }, [dispatch]);
 
@@ -58,8 +58,8 @@ export default function BuyProduct() {
 
   const onloadImage = () => {
     let url = Config.API_BASE_URL;
-    if (advertisment?.images.length !== 0) {
-      let jsonObj = JSON.parse(advertisment?.images);
+    if (property?.images.length !== 0) {
+      let jsonObj = JSON.parse(property?.images);
       setJsonObject(jsonObj);
     }
   };
@@ -117,9 +117,9 @@ export default function BuyProduct() {
                                 draggable
                                 afterChange={onChange}
                               >
-                                {advertisment?.images.length !== 0
+                                {property?.images.length !== 0
                                   ? Array.from(
-                                      JSON.parse(advertisment?.images)
+                                      JSON.parse(property?.images)
                                     ).map((item, key) => {
                                       return (
                                         <Col
@@ -153,7 +153,7 @@ export default function BuyProduct() {
                             className="stopWatch"
                           />
                           <p className="stopText">
-                            Posted {moment(advertisment?.created_at).fromNow()}
+                            Posted {moment(property?.created_at).fromNow()}
                           </p>
                         </div>
 
@@ -162,9 +162,9 @@ export default function BuyProduct() {
                             src={Images.common.locationNew}
                             className="stopWatch"
                           />
-                          <p className="stopText">{advertisment?.town}</p>
+                          <p className="stopText">{property?.town}</p>
                         </div>
-                        <p className="posterText">{advertisment?.title}</p>
+                        <p className="posterText">{property?.tittle}</p>
                         <div className="priceDetail">
                           <div>
                             {" "}
@@ -173,7 +173,7 @@ export default function BuyProduct() {
 
                           <div className="priceDetailText">
                             <p className="priceNew">
-                              {`K${advertisment?.buy}`}
+                              {`K${property?.buy}`}
                               <br />
                             </p>
                           </div>
@@ -185,19 +185,17 @@ export default function BuyProduct() {
                             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                               <p className="sellerDetails">About the seller</p>
                               <p className="sellerName">
-                                {advertisment?.sellerName}
+                                {property?.sellerName}
                               </p>
                               <p className="conditonSubText">
-                                {advertisment?.province}, Zambia
+                                {property?.province}, Zambia
                               </p>
                             </Col>
                             <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                               <div className="btnContainer">
                                 <Button
                                   className="orangeBtnBuy"
-                                  onClick={() =>
-                                    onSendMessage(advertisment?.email)
-                                  }
+                                  onClick={() => onSendMessage(property?.email)}
                                 >
                                   <img
                                     src={Images.common.message}
@@ -217,7 +215,7 @@ export default function BuyProduct() {
                                   />
 
                                   {showPhone
-                                    ? advertisment?.mobile
+                                    ? property?.mobile
                                     : " Show phone no"}
                                 </Button>
                               </div>
@@ -229,13 +227,13 @@ export default function BuyProduct() {
                         <p className="descripText">Description</p>
                         <Link>
                           <div className="btnUsed">
-                            {advertisment?.condition}
+                            {property?.isRentOrSale}
                           </div>
                         </Link>
-                        <p className="context">{advertisment?.description}</p>
+                        <p className="context">{property?.additional_info}</p>
                       </div>
 
-                      {/* <p className="descripText">Attributes</p>
+                      <p className="descripText">Attributes</p>
                       <Row>
                         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                           <p className="AttributesHead">
@@ -275,7 +273,7 @@ export default function BuyProduct() {
                             </span>
                           </p>
                         </Col>
-                      </Row> */}
+                      </Row>
                     </Col>
                   </Row>
                 </div>

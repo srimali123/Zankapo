@@ -29,6 +29,12 @@ export const fetchAdvertismentsById = async (id) => {
   return response;
 };
 
+export const fetchPropertiesById = async (id) => {
+  const url = `${Config.API_BASE_URL}api/property/search/${id}`;
+  const response = await httpClient.get(url);
+  return response;
+};
+
 export const fetchCategory = async () => {
   const url = `${Config.API_BASE_URL}api/category/list`;
   const response = await httpClient.get(url);

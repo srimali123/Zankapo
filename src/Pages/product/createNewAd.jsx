@@ -348,15 +348,6 @@ export default function CreateNewAd() {
                           )}
                         </div>
                         <aside style={Styles.thumbsContainer}>{thumbs}</aside>
-                        {/* <input
-                          type="file"
-                          name="image"
-                          onChange={(e) =>
-                            setImagePreview(
-                              URL.createObjectURL(e.target.files[0])
-                            )
-                          }
-                        /> */}
 
                         <div className="residentialCont">
                           <p className="residetialHead">Residential Type</p>

@@ -200,7 +200,7 @@ export default function Header(props) {
                 }}
               ></div>
             </div>
-            <p className="profileName">Aliyon Tembo</p>
+            <p className="profileName">{user?.fullname}</p>
           </div>
           <div className="profileMainContTwo">
             <div>

@@ -14,6 +14,18 @@ export const fetchProperty = createAsyncThunk(
   }
 );
 
+export const fetchSingleProperty = createAsyncThunk(
+  "property/getOne",
+  async (params, thunkAPI) => {
+    try {
+      return await advertismentService.fetchPropertiesById(params);
+    } catch (error) {
+      const message = error.toString();
+      thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
 const propertySlice = createSlice({
   name: "property",
   initialState: initialState,
@@ -27,9 +39,22 @@ const propertySlice = createSlice({
       })
       .addCase(fetchProperty.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.property = action.payload?.data?.data;
+        state.properties = action.payload?.data?.data;
       })
       .addCase(fetchProperty.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+
+      .addCase(fetchSingleProperty.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchSingleProperty.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.property = action.payload?.data?.data;
+      })
+      .addCase(fetchSingleProperty.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

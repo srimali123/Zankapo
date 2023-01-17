@@ -41,7 +41,7 @@ export default function HomePage(props) {
   const { advertisments, isLoading, message, isError } = useSelector(
     (state) => state.advertisments
   );
-  const { property } = useSelector((state) => state.property);
+  const { properties } = useSelector((state) => state.property);
 
   const menu = (
     <Menu
@@ -83,8 +83,11 @@ export default function HomePage(props) {
 
   //naviage to specific ad
   const onAdNavigateHandler = (id) => {
-    console.log("Ad id>>", id);
     navigate(`/buyproduct/${id}`);
+  };
+
+  const onNavigateToPrpertyHandler = (id) => {
+    navigate(`/buyproperty/${id}`);
   };
 
   return (
@@ -238,24 +241,21 @@ export default function HomePage(props) {
                 </Row>
               </Col>
             </Row>
-
-            {/* popular adds */}
-         
-             
-                {" "}
-                <p className="discoverItemText secondSectionText spinnerCont">
-                  Popular ads now ({advertisments?.length})<span className="spinner"> <Loader  isLoading={true} color={"#F98F21"} /></span>
-                </p>
-           
-
-             
-         
+            {/* popular adds */}{" "}
+            <p className="discoverItemText secondSectionText spinnerCont">
+              Popular ads now
+              {isLoading && (
+                <span className="spinner">
+                  <Loader isLoading={true} color={"#F98F21"} />
+                </span>
+              )}
+            </p>
             <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Row gutter={[20, 10]}>
-                  {!advertisments ? (
+                  {/* {advertisments ? (
                     advertisments
-                      .slice(0, next)
+                      ?.slice(0, next)
                       .sort((a, b) =>
                         a.title
                           .toLowerCase()
@@ -277,15 +277,22 @@ export default function HomePage(props) {
                           </Col>
                         );
                       })
-                  ) : (
-                    <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                    <div style={{display:'flex',flexDirection:'column', justifyContent:'center', width:'100%', alignItems:'center'}}>
-                      <img src={Images.common.noData} className="noDataImg"/>
-                    <p className="nodataText">No Result Found!</p>
+                  ) : ( */}
+                  <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                    <div
+                      style={{
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "center",
+                        width: "100%",
+                        alignItems: "center",
+                      }}
+                    >
+                      <img src={Images.common.noData} className="noDataImg" />
+                      <p className="nodataText">No Result Found!</p>
                     </div>
-                
                   </Col>
-                  )}
+                  {/* )} */}
                 </Row>
               </Col>
               {advertisments?.length > next &&
@@ -302,16 +309,20 @@ export default function HomePage(props) {
                 ))}
             </Row>
             <div></div>
-
             {/* recently add */}
             <p className="discoverItemText secondSectionText thirdsectionText spinnerCont">
-              Recently added ({advertisments?.length})<span className="spinner"> <Loader  isLoading={true} color={"#F98F21"} /></span>
+              Recently added
+              {isLoading && (
+                <span className="spinner">
+                  <Loader isLoading={true} color={"#F98F21"} />
+                </span>
+              )}
             </p>
             <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Row gutter={[20, 10]}>
                   {advertisments ? (
-                    advertisments.slice(0, next).map((item, key) => {
+                    advertisments?.slice(0, next).map((item, key) => {
                       jsonObj =
                         item.images.length !== 0 && JSON.parse(item?.images);
                       return (
@@ -329,12 +340,19 @@ export default function HomePage(props) {
                     })
                   ) : (
                     <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                    <div style={{display:'flex',flexDirection:'column', justifyContent:'center', width:'100%', alignItems:'center'}}>
-                      <img src={Images.common.noData} className="noDataImg"/>
-                    <p className="nodataText">No Result Found!</p>
-                    </div>
-                
-                  </Col>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          width: "100%",
+                          alignItems: "center",
+                        }}
+                      >
+                        <img src={Images.common.noData} className="noDataImg" />
+                        <p className="nodataText">No Result Found!</p>
+                      </div>
+                    </Col>
                   )}
                 </Row>
               </Col>
@@ -351,17 +369,20 @@ export default function HomePage(props) {
                   </Button>
                 ))}
             </Row>
-
             {/*  Houses for rent */}
-
             <p className="discoverItemText secondSectionText thirdsectionText spinnerCont">
-              Houses for rent ({property?.length}) <span className="spinner"> <Loader  isLoading={true} color={"#F98F21"} /></span>
+              Houses for rent
+              {isLoading && (
+                <span className="spinner">
+                  <Loader isLoading={true} color={"#F98F21"} />
+                </span>
+              )}
             </p>
             <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Row gutter={[20, 10]}>
-                  {!property ? (
-                    property.slice(0, next).map((item, key) => {
+                  {properties ? (
+                    properties?.slice(0, next).map((item, key) => {
                       jsonObj =
                         item.images.length !== 0 && JSON.parse(item?.images);
                       return (
@@ -370,22 +391,32 @@ export default function HomePage(props) {
                             image={`${Config.API_BASE_URL}/uploads/images/${jsonObj[0]}`}
                             description={item.tittle}
                             price={`K${item.buy}`}
+                            onAdNavigateHandler={() =>
+                              onNavigateToPrpertyHandler(item.id)
+                            }
                           />
                         </Col>
                       );
                     })
                   ) : (
                     <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                      <div style={{display:'flex',flexDirection:'column', justifyContent:'center', width:'100%', alignItems:'center'}}>
-                        <img src={Images.common.noData} className="noDataImg"/>
-                      <p className="nodataText">No Result Found!</p>
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          justifyContent: "center",
+                          width: "100%",
+                          alignItems: "center",
+                        }}
+                      >
+                        <img src={Images.common.noData} className="noDataImg" />
+                        <p className="nodataText">No Result Found!</p>
                       </div>
-                  
                     </Col>
                   )}
                 </Row>
               </Col>
-              {property?.length > next &&
+              {properties?.length > next &&
                 (isMoreLoading ? (
                   <Loader
                     loading={isMoreLoading}
@@ -398,7 +429,6 @@ export default function HomePage(props) {
                   </Button>
                 ))}
             </Row>
-
             {/* how its work */}
             {/* <div className="howItsWorkWeb">
               <p className="discoverItemText secondSectionText thirdsectionText">
@@ -424,13 +454,11 @@ export default function HomePage(props) {
               </Row>
             </div> */}
             {/* how its work end */}
-
             {/* how its work mobile */}
             {/* <div className="howItsWorkMobile">
               <p className="discoverItemText secondSectionText thirdsectionText">
                 how it works
               </p> */}
-
             {/* <Row gutter={0} className="addSection trendingSection howItsWork">
                 <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                   <Row>
@@ -452,9 +480,7 @@ export default function HomePage(props) {
                 </Col>
               </Row>
             </div> */}
-
             {/* how its work mobile end */}
-
             {/* This is trending web*/}
             {/* <div className="thisIsTrendingWeb">
               <p className="discoverItemText secondSectionText thirdsectionText">
@@ -476,7 +502,6 @@ export default function HomePage(props) {
                 </Col>
               </Row>
             </div> */}
-
             {/* <div className="thisIsTrendingMobile">
               <p className="discoverItemText secondSectionText thirdsectionText">
                 This is Trending

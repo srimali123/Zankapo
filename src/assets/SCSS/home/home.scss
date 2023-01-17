@@ -145,17 +145,17 @@
         color: $gray1;
       }
       .noDataImg {
-        height: 150px;
-        width: 200px;
+        height: 100px;
+        width: 130px;
       }
 
       .secondSectionText {
         margin-top: 200px;
       }
       .howItsWorkMobile {
-       display: none;
+        display: none;
       }
-      .thisIsTrendingMobile{
+      .thisIsTrendingMobile {
         display: none;
       }
       .addSection {
@@ -200,8 +200,6 @@
         margin-bottom: 120px;
       }
     }
-
-   
   }
 }
 
@@ -270,11 +268,11 @@
           margin-top: 70px;
         }
         .howItsWorkWeb {
-        display: none;
+          display: none;
         }
         .howItsWorkMobile {
-         display: flex;
-         flex-direction: column;
+          display: flex;
+          flex-direction: column;
         }
         .thisIsTrendingWeb {
           display: none;
