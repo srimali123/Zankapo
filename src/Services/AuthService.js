@@ -5,7 +5,7 @@ const rememberMeUsernameKey = "uyx&**";
 const rememberMePassword = "pyx&**";
 
 export const loginUser = async (email, password) => {
-  const url = `${Config.API_BASE_URL}api/auth/login`;
+  const url = `${Config.API_BASE_URL}api/user/signin`;
   return await httpClient.post(url, { email, password });
 };
 

@@ -7,6 +7,7 @@ import ReactStars from "react-rating-stars-component";
 import { render } from "react-dom";
 import Footer from "../../../components/footer/footer.jsx";
 import { toast } from "react-toastify";
+import Loader from "../../../components/spinner.jsx";
 
 import { clearPostAd } from "../../../Redux/Slices/PostAds";
 import { useDispatch, useSelector } from "react-redux";
@@ -52,17 +53,17 @@ export default function BuyProduct() {
     };
   }, [dispatch]);
 
-  useEffect(() => {
-    onloadImage();
-  }, [jsonObj]);
+  // useEffect(() => {
+  //   onloadImage();
+  // }, [jsonObj]);
 
-  const onloadImage = () => {
-    let url = Config.API_BASE_URL;
-    if (advertisment?.images.length !== 0) {
-      let jsonObj = JSON.parse(advertisment?.images);
-      setJsonObject(jsonObj);
-    }
-  };
+  // const onloadImage = () => {
+  //   let url = Config.API_BASE_URL;
+  //   if (advertisment?.images.length !== 0) {
+  //     let jsonObj = JSON.parse(advertisment?.images);
+  //     setJsonObject(jsonObj);
+  //   }
+  // };
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -112,12 +113,13 @@ export default function BuyProduct() {
                         >
                           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                             <Row>
+                              {advertisment.images.length !==0  ?
                               <Carousel
                                 swipeToSlide
                                 draggable
                                 afterChange={onChange}
                               >
-                                {advertisment?.images.length !== 0
+                                {advertisment?.images.length !== 0 || advertisment?.images !== undefined
                                   ? Array.from(
                                       JSON.parse(advertisment?.images)
                                     ).map((item, key) => {
@@ -131,7 +133,7 @@ export default function BuyProduct() {
                                           key={key}
                                         >
                                           <img
-                                            src={`${Config.API_BASE_URL}uploads/images/${item}`}
+                                            src={`${Config.API_BASE_URL}uploads/products/${item}`}
                                             className="posterCon"
                                             alt="ad-img"
                                           />
@@ -139,7 +141,7 @@ export default function BuyProduct() {
                                       );
                                     })
                                   : null}
-                              </Carousel>
+                              </Carousel> : <Loader isLoading={true} color={"#F98F21"} />}
                             </Row>
                           </Col>
                         </Row>
@@ -235,47 +237,7 @@ export default function BuyProduct() {
                         <p className="context">{advertisment?.description}</p>
                       </div>
 
-                      {/* <p className="descripText">Attributes</p>
-                      <Row>
-                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                          <p className="AttributesHead">
-                            Residential Type :{" "}
-                            <span className="attributesValue">house</span>
-                          </p>
-                          <p className="AttributesHead">
-                            Number Of Rooms :{" "}
-                            <span className="attributesValue">5</span>
-                          </p>
-                          <p className="AttributesHead">
-                            Electricity :{" "}
-                            <span className="attributesValue">Available</span>
-                          </p>
-                          <p className="AttributesHead">
-                            Security :{" "}
-                            <span className="attributesValue">Available</span>
-                          </p>
-                        </Col>
-                        <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                          <p className="AttributesHead">
-                            Living Area :{" "}
-                            <span className="attributesValue">10m</span>
-                          </p>
-                          <p className="AttributesHead">
-                            Running Water :{" "}
-                            <span className="attributesValue">Available</span>
-                          </p>
-                          <p className="AttributesHead">
-                            Rest Room :{" "}
-                            <span className="attributesValue">Available</span>
-                          </p>
-                          <p className="AttributesHead">
-                            Room Arrangement :{" "}
-                            <span className="attributesValue">
-                              Singlle Room
-                            </span>
-                          </p>
-                        </Col>
-                      </Row> */}
+                     
                     </Col>
                   </Row>
                 </div>
