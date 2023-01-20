@@ -328,7 +328,7 @@ export default function HomePage(props) {
                       return (
                         <Col key={key} xs={12} sm={12} md={8} lg={6} xl={6}>
                           <PopularAds
-                            image={`${Config.API_BASE_URL}/uploads/images/${jsonObj[0]}`}
+                            image={`${Config.API_BASE_URL}uploads/products/${jsonObj[0]}`}
                             description={item.title}
                             price={`K${item.buy}`}
                             onAdNavigateHandler={() =>

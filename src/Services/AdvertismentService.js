@@ -2,7 +2,7 @@ import { Config } from "../Config";
 import * as httpClient from "./HttpClient";
 
 export const createAdvertisment = async (data) => {
-  const url = `${Config.API_BASE_URL}api/ad/store`;
+  const url = `${Config.API_BASE_URL}api/product/store`;
   return await httpClient._post(url, data);
 };
 
@@ -12,7 +12,7 @@ export const createPropertyAdvertisment = async (data) => {
 };
 
 export const fetchAdvertisments = async () => {
-  const url = `${Config.API_BASE_URL}api/ad/showAll`;
+  const url = `${Config.API_BASE_URL}api/product/showAll`;
   const response = await httpClient.get(url);
   return response;
 };
@@ -24,7 +24,7 @@ export const fetchProperty = async () => {
 };
 
 export const fetchAdvertismentsById = async (id) => {
-  const url = `${Config.API_BASE_URL}api/ad/search/${id}`;
+  const url = `${Config.API_BASE_URL}api/product/search/${id}`;
   const response = await httpClient.get(url);
   return response;
 };
