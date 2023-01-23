@@ -1,31 +1,29 @@
 .serchProductMainContainer {
-    width: 100%;
-    height: 100%;
-    overflow-x:hidden;
-overflow-y: auto;
-   
-    .searchProductMiddlContainer {
-        padding:0px 40px;
-        top: 110px;
-        width: 100%;
-        position: relative;
-       margin-bottom: 100px;
-      
-.itemsContainer {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
 
-padding-top: 20px ;
-  
-   
-    padding-bottom: 20px;
-    .serchTextSearch {
+  .searchProductMiddlContainer {
+    padding: 0px 40px;
+    top: 110px;
+    width: 100%;
+    position: relative;
+    margin-bottom: 100px;
+
+    .itemsContainer {
+      padding-top: 20px;
+
+      padding-bottom: 20px;
+      .serchTextSearch {
         font-size: 16px;
         color: $gray7;
         font-weight: 500;
         margin-bottom: 28px;
-    }
-    .createDrop {
+      }
+      .createDrop {
         background-color: $gray18;
-     width: 213px;
+        width: 213px;
         height: 46px;
         justify-content: space-between;
         padding-right: 20px;
@@ -40,15 +38,115 @@ padding-top: 20px ;
       }
       .dropdownSection {
         margin-top: 90px;
-        
       }
       .searchItemContainer {
         border: 1px solid $gray19;
         padding: 35px 30px;
         min-height: 900px;
         max-height: 100%;
-      
+        margin-left: 10px;
+      }
+      .btnGroup {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+      .btnDrop {
+        margin-left: 20px;
+      }
+      .searchPageBtn {
+        min-width: 110px;
+        height: 40px;
+        color: $gray7;
+        font-size: 14px;
+        font-weight: 400;
+        font-family: $poppins;
+        border-width: 1;
+        border-style: solid;
+        border-color: $gray7;
 
+        &:hover,
+        &:focus,
+        &:active {
+          background-color: $orange2;
+          color: $white;
+          border: none;
+        }
+      }
+      .searchDropdown {
+        width: 131px;
+        height: 40px;
+        margin-left: 0px;
+        border: 1px solid $gray7;
+        color: $gray7;
+        font-size: 14px;
+        font-weight: 400px;
+        justify-content: space-between;
+        padding-right: 10px;
+        padding-left: 10px;
+        align-items: center;
+        display: flex;
+        overflow: hidden;
+      }
+      .searchTextSearch {
+        margin-top: 11px;
+        color:$gray7;
+        font-size: 14px;
+        font-weight: 400;
+        font-family: $poppins;
+        margin-bottom: 0;
+      }
+      .cardSectionSearch {
+        margin-top: 30px;
+        margin-bottom: 40px;
+       
+
+      }
+      .searchImg {
+        height: 221px;
+        width: 221px;
+      }
+      .searchItemTitle {
+        font-size: 16px;
+        color: $black;
+        font-weight: 500;
+        font-family: $poppins;
+        width: 400px;
+        margin-bottom: 8px;
+      }
+      .detailsSectionCard {
+      padding-left: 40px;
+      }
+      .productDetailSearch {
+        font-size: 12px;
+        font-family: $poppins;
+        font-weight: 400;
+        color: $gray7;
+       width: 350px;
+
+      }
+      .btnGroupList {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: row;
+      }
+      .priceText {
+        font-size: 14px;
+        font-weight: 600;
+        font-family:$poppins;
+        color: $black;
+        margin-bottom: 0px;
+      }
+      .buyText {
+        margin-bottom: 0px !important;
+        margin-top: 0px;
+      }
+      .valueText {
+        margin-top: 3px;
+        width: 150px;
+      }
+      .cardRow {
+        padding-bottom: 20px;
       }
       .advertisementContainer {
         width: 100%;
@@ -56,8 +154,390 @@ padding-top: 20px ;
         background-size: cover;
         background-position: center;
         background-repeat: no-repeat;
-        margin-top:52px;
+        margin-top: 52px;
       }
+    }
+  }
 }
+
+
+
+
+
+@include mobile {
+  .serchProductMainContainer {
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+  
+    .searchProductMiddlContainer {
+      padding: 0px 16px;
+      top: 50px;
+      width: 100%;
+      position: relative;
+      margin-bottom: 100px;
+  
+      .itemsContainer {
+        padding-top: 0px;
+  
+        padding-bottom: 20px;
+        .serchTextSearch {
+          font-size: 16px;
+          color: $gray7;
+          font-weight: 500;
+          margin-bottom: 28px;
+        }
+        .createDrop {
+
+          width: 100%;
+          
+        }
+        .dropdownSection {
+          margin-top: 90px;
+        }
+        .searchItemContainer {
+          border: none;
+          padding: 0px 0px;
+          min-height: 900px;
+          max-height: 100%;
+          margin-left: 0px;
+        }
+        .btnGroup {
+          display: flex;
+       
+          align-items: center;
+          justify-content: center;
+        }
+        .btnGroupList {
+          margin-bottom: 20px;
+          display: flex;
+          flex-direction: row;
+        }
+        .btnDrop {
+          margin-left: 0px;
+        }
+        .searchPageBtn {
+          min-width: 110px;
+          width: 100%;
+          height: 40px;
+          color: $gray7;
+          font-size: 14px;
+          font-weight: 400;
+          font-family: $poppins;
+          border-width: 1;
+          border-style: solid;
+          border-color: $gray7;
+  
+          &:hover,
+          &:focus,
+          &:active {
+            background-color: $orange2;
+            color: $white;
+            border: none;
+          }
+        }
+        .searchDropdown {
+          width: 100%;
+          height: 40px;
+          margin-left: 0px;
+          
+        }
+        .dropCol {
+          
+        }
+        .searchTextSearch {
+          margin-top: 11px;
+          color:$gray7;
+          font-size: 14px;
+          font-weight: 400;
+          font-family: $poppins;
+          margin-bottom: 0;
+        }
+        .cardSectionSearch {
+          margin-top: 30px;
+          margin-bottom: 40px;
+         
+  
+        }
+        .searchImg {
+          height: 108px;
+          width: 108px;
+        }
+        .searchItemTitle {
+          font-size: 14px;
+          width: 200px;
+          margin-bottom: 8px;
+        }
+        .productDetailSearch {
+          font-size: 12px;
+          font-family: $poppins;
+          font-weight: 400;
+          color: $gray7;
+         width: 200px;
+  
+        }
+        .priceText {
+          font-size: 14px;
+          font-weight: 600;
+          font-family:$poppins;
+          color: $black;
+          margin-bottom: 0px;
+        }
+        .buyText {
+          margin-bottom: 0px !important;
+          margin-top: 0px;
+        }
+        .valueText {
+          margin-top: 3px;
+          width: 150px;
+        }
+        .cardRow {
+          padding-bottom: 20px;
+        }
+        .advertisementContainer {
+          display: none;
+        }
+      }
+    }
+  }
 }
+
+@include tablet-portrait {
+  .serchProductMainContainer {
+   
+    .searchProductMiddlContainer {
+      padding: 0px 20px;
+     
+  
+      .itemsContainer {
+      
+        .serchTextSearch {
+          font-size: 18px;
+         
+        }
+        .createDrop {
+         
+          width: 100%;
+        
+        }
+        .dropdownSection {
+          margin-top: 90px;
+        }
+        .searchItemContainer {
+          border: none;
+          padding: 0;
+          
+        }
+       
+        .btnDrop {
+          margin-left: 20px;
+        }
+       
+        .searchDropdown {
+          width: 139px;
+          
+        }
+        .searchTextSearch {
+         
+          font-size: 16px;
+         
+        }
+        .cardSectionSearch {
+          margin-top: 30px;
+          margin-bottom: 40px;
+         
+  
+        }
+        .searchImg {
+          height: 221px;
+          width: 221px;
+        }
+        .searchItemTitle {
+          font-size: 16px;
+          width: 250px;
+         
+        }
+        .detailsSectionCard {
+        padding-left: 105px;
+        }
+        .productDetailSearch {
+          font-size: 12px;
+          font-family: $poppins;
+          font-weight: 400;
+          color: $gray7;
+         width: 220px;
+  
+        }
+        .btnGroupList {
+          margin-bottom: 20px;
+          display: flex;
+          flex-direction: row;
+        }
+        .priceText {
+          font-size: 14px;
+          font-weight: 600;
+          font-family:$poppins;
+          color: $black;
+          margin-bottom: 0px;
+        }
+        
+        .valueText {
+          margin-top: 3px;
+          width: 190px;
+        }
+       
+        .advertisementContainer {
+         display: none;
+        }
+      }
+    }
+  }
+  
+}
+
+@include tablet-landscape {
+  .serchProductMainContainer {
+   
+  
+    .searchProductMiddlContainer {
+      padding: 0px 20px;
+      
+  
+      .itemsContainer {
+        .serchTextSearch {
+          font-size: 16px;
+          color: $gray7;
+          font-weight: 500;
+          margin-bottom: 28px;
+        }
+        .createDrop {
+         
+          width: 100%;
+         
+        }
+        .dropdownSection {
+          margin-top: 90px;
+        }
+        .searchItemContainer {
+          border: 1px solid $gray19;
+          padding: 25px 20px;
+          min-height: 900px;
+          max-height: 100%;
+          margin-left: 10px;
+        }
+        .btnGroup {
+          display: flex;
+          align-items: center;
+          justify-content: flex-start;
+        }
+        .btnDrop {
+          margin-left: 20px;
+        }
+        .searchPageBtn {
+          min-width: 110px;
+          height: 40px;
+          color: $gray7;
+          font-size: 14px;
+          font-weight: 400;
+          font-family: $poppins;
+          border-width: 1;
+          border-style: solid;
+          border-color: $gray7;
+  
+          &:hover,
+          &:focus,
+          &:active {
+            background-color: $orange2;
+            color: $white;
+            border: none;
+          }
+        }
+        .searchDropdown {
+          width: 131px;
+          height: 40px;
+          margin-left: 0px;
+          margin-right: 20px;
+          border: 1px solid $gray7;
+          color: $gray7;
+          font-size: 14px;
+          font-weight: 400px;
+          justify-content: space-between;
+          padding-right: 10px;
+          padding-left: 10px;
+          align-items: center;
+          display: flex;
+          overflow: hidden;
+        }
+        .searchTextSearch {
+          margin-top: 11px;
+          color:$gray7;
+          font-size: 14px;
+          font-weight: 400;
+          font-family: $poppins;
+          margin-bottom: 0;
+        }
+        .cardSectionSearch {
+          margin-top: 30px;
+          margin-bottom: 40px;
+         
+  
+        }
+        .searchImg {
+          height: 221px;
+          width: 221px;
+        }
+        .searchItemTitle {
+          font-size: 16px;
+          color: $black;
+          font-weight: 500;
+          font-family: $poppins;
+          width: 300px;
+          margin-bottom: 8px;
+        }
+        .detailsSectionCard {
+        padding-left: 90px;
+        }
+        .productDetailSearch {
+          font-size: 12px;
+          font-family: $poppins;
+          font-weight: 400;
+          color: $gray7;
+         width: 300px;
+  
+        }
+        .btnGroupList {
+          margin-bottom: 20px;
+          display: flex;
+          flex-direction: row;
+        }
+        .priceText {
+          font-size: 14px;
+          font-weight: 600;
+          font-family:$poppins;
+          color: $black;
+          margin-bottom: 0px;
+        }
+        .buyText {
+          margin-bottom: 0px !important;
+          margin-top: 0px;
+        }
+        .valueText {
+          margin-top: 3px;
+          width: 150px;
+        }
+        .cardRow {
+          padding-bottom: 20px;
+        }
+        .advertisementContainer {
+          width: 100%;
+          height: 399px;
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          margin-top: 52px;
+        }
+      }
+    }
+  }
 }
