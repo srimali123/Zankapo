@@ -18,7 +18,7 @@ import { clearProperty } from "../../Redux/Slices/Property";
 import { Category } from "../../Utils/Constants";
 import { Config } from "../../Config";
 import { useNavigate } from "react-router-dom";
-
+import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 const contentStyle = {
   margin: 0,
   height: "160px",
@@ -43,23 +43,65 @@ export default function HomePage(props) {
   );
   const { properties } = useSelector((state) => state.property);
 
-  const menu = (
-    <Menu
-      className="menu"
-      items={Category.map((item, key) => {
-        return {
-          key: key,
-          label: (
-            <a rel="noopener noreferrer" onClick={() => console.log(item.name)}>
-              {" "}
-              {item.name}{" "}
-            </a>
-          ),
-        };
-      })}
-    />
-  );
-
+  // const menu = (
+  //   <Menu
+  //     className="menu"
+  //     items={Category.map((item, key) => {
+  //       return {
+  //         key: key,
+  //         label: (
+  //           <a rel="noopener noreferrer" onClick={() => console.log(item.name)}>
+  //             {" "}
+  //             {item.name}{" "}
+  //           </a>
+  //         ),
+  //       };
+  //     })}
+  //   />
+  // );
+  const items = [
+    {
+      key: "1",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          1st menu item
+        </a>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          2nd menu item
+        </a>
+      ),
+    },
+    {
+      key: "3",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.luohanacademy.com"
+        >
+          3rd menu item
+        </a>
+      ),
+    },
+    {
+      key: "4",
+  
+      label: "a danger item",
+    },
+  ];
   useEffect(() => {
     if (isError) {
       toast.error(message);
@@ -118,8 +160,29 @@ export default function HomePage(props) {
               <div className="serchSection">
                 {/* <p className="searchCategoryText">category</p>
                   <img src={Images.common.down} className="down" /> */}
-                <div className="orangeSection">
-                  <Dropdown
+                 <Row>
+                 <Col  xs={24} sm={24} md={24} lg={24} xl={24}>
+                <div >
+                 
+                  
+                    <Dropdown
+                                  trigger={["click"]}
+                                  className="orangeSection"
+                                  menu={{
+                                    items,
+                                  }}
+                                >
+                                  <a onClick={(e) => e.preventDefault()} className="searchCategoryText">
+                                  Category
+                                  <img
+                          src={Images.common.down}
+                          className="down"
+                          onClick={(e) => e.preventDefault()}
+                        />
+                                  </a>
+                                </Dropdown>
+
+                    {/* <Dropdown
                     overlay={menu}
                     trigger={["click"]}
                     overlayClassName="homedropdown"
@@ -134,8 +197,12 @@ export default function HomePage(props) {
                         />
                       </Space>
                     </div>
-                  </Dropdown>
+                  </Dropdown> */}
+                    
+                  
                 </div>
+                </Col>
+                  </Row>
 
                 <div className="whiteSection">
                   <Input

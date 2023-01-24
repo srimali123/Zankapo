@@ -123,23 +123,26 @@ input:-webkit-autofill:focus {
 }
 
 .homedropdown {
-  width: 165px;
-  left: 392px !important;
-  top: 445px !important;
+
+  // width: 165px;
+  // left: 392px !important;
+  // top: 445px !important;
   // max-width:max-content
 
-  @include tablet-portrait {
-    width: 165px;
-    left: 101px !important;
-    top: 366px !important;
-  }
+  // @include tablet-portrait {
+  //   width: 165px;
+  //   left: 101px !important;
+  //   top: 366px !important;
+  // }
 
-  @include tablet-landscape {
-    width: 165px;
-    left: 229px !important;
-    top: 411px !important;
-  }
+  // @include tablet-landscape {
+  //   width: 165px;
+  //   left: 229px !important;
+  //   top: 411px !important;
+  // }
 }
+
+
 // .selectDropddown {
 //   top: 500px !important;
 //   left: 112px !important;
