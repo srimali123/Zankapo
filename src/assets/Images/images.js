@@ -8,7 +8,7 @@ const Images = {
     menu: require("../Images/common/menu.png"),
     search: require("../Images/common/Search.png"),
     translate: require("../Images/common/translate.png"),
-    userColoured: require("../Images/common/usercoloured.png"),
+    userColoured: require("../Images/common/user.png"),
     userOutline: require("../Images/common/useroutline.png"),
     forward: require("../Images/common/forward icon.png"),
     ad2: require("../Images/popularAd/ad2.png"),
