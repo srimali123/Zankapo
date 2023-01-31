@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { DatePicker, Button, Row, Col, Input } from "antd";
+import { DatePicker, Button, Row, Col, Input, Dropdown } from "antd";
 
 import logoBlue from "../../../../assets/Images/common/bluelogo.png";
 import logo from "../../../../assets/Images/common/LOGO.png";
 import loginImg from "../../../../assets/Images/common/bottomcover.png";
 import Loader from "../../../../components/spinner";
 import { toast } from "react-toastify";
+import { DownOutlined } from "@ant-design/icons";
 
 import { useSelector, useDispatch } from "react-redux";
 import * as userService from "../../../../Services/UserService";
@@ -26,7 +27,49 @@ export default function SignUpPersonal() {
   const { savedUser } = useSelector((state) => state.register);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const items = [
+    {
+      key: "1",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          1st menu item
+        </a>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          2nd menu item
+        </a>
+      ),
+    },
+    {
+      key: "3",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.luohanacademy.com"
+        >
+          3rd menu item
+        </a>
+      ),
+    },
+    {
+      key: "4",
 
+      label: "a danger item",
+    },
+  ];
   //input handling
   const onInputHandler = (e) => {
     setPersonalData({ ...personalData, [e.target.name]: e.target.value });
@@ -100,14 +143,33 @@ export default function SignUpPersonal() {
                     required
                   />
                   <p className="labelRegister secondText">Province*</p>
-                  <Input
+                  {/* <Input
                     placeholder="Select"
                     className="registerInput emailInput"
                     name="province"
                     value={personalData.province}
                     onChange={onInputHandler}
                     required
-                  />
+                  /> */}
+
+                  <Row  >
+                    <Col xs={24} sm={24} md={24} lg={24} xl={24} >
+                      <Dropdown
+                        trigger={["click"]}
+                        placeholder="Province"
+                       className="dropdownProvince emailInput"
+                        menu={{
+                          items,
+                        }}
+                      >
+                        <a onClick={(e) => e.preventDefault()}>
+                          Province
+                          <DownOutlined />
+                        </a>
+                      </Dropdown>
+                    </Col>
+                  </Row>
+
                   <Row gutter={15}>
                     <Col xs={24} sm={24} md={24} lg={12} xl={12}>
                       <p className="labelRegister secondText">City*</p>
