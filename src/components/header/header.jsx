@@ -198,20 +198,23 @@ export default function Header(props) {
           </div>
           <div className="profileMainContTwo">
             <div>
-              <Link className="contentLink">
-                <p>My listings</p>
-              </Link>
-              <Link className="contentLink">
-                <p>My profile</p>
-              </Link>
-              <Link className="contentLink">
-                <p>Notifications</p>
-              </Link>
               {isAuthenticated ? (
-                <Link className="orangeDropText" onClick={() => logout()}>
-                  <img src={Images.common.logout} className="logout" />
-                  Logout
-                </Link>
+                <>
+                  <Link className="contentLink">
+                    <p>My listings</p>
+                  </Link>
+                  <Link className="contentLink">
+                    <p>My profile</p>
+                  </Link>
+                  <Link className="contentLink">
+                    <p>Notifications</p>
+                  </Link>
+
+                  <Link className="orangeDropText" onClick={() => logout()}>
+                    <img src={Images.common.logout} className="logout" />
+                    Logout
+                  </Link>
+                </>
               ) : (
                 <Link className="orangeDropText" to="/login">
                   <LoginOutlined className="logout" />

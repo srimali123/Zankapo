@@ -8,11 +8,13 @@ import { DownOutlined, LogoutOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../../../Redux/Slices/User";
 import { reset } from "../../../Redux/Slices/Auth";
+import { useNavigate } from "react-router-dom";
 
 export default function BuyProductHeader({ category }) {
   const [isShown, setIsShown] = useState(false);
   const { isAuthenticated } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -369,12 +371,18 @@ export default function BuyProductHeader({ category }) {
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <div className="grayContainer">
               <div className="iconCont">
-                <img src={Images.common.home} className="hederIcon" />
+                <img
+                  src={Images.common.home}
+                  className="hederIcon"
+                  onClick={() => navigate("/")}
+                />
                 <img
                   src={Images.common.forwardNew}
                   className="hederIconForward"
                 />
-                <Link className="clothsLink">{category}</Link>
+                <Link className="clothsLink">
+                  {category ? category : "Real estate"}
+                </Link>
               </div>
               <div className="iconCont backCont">
                 <Link to="/" className="clothsLink backlink">

@@ -59,7 +59,7 @@ export default function HomePage(props) {
     };
   }, [dispatch]);
 
-  const items = categories.map((item, idx) => {
+  const items = categories?.map((item, idx) => {
     return {
       key: idx,
       label: (

@@ -20,7 +20,9 @@ import moment from "moment";
 import PopularAds from "../../../components/popularAds.jsx";
 
 let jsonObj;
-
+const onChange = (checkedValues) => {
+  console.log("checked = ", checkedValues);
+};
 export default function BuyProduct() {
   const { id, category } = useParams();
   const [showPhone, setShowPhone] = useState(false);
@@ -52,8 +54,6 @@ export default function BuyProduct() {
 
     return filter[0];
   };
-
-  console.log("cate", filterCategory());
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -92,10 +92,6 @@ export default function BuyProduct() {
   useEffect(() => {
     findSimilarItems();
   }, []);
-
-  const onChange = (checkedValues) => {
-    console.log("checked = ", checkedValues);
-  };
 
   return (
     <div>

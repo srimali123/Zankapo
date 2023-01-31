@@ -14,6 +14,7 @@ import * as userService from "../../../../Services/UserService";
 import { clearUser } from "../../../../Redux/Slices/Signup/UserSlice";
 import { saveUser } from "../../../../Redux/Slices/User";
 import { setAuthenticate } from "../../../../Redux/Slices/Auth";
+import { Province } from "../../../../Utils/Constants";
 
 export default function SignUpPersonal() {
   const [loading, setLoading] = useState(false);
@@ -152,12 +153,12 @@ export default function SignUpPersonal() {
                     required
                   /> */}
 
-                  <Row  >
-                    <Col xs={24} sm={24} md={24} lg={24} xl={24} >
+                  <Row>
+                    <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                       <Dropdown
                         trigger={["click"]}
                         placeholder="Province"
-                       className="dropdownProvince emailInput"
+                        className="dropdownProvince emailInput"
                         menu={{
                           items,
                         }}
