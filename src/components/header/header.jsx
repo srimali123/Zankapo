@@ -7,7 +7,7 @@ import { Images } from "../../assets/Images/images";
 import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../../Redux/Slices/User/UserSlice";
 import { reset } from "../../Redux/Slices/Auth";
-
+import { LoginOutlined } from "@ant-design/icons";
 export default function Header(props) {
   const { isAuthenticated } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.user);
@@ -213,13 +213,25 @@ export default function Header(props) {
               <Link className="contentLink">
                 <p>Notifications</p>
               </Link>
+              {isAuthenticated ? (
+                <Link className="orangeDropText" onClick={() => logout()}>
+                <img src={Images.common.logout} className="logout" />
+                Logout
+              </Link>
+               
+              ) : (
+                <Link className="orangeDropText" to="/login" >
+                <LoginOutlined className="logout" />
+                Login
+              </Link>
+              )}
             </div>
-            <div>
+            {/* <div>
               <Link className="orangeDropText" onClick={() => logout()}>
                 <img src={Images.common.logout} className="logout" />
                 Logout
               </Link>
-            </div>
+            </div> */}
           </div>
         </div>
 
