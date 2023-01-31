@@ -81,6 +81,9 @@
       width: 24px;
       margin-right: 10px;
       margin-left: 0px;
+      color: $orange2;
+      filter:hue-rotate(0deg);
+
     }
     .userIconDrop {
       height: 8px;
@@ -95,11 +98,11 @@
     
       &:hover,
       &:focus {
-        color: $orange3;
+        color: $orange2;
       }
     }
     .nameLink {
-      color:  $orange3;
+      color:  $orange2;
     }
 
     .confirmcontainerAfterLogin {
