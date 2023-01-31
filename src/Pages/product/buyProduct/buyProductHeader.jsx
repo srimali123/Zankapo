@@ -87,6 +87,49 @@ export default function BuyProductHeader({ category }) {
       ]}
     />
   );
+  const items = [
+    {
+      key: "1",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          1st menu item
+        </a>
+      ),
+    },
+    {
+      key: "2",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.aliyun.com"
+        >
+          2nd menu item
+        </a>
+      ),
+    },
+    {
+      key: "3",
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.luohanacademy.com"
+        >
+          3rd menu item
+        </a>
+      ),
+    },
+    {
+      key: "4",
+  
+      label: "a danger item",
+    },
+  ];
 
   //logout function
   const logout = async () => {
@@ -235,20 +278,49 @@ export default function BuyProductHeader({ category }) {
                   <div className="serchSection">
                     {/* <p className="searchCategoryText">category</p>
                   <img src={Images.common.down} className="down" /> */}
-                    <div className="orangeSection">
-                      <Dropdown
-                        overlay={menu}
-                        trigger={["click"]}
-                        overlayClassName="hederdropdown"
-                      >
-                        <p className="searchCategoryText">Category</p>
-                      </Dropdown>
-                      <img
-                        src={Images.common.down}
-                        className="down"
-                        onClick={(e) => e.preventDefault()}
-                      />
+                     <Row>
+                 <Col  xs={24} sm={24} md={24} lg={24} xl={24}>
+                <div >
+                 
+                  
+                    <Dropdown
+                                  trigger={["click"]}
+                                  className="orangeSection"
+                                  menu={{
+                                    items,
+                                  }}
+                                >
+                                  <a onClick={(e) => e.preventDefault()} className="searchCategoryText">
+                                  Category
+                                  <img
+                          src={Images.common.down}
+                          className="down"
+                          onClick={(e) => e.preventDefault()}
+                        />
+                                  </a>
+                                </Dropdown>
+
+                    {/* <Dropdown
+                    overlay={menu}
+                    trigger={["click"]}
+                    overlayClassName="homedropdown"
+                  >
+                    <div className="searchCategoryText">
+                      Category
+                      <Space>
+                        <img
+                          src={Images.common.down}
+                          className="down"
+                          onClick={(e) => e.preventDefault()}
+                        />
+                      </Space>
                     </div>
+                  </Dropdown> */}
+                    
+                  
+                </div>
+                </Col>
+                  </Row>
 
                     <div className="whiteSection">
                       <Input
