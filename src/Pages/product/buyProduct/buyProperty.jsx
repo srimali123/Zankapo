@@ -131,7 +131,7 @@ export default function BuyProperty() {
                                           key={key}
                                         >
                                           <img
-                                            src={`${Config.API_BASE_URL}uploads/images/${item}`}
+                                            src={`${Config.API_BASE_URL}uploads/properties/${item}`}
                                             className="posterCon"
                                             alt="ad-img"
                                           />
@@ -238,33 +238,47 @@ export default function BuyProperty() {
                         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                           <p className="AttributesHead">
                             Residential Type :{" "}
-                            <span className="attributesValue">{property?.residential_type}</span>
+                            <span className="attributesValue">
+                              {property?.residential_type}
+                            </span>
                           </p>
                           <p className="AttributesHead">
                             Number Of Rooms :{" "}
-                            <span className="attributesValue">{property?.number_of_rooms}</span>
+                            <span className="attributesValue">
+                              {property?.number_of_rooms}
+                            </span>
                           </p>
                           <p className="AttributesHead">
                             Electricity :{" "}
-                            <span className="attributesValue">{property?.electricity}</span>
+                            <span className="attributesValue">
+                              {property?.electricity}
+                            </span>
                           </p>
                           <p className="AttributesHead">
                             Security :{" "}
-                            <span className="attributesValue">{property?.security}</span>
+                            <span className="attributesValue">
+                              {property?.security}
+                            </span>
                           </p>
                         </Col>
                         <Col xs={24} sm={24} md={12} lg={12} xl={12}>
                           <p className="AttributesHead">
                             Living Area :{" "}
-                            <span className="attributesValue">{property?.living_area_square_meters}</span>
+                            <span className="attributesValue">
+                              {property?.living_area_square_meters}
+                            </span>
                           </p>
                           <p className="AttributesHead">
                             Running Water :{" "}
-                            <span className="attributesValue">{property?.running_water}</span>
+                            <span className="attributesValue">
+                              {property?.running_water}
+                            </span>
                           </p>
                           <p className="AttributesHead">
                             Rest Room :{" "}
-                            <span className="attributesValue">{property?.restroom}</span>
+                            <span className="attributesValue">
+                              {property?.restroom}
+                            </span>
                           </p>
                           <p className="AttributesHead">
                             Room Arrangement :{" "}

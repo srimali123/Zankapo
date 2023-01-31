@@ -118,8 +118,6 @@ export default function HomePage(props) {
                 sellers to list their products.{" "}
               </p>
               <div className="serchSection">
-                {/* <p className="searchCategoryText">category</p>
-                  <img src={Images.common.down} className="down" /> */}
                 <Row>
                   <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <div>
@@ -142,23 +140,6 @@ export default function HomePage(props) {
                           />
                         </a>
                       </Dropdown>
-
-                      {/* <Dropdown
-                    overlay={menu}
-                    trigger={["click"]}
-                    overlayClassName="homedropdown"
-                  >
-                    <div className="searchCategoryText">
-                      Category
-                      <Space>
-                        <img
-                          src={Images.common.down}
-                          className="down"
-                          onClick={(e) => e.preventDefault()}
-                        />
-                      </Space>
-                    </div>
-                  </Dropdown> */}
                     </div>
                   </Col>
                 </Row>
@@ -321,7 +302,7 @@ export default function HomePage(props) {
                   {/* )} */}
                 </Row>
               </Col>
-              {advertisments?.length > next &&
+              {/* {advertisments?.length > next &&
                 (isMoreLoading ? (
                   <Loader
                     loading={isMoreLoading}
@@ -332,7 +313,7 @@ export default function HomePage(props) {
                     See More
                     <img src={Images.common.forward} className="forwardIcon" />
                   </Button>
-                ))}
+                ))} */}
             </Row>
             <div></div>
             {/* recently add */}
@@ -414,7 +395,7 @@ export default function HomePage(props) {
                       return (
                         <Col key={key} xs={12} sm={12} md={8} lg={6} xl={6}>
                           <PopularAds
-                            image={`${Config.API_BASE_URL}/uploads/images/${jsonObj[0]}`}
+                            image={`${Config.API_BASE_URL}/uploads/properties/${jsonObj[0]}`}
                             description={item.tittle}
                             price={`K${item.buy}`}
                             onAdNavigateHandler={() =>
