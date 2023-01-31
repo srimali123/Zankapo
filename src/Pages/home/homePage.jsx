@@ -9,6 +9,7 @@ import HowItsWork from "../../components/howItsWork";
 import Footer from "../../components/footer/footer";
 import Loader from "../../components/spinner";
 import { toast } from "react-toastify";
+import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 
 import { clearAdvertisments } from "../../Redux/Slices/Advertisment";
 import { useSelector, useDispatch } from "react-redux";
@@ -18,7 +19,8 @@ import { clearProperty } from "../../Redux/Slices/Property";
 import { Category } from "../../Utils/Constants";
 import { Config } from "../../Config";
 import { useNavigate } from "react-router-dom";
-import { DownOutlined, SmileOutlined } from "@ant-design/icons";
+import { fetchCategories } from "../../Redux/Slices/Category/CategorySlice";
+
 const contentStyle = {
   margin: 0,
   height: "160px",
@@ -42,77 +44,35 @@ export default function HomePage(props) {
     (state) => state.advertisments
   );
   const { properties } = useSelector((state) => state.property);
+  const { categories } = useSelector((state) => state.categories);
 
-  // const menu = (
-  //   <Menu
-  //     className="menu"
-  //     items={Category.map((item, key) => {
-  //       return {
-  //         key: key,
-  //         label: (
-  //           <a rel="noopener noreferrer" onClick={() => console.log(item.name)}>
-  //             {" "}
-  //             {item.name}{" "}
-  //           </a>
-  //         ),
-  //       };
-  //     })}
-  //   />
-  // );
-  const items = [
-    {
-      key: "1",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
-        >
-          1st menu item
-        </a>
-      ),
-    },
-    {
-      key: "2",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          2nd menu item
-        </a>
-      ),
-    },
-    {
-      key: "3",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.luohanacademy.com"
-        >
-          3rd menu item
-        </a>
-      ),
-    },
-    {
-      key: "4",
-  
-      label: "a danger item",
-    },
-  ];
   useEffect(() => {
     if (isError) {
       toast.error(message);
     }
     dispatch(fetchAdvertisments());
     dispatch(fetchProperty());
+    dispatch(fetchCategories());
     return () => {
       dispatch(clearAdvertisments());
       dispatch(clearProperty());
     };
   }, [dispatch]);
+
+  const items = categories.map((item, idx) => {
+    return {
+      key: idx,
+      label: (
+        <a
+          target="_blank"
+          rel="noopener noreferrer"
+          href="https://www.antgroup.com"
+        >
+          {item.category}
+        </a>
+      ),
+    };
+  });
 
   //see more
   const showMoreItems = async () => {
@@ -124,8 +84,8 @@ export default function HomePage(props) {
   };
 
   //naviage to specific ad
-  const onAdNavigateHandler = (id) => {
-    navigate(`/buyproduct/${id}`);
+  const onAdNavigateHandler = (id, category) => {
+    navigate(`/buyproduct/${id}/${category}`);
   };
 
   const onNavigateToPrpertyHandler = (id) => {
@@ -160,29 +120,30 @@ export default function HomePage(props) {
               <div className="serchSection">
                 {/* <p className="searchCategoryText">category</p>
                   <img src={Images.common.down} className="down" /> */}
-                 <Row>
-                 <Col  xs={24} sm={24} md={24} lg={24} xl={24}>
-                <div >
-                 
-                  
-                    <Dropdown
-                                  trigger={["click"]}
-                                  className="orangeSection"
-                                  menu={{
-                                    items,
-                                  }}
-                                >
-                                  <a onClick={(e) => e.preventDefault()} className="searchCategoryText">
-                                  Category
-                                  <img
-                          src={Images.common.down}
-                          className="down"
+                <Row>
+                  <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                    <div>
+                      <Dropdown
+                        trigger={["click"]}
+                        className="orangeSection"
+                        menu={{
+                          items,
+                        }}
+                      >
+                        <a
                           onClick={(e) => e.preventDefault()}
-                        />
-                                  </a>
-                                </Dropdown>
+                          className="searchCategoryText"
+                        >
+                          Category
+                          <img
+                            src={Images.common.down}
+                            className="down"
+                            onClick={(e) => e.preventDefault()}
+                          />
+                        </a>
+                      </Dropdown>
 
-                    {/* <Dropdown
+                      {/* <Dropdown
                     overlay={menu}
                     trigger={["click"]}
                     overlayClassName="homedropdown"
@@ -198,11 +159,9 @@ export default function HomePage(props) {
                       </Space>
                     </div>
                   </Dropdown> */}
-                    
-                  
-                </div>
-                </Col>
-                  </Row>
+                    </div>
+                  </Col>
+                </Row>
 
                 <div className="whiteSection">
                   <Input
@@ -399,7 +358,7 @@ export default function HomePage(props) {
                             description={item.title}
                             price={`K${item.buy}`}
                             onAdNavigateHandler={() =>
-                              onAdNavigateHandler(item.id)
+                              onAdNavigateHandler(item.id, item.category)
                             }
                           />
                         </Col>

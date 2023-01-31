@@ -7,10 +7,13 @@ import { Images } from "../../assets/Images/images";
 import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../../Redux/Slices/User/UserSlice";
 import { reset } from "../../Redux/Slices/Auth";
+import { fetchCategories } from "../../Redux/Slices/Category/CategorySlice";
+import { useEffect } from "react";
 
 export default function Header(props) {
   const { isAuthenticated } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.user);
+  const { categories } = useSelector((state) => state.categories);
 
   const dispatch = useDispatch();
 
@@ -43,6 +46,10 @@ export default function Header(props) {
   const handleCancelTwo = () => {
     setIsModalOpenTwo(false);
   };
+
+  useEffect(() => {
+    dispatch(fetchCategories());
+  }, [dispatch]);
 
   const menu = (
     <Menu
@@ -154,27 +161,13 @@ export default function Header(props) {
             </Link>
             {isShown && (
               <div className="linkContainer">
-                <Link to={"/placeAd"} className="linkNew">
-                  Clothes
-                </Link>
-                <Link to="/" className="linkNew">
-                  Household
-                </Link>
-                <Link to="/" className="linkNew">
-                  Real esate
-                </Link>
-                <Link to="/" className="linkNew">
-                  Collectibles
-                </Link>
-                <Link to="/" className="linkNew">
-                  Vehicles
-                </Link>
-                <Link to="/" className="linkNew">
-                  Computers
-                </Link>
-                <Link to="/" className="linkNew">
-                  Mobile phones
-                </Link>
+                {categories?.map((item, idx) => {
+                  return (
+                    <Link to={"/searchProduct"} className="linkNew" key={idx}>
+                      {item.category}
+                    </Link>
+                  );
+                })}
               </div>
             )}
           </div>

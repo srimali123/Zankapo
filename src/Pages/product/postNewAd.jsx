@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Images } from "../../assets/Images/images.js";
 import { Row, Col } from "antd";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCategories } from "../../Redux/Slices/Category/CategorySlice";
@@ -10,7 +10,6 @@ import { Config } from "../../Config/index.js";
 export default function PostNewAd() {
   const { categories } = useSelector((state) => state.categories);
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(fetchCategories());
@@ -40,7 +39,15 @@ export default function PostNewAd() {
               <Row gutter={[50, 15]} className="cardContainer">
                 {categories?.map((item, index) => {
                   return (
-                    <Col xs={24} sm={24} md={12} lg={12} xl={12} key={index} className="colProduct">
+                    <Col
+                      xs={24}
+                      sm={24}
+                      md={12}
+                      lg={12}
+                      xl={12}
+                      key={index}
+                      className="colProduct"
+                    >
                       <div className="whiteBox marginBox">
                         <div>
                           {" "}

@@ -40,6 +40,7 @@ export default function BuyProductHeader({ category }) {
   const handleCancelTwo = () => {
     setIsModalOpenTwo(false);
   };
+
   const menu = (
     <Menu
       className="menu"
@@ -47,11 +48,7 @@ export default function BuyProductHeader({ category }) {
         {
           key: "1",
           label: (
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.antgroup.com"
-            >
+            <a target="_blank" rel="noopener noreferrer">
               My listings
             </a>
           ),
@@ -59,11 +56,7 @@ export default function BuyProductHeader({ category }) {
         {
           key: "2",
           label: (
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.antgroup.com"
-            >
+            <a target="_blank" rel="noopener noreferrer">
               My profile
             </a>
           ),
@@ -71,11 +64,7 @@ export default function BuyProductHeader({ category }) {
         {
           key: "3",
           label: (
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.antgroup.com"
-            >
+            <a target="_blank" rel="noopener noreferrer">
               Notifications
             </a>
           ),
@@ -85,9 +74,8 @@ export default function BuyProductHeader({ category }) {
           label: (
             <a
               className="logoutText"
-              target="_blank"
               rel="noopener noreferrer"
-              href="https://www.antgroup.com"
+              onClick={() => logout()}
             >
               Logout
             </a>
@@ -208,7 +196,7 @@ export default function BuyProductHeader({ category }) {
               </Link>
             </div>
             <div>
-              <Link className="orangeDropText">
+              <Link className="orangeDropText" onClick={() => logout()}>
                 <img src={Images.common.logout} className="logout" />
                 Logout
               </Link>
@@ -386,9 +374,7 @@ export default function BuyProductHeader({ category }) {
                   src={Images.common.forwardNew}
                   className="hederIconForward"
                 />
-                <Link to="/createAd" className="clothsLink">
-                  {category}
-                </Link>
+                <Link className="clothsLink">{category}</Link>
               </div>
               <div className="iconCont backCont">
                 <Link to="/" className="clothsLink backlink">
