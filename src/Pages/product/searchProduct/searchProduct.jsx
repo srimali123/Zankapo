@@ -53,6 +53,7 @@ export default function SearchProduct() {
       <Row className="serchProductMainContainer">
         <Col xs={24} sm={24} md={24} lg={24} xl={24}>
           <BuyProductHeader />
+          <div className="grayTab"></div>
           <div className="searchProductMiddlContainer">
             <Row gutter={[10, 20]} className="itemsContainer">
               <Col
