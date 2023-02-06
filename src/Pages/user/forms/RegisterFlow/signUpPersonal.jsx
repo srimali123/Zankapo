@@ -5,7 +5,7 @@ import { DatePicker, Button, Row, Col, Input, Dropdown } from "antd";
 import logoBlue from "../../../../assets/Images/common/bluelogo.png";
 import logo from "../../../../assets/Images/common/LOGO.png";
 import loginImg from "../../../../assets/Images/common/bottomcover.png";
-import Loader from "../../../../components/spinner";
+import { Loader } from "../../../../components/spinner";
 import { toast } from "react-toastify";
 import { DownOutlined } from "@ant-design/icons";
 
@@ -28,49 +28,25 @@ export default function SignUpPersonal() {
   const { savedUser } = useSelector((state) => state.register);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const items = [
-    {
-      key: "1",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
-        >
-          1st menu item
-        </a>
-      ),
-    },
-    {
-      key: "2",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          2nd menu item
-        </a>
-      ),
-    },
-    {
-      key: "3",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.luohanacademy.com"
-        >
-          3rd menu item
-        </a>
-      ),
-    },
-    {
-      key: "4",
 
-      label: "a danger item",
-    },
-  ];
+  //province
+  const items = Province.map((item, key) => {
+    return {
+      key: key,
+      label: (
+        <a
+          rel="noopener noreferrer"
+          onClick={() =>
+            setPersonalData({ ...personalData, province: item.name })
+          }
+        >
+          {" "}
+          {item.name}{" "}
+        </a>
+      ),
+    };
+  });
+
   //input handling
   const onInputHandler = (e) => {
     setPersonalData({ ...personalData, [e.target.name]: e.target.value });
@@ -164,7 +140,9 @@ export default function SignUpPersonal() {
                         }}
                       >
                         <a onClick={(e) => e.preventDefault()}>
-                          Province
+                          {personalData.province
+                            ? personalData.province
+                            : "Province"}
                           <DownOutlined />
                         </a>
                       </Dropdown>

@@ -7,9 +7,9 @@ import PopularAds from "../../components/popularAds";
 import Card from "../../components/card";
 import HowItsWork from "../../components/howItsWork";
 import Footer from "../../components/footer/footer";
-import Loader from "../../components/spinner";
 import { toast } from "react-toastify";
 import { DownOutlined, SmileOutlined } from "@ant-design/icons";
+import { FLoader, Loader } from "../../components/spinner";
 
 import { clearAdvertisments } from "../../Redux/Slices/Advertisment";
 import { useSelector, useDispatch } from "react-redux";
@@ -365,7 +365,7 @@ export default function HomePage(props) {
               </Col>
               {advertisments?.length > next &&
                 (isMoreLoading ? (
-                  <Loader
+                  <FLoader
                     loading={isMoreLoading}
                     color="rgba(249, 143, 33, 1)"
                   />
@@ -425,7 +425,7 @@ export default function HomePage(props) {
               </Col>
               {properties?.length > next &&
                 (isMoreLoading ? (
-                  <Loader
+                  <FLoader
                     loading={isMoreLoading}
                     color="rgba(249, 143, 33, 1)"
                   />

@@ -16,7 +16,7 @@ import { Config } from "../../../Config/index";
 import moment from "moment";
 
 import PopularAds from "../../../components/popularAds.jsx";
-import Loader from "../../../components/spinner.jsx";
+import { FLoader } from "../../../components/spinner.jsx";
 const onChange = (checkedValues) => {
   console.log("checked = ", checkedValues);
 };
@@ -24,6 +24,7 @@ const onChange = (checkedValues) => {
 export default function BuyProperty() {
   const { id, category } = useParams();
   const [showPhone, setShowPhone] = useState(false);
+  const [open, setOpen] = useState(false);
   const [jsonObj, setJsonObject] = useState({});
   const dispatch = useDispatch();
   const { property, isLoading, message, isError } = useSelector(
@@ -85,6 +86,22 @@ export default function BuyProperty() {
   const ratingChanged = (newRating) => {
     console.log(newRating);
   };
+
+  if (property?.images.length === 0) {
+    return (
+      <div
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          display: "flex",
+          height: "100vh",
+        }}
+      >
+        <FLoader isLoading={true} color={"#F98F21"} />
+      </div>
+    );
+  }
+
   return (
     <div>
       <Row className="mainProductConatainer">
@@ -103,38 +120,34 @@ export default function BuyProperty() {
                         >
                           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                             <Row>
-                              {property?.images.length !== 0 ? (
-                                <Carousel
-                                  swipeToSlide
-                                  draggable
-                                  afterChange={onChange}
-                                >
-                                  {property?.images.length !== 0
-                                    ? Array.from(
-                                        JSON.parse(property?.images)
-                                      ).map((item, key) => {
-                                        return (
-                                          <Col
-                                            xs={24}
-                                            sm={24}
-                                            md={24}
-                                            lg={24}
-                                            xl={24}
-                                            key={key}
-                                          >
-                                            <img
-                                              src={`${Config.API_BASE_URL}uploads/properties/${item}`}
-                                              className="posterCon"
-                                              alt="ad-img"
-                                            />
-                                          </Col>
-                                        );
-                                      })
-                                    : null}
-                                </Carousel>
-                              ) : (
-                                <Loader isLoading={true} color={"#F98F21"} />
-                              )}
+                              <Carousel
+                                swipeToSlide
+                                draggable
+                                afterChange={onChange}
+                              >
+                                {property?.images.length !== 0
+                                  ? Array.from(
+                                      JSON.parse(property?.images)
+                                    ).map((item, key) => {
+                                      return (
+                                        <Col
+                                          xs={24}
+                                          sm={24}
+                                          md={24}
+                                          lg={24}
+                                          xl={24}
+                                          key={key}
+                                        >
+                                          <img
+                                            src={`${Config.API_BASE_URL}uploads/properties/${item}`}
+                                            className="posterCon"
+                                            alt="ad-img"
+                                          />
+                                        </Col>
+                                      );
+                                    })
+                                  : null}
+                              </Carousel>
                             </Row>
                           </Col>
                         </Row>

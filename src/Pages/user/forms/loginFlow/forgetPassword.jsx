@@ -6,7 +6,7 @@ import { Button, Input, Row, Col } from "antd";
 import logoBlue from "../../../../assets/Images/common/bluelogo.png";
 import loginImg from "../../../../assets/Images/common/bottomcover.png";
 import logo from "../../../../assets/Images/common/LOGO.png";
-import Loader from "../../../../components/spinner";
+import { Loader } from "../../../../components/spinner";
 import { toast } from "react-toastify";
 
 import * as userService from "../../../../Services/UserService";
