@@ -34,7 +34,7 @@ export default function AppRoutes() {
         <Route path="/placeAd" element={<PostNewAd />} />
         <Route path="/createAd/:category/:id" element={<CreateNewAd />} />
         <Route path="/previewAd" element={<PreviewAd />} />
-        <Route path="/buyproduct/:id" element={<BuyProduct />} />
+        <Route path="/buyproduct/:id/:category" element={<BuyProduct />} />
         <Route path="/buyproperty/:id" element={<BuyProperty />} />
         <Route path="/searchProduct" element={<SearchProduct />} />
         <Route path="/Dashboard" element={<Dashboard/>} />

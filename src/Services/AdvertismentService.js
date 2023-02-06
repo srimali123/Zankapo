@@ -40,3 +40,9 @@ export const fetchCategory = async () => {
   const response = await httpClient.get(url);
   return response;
 };
+
+export const fetchProductByCategory = async (id) => {
+  const url = `${Config.API_BASE_URL}api/product/searchbycat/${id}`;
+  const response = await httpClient.get(url);
+  return response;
+};

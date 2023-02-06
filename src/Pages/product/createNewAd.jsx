@@ -14,7 +14,7 @@ import {
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { DownOutlined } from "@ant-design/icons";
 import { toast } from "react-toastify";
-import Loader from "../../components/spinner";
+import { Loader } from "../../components/spinner";
 import * as Styles from "./styles";
 import { useSelector, useDispatch } from "react-redux";
 import * as advertismentService from "../../Services/AdvertismentService";

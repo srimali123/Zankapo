@@ -5,7 +5,7 @@ import { Button, Row, Col, Input } from "antd";
 import logoBlue from "../../../../assets/Images/common/bluelogo.png";
 import loginImg from "../../../../assets/Images/common/bottomcover.png";
 import logo from "../../../../assets/Images/common/LOGO.png";
-import Loader from "../../../../components/spinner";
+import { Loader } from "../../../../components/spinner";
 
 import * as userService from "../../../../Services/UserService";
 import { useSelector } from "react-redux";

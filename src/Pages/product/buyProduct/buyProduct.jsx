@@ -1,46 +1,41 @@
 import React, { useEffect, useState } from "react";
 import { Images } from "../../../assets/Images/images.js";
 import { Row, Col, Button, Input, Divider, Checkbox, Carousel } from "antd";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import BuyProductHeader from "../buyProduct/buyProductHeader";
 import ReactStars from "react-rating-stars-component";
 import { render } from "react-dom";
 import Footer from "../../../components/footer/footer.jsx";
 import { toast } from "react-toastify";
-import Loader from "../../../components/spinner.jsx";
+import { FLoader } from "../../../components/spinner.jsx";
 
 import { clearPostAd } from "../../../Redux/Slices/PostAds";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchSingleAdvertisment } from "../../../Redux/Slices/PostAds/PostAdsSlice";
 import { fetchCategories } from "../../../Redux/Slices/Category/CategorySlice";
 import { Config } from "../../../Config/index";
+import { fetchProductByCategory } from "../../../Services/AdvertismentService.js";
 import moment from "moment";
 
 import PopularAds from "../../../components/popularAds.jsx";
+
+let jsonObj;
 const onChange = (checkedValues) => {
   console.log("checked = ", checkedValues);
 };
-
 export default function BuyProduct() {
-  const { id } = useParams();
+  const { id, category } = useParams();
   const [showPhone, setShowPhone] = useState(false);
-  const [jsonObj, setJsonObject] = useState({});
+  const [similarProduct, setSimilarProduct] = useState([]);
   const dispatch = useDispatch();
   const { advertisment, isLoading, message, isError } = useSelector(
     (state) => state.advertisment
   );
+  const navigate = useNavigate();
 
   const { isAuthenticated } = useSelector((state) => state.auth);
 
   const { categories } = useSelector((state) => state.categories);
-
-  const filterCategory = () => {
-    let filter = categories
-      ?.filter((item) => item.id == id)
-      .map(({ category }) => category);
-
-    return filter[0];
-  };
 
   useEffect(() => {
     if (isError) {
@@ -53,24 +48,17 @@ export default function BuyProduct() {
     };
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   onloadImage();
-  // }, [jsonObj]);
+  const filterCategory = () => {
+    let filter = categories
+      ?.filter((item) => item.id == category)
+      .map(({ category }) => category);
 
-  // const onloadImage = () => {
-  //   let url = Config.API_BASE_URL;
-  //   if (advertisment?.images.length !== 0) {
-  //     let jsonObj = JSON.parse(advertisment?.images);
-  //     setJsonObject(jsonObj);
-  //   }
-  // };
+    return filter[0];
+  };
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  Array.from(jsonObj).map((item, index) => {
-    console.log(item);
-  });
 
   const onSendMessage = (email) => {
     if (isAuthenticated) {
@@ -92,9 +80,41 @@ export default function BuyProduct() {
     }
   };
 
-  const ratingChanged = (newRating) => {
-    console.log(newRating);
+  const findSimilarItems = async () => {
+    const response = await fetchProductByCategory(category);
+
+    if (response.success) {
+      setSimilarProduct(response?.data?.data);
+    } else {
+      toast.error("check your internet connection");
+    }
   };
+
+  useEffect(() => {
+    findSimilarItems();
+  }, []);
+
+  //naviage to specific ad
+  const onAdNavigateHandler = (id, category) => {
+    navigate(`/buyproduct/${id}/${category}`);
+    window.location.reload(true);
+  };
+
+  if (advertisment?.images.length === 0) {
+    return (
+      <div
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          display: "flex",
+          height: "100vh",
+        }}
+      >
+        <FLoader isLoading={true} color={"#F98F21"} />
+      </div>
+    );
+  }
+
   return (
     <div>
       <Row className="mainProductConatainer">
@@ -113,13 +133,13 @@ export default function BuyProduct() {
                         >
                           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                             <Row>
-                              {advertisment.images.length !==0  ?
                               <Carousel
                                 swipeToSlide
                                 draggable
                                 afterChange={onChange}
                               >
-                                {advertisment?.images.length !== 0 || advertisment?.images !== undefined
+                                {advertisment?.images.length !== 0 ||
+                                advertisment?.images !== undefined
                                   ? Array.from(
                                       JSON.parse(advertisment?.images)
                                     ).map((item, key) => {
@@ -141,7 +161,7 @@ export default function BuyProduct() {
                                       );
                                     })
                                   : null}
-                              </Carousel> : <Loader isLoading={true} color={"#F98F21"} />}
+                              </Carousel>
                             </Row>
                           </Col>
                         </Row>
@@ -236,8 +256,6 @@ export default function BuyProduct() {
                         </Link>
                         <p className="context">{advertisment?.description}</p>
                       </div>
-
-                     
                     </Col>
                   </Row>
                 </div>
@@ -246,34 +264,32 @@ export default function BuyProduct() {
                   <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <p className="serchText">Similar searches</p>
                     <Row gutter={[20, 20]}>
-                      <Col xs={12} sm={12} md={8} lg={8} xl={8}>
-                        <PopularAds
-                          image={Images.populaAd.ad1}
-                          description={
-                            "Play station 5 console With all accesories"
-                          }
-                          price={"K27,000"}
-                        />
-                      </Col>
-
-                      <Col xs={12} sm={12} md={8} lg={8} xl={8}>
-                        <PopularAds
-                          image={Images.populaAd.ad1}
-                          description={
-                            "Play station 5 console With all accesories"
-                          }
-                          price={"K27,000"}
-                        />
-                      </Col>
-                      <Col xs={12} sm={12} md={8} lg={8} xl={8}>
-                        <PopularAds
-                          image={Images.populaAd.ad1}
-                          description={
-                            "Play station 5 console With all accesories"
-                          }
-                          price={"K27,000"}
-                        />
-                      </Col>
+                      {similarProduct
+                        ? similarProduct.slice(0, 3).map((item, idx) => {
+                            jsonObj =
+                              item.images.length !== 0 &&
+                              JSON.parse(item?.images);
+                            return (
+                              <Col
+                                xs={12}
+                                sm={12}
+                                md={8}
+                                lg={8}
+                                xl={8}
+                                key={idx}
+                              >
+                                <PopularAds
+                                  image={`${Config.API_BASE_URL}uploads/products/${jsonObj[0]}`}
+                                  description={item.title}
+                                  price={`K${item.buy}`}
+                                  onAdNavigateHandler={() =>
+                                    onAdNavigateHandler(item.id, item.category)
+                                  }
+                                />
+                              </Col>
+                            );
+                          })
+                        : null}
                     </Row>
                   </Col>
                 </Row>

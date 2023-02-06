@@ -8,11 +8,13 @@ import { DownOutlined, LogoutOutlined } from "@ant-design/icons";
 import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../../../Redux/Slices/User";
 import { reset } from "../../../Redux/Slices/Auth";
+import { useNavigate } from "react-router-dom";
 
 export default function BuyProductHeader({ category }) {
   const [isShown, setIsShown] = useState(false);
   const { isAuthenticated } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.user);
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -40,6 +42,7 @@ export default function BuyProductHeader({ category }) {
   const handleCancelTwo = () => {
     setIsModalOpenTwo(false);
   };
+
   const menu = (
     <Menu
       className="menu"
@@ -47,11 +50,7 @@ export default function BuyProductHeader({ category }) {
         {
           key: "1",
           label: (
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.antgroup.com"
-            >
+            <a target="_blank" rel="noopener noreferrer">
               My listings
             </a>
           ),
@@ -59,11 +58,7 @@ export default function BuyProductHeader({ category }) {
         {
           key: "2",
           label: (
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.antgroup.com"
-            >
+            <a target="_blank" rel="noopener noreferrer">
               My profile
             </a>
           ),
@@ -71,11 +66,7 @@ export default function BuyProductHeader({ category }) {
         {
           key: "3",
           label: (
-            <a
-              target="_blank"
-              rel="noopener noreferrer"
-              href="https://www.antgroup.com"
-            >
+            <a target="_blank" rel="noopener noreferrer">
               Notifications
             </a>
           ),
@@ -85,9 +76,8 @@ export default function BuyProductHeader({ category }) {
           label: (
             <a
               className="logoutText"
-              target="_blank"
               rel="noopener noreferrer"
-              href="https://www.antgroup.com"
+              onClick={() => logout()}
             >
               Logout
             </a>
@@ -251,7 +241,7 @@ export default function BuyProductHeader({ category }) {
               </Link>
             </div>
             <div>
-              <Link className="orangeDropText">
+              <Link className="orangeDropText" onClick={() => logout()}>
                 <img src={Images.common.logout} className="logout" />
                 Logout
               </Link>
@@ -453,13 +443,17 @@ export default function BuyProductHeader({ category }) {
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <div className="grayContainer">
               <div className="iconCont">
-                <img src={Images.common.home} className="hederIcon" />
+                <img
+                  src={Images.common.home}
+                  className="hederIcon"
+                  onClick={() => navigate("/")}
+                />
                 <img
                   src={Images.common.forwardNew}
                   className="hederIconForward"
                 />
-                <Link to="/createAd" className="clothsLink">
-                  {category}
+                <Link className="clothsLink">
+                  {category ? category : "Real estate"}
                 </Link>
               </div>
               <div className="iconCont backCont">
