@@ -1,0 +1,789 @@
+.dashMainContainer {
+  position: relative;
+  overflow-x: hidden;
+
+  .dashMainHeaderContainer {
+    background-color: red;
+  }
+  .tabSection {
+    height: 68px;
+    background-color: $gray18;
+    position: fixed;
+    top: 60px;
+    z-index: 1;
+    width: 100%;
+    margin: 0 !important;
+
+    .react-tabs__tab-list {
+      display: flex;
+      height: 68px;
+      justify-content: flex-start;
+      flex-direction: row !important;
+      align-items: center !important;
+      padding-left: 0;
+    }
+
+    .tabPane2 {
+    }
+    .titletab {
+      color: $gray15;
+      font-weight: 500;
+      font-size: 17px;
+      font-family: $poppins;
+
+      &:hover,
+      &:active,
+      &:focus {
+        color: $orange4;
+        border-bottom: 2px solid $orange4;
+      }
+    }
+    ul {
+      list-style-type: none;
+    }
+    .tabPane {
+      margin-left: 61px;
+    }
+  }
+  .tabContainer {
+    min-height: 100vh;
+    max-height: 100%;
+    top: 125px;
+    width: 100%;
+    position: relative;
+    padding-top: 10px;
+    padding-left: 40px;
+    padding-right: 0px;
+    padding-bottom: 90px;
+
+    .tabPanelSection {
+      overflow-x: hidden;
+      width: 100%;
+      .listNavLinks {
+        height: 272px;
+        width: 227px;
+        overflow-x: hidden;
+        background-color: $gray18;
+        padding-top: 26px;
+      }
+      .profilelink {
+        height: 167px;
+      }
+      .cardListingContainer {
+        width: 100%;
+        background-color: $gray18;
+        min-height: 100vh;
+        max-height: 100%;
+        margin-left: 20px;
+        margin-bottom: 50px;
+        padding: 28px;
+      }
+      .profileCont {
+        .profileLabel {
+          color: $gray2;
+          font-size: 16px;
+          font-weight: 500;
+          font-family: $poppins;
+          margin-bottom: 5px;
+        }
+        .profileInput {
+          height: 52px;
+          width: 416px;
+          border: 1.1825px solid #d0d5dd;
+          box-shadow: 0px 1.1825px 2.365px rgba(16, 24, 40, 0.05);
+          border-radius: 9.46px;
+          color: $gray4;
+          font-size: 14px;
+          font-weight: 600;
+          font-family: $poppins;
+        }
+        .provinceinput {
+          width: 203px;
+        }
+        .secondLabel {
+          margin-top: 20px;
+        }
+        .dropdownProvince {
+          height: 52px;
+          width: 416px;
+          border: 1.1825px solid #d0d5dd;
+          box-shadow: 0px 1.1825px 2.365px rgba(16, 24, 40, 0.05);
+          border-radius: 9.46px;
+          display: flex;
+          justify-content: space-between;
+          background-color: $white;
+          font-size: 16px;
+          font-weight: 500;
+          font-family: $poppins;
+          color: $gray3;
+          align-items: center;
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+        .saveBtnPassword {
+          width: 420px;
+          height: 44px;
+          color: $white;
+          font-size: 14px;
+          font-family: $poppins;
+          font-weight: 500;
+          background-color: $orange2;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-top: 30px;
+          border-radius: 4px;
+          box-shadow: none;
+          text-align: center;
+          border: none;
+        }
+      }
+      .cardSectionSearch {
+        margin-bottom: 40px;
+        background-color: $white;
+        padding: 28px;
+        position: relative;
+      }
+      .dotmenu {
+        height: 25px;
+        width: 20px;
+        position: absolute;
+        top: 0px;
+
+        right: 0px;
+      }
+      .searchImg {
+        height: 221px;
+        width: 100%;
+      }
+      .searchItemTitle {
+        font-size: 16px;
+        color: $black;
+        font-weight: 500;
+        font-family: $poppins;
+        width: 400px;
+        margin-bottom: 8px;
+      }
+      .detailsSectionCard {
+        padding-left: 0px;
+      }
+      .productDetailSearch {
+        font-size: 12px;
+        font-family: $poppins;
+        font-weight: 400;
+        color: $gray7;
+        width: 350px;
+      }
+      .btnGroupList {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: row;
+      }
+      .priceText {
+        font-size: 14px;
+        font-weight: 600;
+        font-family: $poppins;
+        color: $black;
+        margin-bottom: 0px;
+      }
+      .searchTextSearch {
+        margin-top: 11px;
+        color: $gray7;
+        font-size: 14px;
+        font-weight: 400;
+        font-family: $poppins;
+        margin-bottom: 0;
+      }
+      .buyText {
+        margin-bottom: 0px !important;
+        margin-top: 0px;
+      }
+
+      .valueText {
+        margin-top: 3px;
+        width: 150px;
+      }
+      .cardRow {
+      }
+      .listingBox {
+        border: none;
+        border-left: 2px solid $gray7;
+        padding-left: 20px;
+        &:hover,
+        &:active,
+        &:focus,
+        &:visited {
+          border-left: 2px solid $orange2;
+        }
+      }
+      .linkList {
+        font-size: 16px;
+        font-weight: 500;
+        color: $gray7;
+        font-family: $poppins;
+
+        &:hover,
+        &:focus {
+          color: $orange2;
+        }
+      }
+      .countList {
+        font-size: 12px;
+        font-weight: 400;
+        font-family: $poppins;
+        color: $gray4;
+      }
+    }
+  }
+
+  .footercol {
+    bottom: 0;
+    position: relative;
+  }
+}
+
+@include mobile {
+  .dashMainContainer {
+    position: relative;
+    overflow-x: hidden;
+
+    .dashMainHeaderContainer {
+    }
+    .tabSection {
+      height: 68px;
+      background-color: $gray18;
+      position: fixed;
+      top: 60px;
+      margin-top: 50px;
+      z-index: 1;
+      width: 100%;
+      margin: 0 !important;
+
+      .react-tabs__tab-list {
+        display: flex;
+        height: 68px;
+        justify-content: flex-start;
+        flex-direction: row !important;
+        align-items: center !important;
+        padding-left: 0;
+      }
+
+      .tabPane2 {
+      }
+      .titletab {
+        color: $gray15;
+        font-weight: 500;
+        font-size: 14px;
+        font-family: $poppins;
+
+        &:hover,
+        &:active,
+        &:focus {
+          color: $orange4;
+          border-bottom: 2px solid $orange4;
+        }
+      }
+      ul {
+        list-style-type: none;
+      }
+      .tabPane {
+        margin-left: 5px;
+      }
+    }
+
+    .tabContainer {
+      min-height: 100vh;
+      max-height: 100%;
+      top: 125px;
+      width: 100%;
+      position: relative;
+      padding-top: 10px;
+      padding-left: 16px;
+      padding-right: 16px;
+      padding-bottom: 90px;
+      background-color: $gray18;
+      .tabPanelSection {
+        overflow-x: hidden;
+        width: 100%;
+        .listNavLinks {
+          overflow-x: hidden;
+          background-color: $white;
+          padding-top: 20px;
+        }
+        .cardListingContainer {
+          width: 100%;
+          background-color: $gray18;
+          min-height: 100vh;
+          max-height: 100%;
+          margin-left: 0px;
+          margin-bottom: 50px;
+          padding: 0px;
+        }
+        .profileCont {
+          background-color: $gray18;
+
+          .profileInput {
+            width: 100%;
+          }
+          .dropdownProvince {
+            width: 100%;
+          }
+          .provinceinput {
+            width: 100%;
+          }
+          .saveBtnPassword {
+            width: 100%;
+          }
+        }
+        .cardSectionSearch {
+          margin-bottom: 10px;
+          background-color: $white;
+          padding: 15px;
+          height: 170px;
+          position: relative;
+        }
+        .dotmenu {
+          height: 25px;
+          width: 20px;
+          position: absolute;
+          top: 0px;
+
+          right: 0px;
+        }
+        .searchImg {
+          height: 130px;
+          width: 100%;
+        }
+        .searchItemTitle {
+          font-size: 14px;
+          color: $gray8;
+          font-weight: 500;
+          font-family: $poppins;
+          width: 200px;
+          margin-bottom: 8px;
+        }
+        .detailsSectionCard {
+          padding-left: 0px;
+        }
+        .productDetailSearch {
+          display: none;
+        }
+        .btnGroupList {
+          margin-bottom: 20px;
+          display: flex;
+          flex-direction: row;
+        }
+        .priceText {
+          font-size: 14px;
+          font-weight: 600;
+          font-family: $poppins;
+          color: $black;
+          margin-bottom: 0px;
+        }
+        .searchTextSearch {
+          display: none;
+        }
+        .buyText {
+          margin-bottom: 0px !important;
+          margin-top: 0px;
+        }
+
+        .valueText {
+          margin-top: 3px;
+          width: 150px;
+        }
+        .cardRow {
+        }
+        .listingBox {
+          border: none;
+          border-left: 2px solid $gray7;
+          padding-left: 20px;
+          &:hover,
+          &:active,
+          &:focus,
+          &:visited {
+            border-left: 2px solid $orange2;
+          }
+        }
+        .linkList {
+          font-size: 16px;
+          font-weight: 500;
+          color: $gray7;
+          font-family: $poppins;
+
+          &:hover,
+          &:focus {
+            color: $orange2;
+          }
+        }
+        .countList {
+          font-size: 12px;
+          font-weight: 400;
+          font-family: $poppins;
+          color: $gray4;
+        }
+      }
+
+      .tabPanelsectionProfile {
+      }
+    }
+
+    .footercol {
+      bottom: 0;
+      position: relative;
+    }
+  }
+}
+
+@include tablet-portrait {
+  .dashMainContainer {
+    .dashMainHeaderContainer {
+    }
+    .tabSection {
+      .react-tabs__tab-list {
+      }
+
+      .tabPane2 {
+      }
+      .titletab {
+      }
+
+      .tabPane {
+        margin-left: 80px;
+      }
+    }
+    .tabContainer {
+      min-height: 100vh;
+      max-height: 100%;
+      top: 125px;
+      width: 100%;
+      position: relative;
+      padding-top: 10px;
+      padding-left: 40px;
+      padding-right: 40px;
+      padding-bottom: 90px;
+
+      .tabPanelSection {
+        overflow-x: hidden;
+        width: 100%;
+        .listNavLinks {
+          overflow-x: hidden;
+          background-color: $gray18;
+          padding-top: 26px;
+          margin-top: 10px;
+        }
+        .cardListingContainer {
+          width: 100%;
+          background-color: $white;
+          min-height: 100vh;
+          max-height: 100%;
+          margin-left: 10px;
+          margin-bottom: 50px;
+          padding: 0px;
+        }
+        .profileCont {
+          background-color: $gray18;
+          padding: 15px;
+          width: 100%;
+          margin-right: 0;
+          margin-top: 10px;
+          .profileInput {
+            width: 100%;
+          }
+          .dropdownProvince {
+            width: 100%;
+          }
+          .provinceinput {
+            width: 100%;
+          }
+          .towninput {
+            margin-left: 10px;
+          }
+          .saveBtnPassword {
+            width: 100%;
+          }
+        }
+        .cardSectionSearch {
+          margin-bottom: 20px;
+          background-color: $white;
+          padding: 10px;
+          position: relative;
+        }
+        .dotmenu {
+          height: 25px;
+          width: 20px;
+          position: absolute;
+          top: 0px;
+
+          right: -40px;
+        }
+        .searchImg {
+          height: 220px;
+          width: 100%;
+        }
+        .searchItemTitle {
+          font-size: 16px;
+          color: $black;
+          font-weight: 500;
+          font-family: $poppins;
+          width: 300px;
+          margin-bottom: 8px;
+        }
+        .detailsSectionCard {
+          padding-left: 0px;
+        }
+        .productDetailSearch {
+          font-size: 12px;
+          font-family: $poppins;
+          font-weight: 400;
+          color: $gray7;
+          width: 350px;
+        }
+        .btnGroupList {
+          margin-bottom: 20px;
+          display: flex;
+          flex-direction: row;
+        }
+        .priceText {
+          font-size: 14px;
+          font-weight: 600;
+          font-family: $poppins;
+          color: $black;
+          margin-bottom: 0px;
+        }
+        .searchTextSearch {
+          margin-top: 11px;
+          color: $gray7;
+          font-size: 14px;
+          font-weight: 400;
+          font-family: $poppins;
+          margin-bottom: 0;
+        }
+        .buyText {
+          margin-bottom: 0px !important;
+          margin-top: 0px;
+        }
+
+        .valueText {
+          margin-top: 3px;
+          width: 150px;
+        }
+        .cardRow {
+        }
+        .listingBox {
+          border: none;
+          border-left: 2px solid $gray7;
+          padding-left: 20px;
+          &:hover,
+          &:active,
+          &:focus,
+          &:visited {
+            border-left: 2px solid $orange2;
+          }
+        }
+        .linkList {
+          font-size: 16px;
+          font-weight: 500;
+          color: $gray7;
+          font-family: $poppins;
+
+          &:hover,
+          &:focus {
+            color: $orange2;
+          }
+        }
+        .countList {
+          font-size: 12px;
+          font-weight: 400;
+          font-family: $poppins;
+          color: $gray4;
+        }
+      }
+    }
+
+    .footercol {
+      bottom: 0;
+      position: relative;
+    }
+  }
+}
+
+@include tablet-landscape {
+  .dashMainContainer {
+    .tabSection {
+      .react-tabs__tab-list {
+      }
+
+      .tabPane2 {
+      }
+      .titletab {
+      }
+      ul {
+      }
+      .tabPane {
+      }
+    }
+    .tabContainer {
+      .tabPanelSection {
+        .listNavLinks {
+        }
+        .profilelink {
+        }
+        .cardListingContainer {
+          width: 100%;
+          background-color: $gray18;
+          min-height: 100vh;
+          max-height: 100%;
+          margin-left: 20px;
+          margin-bottom: 50px;
+          padding: 28px;
+        }
+        .profileCont {
+          .profileLabel {
+            color: $gray2;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: $poppins;
+            margin-bottom: 5px;
+          }
+          .profileInput {
+            height: 52px;
+            width: 416px;
+            border: 1.1825px solid #d0d5dd;
+            box-shadow: 0px 1.1825px 2.365px rgba(16, 24, 40, 0.05);
+            border-radius: 9.46px;
+            color: $gray4;
+            font-size: 14px;
+            font-weight: 600;
+            font-family: $poppins;
+          }
+          .provinceinput {
+            width: 203px;
+          }
+          .towninput {
+          }
+          .secondLabel {
+            margin-top: 20px;
+          }
+          .dropdownProvince {
+            height: 52px;
+            width: 416px;
+            border: 1.1825px solid #d0d5dd;
+            box-shadow: 0px 1.1825px 2.365px rgba(16, 24, 40, 0.05);
+            border-radius: 9.46px;
+            display: flex;
+            justify-content: space-between;
+            background-color: $white;
+            font-size: 16px;
+            font-weight: 500;
+            font-family: $poppins;
+            color: $gray3;
+            align-items: center;
+            padding-left: 10px;
+            padding-right: 10px;
+          }
+        }
+        .cardSectionSearch {
+          margin-bottom: 40px;
+          background-color: $white;
+          padding: 28px;
+          position: relative;
+        }
+        .dotmenu {
+          height: 25px;
+          width: 20px;
+          position: absolute;
+          top: 0px;
+
+          right: 0px;
+        }
+        .searchImg {
+          height: 221px;
+          width: 100%;
+        }
+        .searchItemTitle {
+          font-size: 16px;
+          color: $black;
+          font-weight: 500;
+          font-family: $poppins;
+          width: 400px;
+          margin-bottom: 8px;
+        }
+        .detailsSectionCard {
+          padding-left: 0px;
+        }
+        .productDetailSearch {
+          font-size: 12px;
+          font-family: $poppins;
+          font-weight: 400;
+          color: $gray7;
+          width: 350px;
+        }
+        .btnGroupList {
+          margin-bottom: 20px;
+          display: flex;
+          flex-direction: row;
+        }
+        .priceText {
+          font-size: 14px;
+          font-weight: 600;
+          font-family: $poppins;
+          color: $black;
+          margin-bottom: 0px;
+        }
+        .searchTextSearch {
+          margin-top: 11px;
+          color: $gray7;
+          font-size: 14px;
+          font-weight: 400;
+          font-family: $poppins;
+          margin-bottom: 0;
+        }
+        .buyText {
+          margin-bottom: 0px !important;
+          margin-top: 0px;
+        }
+
+        .valueText {
+          margin-top: 3px;
+          width: 150px;
+        }
+        .cardRow {
+        }
+        .listingBox {
+          border: none;
+          border-left: 2px solid $gray7;
+          padding-left: 20px;
+          &:hover,
+          &:active,
+          &:focus,
+          &:visited {
+            border-left: 2px solid $orange2;
+          }
+        }
+        .linkList {
+          font-size: 16px;
+          font-weight: 500;
+          color: $gray7;
+          font-family: $poppins;
+
+          &:hover,
+          &:focus {
+            color: $orange2;
+          }
+        }
+        .countList {
+          font-size: 12px;
+          font-weight: 400;
+          font-family: $poppins;
+          color: $gray4;
+        }
+      }
+    }
+
+    .footercol {
+      bottom: 0;
+      position: relative;
+    }
+  }
+}
