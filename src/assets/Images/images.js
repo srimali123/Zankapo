@@ -47,6 +47,7 @@ const Images = {
     profilePic: require("../Images/common/uploadProfile.png"),
     noData: require("../Images/common/noData.png"),
     dotButtton:require("../Images/common/DotsMenu.png"),
+    notfound:require("../Images/common/notfound.png"),
 
   },
   discover: {
