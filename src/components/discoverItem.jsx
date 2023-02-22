@@ -5,11 +5,12 @@ const DiscoverItem = (props) => {
 
   return (
     <div className="outerMain">
-      <div className="outerContainer">
-        <img src={image}  className="discoverImg"/>
+      <div className="outerContainer" onClick={props.onClick}>
+        <img src={image} className="discoverImg" />
       </div>
-      <a href="#" className='itemTitle' style={{...style}}>{link}</a>
-      
+      <a className="itemTitle" style={{ ...style }}>
+        {link}
+      </a>
     </div>
   );
 };

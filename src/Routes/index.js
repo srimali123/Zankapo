@@ -38,10 +38,9 @@ export default function AppRoutes() {
         <Route path="/previewAd" element={<PreviewAd />} />
         <Route path="/buyproduct/:id/:category" element={<BuyProduct />} />
         <Route path="/buyproperty/:id" element={<BuyProperty />} />
-        <Route path="/searchProduct" element={<SearchProduct />} />
-        <Route path="/Dashboard" element={<Dashboard/>} />
-        <Route path="/notfound" element={<NotFound/>} />
-        
+        <Route path="/searchProduct/:id/:name" element={<SearchProduct />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

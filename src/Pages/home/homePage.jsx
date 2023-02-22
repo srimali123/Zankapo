@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Button, Input, Dropdown, Menu, Carousel, Space } from "antd";
+import { Row, Col, Button, Input, Dropdown, Menu, Carousel } from "antd";
 import Header from "../../components/header/header";
 import DiscoverItem from "../../components/discoverItem";
 import { Images } from "../../assets/Images/images.js";
@@ -36,6 +36,7 @@ const onChange = (currentSlide) => {
 let jsonObj;
 
 export default function HomePage(props) {
+  const [open, setOpen] = useState(false);
   const [next, setNext] = useState(4);
   const [isMoreLoading, setMoreLoading] = useState(false);
   const dispatch = useDispatch();
@@ -91,6 +92,21 @@ export default function HomePage(props) {
   const onNavigateToPrpertyHandler = (id) => {
     navigate(`/buyproperty/${id}`);
   };
+
+  if (isLoading) {
+    return (
+      <div
+        style={{
+          justifyContent: "center",
+          alignItems: "center",
+          display: "flex",
+          height: "100vh",
+        }}
+      >
+        <FLoader isLoading={true} color={"#F98F21"} />
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -168,123 +184,57 @@ export default function HomePage(props) {
             <Row gutter={0}>
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Row gutter={[30, 64]}>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={3}>
-                    <DiscoverItem
-                      image={Images.discover.cloths}
-                      link={"Clothes"}
-                      style={{ marginRight: 25 }}
-                    />
-                  </Col>
-                  <Col
-                    xs={6}
-                    sm={6}
-                    md={6}
-                    lg={6}
-                    xl={3}
-                    className="discoverCol"
-                  >
-                    <DiscoverItem
-                      image={Images.discover.houseHold}
-                      link={"Household"}
-                    />
-                  </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={3}>
-                    <DiscoverItem
-                      image={Images.discover.electronics}
-                      link={"Electronics"}
-                    />
-                  </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={3}>
-                    <DiscoverItem
-                      image={Images.discover.house}
-                      link={"Property"}
-                    />
-                  </Col>
-                  <Col xs={6} sm={6} md={6} lg={6} xl={3}>
-                    <DiscoverItem
-                      image={Images.discover.computer}
-                      link={"Computers"}
-                    />
-                  </Col>
-                  <Col
-                    xs={6}
-                    sm={6}
-                    md={6}
-                    lg={6}
-                    xl={3}
-                    className="discoverCol"
-                  >
-                    <DiscoverItem
-                      image={Images.discover.collection}
-                      link={"Collectibles"}
-                    />
-                  </Col>
-                  <Col
-                    xs={6}
-                    sm={6}
-                    md={6}
-                    lg={6}
-                    xl={3}
-                    className="discoverCol"
-                  >
-                    <DiscoverItem
-                      image={Images.discover.cars}
-                      link={"Vehicles"}
-                    />
-                  </Col>
-                  <Col
-                    xs={6}
-                    sm={6}
-                    md={6}
-                    lg={6}
-                    xl={3}
-                    className="discoverCol"
-                  >
-                    <DiscoverItem
-                      image={Images.discover.mobile}
-                      link={"Mobile phones"}
-                    />
-                  </Col>
+                  {categories?.slice(0, 8).map((item, idx) => {
+                    return (
+                      <Col xs={6} sm={6} md={6} lg={6} xl={3}>
+                        <DiscoverItem
+                          image={`${Config.API_BASE_URL}uploads/icons/${item.icon}`}
+                          link={item.category}
+                          style={{ marginRight: 25 }}
+                          onClick={() =>
+                            navigate(
+                              `searchProduct/${item.id}/${item.category}`
+                            )
+                          }
+                        />
+                      </Col>
+                    );
+                  })}
                 </Row>
               </Col>
             </Row>
             {/* popular adds */}{" "}
             <p className="discoverItemText secondSectionText spinnerCont">
               Popular ads now
-              {isLoading && (
-                <span className="spinner">
-                  <Loader isLoading={true} color={"#F98F21"} />
-                </span>
-              )}
             </p>
             <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Row gutter={[20, 10]}>
                   {/* {advertisments ? (
-                    advertisments
-                      ?.slice(0, next)
-                      .sort((a, b) =>
-                        a.title
-                          .toLowerCase()
-                          .localeCompare(b.title.toLowerCase())
-                      )
-                      .map((item, key) => {
-                        jsonObj =
-                          item.images.length !== 0 && JSON.parse(item?.images);
-                        return (
-                          <Col key={key} xs={12} sm={12} md={8} lg={6} xl={6}>
-                            <PopularAds
-                              image={`${Config.API_BASE_URL}uploads/images/${jsonObj[0]}`}
-                              description={item.title}
-                              price={`K${item.buy}`}
-                              onAdNavigateHandler={() =>
-                                onAdNavigateHandler(item.id)
-                              }
-                            />
-                          </Col>
-                        );
-                      })
-                  ) : ( */}
+              advertisments
+                ?.slice(0, next)
+                .sort((a, b) =>
+                  a.title
+                    .toLowerCase()
+                    .localeCompare(b.title.toLowerCase())
+                )
+                .map((item, key) => {
+                  jsonObj =
+                    item.images.length !== 0 && JSON.parse(item?.images);
+                  return (
+                    <Col key={key} xs={12} sm={12} md={8} lg={6} xl={6}>
+                      <PopularAds
+                        image={`${Config.API_BASE_URL}uploads/images/${jsonObj[0]}`}
+                        description={item.title}
+                        price={`K${item.buy}`}
+                        onAdNavigateHandler={() =>
+                          onAdNavigateHandler(item.id)
+                        }
+                      />
+                    </Col>
+                  );
+                })
+            ) : ( */}
                   <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <div
                       style={{
@@ -303,27 +253,22 @@ export default function HomePage(props) {
                 </Row>
               </Col>
               {/* {advertisments?.length > next &&
-                (isMoreLoading ? (
-                  <Loader
-                    loading={isMoreLoading}
-                    color="rgba(249, 143, 33, 1)"
-                  />
-                ) : (
-                  <Button className="seeMoreBtn" onClick={showMoreItems}>
-                    See More
-                    <img src={Images.common.forward} className="forwardIcon" />
-                  </Button>
-                ))} */}
+          (isMoreLoading ? (
+            <Loader
+              loading={isMoreLoading}
+              color="rgba(249, 143, 33, 1)"
+            />
+          ) : (
+            <Button className="seeMoreBtn" onClick={showMoreItems}>
+              See More
+              <img src={Images.common.forward} className="forwardIcon" />
+            </Button>
+          ))} */}
             </Row>
             <div></div>
             {/* recently add */}
             <p className="discoverItemText secondSectionText thirdsectionText spinnerCont">
               Recently added
-              {isLoading && (
-                <span className="spinner">
-                  <Loader isLoading={true} color={"#F98F21"} />
-                </span>
-              )}
             </p>
             <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
@@ -379,11 +324,6 @@ export default function HomePage(props) {
             {/*  Houses for rent */}
             <p className="discoverItemText secondSectionText thirdsectionText spinnerCont">
               Houses for rent
-              {isLoading && (
-                <span className="spinner">
-                  <Loader isLoading={true} color={"#F98F21"} />
-                </span>
-              )}
             </p>
             <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
@@ -438,105 +378,105 @@ export default function HomePage(props) {
             </Row>
             {/* how its work */}
             {/* <div className="howItsWorkWeb">
-              <p className="discoverItemText secondSectionText thirdsectionText">
-                how it works
-              </p>
-              <Row gutter={0} className="addSection trendingSection howItsWork">
-                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                  <Row gutter={[20, 50]}>
-                    <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                      <HowItsWork
-                        image={Images.common.ad2}
-                        title={"How to buy"}
-                      />
-                    </Col>
-                    <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                      <HowItsWork
-                        image={Images.common.ad2}
-                        title={"How to post Ads"}
-                      />
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-            </div> */}
+        <p className="discoverItemText secondSectionText thirdsectionText">
+          how it works
+        </p>
+        <Row gutter={0} className="addSection trendingSection howItsWork">
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <Row gutter={[20, 50]}>
+              <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                <HowItsWork
+                  image={Images.common.ad2}
+                  title={"How to buy"}
+                />
+              </Col>
+              <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                <HowItsWork
+                  image={Images.common.ad2}
+                  title={"How to post Ads"}
+                />
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </div> */}
             {/* how its work end */}
             {/* how its work mobile */}
             {/* <div className="howItsWorkMobile">
-              <p className="discoverItemText secondSectionText thirdsectionText">
-                how it works
-              </p> */}
+        <p className="discoverItemText secondSectionText thirdsectionText">
+          how it works
+        </p> */}
             {/* <Row gutter={0} className="addSection trendingSection howItsWork">
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <Row>
+              <Carousel swipeToSlide draggable afterChange={onChange}>
                 <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                  <Row>
-                    <Carousel swipeToSlide draggable afterChange={onChange}>
-                      <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                        <HowItsWork
-                          image={Images.common.ad2}
-                          title={"How to buy"}
-                        />
-                      </Col>
-                      <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                        <HowItsWork
-                          image={Images.common.ad2}
-                          title={"How to post Ads"}
-                        />
-                      </Col>
-                    </Carousel>
-                  </Row>
+                  <HowItsWork
+                    image={Images.common.ad2}
+                    title={"How to buy"}
+                  />
                 </Col>
-              </Row>
-            </div> */}
+                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                  <HowItsWork
+                    image={Images.common.ad2}
+                    title={"How to post Ads"}
+                  />
+                </Col>
+              </Carousel>
+            </Row>
+          </Col>
+        </Row>
+      </div> */}
             {/* how its work mobile end */}
             {/* This is trending web*/}
             {/* <div className="thisIsTrendingWeb">
-              <p className="discoverItemText secondSectionText thirdsectionText">
-                This is Trending
-              </p>
-              <Row gutter={0} className="addSection trendingSection">
-                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                  <Row gutter={[10, 50]}>
-                    <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                      <Card image={Images.common.ad2} title={"Wrist watches"} />
-                    </Col>
-                    <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                      <Card image={Images.common.ad2} title={"Salaula shoes"} />
-                    </Col>
-                    <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                      <Card image={Images.common.ad2} title={"Home Goods"} />
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-            </div> */}
+        <p className="discoverItemText secondSectionText thirdsectionText">
+          This is Trending
+        </p>
+        <Row gutter={0} className="addSection trendingSection">
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <Row gutter={[10, 50]}>
+              <Col xs={24} sm={24} md={12} lg={8} xl={8}>
+                <Card image={Images.common.ad2} title={"Wrist watches"} />
+              </Col>
+              <Col xs={24} sm={24} md={12} lg={8} xl={8}>
+                <Card image={Images.common.ad2} title={"Salaula shoes"} />
+              </Col>
+              <Col xs={24} sm={24} md={12} lg={8} xl={8}>
+                <Card image={Images.common.ad2} title={"Home Goods"} />
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+      </div> */}
             {/* <div className="thisIsTrendingMobile">
-              <p className="discoverItemText secondSectionText thirdsectionText">
-                This is Trending
-              </p>
-              <Row gutter={0} className="addSection trendingSection">
-                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                  <Row gutter={[10, 50]}>
-                    <Carousel swipeToSlide draggable afterChange={onChange}>
-                      <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                        <Card
-                          image={Images.common.ad2}
-                          title={"Wrist watches"}
-                        />
-                      </Col>
-                      <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                        <Card
-                          image={Images.common.ad2}
-                          title={"Salaula shoes"}
-                        />
-                      </Col>
-                      <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                        <Card image={Images.common.ad2} title={"Home Goods"} />
-                      </Col>
-                    </Carousel>
-                  </Row>
+        <p className="discoverItemText secondSectionText thirdsectionText">
+          This is Trending
+        </p>
+        <Row gutter={0} className="addSection trendingSection">
+          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+            <Row gutter={[10, 50]}>
+              <Carousel swipeToSlide draggable afterChange={onChange}>
+                <Col xs={24} sm={24} md={12} lg={8} xl={8}>
+                  <Card
+                    image={Images.common.ad2}
+                    title={"Wrist watches"}
+                  />
                 </Col>
-              </Row>
-            </div> */}
+                <Col xs={24} sm={24} md={12} lg={8} xl={8}>
+                  <Card
+                    image={Images.common.ad2}
+                    title={"Salaula shoes"}
+                  />
+                </Col>
+                <Col xs={24} sm={24} md={12} lg={8} xl={8}>
+                  <Card image={Images.common.ad2} title={"Home Goods"} />
+                </Col>
+              </Carousel>
+            </Row>
+          </Col>
+        </Row>
+      </div> */}
           </div>
           <Footer />
         </Col>

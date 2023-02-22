@@ -126,7 +126,7 @@ export default function BuyProductHeader({ category }) {
     },
     {
       key: "4",
-  
+
       label: "a danger item",
     },
   ];
@@ -278,29 +278,30 @@ export default function BuyProductHeader({ category }) {
                   <div className="serchSection">
                     {/* <p className="searchCategoryText">category</p>
                   <img src={Images.common.down} className="down" /> */}
-                     <Row>
-                 <Col  xs={24} sm={24} md={24} lg={24} xl={24}>
-                <div >
-                 
-                  
-                    <Dropdown
-                                  trigger={["click"]}
-                                  className="orangeSection"
-                                  menu={{
-                                    items,
-                                  }}
-                                >
-                                  <a onClick={(e) => e.preventDefault()} className="searchCategoryText">
-                                  Category
-                                  <img
-                          src={Images.common.down}
-                          className="down"
-                          onClick={(e) => e.preventDefault()}
-                        />
-                                  </a>
-                                </Dropdown>
+                    <Row>
+                      <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                        <div>
+                          <Dropdown
+                            trigger={["click"]}
+                            className="orangeSection"
+                            menu={{
+                              items,
+                            }}
+                          >
+                            <a
+                              onClick={(e) => e.preventDefault()}
+                              className="searchCategoryText"
+                            >
+                              Category
+                              <img
+                                src={Images.common.down}
+                                className="down"
+                                onClick={(e) => e.preventDefault()}
+                              />
+                            </a>
+                          </Dropdown>
 
-                    {/* <Dropdown
+                          {/* <Dropdown
                     overlay={menu}
                     trigger={["click"]}
                     overlayClassName="homedropdown"
@@ -316,11 +317,9 @@ export default function BuyProductHeader({ category }) {
                       </Space>
                     </div>
                   </Dropdown> */}
-                    
-                  
-                </div>
-                </Col>
-                  </Row>
+                        </div>
+                      </Col>
+                    </Row>
 
                     <div className="whiteSection">
                       <Input
@@ -334,7 +333,7 @@ export default function BuyProductHeader({ category }) {
                 </div>
 
                 <div className="translateContainer">
-                  <Link to="#">
+                  <Link>
                     <img
                       src={Images.common.translate}
                       alt="new"
@@ -359,9 +358,7 @@ export default function BuyProductHeader({ category }) {
                     </div> */}
                     <div className="profileContainer">
                       {" "}
-                      <a href="#" className="link customLink">
-                        Selling
-                      </a>
+                      <a className="link customLink">Selling</a>
                     </div>
 
                     <div className="profileContainer">

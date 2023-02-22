@@ -43,6 +43,7 @@
       color: $orange2;
       font-size: 16px;
       font-weight: 600;
+      cursor: pointer;
     }
   }
 }
@@ -53,7 +54,7 @@
       display: flex;
       align-items: center;
 
-      padding-left:20px;
+      padding-left: 20px;
       padding-top: 20px;
 
       .logoHeader {

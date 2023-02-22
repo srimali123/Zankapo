@@ -9,12 +9,14 @@ import { clearUser } from "../../Redux/Slices/User/UserSlice";
 import { reset } from "../../Redux/Slices/Auth";
 import { fetchCategories } from "../../Redux/Slices/Category/CategorySlice";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { LoginOutlined } from "@ant-design/icons";
 export default function Header(props) {
   const { isAuthenticated } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.user);
   const { categories } = useSelector((state) => state.categories);
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -62,7 +64,7 @@ export default function Header(props) {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://www.antgroup.com"
+              onClick={() => navigate("/Dashboard")}
             >
               My listings
             </a>
@@ -74,7 +76,7 @@ export default function Header(props) {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://www.antgroup.com"
+              onClick={() => navigate("/Dashboard")}
             >
               My profile
             </a>
@@ -86,7 +88,7 @@ export default function Header(props) {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://www.antgroup.com"
+              onClick={() => navigate("/Dashboard")}
             >
               Notifications
             </a>
@@ -200,13 +202,13 @@ export default function Header(props) {
             <div>
               {isAuthenticated ? (
                 <>
-                  <Link className="contentLink">
+                  <Link className="contentLink" to={"/Dashboard"}>
                     <p>My listings</p>
                   </Link>
-                  <Link className="contentLink">
+                  <Link className="contentLink" to={"/Dashboard"}>
                     <p>My profile</p>
                   </Link>
-                  <Link className="contentLink">
+                  <Link className="contentLink" to={"/Dashboard"}>
                     <p>Notifications</p>
                   </Link>
 
@@ -257,7 +259,7 @@ export default function Header(props) {
 
             <div className="headerSectionTwo">
               <div className="translateContainer">
-                <Link to="#">
+                <Link>
                   <img
                     src={Images.common.translate}
                     alt="new"
@@ -280,19 +282,19 @@ export default function Header(props) {
                       Buying
                     </Link>
                   </div> */}
-                  <div className="profileContainer">
+                  {/* <div className="profileContainer">
                     {" "}
                     <a href="#" className="link customLink">
                       Selling
                     </a>
-                  </div>
+                  </div> */}
 
                   <div className="profileContainer">
                     <img
                       src={Images.common.userColoured}
                       className="userIcon"
                     />
-                    <a href="#" className="link nameLink">
+                    <a className="link nameLink">
                       {user?.fullname}
                       <Dropdown
                         overlay={menu}

@@ -733,14 +733,7 @@ export default function CreateNewAd() {
                           className="inputCreateAd ImgesCont"
                           {...getRootProps()}
                         >
-                          {/* <input
-                            type="file"
-                            id="file"
-                            name="file[]"
-                            accept="image/png"
-                            multiple
-                            onChange={handleFileEvent}
-                          /> */}
+                          <input {...getInputProps()} />
                           <img
                             src={Images.common.camera}
                             className="cameraIcon"

@@ -24,7 +24,7 @@ export default function PostNewAd() {
               <img src={Images.common.adLogo} className="placeAdLogo" />
             </div>
             <div>
-              <Link to={"/"} href="#" className="cancelLink">
+              <Link to={"/"} className="cancelLink">
                 Cancel
               </Link>
             </div>
