@@ -20,6 +20,7 @@ import { Category } from "../../Utils/Constants";
 import { Config } from "../../Config";
 import { useNavigate } from "react-router-dom";
 import { fetchCategories } from "../../Redux/Slices/Category/CategorySlice";
+import { SearchComponent } from "../../components/search";
 
 const contentStyle = {
   margin: 0,
@@ -65,9 +66,8 @@ export default function HomePage(props) {
       key: idx,
       label: (
         <a
-          target="_blank"
+          onClick={() => navigate(`searchProduct/${item.id}/${item.category}`)}
           rel="noopener noreferrer"
-          href="https://www.antgroup.com"
         >
           {item.category}
         </a>
@@ -160,14 +160,10 @@ export default function HomePage(props) {
                   </Col>
                 </Row>
 
-                <div className="whiteSection">
-                  <Input
-                    placeholder="What do you want to buy?"
-                    className="searchTextInput"
-                  />
-
-                  <img src={Images.common.search} className="search" />
-                </div>
+                <SearchComponent
+                  advertisments={advertisments}
+                  properties={properties}
+                />
               </div>
             </div>
           </div>
@@ -308,18 +304,21 @@ export default function HomePage(props) {
                   )}
                 </Row>
               </Col>
-              {advertisments?.length > next &&
-                (isMoreLoading ? (
-                  <FLoader
-                    loading={isMoreLoading}
-                    color="rgba(249, 143, 33, 1)"
-                  />
-                ) : (
-                  <Button className="seeMoreBtn" onClick={showMoreItems}>
-                    See More
-                    <img src={Images.common.forward} className="forwardIcon" />
-                  </Button>
-                ))}
+              {advertisments?.length > next && (
+                <Button className="seeMoreBtn" onClick={showMoreItems}>
+                  {isMoreLoading ? (
+                    <FLoader loading={isMoreLoading} color="#ffff" size={5} />
+                  ) : (
+                    <>
+                      {"See More"}
+                      <img
+                        src={Images.common.forward}
+                        className="forwardIcon"
+                      />
+                    </>
+                  )}
+                </Button>
+              )}
             </Row>
             {/*  Houses for rent */}
             <p className="discoverItemText secondSectionText thirdsectionText spinnerCont">
@@ -363,18 +362,21 @@ export default function HomePage(props) {
                   )}
                 </Row>
               </Col>
-              {properties?.length > next &&
-                (isMoreLoading ? (
-                  <FLoader
-                    loading={isMoreLoading}
-                    color="rgba(249, 143, 33, 1)"
-                  />
-                ) : (
-                  <Button className="seeMoreBtn" onClick={showMoreItems}>
-                    See More
-                    <img src={Images.common.forward} className="forwardIcon" />
-                  </Button>
-                ))}
+              {properties?.length > next && (
+                <Button className="seeMoreBtn" onClick={showMoreItems}>
+                  {isMoreLoading ? (
+                    <FLoader loading={isMoreLoading} color="#ffff" size={5} />
+                  ) : (
+                    <>
+                      {"See More"}
+                      <img
+                        src={Images.common.forward}
+                        className="forwardIcon"
+                      />
+                    </>
+                  )}
+                </Button>
+              )}
             </Row>
             {/* how its work */}
             {/* <div className="howItsWorkWeb">

@@ -3,8 +3,7 @@ import { Images } from "../../../assets/Images/images.js";
 import { Row, Col, Button, Input, Divider, Checkbox, Carousel } from "antd";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import BuyProductHeader from "../buyProduct/buyProductHeader";
-import ReactStars from "react-rating-stars-component";
-import { render } from "react-dom";
+
 import Footer from "../../../components/footer/footer.jsx";
 import { toast } from "react-toastify";
 import { FLoader } from "../../../components/spinner.jsx";

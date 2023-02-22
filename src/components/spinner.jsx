@@ -8,7 +8,7 @@ const override: CSSProperties = {
   borderColor: "red",
 };
 
-const Loader = ({ loading, color = "#ffffff" }) => {
+const Loader = ({ loading, color = "#ffff" }) => {
   return (
     <BeatLoader
       color={color}
@@ -21,13 +21,13 @@ const Loader = ({ loading, color = "#ffffff" }) => {
   );
 };
 
-const FLoader = ({ loading, color = "#ffffff" }) => {
+const FLoader = ({ loading, color = "#ffff", size = 10 }) => {
   return (
     <FadeLoader
       color={color}
       loading={loading}
       cssOverride={override}
-      size={10}
+      size={size}
       aria-label="Loading Spinner"
       data-testid="loader"
     />
