@@ -359,10 +359,10 @@ export default function BuyProductHeader({ category }) {
                         Buying
                       </a>
                     </div> */}
-                    <div className="profileContainer">
+                    {/* <div className="profileContainer">
                       {" "}
                       <a className="link customLink">Selling</a>
-                    </div>
+                    </div> */}
 
                     <div className="profileContainer">
                       <img

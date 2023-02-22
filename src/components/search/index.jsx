@@ -3,9 +3,13 @@ import { useNavigate } from "react-router-dom";
 import { Input } from "antd";
 
 import { Images } from "../../assets/Images/images";
+import { useDispatch } from "react-redux";
+
+import { saveSearchData } from "../../Redux/Slices/Search";
 
 export const SearchComponent = ({ advertisments, properties = [] }) => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [filterData, setFilterData] = useState([]);
 
   const searchHandler = (text) => {
@@ -20,6 +24,24 @@ export const SearchComponent = ({ advertisments, properties = [] }) => {
       console.log(suggetions);
     }
   };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") {
+      console.log("calling");
+      const searchText = e.target.value;
+      const suggetions = advertisments.filter((value) => {
+        return value.title.toLowerCase().includes(searchText.toLowerCase());
+      });
+
+      if (searchText === "") {
+        console.log("empty");
+      } else {
+        dispatch(saveSearchData(suggetions));
+        navigate(`/search/${searchText}`);
+      }
+    }
+  };
+
   return (
     <div style={{ position: "relative" }}>
       <div className="whiteSection">
@@ -27,6 +49,7 @@ export const SearchComponent = ({ advertisments, properties = [] }) => {
           placeholder="What do you want to buy?"
           className="searchTextInput"
           onChange={(e) => searchHandler(e.target.value)}
+          onKeyDown={handleKeyDown}
         />
         <img src={Images.common.search} className="search" />
       </div>
@@ -35,8 +58,7 @@ export const SearchComponent = ({ advertisments, properties = [] }) => {
           className="suggetions"
           style={{
             position: "absolute",
-            top: 70,
-            height: "200px",
+            top: 65,
             width: "100%",
             backgroundColor: "white",
             overflow: "hidden",

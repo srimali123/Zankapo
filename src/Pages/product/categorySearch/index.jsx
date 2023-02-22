@@ -7,82 +7,53 @@ import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 
-import { fetchProductByCategory } from "../../../Services/AdvertismentService.js";
 import { Config } from "../../../Config/index.js";
 
 import BuyProductHeader from "../buyProduct/buyProductHeader";
 import Footer from "../../../components/footer/footer";
 import { FLoader } from "../../../components/spinner.jsx";
+import { useSelector } from "react-redux";
+import { conditions } from "../../../Utils/Constants.js";
 
-const items = [
-  {
-    key: "1",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.antgroup.com"
-      >
-        1st menu item
-      </a>
-    ),
-  },
-  {
-    key: "2",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.aliyun.com"
-      >
-        2nd menu item
-      </a>
-    ),
-  },
-  {
-    key: "3",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.luohanacademy.com"
-      >
-        3rd menu item
-      </a>
-    ),
-  },
-  {
-    key: "4",
-
-    label: "a danger item",
-  },
-];
-export default function SearchProduct() {
+export default function CategorySearch() {
   let jsonObj;
   const navigate = useNavigate();
-  const { id, name } = useParams();
-  const [products, setProducts] = useState([]);
+  const { text } = useParams();
   const [isLoading, setIsLoading] = useState(false);
-
-  const fecthProducts = async () => {
-    setIsLoading(true);
-    const response = await fetchProductByCategory(id);
-    if (response?.success) {
-      setProducts(response?.data?.data);
-      setIsLoading(false);
-    } else {
-      toast.error("check your internet connection");
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fecthProducts();
-  }, []);
+  const { searchData } = useSelector((state) => state.search);
+  const [filterData, setFilterData] = useState([]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    setFilterData(searchData);
+  }, []);
+
+  const items = conditions.map((item, idx) => {
+    return {
+      key: idx,
+      label: (
+        <a onClick={() => filterHandler(item.name)} rel="noopener noreferrer">
+          {item.name}
+        </a>
+      ),
+    };
+  });
+
+  const filterHandler = (text) => {
+    const suggetions = searchData.filter((value) => {
+      return value.condition.toLowerCase().includes(text.toLowerCase());
+    });
+
+    if (text === "") {
+      setFilterData([]);
+    } else {
+      setFilterData(suggetions);
+      console.log(suggetions);
+    }
+  };
 
   if (isLoading) {
     return (
@@ -103,7 +74,7 @@ export default function SearchProduct() {
     <div>
       <Row className="serchProductMainContainer">
         <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-          <BuyProductHeader category={name} />
+          <BuyProductHeader category={"search result"} />
           <div className="grayTab"></div>
           <div className="searchProductMiddlContainer">
             <Row gutter={[10, 20]} className="itemsContainer">
@@ -196,10 +167,26 @@ export default function SearchProduct() {
                       </Dropdown>
                     </div>
                   </Col> */}
+                  {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                    <div>
+                      <Dropdown
+                        trigger={["click"]}
+                        className="createDrop"
+                        menu={{
+                          items,
+                        }}
+                      >
+                        <a onClick={(e) => e.preventDefault()}>
+                          Shipping
+                          <DownOutlined />
+                        </a>
+                      </Dropdown>
+                    </div>
+                  </Col> */}
                 </Row>
               </Col>
               <Col xs={24} sm={24} md={18} lg={16} xl={16}>
-                <p className="serchTextSearch">"{name}"</p>
+                <p className="serchTextSearch">"{text}"</p>
                 <div className="searchItemContainer">
                   <div className="btnGroup">
                     <Row>
@@ -264,9 +251,9 @@ export default function SearchProduct() {
                     </Row>
                   </div>
                   <p className="searchTextSearch">
-                    {products?.length} results for {name}
+                    Results {filterData?.length} listings
                   </p>
-                  {products?.map((item, idx) => {
+                  {filterData?.map((item, idx) => {
                     jsonObj =
                       item.images.length !== 0 && JSON.parse(item?.images);
                     return (
@@ -301,6 +288,9 @@ export default function SearchProduct() {
                             <p className="priceText">K{item.buy}</p>
                             <p className="searchTextSearch buyText">
                               {moment(item.created_at).fromNow()}
+                            </p>
+                            <p className="searchTextSearch buyText valueText">
+                              {item.condition}
                             </p>
                             <p className="searchTextSearch buyText valueText">
                               {item.town}

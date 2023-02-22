@@ -19,6 +19,7 @@ import BuyProduct from "../Pages/product/buyProduct/buyProduct";
 import BuyProperty from "../Pages/product/buyProduct/buyProperty";
 import SearchProduct from "../Pages/product/searchProduct/searchProduct";
 import Dashboard from "../Pages/Dashbord/Dashboard";
+import CategorySearch from "../Pages/product/categorySearch";
 import NotFound from "../components/NotFound";
 
 export default function AppRoutes() {
@@ -38,7 +39,8 @@ export default function AppRoutes() {
         <Route path="/previewAd" element={<PreviewAd />} />
         <Route path="/buyproduct/:id/:category" element={<BuyProduct />} />
         <Route path="/buyproperty/:id" element={<BuyProperty />} />
-        <Route path="/searchProduct/:id/:name" element={<SearchProduct />} />
+        <Route path="/category/:id/:name" element={<SearchProduct />} />
+        <Route path="/search/:text" element={<CategorySearch />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

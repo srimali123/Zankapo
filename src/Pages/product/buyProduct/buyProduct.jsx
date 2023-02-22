@@ -71,7 +71,7 @@ export default function BuyProduct() {
 
   const phoneNumberShow = () => {
     if (isAuthenticated) {
-      setShowPhone((prev) => !prev);
+      setShowPhone(true);
     } else {
       toast.error(
         "Login to show phone number and keep track of it in your account."
