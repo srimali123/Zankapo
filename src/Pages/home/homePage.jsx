@@ -20,6 +20,7 @@ import { Category } from "../../Utils/Constants";
 import { Config } from "../../Config";
 import { useNavigate } from "react-router-dom";
 import { fetchCategories } from "../../Redux/Slices/Category/CategorySlice";
+import { SearchComponent } from "../../components/search";
 
 const contentStyle = {
   margin: 0,
@@ -65,9 +66,8 @@ export default function HomePage(props) {
       key: idx,
       label: (
         <a
-          target="_blank"
+          onClick={() => navigate(`category/${item.id}/${item.category}`)}
           rel="noopener noreferrer"
-          href="https://www.antgroup.com"
         >
           {item.category}
         </a>
@@ -160,14 +160,10 @@ export default function HomePage(props) {
                   </Col>
                 </Row>
 
-                <div className="whiteSection">
-                  <Input
-                    placeholder="What do you want to buy?"
-                    className="searchTextInput"
-                  />
-
-                  <img src={Images.common.search} className="search" />
-                </div>
+                <SearchComponent
+                  advertisments={advertisments}
+                  properties={properties}
+                />
               </div>
             </div>
           </div>
@@ -192,9 +188,7 @@ export default function HomePage(props) {
                           link={item.category}
                           style={{ marginRight: 25 }}
                           onClick={() =>
-                            navigate(
-                              `searchProduct/${item.id}/${item.category}`
-                            )
+                            navigate(`category/${item.id}/${item.category}`)
                           }
                         />
                       </Col>
@@ -308,18 +302,21 @@ export default function HomePage(props) {
                   )}
                 </Row>
               </Col>
-              {advertisments?.length > next &&
-                (isMoreLoading ? (
-                  <FLoader
-                    loading={isMoreLoading}
-                    color="rgba(249, 143, 33, 1)"
-                  />
-                ) : (
-                  <Button className="seeMoreBtn" onClick={showMoreItems}>
-                    See More
-                    <img src={Images.common.forward} className="forwardIcon" />
-                  </Button>
-                ))}
+              {advertisments?.length > next && (
+                <Button className="seeMoreBtn" onClick={showMoreItems}>
+                  {isMoreLoading ? (
+                    <FLoader loading={isMoreLoading} color="#ffff" size={5} />
+                  ) : (
+                    <>
+                      {"See More"}
+                      <img
+                        src={Images.common.forward}
+                        className="forwardIcon"
+                      />
+                    </>
+                  )}
+                </Button>
+              )}
             </Row>
             {/*  Houses for rent */}
             <p className="discoverItemText secondSectionText thirdsectionText spinnerCont">
@@ -363,70 +360,73 @@ export default function HomePage(props) {
                   )}
                 </Row>
               </Col>
-              {properties?.length > next &&
-                (isMoreLoading ? (
-                  <FLoader
-                    loading={isMoreLoading}
-                    color="rgba(249, 143, 33, 1)"
-                  />
-                ) : (
-                  <Button className="seeMoreBtn" onClick={showMoreItems}>
-                    See More
-                    <img src={Images.common.forward} className="forwardIcon" />
-                  </Button>
-                ))}
+              {properties?.length > next && (
+                <Button className="seeMoreBtn" onClick={showMoreItems}>
+                  {isMoreLoading ? (
+                    <FLoader loading={isMoreLoading} color="#ffff" size={5} />
+                  ) : (
+                    <>
+                      {"See More"}
+                      <img
+                        src={Images.common.forward}
+                        className="forwardIcon"
+                      />
+                    </>
+                  )}
+                </Button>
+              )}
             </Row>
             {/* how its work */}
             {/* <div className="howItsWorkWeb">
-        <p className="discoverItemText secondSectionText thirdsectionText">
-          how it works
-        </p>
-        <Row gutter={0} className="addSection trendingSection howItsWork">
-          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <Row gutter={[20, 50]}>
-              <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                <HowItsWork
-                  image={Images.common.ad2}
-                  title={"How to buy"}
-                />
-              </Col>
-              <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                <HowItsWork
-                  image={Images.common.ad2}
-                  title={"How to post Ads"}
-                />
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </div> */}
+              <p className="discoverItemText secondSectionText thirdsectionText">
+                how it works
+              </p>
+              <Row gutter={0} className="addSection trendingSection howItsWork">
+                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                  <Row gutter={[20, 50]}>
+                    <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                      <HowItsWork
+                        image={Images.common.ad2}
+                        title={"How to buy"}
+                      />
+                    </Col>
+                    <Col xs={24} sm={24} md={12} lg={12} xl={12}>
+                      <HowItsWork
+                        image={Images.common.ad2}
+                        title={"How to post Ads"}
+                      />
+                    </Col>
+                  </Row>
+                </Col>
+              </Row>
+            </div> */}
             {/* how its work end */}
             {/* how its work mobile */}
             {/* <div className="howItsWorkMobile">
-        <p className="discoverItemText secondSectionText thirdsectionText">
-          how it works
-        </p> */}
-            {/* <Row gutter={0} className="addSection trendingSection howItsWork">
-          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <Row>
-              <Carousel swipeToSlide draggable afterChange={onChange}>
+              <p className="discoverItemText secondSectionText thirdsectionText">
+                how it works
+              </p>
+              <Row gutter={0} className="addSection trendingSection howItsWork">
                 <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                  <HowItsWork
-                    image={Images.common.ad2}
-                    title={"How to buy"}
-                  />
+                  <Row>
+                    <Carousel swipeToSlide draggable afterChange={onChange}>
+                      <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                        <HowItsWork
+                          image={Images.common.ad2}
+                          title={"How to buy"}
+                        />
+                      </Col>
+                      <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                        <HowItsWork
+                          image={Images.common.ad2}
+                          title={"How to post Ads"}
+                        />
+                      </Col>
+                    </Carousel>
+                  </Row>
                 </Col>
-                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                  <HowItsWork
-                    image={Images.common.ad2}
-                    title={"How to post Ads"}
-                  />
-                </Col>
-              </Carousel>
-            </Row>
-          </Col>
-        </Row>
-      </div> */}
+              </Row>
+            </div> */}
             {/* how its work mobile end */}
             {/* This is trending web*/}
             {/* <div className="thisIsTrendingWeb">

@@ -21,3 +21,8 @@ export const Province = [
   { name: "Southern" },
   { name: "Western" },
 ];
+
+export const conditions = [
+  { id: "1", name: "Used" },
+  { id: "2", name: "New" },
+];

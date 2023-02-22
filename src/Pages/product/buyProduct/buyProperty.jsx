@@ -300,7 +300,7 @@ export default function BuyProperty() {
                   </Row>
                 </div>
 
-                <Row className="serchRow ">
+                {/* <Row className="serchRow ">
                   <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <p className="serchText">Similar searches</p>
                     <Row gutter={[20, 20]}>
@@ -334,7 +334,7 @@ export default function BuyProperty() {
                       </Col>
                     </Row>
                   </Col>
-                </Row>
+                </Row> */}
               </Col>
               <Col xs={24} sm={24} md={0} lg={6} xl={6}>
                 <Button className="advertisemntBtn">Advertisement</Button>

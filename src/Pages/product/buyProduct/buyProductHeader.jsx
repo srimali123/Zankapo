@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Row, Col, Button, Input, Dropdown, Menu, Modal } from "antd";
 import { Link } from "react-router-dom";
 import { Images } from "../../../assets/Images/images";
@@ -9,14 +9,24 @@ import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../../../Redux/Slices/User";
 import { reset } from "../../../Redux/Slices/Auth";
 import { useNavigate } from "react-router-dom";
+import { SearchComponent } from "../../../components/search";
+import { fetchAdvertisments } from "../../../Redux/Slices/Advertisment/AdvertismentSlice";
 
 export default function BuyProductHeader({ category }) {
-  const [isShown, setIsShown] = useState(false);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const { isAuthenticated } = useSelector((state) => state.auth);
   const { user } = useSelector((state) => state.user);
-  const navigate = useNavigate();
+  const { advertisments, isLoading, message, isError } = useSelector(
+    (state) => state.advertisments
+  );
+  const [isShown, setIsShown] = useState(false);
 
-  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAdvertisments());
+  }, [dispatch]);
+
+  console.log("ssss", advertisments);
 
   const handleClick = (event) => {
     setIsShown((current) => !current);
@@ -321,14 +331,7 @@ export default function BuyProductHeader({ category }) {
                       </Col>
                     </Row>
 
-                    <div className="whiteSection">
-                      <Input
-                        placeholder="What do you want to buy?"
-                        className="searchTextInput"
-                      />
-
-                      <img src={Images.common.search} className="search" />
-                    </div>
+                    <SearchComponent advertisments={advertisments} />
                   </div>
                 </div>
 
@@ -356,10 +359,10 @@ export default function BuyProductHeader({ category }) {
                         Buying
                       </a>
                     </div> */}
-                    <div className="profileContainer">
+                    {/* <div className="profileContainer">
                       {" "}
                       <a className="link customLink">Selling</a>
-                    </div>
+                    </div> */}
 
                     <div className="profileContainer">
                       <img
