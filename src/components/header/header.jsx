@@ -267,12 +267,13 @@ export default function Header(props) {
                   />
                 </Link>
               </div>
-              <button className="addBtn">
+           
+              <Link className="addBtn" to={"/placeAd"}>
                 <Link to={"/placeAd"}>
                   <img src={Images.common.addIcon} className="addIcon" />
                 </Link>
                 Place Ad
-              </button>
+              </Link>
               {/* when user didnt register or login */}
               {isAuthenticated ? (
                 <div className="confirmcontainerAfterLogin">

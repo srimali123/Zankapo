@@ -15,10 +15,12 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+       
 
         .bannerLogo {
           height: 53px;
         }
+      
         .centerContentText {
           font-size: 16px;
           font-weight: 400;
@@ -29,7 +31,9 @@
           max-width: 572px;
           width: 100%;
           margin-bottom: 48px;
+        
         }
+       
 
         .serchSection {
           width: 100%;
