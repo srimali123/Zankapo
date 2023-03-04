@@ -56,15 +56,7 @@ export const SearchComponent = ({ advertisments, properties = [] }) => {
       {filterData.length !== 0 && (
         <div
           className="suggetions"
-          style={{
-            position: "absolute",
-            top: 65,
-            width: "100%",
-            backgroundColor: "white",
-            overflow: "hidden",
-            overflowY: "auto",
-            zIndex: 1,
-          }}
+          
         >
           {filterData?.slice(0, 6).map((item, idx) => {
             return (

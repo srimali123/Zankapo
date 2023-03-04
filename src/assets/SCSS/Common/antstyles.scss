@@ -83,6 +83,9 @@ input:-webkit-autofill:focus {
   color: $gray7 !important;
   opacity: 1 !important;
 }
+.ant-dropdown {
+  z-index: 1 !important;
+  }
 
 .hederdropdown {
   // left: 264px !important;
