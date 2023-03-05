@@ -4,13 +4,17 @@ const DiscoverItem = (props) => {
   const { link, image, style, contentstyles } = props;
 
   return (
+  
     <div className="outerMain">
-      <div className="outerContainer" onClick={props.onClick}>
+      <a onClick={props.onClick}>
+      <div className="outerContainer" >
         <img src={image} className="discoverImg" />
       </div>
-      <a className="itemTitle" style={{ ...style }}>
+      <a className="itemTitle" style={{ ...style }} >
         {link}
       </a>
+      </a>
+    
     </div>
   );
 };
