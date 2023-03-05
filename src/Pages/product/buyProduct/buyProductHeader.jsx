@@ -7,7 +7,6 @@ import { DownOutlined, LogoutOutlined } from "@ant-design/icons";
 
 import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../../../Redux/Slices/User";
-import { reset } from "../../../Redux/Slices/Auth";
 import { useNavigate } from "react-router-dom";
 import { SearchComponent } from "../../../components/search";
 import { fetchAdvertisments } from "../../../Redux/Slices/Advertisment/AdvertismentSlice";
@@ -15,7 +14,7 @@ import { fetchAdvertisments } from "../../../Redux/Slices/Advertisment/Advertism
 export default function BuyProductHeader({ category }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated } = useSelector((state) => state.user);
   const { user } = useSelector((state) => state.user);
   const { advertisments, isLoading, message, isError } = useSelector(
     (state) => state.advertisments
@@ -144,7 +143,6 @@ export default function BuyProductHeader({ category }) {
   //logout function
   const logout = async () => {
     await dispatch(clearUser());
-    await dispatch(reset());
     await dispatch();
     window.location.assign("/");
   };

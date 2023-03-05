@@ -13,7 +13,6 @@ import { useSelector, useDispatch } from "react-redux";
 import * as userService from "../../../../Services/UserService";
 import { clearUser } from "../../../../Redux/Slices/Signup/UserSlice";
 import { saveUser } from "../../../../Redux/Slices/User";
-import { setAuthenticate } from "../../../../Redux/Slices/Auth";
 import { Province } from "../../../../Utils/Constants";
 
 export default function SignUpPersonal() {
@@ -73,7 +72,6 @@ export default function SignUpPersonal() {
     if (response.success) {
       console.log("New user has been addedd successfully!");
       dispatch(saveUser({ user: response?.data?.data?.userData }));
-      dispatch(setAuthenticate({ token: response?.data?.data?.token }));
       dispatch(clearUser());
       setLoading(false);
       navigate("/");

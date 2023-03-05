@@ -9,7 +9,6 @@ import logo from "../../../../assets/Images/common/LOGO.png";
 import logoBlue from "../../../../assets/Images/common/bluelogo.png";
 
 import * as AuthService from "../../../../Services/AuthService";
-import { setAuthenticate } from "../../../../Redux/Slices/Auth";
 import { saveUser } from "../../../../Redux/Slices/User";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, Link } from "react-router-dom";
@@ -25,7 +24,6 @@ export default function Login(props) {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isAuthenticating } = useSelector((state) => state.auth);
 
   //use effect
   useEffect(() => {
@@ -66,18 +64,17 @@ export default function Login(props) {
     //401 user not found
     if (response.success) {
       toast.success(response?.data?.message);
-      dispatch(setAuthenticate({ token: response.data.access_token }));
       dispatch(saveUser({ user: response.data.user }));
       setOpen(false);
       navigate("/");
     } else {
-      if (response.status == 401) {
+      if (response.status === 401) {
         toast.error(response.message);
       }
-      if (response.status == 403) {
+      if (response.status === 403) {
         toast.error(response.message);
       }
-      if (response.status == 404) {
+      if (response.status === 404) {
         toast.error(response.message);
       }
     }

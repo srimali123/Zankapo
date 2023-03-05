@@ -7,9 +7,11 @@ const userSlice = createSlice({
   reducers: {
     saveUser(state, action) {
       state.user = action.payload.user;
+      state.isAuthenticated = true;
     },
     clearUser(state) {
       state.user = initialState.user;
+      state.isAuthenticated = false;
     },
   },
 });

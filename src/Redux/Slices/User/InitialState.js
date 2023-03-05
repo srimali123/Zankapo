@@ -14,4 +14,5 @@ export default {
     updated_at: "",
     is_email_verified: "0",
   },
+  isAuthenticated: false,
 };

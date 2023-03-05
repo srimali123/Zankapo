@@ -6,14 +6,13 @@ import { Images } from "../../assets/Images/images";
 
 import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../../Redux/Slices/User/UserSlice";
-import { reset } from "../../Redux/Slices/Auth";
 import { fetchCategories } from "../../Redux/Slices/Category/CategorySlice";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { LoginOutlined } from "@ant-design/icons";
 export default function Header(props) {
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated } = useSelector((state) => state.user);
   const { user } = useSelector((state) => state.user);
   const { categories } = useSelector((state) => state.categories);
   const navigate = useNavigate();
@@ -115,7 +114,7 @@ export default function Header(props) {
   //logout function
   const logout = async () => {
     await dispatch(clearUser());
-    await dispatch(reset());
+
     await dispatch();
     window.location.assign("/");
   };
