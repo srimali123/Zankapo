@@ -14,10 +14,16 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
+    overflow: hidden;
+  
+    &:hover .discoverImg {
+  transform: scale(1.2);
+}
 
     .discoverImg {
       height: 52px;
       width: 52px;
+      transition: transform 0.25s;
     }
   }
   .itemTitle {
@@ -28,7 +34,7 @@
     margin-bottom: 50px;
 
     font-family: $poppins;
-    margin-right: 14px;
+    margin-right: 16px;
   }
 }
 

@@ -4,7 +4,7 @@ const PopularAds = (props) => {
   const { image, description, price } = props;
 
   return (
-    <div onClick={props.onAdNavigateHandler}>
+    <div onClick={props.onAdNavigateHandler} className="fullcard">
       <div className="adcontainer">
         <img src={image} className="popularAddImg" />
       </div>

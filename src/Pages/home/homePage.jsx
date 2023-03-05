@@ -21,6 +21,7 @@ import { Config } from "../../Config";
 import { useNavigate } from "react-router-dom";
 import { fetchCategories } from "../../Redux/Slices/Category/CategorySlice";
 import { SearchComponent } from "../../components/search";
+import PulseText from 'react-pulse-text';
 
 const contentStyle = {
   margin: 0,
@@ -129,10 +130,13 @@ export default function HomePage(props) {
           >
             <div className="centerContent">
               <img src={Images.common.orangeColorLogo} className="bannerLogo" />
-              <p className="centerContentText">
-                Sankapo is the largest open marketplace for Zambian buyers and
-                sellers to list their products.{" "}
+              <PulseText text="  Sankapo is the largest open marketplace for Zambian buyers and
+                sellers to list their products." duration={15000}>
+              <p className="centerContentText" >
+               
               </p>
+              </PulseText>
+             
               <div className="serchSection">
                 <Row>
                   <Col xs={24} sm={24} md={24} lg={24} xl={24}>
@@ -186,7 +190,7 @@ export default function HomePage(props) {
                         <DiscoverItem
                           image={`${Config.API_BASE_URL}uploads/icons/${item.icon}`}
                           link={item.category}
-                          style={{ marginRight: 25 }}
+                          // style={{ marginRight: 25 }}
                           onClick={() =>
                             navigate(`category/${item.id}/${item.category}`)
                           }

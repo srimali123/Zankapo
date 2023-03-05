@@ -15,10 +15,12 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+       
 
         .bannerLogo {
           height: 53px;
         }
+      
         .centerContentText {
           font-size: 16px;
           font-weight: 400;
@@ -29,15 +31,19 @@
           max-width: 572px;
           width: 100%;
           margin-bottom: 48px;
+        
         }
+       
 
         .serchSection {
           width: 100%;
-          max-width: 566px;
+          max-width: max-content;
           height: 64px;
           display: flex;
+          flex-direction: row;
           justify-content: center;
           align-items: center;
+          position: relative;
           .orangeSection {
             background-color: $orange2;
             width: 170px;
@@ -52,6 +58,7 @@
             font-weight: 500;
             font-family: $poppins;
             color: $white;
+        
             .down {
               height: 24px;
               width: 24px;
@@ -492,6 +499,7 @@
       }
     }
   }
+ 
 }
 
 @include tablet-landscape {
@@ -593,4 +601,5 @@
       }
     }
   }
+ 
 }

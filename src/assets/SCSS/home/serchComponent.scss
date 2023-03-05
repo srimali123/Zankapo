@@ -1,0 +1,18 @@
+.suggetions {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: auto;
+  z-index: 1;
+  height: 200px;
+  top: 65px;
+  background-color: white;
+}
+
+@include tablet-portrait {
+    .suggetions {
+       
+        height: 120px;
+       
+      }
+}
