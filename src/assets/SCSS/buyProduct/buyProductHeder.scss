@@ -1,13 +1,14 @@
 .headerContainerMain {
   position: fixed;
-  z-index: 99;
+  z-index: 1;
   width: 100%;
   overflow-x: hidden;
-  
+
   .headerMaincontainerProduct {
     width: 100%;
     overflow-y: hidden;
-    height: 64px;
+    min-height: 64px;
+    max-height: max-content;
     border-top: 5px solid #F84F3966;
     border-image: repeating-linear-gradient( 90deg,  rgba(248, 79, 57, 0.7) ,rgba(248, 79, 57, 0.4), rgba(248, 79, 57, 0.8)) 10;
     background-color: $white;
@@ -38,12 +39,13 @@
       align-items: center;
       .serchSection {
         width: 100%;
-        max-width: 566px;
+        max-width: max-content;
         height: 64px;
         display: flex;
         justify-content: center;
         align-items: center;
         margin-right: 20px;
+        position: relative;
         // .orangeSection {
         //   background-color: $orange2;
         //   width: 170px;
@@ -98,7 +100,7 @@
           justify-content: space-between;
           padding-right: 20px;
           padding-left: 20px;
-
+        position: relative;
           .search {
             height: 24px;
             width: 24px;
@@ -218,6 +220,8 @@
     padding-right: 40px;
     padding-left: 40px;
     top: 64.4px;
+    z-index: -1;
+   
 
     .iconCont {
       display: flex;
@@ -238,6 +242,7 @@
         font-size: 12px;
         font-weight: 500;
         font-family: $poppins;
+        margin-bottom: 0;
       }
      
     }
@@ -369,7 +374,7 @@ a .logoutText {
 @include tablet-portrait {
   .headerContainerMain {
     position: fixed;
-    z-index: 99;
+    z-index: 1;
     width: 100%;
     .headerMaincontainerProduct {
       padding-right: 20px;
@@ -479,7 +484,7 @@ a .logoutText {
 @include tablet-landscape {
   .headerContainerMain {
     position: fixed;
-    z-index: 99;
+    z-index: 1;
     width: 100%;
     .headerMaincontainerProduct {
       padding-right: 20px;

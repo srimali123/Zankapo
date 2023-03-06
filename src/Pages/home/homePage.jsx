@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Button, Input, Dropdown, Menu, Carousel } from "antd";
+import { Row, Col, Button, Input, Menu, Carousel, Dropdown } from "antd";
 import Header from "../../components/header/header";
 import DiscoverItem from "../../components/discoverItem";
 import { Images } from "../../assets/Images/images.js";
@@ -10,7 +10,7 @@ import Footer from "../../components/footer/footer";
 import { toast } from "react-toastify";
 import { DownOutlined, SmileOutlined } from "@ant-design/icons";
 import { FLoader, Loader } from "../../components/spinner";
-
+import "react-dropdown/style.css";
 import { clearAdvertisments } from "../../Redux/Slices/Advertisment";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAdvertisments } from "../../Redux/Slices/Advertisment/AdvertismentSlice";
@@ -22,6 +22,7 @@ import { useNavigate } from "react-router-dom";
 import { fetchCategories } from "../../Redux/Slices/Category/CategorySlice";
 import { SearchComponent } from "../../components/search";
 import PulseText from "react-pulse-text";
+// import Dropdown from 'react-dropdown';
 
 const contentStyle = {
   margin: 0,
@@ -31,6 +32,8 @@ const contentStyle = {
   textAlign: "center",
   background: "#364d79",
 };
+const options = ["one", "two", "three"];
+const defaultOption = options[0];
 const onChange = (currentSlide) => {
   console.log(currentSlide);
 };
@@ -131,13 +134,13 @@ export default function HomePage(props) {
           >
             <div className="centerContent">
               <img src={Images.common.orangeColorLogo} className="bannerLogo" />
-              <div style={{ height: "100px" }}>
+              <div className="centerTextContentContainer">
                 <PulseText
                   text="  Sankapo is the largest open marketplace for Zambian buyers and
                 sellers to list their products."
                   duration={15000}
                 >
-                  <p className="centerContentText" />
+                  <p className="centerContentText"></p>
                 </PulseText>
               </div>
 
@@ -164,6 +167,7 @@ export default function HomePage(props) {
                 <SearchComponent
                   advertisments={advertisments}
                   properties={properties}
+                  positionHome={true}
                 />
               </div>
             </div>
@@ -196,6 +200,19 @@ export default function HomePage(props) {
                     );
                   })}
                 </Row>
+              </Col>
+            </Row>
+            {/* sponsored ad */}
+            <Row>
+              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                <div
+                  className="sponContainer"
+                  style={{
+                    backgroundImage: `url(${Images.common.advertist})`,
+                  }}
+                >
+                  <div className="adcont">Sponsored ads</div>
+                </div>
               </Col>
             </Row>
             {/* popular adds */}{" "}
@@ -478,6 +495,19 @@ export default function HomePage(props) {
           </Col>
         </Row>
       </div> */}
+       {/* sponsored ad */}
+       <Row>
+              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                <div
+                  className="sponContainer"
+                  style={{
+                    backgroundImage: `url(${Images.common.advertist})`,
+                  }}
+                >
+                  <div className="adcont">Sponsored ads</div>
+                </div>
+              </Col>
+            </Row>
           </div>
           <Footer />
         </Col>
