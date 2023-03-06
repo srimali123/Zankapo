@@ -285,7 +285,7 @@ export default function HomePage(props) {
             </p>
             <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                <Row gutter={[20, 10]}>
+                <Row gutter={[40, 10]}>
                   {advertisments ? (
                     advertisments?.slice(0, next).map((item, key) => {
                       jsonObj =
