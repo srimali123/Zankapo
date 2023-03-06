@@ -32,7 +32,7 @@ export default function BuyProduct() {
   );
   const navigate = useNavigate();
 
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated } = useSelector((state) => state.user);
 
   const { categories } = useSelector((state) => state.categories);
 

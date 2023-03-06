@@ -21,7 +21,7 @@ import { Config } from "../../Config";
 import { useNavigate } from "react-router-dom";
 import { fetchCategories } from "../../Redux/Slices/Category/CategorySlice";
 import { SearchComponent } from "../../components/search";
-import PulseText from 'react-pulse-text';
+import PulseText from "react-pulse-text";
 
 const contentStyle = {
   margin: 0,
@@ -126,38 +126,35 @@ export default function HomePage(props) {
             className="banner"
             style={{
               backgroundImage: `url(${Images.common.banner})`,
+              objectFit: "cover",
             }}
           >
             <div className="centerContent">
               <img src={Images.common.orangeColorLogo} className="bannerLogo" />
-              <PulseText text="  Sankapo is the largest open marketplace for Zambian buyers and
-                sellers to list their products." duration={15000}>
-              <p className="centerContentText" >
-               
-              </p>
-              </PulseText>
-             
+              <div style={{ height: "100px" }}>
+                <PulseText
+                  text="  Sankapo is the largest open marketplace for Zambian buyers and
+                sellers to list their products."
+                  duration={15000}
+                >
+                  <p className="centerContentText" />
+                </PulseText>
+              </div>
+
               <div className="serchSection">
                 <Row>
                   <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <div>
                       <Dropdown
-                        trigger={["click"]}
                         className="orangeSection"
                         menu={{
                           items,
                         }}
+                        placement="bottom"
                       >
-                        <a
-                          onClick={(e) => e.preventDefault()}
-                          className="searchCategoryText"
-                        >
+                        <a className="searchCategoryText">
                           Category
-                          <img
-                            src={Images.common.down}
-                            className="down"
-                            onClick={(e) => e.preventDefault()}
-                          />
+                          <img src={Images.common.down} className="down" />
                         </a>
                       </Dropdown>
                     </div>

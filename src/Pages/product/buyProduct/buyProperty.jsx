@@ -31,7 +31,7 @@ export default function BuyProperty() {
     (state) => state.property
   );
 
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { isAuthenticated } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (isError) {

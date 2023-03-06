@@ -15,3 +15,15 @@ export const changePassword = async (token, data) => {
   const url = `${Config.API_BASE_URL}api/user/password/reset'`;
   return await httpClient.post(url, token, data);
 };
+
+export const getMyProducts = async (uid) => {
+  const url = `${Config.API_BASE_URL}api/user/myProductList/${uid}`;
+  const response = await httpClient.get(url);
+  return response;
+};
+
+export const getMyProperty = async (uid) => {
+  const url = `${Config.API_BASE_URL}api/user/myPropertyList/${uid}`;
+  const response = await httpClient.get(url);
+  return response;
+};

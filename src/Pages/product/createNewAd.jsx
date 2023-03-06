@@ -53,8 +53,7 @@ export default function CreateNewAd() {
   const [images, setImages] = useState([]);
   const navigate = useNavigate();
 
-  const { user } = useSelector((state) => state.user);
-  const { token } = useSelector((state) => state.auth);
+  const { user, isAuthenticated } = useSelector((state) => state.user);
 
   const onDrop = useCallback((acceptedFiles) => {
     let tmp = images;
@@ -227,7 +226,7 @@ export default function CreateNewAd() {
   };
 
   useEffect(() => {
-    if (!token) {
+    if (!isAuthenticated) {
       navigate("/login");
       toast.info("Login to post your ad and keep track of it in your account.");
     }

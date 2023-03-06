@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Images } from "../../assets/Images/images";
 import { Row, Col, Dropdown, Button, Divider, Input, DatePicker } from "antd";
 import { DownOutlined, SmileOutlined } from "@ant-design/icons";
@@ -8,54 +8,38 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
-const onChange = (key) => {
-  console.log(key);
-};
-const items = [
-  {
-    key: "1",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.antgroup.com"
-      >
-        1st menu item
-      </a>
-    ),
-  },
-  {
-    key: "2",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.aliyun.com"
-      >
-        2nd menu item
-      </a>
-    ),
-  },
-  {
-    key: "3",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.luohanacademy.com"
-      >
-        3rd menu item
-      </a>
-    ),
-  },
-  {
-    key: "4",
+import { getMyProducts, getMyProperty } from "../../Services/UserService";
+import { Config } from "../../Config";
+import { toast } from "react-toastify";
 
-    label: "a danger item",
-  },
-];
 export default function Dashboard() {
+  let jsonObj;
   const { user } = useSelector((state) => state.user);
+  const [products, setProducts] = useState([]);
+  const [property, setProperty] = useState([]);
+
+  useEffect(() => {
+    getMyProductsList();
+    getMyPropertyList();
+  }, []);
+
+  const getMyProductsList = async () => {
+    const response = await getMyProducts(user?.id);
+    if (response?.success) {
+      setProducts(response?.data?.data);
+    } else {
+      toast.error("something went wrong");
+    }
+  };
+
+  const getMyPropertyList = async () => {
+    const response = await getMyProperty(user?.id);
+    if (response?.success) {
+      setProperty(response?.data?.data);
+    } else {
+      toast.error("something went wrong");
+    }
+  };
 
   return (
     <div className="dashMainContainer">
@@ -130,175 +114,53 @@ export default function Dashboard() {
                     xl={19}
                     className="cardListingContainer"
                   >
-                    <div className="cardSectionSearch">
-                      <Row className="cardRow" gutter={20}>
-                        <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                          <div>
-                            <img
-                              src={Images.common.ad2}
-                              alt="searchImg"
-                              className="searchImg"
-                            />
-                          </div>
-                        </Col>
-                        <Col
-                          xs={18}
-                          sm={18}
-                          md={18}
-                          lg={18}
-                          xl={18}
-                          className="detailsSectionCard"
-                        >
-                          <Link>
-                            <img
-                              src={Images.common.dotButtton}
-                              alt="dotmenu"
-                              className="dotmenu"
-                            />
-                          </Link>
-                          <p className="searchItemTitle">
-                            Apple AirPods 3rd Generation Wireless Charging Case
-                            - Genuine Apple Very Good
-                          </p>
-                          <p className="productDetailSearch">
-                            Refurbished Very Good Apple Airpods 3rd Generation
-                            Wireless{" "}
-                          </p>
-                          <p className="priceText">K27,000</p>
-                          <p className="searchTextSearch buyText">Buy it now</p>
-                          <p className="searchTextSearch buyText valueText">
-                            +K25.00 for delivery from lusaka
-                          </p>
-                        </Col>
-                      </Row>
-                    </div>
+                    {products?.map((item, idx) => {
+                      jsonObj =
+                        item.images.length !== 0 && JSON.parse(item?.images);
+                      return (
+                        <div className="cardSectionSearch" key={idx}>
+                          <Row className="cardRow" gutter={20}>
+                            <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                              <div>
+                                <img
+                                  src={`${Config.API_BASE_URL}uploads/products/${jsonObj[0]}`}
+                                  alt="searchImg"
+                                  className="searchImg"
+                                />
+                              </div>
+                            </Col>
+                            <Col
+                              xs={18}
+                              sm={18}
+                              md={18}
+                              lg={18}
+                              xl={18}
+                              className="detailsSectionCard"
+                            >
+                              <Link>
+                                <img
+                                  src={Images.common.dotButtton}
+                                  alt="dotmenu"
+                                  className="dotmenu"
+                                />
+                              </Link>
+                              <p className="searchItemTitle">{item?.title}</p>
+                              <p className="productDetailSearch">
+                                {item?.description}
+                              </p>
+                              <p className="priceText">K{item?.buy}</p>
 
-                    <div className="cardSectionSearch">
-                      <Row className="cardRow" gutter={20}>
-                        <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                          <div>
-                            <img
-                              src={Images.common.ad2}
-                              alt="searchImg"
-                              className="searchImg"
-                            />
-                          </div>
-                        </Col>
-                        <Col
-                          xs={18}
-                          sm={18}
-                          md={18}
-                          lg={18}
-                          xl={18}
-                          className="detailsSectionCard"
-                        >
-                          <Link>
-                            <img
-                              src={Images.common.dotButtton}
-                              alt="dotmenu"
-                              className="dotmenu"
-                            />
-                          </Link>
-                          <p className="searchItemTitle">
-                            Apple AirPods 3rd Generation Wireless Charging Case
-                            - Genuine Apple Very Good
-                          </p>
-                          <p className="productDetailSearch">
-                            Refurbished Very Good Apple Airpods 3rd Generation
-                            Wireless{" "}
-                          </p>
-                          <p className="priceText">K27,000</p>
-                          <p className="searchTextSearch buyText">Buy it now</p>
-                          <p className="searchTextSearch buyText valueText">
-                            +K25.00 for delivery from lusaka
-                          </p>
-                        </Col>
-                      </Row>
-                    </div>
-                    <div className="cardSectionSearch">
-                      <Row className="cardRow" gutter={20}>
-                        <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                          <div>
-                            <img
-                              src={Images.common.ad2}
-                              alt="searchImg"
-                              className="searchImg"
-                            />
-                          </div>
-                        </Col>
-                        <Col
-                          xs={18}
-                          sm={18}
-                          md={18}
-                          lg={18}
-                          xl={18}
-                          className="detailsSectionCard"
-                        >
-                          <Link>
-                            <img
-                              src={Images.common.dotButtton}
-                              alt="dotmenu"
-                              className="dotmenu"
-                            />
-                          </Link>
-                          <p className="searchItemTitle">
-                            Apple AirPods 3rd Generation Wireless Charging Case
-                            - Genuine Apple Very Good
-                          </p>
-                          <p className="productDetailSearch">
-                            Refurbished Very Good Apple Airpods 3rd Generation
-                            Wireless{" "}
-                          </p>
-                          <p className="priceText">K27,000</p>
-                          <p className="searchTextSearch buyText">Buy it now</p>
-                          <p className="searchTextSearch buyText valueText">
-                            +K25.00 for delivery from lusaka
-                          </p>
-                        </Col>
-                      </Row>
-                    </div>
-                    <div className="cardSectionSearch">
-                      <Row className="cardRow" gutter={20}>
-                        <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                          <div>
-                            <img
-                              src={Images.common.ad2}
-                              alt="searchImg"
-                              className="searchImg"
-                            />
-                          </div>
-                        </Col>
-                        <Col
-                          xs={18}
-                          sm={18}
-                          md={18}
-                          lg={18}
-                          xl={18}
-                          className="detailsSectionCard"
-                        >
-                          <Link>
-                            <img
-                              src={Images.common.dotButtton}
-                              alt="dotmenu"
-                              className="dotmenu"
-                            />
-                          </Link>
-                          <p className="searchItemTitle">
-                            Apple AirPods 3rd Generation Wireless Charging Case
-                            - Genuine Apple Very Good
-                          </p>
-                          <p className="productDetailSearch">
-                            Refurbished Very Good Apple Airpods 3rd Generation
-                            Wireless{" "}
-                          </p>
-                          <p className="priceText">K27,000</p>
-                          <p className="searchTextSearch buyText">Buy it now</p>
-                          <p className="searchTextSearch buyText valueText">
-                            +K25.00 for delivery from lusaka
-                          </p>
-                        </Col>
-                      </Row>
-                    </div>
+                              <p className="searchTextSearch buyText valueText">
+                                {item?.province}
+                              </p>
+                              <p className="searchTextSearch buyText valueText">
+                                {item?.town}
+                              </p>
+                            </Col>
+                          </Row>
+                        </div>
+                      );
+                    })}
                   </Col>
                 </Row>
               </TabPanel>
@@ -318,10 +180,10 @@ export default function Dashboard() {
                       <p className="countList">0 items</p>
                     </div>
 
-                    <div className="listingBox">
+                    {/* <div className="listingBox">
                       <Link className="linkList">Change password</Link>
                       <p className="countList">0 items</p>
-                    </div>
+                    </div> */}
                   </Col>
                   {/* personal details container */}
                   <Col

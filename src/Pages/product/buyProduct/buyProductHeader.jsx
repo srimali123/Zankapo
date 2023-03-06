@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Row, Col, Button, Input, Dropdown, Menu, Modal } from "antd";
+import { Row, Col, Dropdown, Menu, Modal } from "antd";
 import { Link } from "react-router-dom";
 import { Images } from "../../../assets/Images/images";
 import Footer from "../../../components/footer/footer";
-import { DownOutlined, LogoutOutlined } from "@ant-design/icons";
 
 import { useSelector, useDispatch } from "react-redux";
 import { clearUser } from "../../../Redux/Slices/User";
@@ -14,8 +13,7 @@ import { fetchAdvertisments } from "../../../Redux/Slices/Advertisment/Advertism
 export default function BuyProductHeader({ category }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { isAuthenticated } = useSelector((state) => state.user);
-  const { user } = useSelector((state) => state.user);
+  const { user, isAuthenticated } = useSelector((state) => state.user);
   const { advertisments, isLoading, message, isError } = useSelector(
     (state) => state.advertisments
   );
@@ -25,7 +23,7 @@ export default function BuyProductHeader({ category }) {
     dispatch(fetchAdvertisments());
   }, [dispatch]);
 
-  console.log("ssss", advertisments);
+  console.log("ssss", isAuthenticated);
 
   const handleClick = (event) => {
     setIsShown((current) => !current);

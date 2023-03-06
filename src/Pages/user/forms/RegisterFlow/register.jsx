@@ -7,7 +7,6 @@ import loginImg from "../../../../assets/Images/common/bottomcover.png";
 import logo from "../../../../assets/Images/common/LOGO.png";
 import logoBlue from "../../../../assets/Images/common/bluelogo.png";
 
-import * as userService from "../../../../Services/UserService";
 import { saveUser } from "../../../../Redux/Slices/Signup/UserSlice";
 import { useDispatch, useSelector } from "react-redux";
 
@@ -101,6 +100,7 @@ export default function Register(props) {
                     value={userData.phonenumber}
                     onChange={onInputHandler}
                     required
+                    maxLength={10}
                   />
 
                   <p className="labelRegister secondText">NRC Number*</p>
@@ -112,6 +112,7 @@ export default function Register(props) {
                     value={userData.nrc}
                     onChange={onInputHandler}
                     required
+                    maxLength={9}
                   />
 
                   <p className="labelRegister passwordText">Password</p>
@@ -121,6 +122,7 @@ export default function Register(props) {
                     value={userData.password}
                     onChange={onInputHandler}
                     required
+                    minLength={8}
                   />
                   <p className="mustText">Must be at least 8 characters.</p>
 

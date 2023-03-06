@@ -12,8 +12,7 @@ import { useNavigate } from "react-router-dom";
 
 import { LoginOutlined } from "@ant-design/icons";
 export default function Header(props) {
-  const { isAuthenticated } = useSelector((state) => state.user);
-  const { user } = useSelector((state) => state.user);
+  const { user, isAuthenticated } = useSelector((state) => state.user);
   const { categories } = useSelector((state) => state.categories);
   const navigate = useNavigate();
 
@@ -266,7 +265,7 @@ export default function Header(props) {
                   />
                 </Link>
               </div>
-           
+
               <Link className="addBtn" to={"/placeAd"}>
                 <Link to={"/placeAd"}>
                   <img src={Images.common.addIcon} className="addIcon" />
