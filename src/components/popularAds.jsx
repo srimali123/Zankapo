@@ -9,7 +9,7 @@ const PopularAds = (props) => {
       <div className="adcontainer">
         <img src={image} className="popularAddImg" />
       </div>
-      <div style={{ display: "flex", justifyContent: "space-between" }}>
+      <div style={{ display: "flex", justifyContent: "space-between"  }} className="mobilecardstyle">
         <a style={{ fontSize: "10px", fontFamily: "400", color: "GrayText" }}>
           {location}
         </a>
