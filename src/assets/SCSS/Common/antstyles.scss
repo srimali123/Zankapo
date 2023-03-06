@@ -100,6 +100,10 @@ input:-webkit-autofill:focus {
   z-index: 1;
   right: 0px !important;
   left: 1180px !important;
+  .ant-dropdown-menu{
+    position:fixed;
+    right:40px;
+  }
   .ant-dropdown-menu-title-content {
     color: $gray7;
     font-size: 16px;
@@ -124,6 +128,17 @@ input:-webkit-autofill:focus {
     top: 61px !important;
   }
 }
+
+@include tablet-portrait {
+  .profileDropDown {
+   
+    .ant-dropdown-menu{
+      position:fixed;
+      right:40px;
+    }
+}
+}
+
 
 .homedropdown {
 

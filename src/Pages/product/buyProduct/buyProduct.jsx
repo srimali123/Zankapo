@@ -248,11 +248,11 @@ export default function BuyProduct() {
                         <Divider />
 
                         <p className="descripText">Description</p>
-                        <Link>
+                       
                           <div className="btnUsed">
                             {advertisment?.condition}
                           </div>
-                        </Link>
+                       
                         <p className="context">{advertisment?.description}</p>
                       </div>
                     </Col>

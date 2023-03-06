@@ -62,6 +62,7 @@ const Images = {
   },
   populaAd: {
     ad1: require("../Images/popularAd/modern-villa-project-with-innovative-concept.jpeg"),
+    ad2: require("../Images/popularAd/car.jpeg"),
   },
 };
 

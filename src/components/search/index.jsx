@@ -7,11 +7,10 @@ import { useDispatch } from "react-redux";
 
 import { saveSearchData } from "../../Redux/Slices/Search";
 
-export const SearchComponent = ({ advertisments, properties = [] }) => {
+export const SearchComponent = ({ advertisments, properties = [],positionHome, bgColor }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [filterData, setFilterData] = useState([]);
-
   const searchHandler = (text) => {
     const suggetions = advertisments.filter((value) => {
       return value.title.toLowerCase().includes(text.toLowerCase());
@@ -56,18 +55,27 @@ export const SearchComponent = ({ advertisments, properties = [] }) => {
       {filterData.length !== 0 && (
         <div
           className="suggetions"
-          
+          style={{position:positionHome? "absolute" : " fixed", backgroundColor:bgColor
+          ,}}
         >
           {filterData?.slice(0, 6).map((item, idx) => {
             return (
               <a
-                style={{ padding: "5px" }}
+               className=""
                 onClick={() =>
                   navigate(`/buyproduct/${item.id}/${item.category}`)
                 }
               >
+                <div className="serchItemRow">
+                <img
+                            src={Images.populaAd.ad2}
+                            className="serchItemImg"
+                            onClick={(e) => e.preventDefault()}
+                          />
+                <p className="serchtitle">{item.title}</p>{" "}
+                </div>
                 {" "}
-                <p style={{ marginLeft: "5px" }}>{item.title}</p>{" "}
+               
               </a>
             );
           })}

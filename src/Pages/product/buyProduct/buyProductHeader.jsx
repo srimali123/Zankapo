@@ -326,9 +326,10 @@ export default function BuyProductHeader({ category }) {
                         </div>
                       </Col>
                     </Row>
-
-                    <SearchComponent advertisments={advertisments} />
+                    <SearchComponent advertisments={advertisments} positionHome={false} bgColor={'#EFF0F6'}  />
+                   
                   </div>
+                  
                 </div>
 
                 <div className="translateContainer">
@@ -372,6 +373,7 @@ export default function BuyProductHeader({ category }) {
                           trigger={["click"]}
                           overlayClassName="profileDropDown"
                           className="profileDrop"
+                          style={{zIndex: 1,}}
                         >
                           <img
                             src={Images.common.orangeDrop}
@@ -439,18 +441,21 @@ export default function BuyProductHeader({ category }) {
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <div className="grayContainer">
               <div className="iconCont">
+                <a  onClick={() => navigate("/")}>
                 <img
                   src={Images.common.home}
                   className="hederIcon"
                   onClick={() => navigate("/")}
                 />
+                </a>
+                
                 <img
                   src={Images.common.forwardNew}
                   className="hederIconForward"
                 />
-                <Link className="clothsLink">
+                <p className="clothsLink">
                   {category ? category : "Real estate"}
-                </Link>
+                </p>
               </div>
               <div className="iconCont backCont">
                 <Link to="/" className="clothsLink backlink">

@@ -196,7 +196,7 @@ export default function Header(props) {
             </div>
             <p className="profileName">{user?.fullname}</p>
           </div>
-          <div className="profileMainContTwo">
+          <div className="profileMainContTwo" >
             <div>
               {isAuthenticated ? (
                 <>
@@ -234,7 +234,7 @@ export default function Header(props) {
         <p className="footerText">Sankapo ©2022</p>
       </Modal>
 
-      <Row>
+      <Row >
         <Col xs={24} sm={24} md={24} lg={24} xl={24}>
           <div className="headerMaincontainer">
             <div className="headerSectionOne">
@@ -255,7 +255,7 @@ export default function Header(props) {
               </Link>
             </div>
 
-            <div className="headerSectionTwo">
+            <div className="headerSectionTwo" style={{  position:'relative'}}>
               <div className="translateContainer">
                 <Link>
                   <img
@@ -274,7 +274,7 @@ export default function Header(props) {
               </Link>
               {/* when user didnt register or login */}
               {isAuthenticated ? (
-                <div className="confirmcontainerAfterLogin">
+                <div className="confirmcontainerAfterLogin" style={{position:'relative', }}>
                   {/* <div className="profileContainer">
                     {" "}
                     <Link to="/buyProduct" className="link customLink">
@@ -288,7 +288,7 @@ export default function Header(props) {
                     </a>
                   </div> */}
 
-                  <div className="profileContainer">
+                  <div className="profileContainer" >
                     <img
                       src={Images.common.userColoured}
                       className="userIcon"
@@ -296,6 +296,7 @@ export default function Header(props) {
                     <a className="link nameLink">
                       {user?.fullname}
                       <Dropdown
+                      style={{position: 'absolute',overflow:'hidden', zIndex: 1,}}
                         overlay={menu}
                         trigger={["click"]}
                         overlayClassName="profileDropDown"
