@@ -22,7 +22,8 @@ import { useNavigate } from "react-router-dom";
 import { fetchCategories } from "../../Redux/Slices/Category/CategorySlice";
 import { SearchComponent } from "../../components/search";
 import PulseText from "react-pulse-text";
-// import Dropdown from 'react-dropdown';
+import moment from "moment";
+//import Dropdown from "react-dropdown";
 
 const contentStyle = {
   margin: 0,
@@ -294,7 +295,9 @@ export default function HomePage(props) {
                           <PopularAds
                             image={`${Config.API_BASE_URL}uploads/products/${jsonObj[0]}`}
                             description={item.title}
-                            price={`K${item.buy}`}
+                            price={item.buy}
+                            location={item.province + ", " + item.town}
+                            timestamp={moment(item?.created_at).fromNow()}
                             onAdNavigateHandler={() =>
                               onAdNavigateHandler(item.id, item.category)
                             }
@@ -352,7 +355,9 @@ export default function HomePage(props) {
                           <PopularAds
                             image={`${Config.API_BASE_URL}/uploads/properties/${jsonObj[0]}`}
                             description={item.tittle}
-                            price={`K${item.buy}`}
+                            price={item.buy}
+                            location={item.province + ", " + item.town}
+                            timestamp={moment(item?.created_at).fromNow()}
                             onAdNavigateHandler={() =>
                               onNavigateToPrpertyHandler(item.id)
                             }
@@ -495,8 +500,8 @@ export default function HomePage(props) {
           </Col>
         </Row>
       </div> */}
-       {/* sponsored ad */}
-       <Row>
+            {/* sponsored ad */}
+            <Row>
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <div
                   className="sponContainer"

@@ -15,17 +15,14 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
-       
 
         .bannerLogo {
           height: 53px;
         }
         .centerTextContentContainer {
           max-height: 150px;
-      
-
         }
-      
+
         .centerContentText {
           font-size: 16px;
           font-weight: 400;
@@ -38,7 +35,6 @@
           margin-bottom: 48px;
           height: 30px;
         }
-       
 
         .serchSection {
           width: 100%;
@@ -63,7 +59,7 @@
             font-weight: 500;
             font-family: $poppins;
             color: $white;
-        
+
             .down {
               height: 24px;
               width: 24px;
@@ -157,13 +153,13 @@
       }
       .nodataText {
         text-align: center;
-        font-size: 18px;
-        font-weight: 500;
+        font-size: 15px;
+        font-weight: 300;
         color: $gray1;
       }
       .noDataImg {
-        height: 100px;
-        width: 130px;
+        height: 80px;
+        width: 100px;
       }
 
       .secondSectionText {
@@ -218,24 +214,24 @@
       }
       .sponContainer {
         width: 100%;
-        height:270px;
+        height: 270px;
         margin-top: 130px;
         background-size: cover;
         background-repeat: no-repeat;
         position: relative;
-       .adcont {
-        background-color:white;
-        height: 45px;
-        width: 167px;
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color:$black2;
-        font-size: 14px;
-        font-weight: 600;
-        font-family: $poppins;
-       }
+        .adcont {
+          background-color: white;
+          height: 45px;
+          width: 167px;
+          position: absolute;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: $black2;
+          font-size: 14px;
+          font-weight: 600;
+          font-family: $poppins;
+        }
       }
     }
   }
@@ -525,7 +521,6 @@
       }
     }
   }
- 
 }
 
 @include tablet-landscape {
@@ -627,5 +622,4 @@
       }
     }
   }
- 
 }

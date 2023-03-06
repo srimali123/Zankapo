@@ -7,7 +7,15 @@ import { useDispatch } from "react-redux";
 
 import { saveSearchData } from "../../Redux/Slices/Search";
 
-export const SearchComponent = ({ advertisments, properties = [],positionHome, bgColor }) => {
+import { Config } from "../../Config";
+
+export const SearchComponent = ({
+  advertisments,
+  properties = [],
+  positionHome,
+  bgColor,
+}) => {
+  let jsonObj;
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [filterData, setFilterData] = useState([]);
@@ -55,27 +63,28 @@ export const SearchComponent = ({ advertisments, properties = [],positionHome, b
       {filterData.length !== 0 && (
         <div
           className="suggetions"
-          style={{position:positionHome? "absolute" : " fixed", backgroundColor:bgColor
-          ,}}
+          style={{
+            position: positionHome ? "absolute" : " fixed",
+            backgroundColor: bgColor,
+          }}
         >
           {filterData?.slice(0, 6).map((item, idx) => {
+            jsonObj = item.images.length !== 0 && JSON.parse(item?.images);
             return (
               <a
-               className=""
+                className=""
                 onClick={() =>
                   navigate(`/buyproduct/${item.id}/${item.category}`)
                 }
               >
                 <div className="serchItemRow">
-                <img
-                            src={Images.populaAd.ad2}
-                            className="serchItemImg"
-                            onClick={(e) => e.preventDefault()}
-                          />
-                <p className="serchtitle">{item.title}</p>{" "}
-                </div>
-                {" "}
-               
+                  <img
+                    src={`${Config.API_BASE_URL}uploads/products/${jsonObj[0]}`}
+                    className="serchItemImg"
+                    onClick={(e) => e.preventDefault()}
+                  />
+                  <p className="serchtitle">{item.title}</p>{" "}
+                </div>{" "}
               </a>
             );
           })}

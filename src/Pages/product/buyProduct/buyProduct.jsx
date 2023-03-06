@@ -194,7 +194,9 @@ export default function BuyProduct() {
 
                           <div className="priceDetailText">
                             <p className="priceNew">
-                              {`K${advertisment?.buy}`}
+                              {`K ${advertisment?.buy
+                                .toString()
+                                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
                               <br />
                             </p>
                           </div>
@@ -248,11 +250,9 @@ export default function BuyProduct() {
                         <Divider />
 
                         <p className="descripText">Description</p>
-                       
-                          <div className="btnUsed">
-                            {advertisment?.condition}
-                          </div>
-                       
+
+                        <div className="btnUsed">{advertisment?.condition}</div>
+
                         <p className="context">{advertisment?.description}</p>
                       </div>
                     </Col>

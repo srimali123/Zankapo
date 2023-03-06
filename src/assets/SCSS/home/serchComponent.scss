@@ -1,14 +1,12 @@
 .suggetions {
-  
   width: 420px;
- 
+
   overflow-y: auto;
   z-index: 1;
   height: 200px;
 
   background-color: white;
   padding: 15px;
-
 
   .serchItemImg {
     height: 40px;
@@ -19,12 +17,11 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-  margin-bottom: 20px;
-  border-bottom: 1px solid $gray7;
- padding: 5px;
+    margin-bottom: 20px;
+    padding: 5px;
   }
   .serchtitle {
-    color:$gray7;
+    color: $gray7;
     font-family: $poppins;
     font-size: 15px;
     font-weight: 500;
@@ -32,27 +29,22 @@
 }
 
 @include mobile {
-    .suggetions {
-       top:43px;
-        height: 80px;
-       
-      }
-
+  .suggetions {
+    top: 43px;
+    height: 80px;
+  }
 }
 
 @include tablet-portrait {
-    .suggetions {
-       top:62px;
-        height: 120px;
-       
-      }
+  .suggetions {
+    top: 62px;
+    height: 120px;
+  }
 }
 
 @include tablet-landscape {
-    .suggetions {
-       top:62px;
-        height: 160px;
-       
-      }
-
+  .suggetions {
+    top: 62px;
+    height: 160px;
+  }
 }
