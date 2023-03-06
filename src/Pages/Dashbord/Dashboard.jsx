@@ -17,6 +17,7 @@ export default function Dashboard() {
   const { user } = useSelector((state) => state.user);
   const [products, setProducts] = useState([]);
   const [property, setProperty] = useState([]);
+  const [activePane, setActivePane] = useState(1);
 
   useEffect(() => {
     getMyProductsList();
@@ -38,6 +39,18 @@ export default function Dashboard() {
       setProperty(response?.data?.data);
     } else {
       toast.error("something went wrong");
+    }
+  };
+
+  const changeActivePane = (number) => {
+    if (number === 1) {
+      setActivePane(1);
+    } else if (number === 2) {
+      setActivePane(2);
+    } else if (number === 3) {
+      setActivePane(3);
+    } else {
+      setActivePane(4);
     }
   };
 
@@ -86,22 +99,46 @@ export default function Dashboard() {
                     xl={4}
                     className="listNavLinks"
                   >
-                    <div className="listingBox">
+                    <div
+                      className="listingBox"
+                      onClick={() => changeActivePane(1)}
+                    >
                       <Link className="linkList">All listing</Link>
-                      <p className="countList">0 items</p>
+                      <p className="countList">{products?.length} items</p>
                     </div>
 
-                    <div className="listingBox">
+                    <div
+                      className="listingBox"
+                      onClick={() => changeActivePane(2)}
+                    >
                       <Link className="linkList">Active listing</Link>
-                      <p className="countList">0 items</p>
+                      <p className="countList">
+                        {
+                          products?.filter((item) => item.isApprove === "1")
+                            .length
+                        }{" "}
+                        items
+                      </p>
                     </div>
 
-                    <div className="listingBox">
+                    <div
+                      className="listingBox"
+                      nClick={() => changeActivePane(3)}
+                    >
                       <Link className="linkList">Pending listing</Link>
-                      <p className="countList">0 items</p>
+                      <p className="countList">
+                        {
+                          products?.filter((item) => item.isApprove === "0")
+                            .length
+                        }{" "}
+                        items
+                      </p>
                     </div>
 
-                    <div className="listingBox">
+                    <div
+                      className="listingBox"
+                      nClick={() => changeActivePane(4)}
+                    >
                       <Link className="linkList">expired listing</Link>
                       <p className="countList">0 items</p>
                     </div>
@@ -114,53 +151,163 @@ export default function Dashboard() {
                     xl={19}
                     className="cardListingContainer"
                   >
-                    {products?.map((item, idx) => {
-                      jsonObj =
-                        item.images.length !== 0 && JSON.parse(item?.images);
-                      return (
-                        <div className="cardSectionSearch" key={idx}>
-                          <Row className="cardRow" gutter={20}>
-                            <Col xs={6} sm={6} md={6} lg={6} xl={6}>
-                              <div>
-                                <img
-                                  src={`${Config.API_BASE_URL}uploads/products/${jsonObj[0]}`}
-                                  alt="searchImg"
-                                  className="searchImg"
-                                />
-                              </div>
-                            </Col>
-                            <Col
-                              xs={18}
-                              sm={18}
-                              md={18}
-                              lg={18}
-                              xl={18}
-                              className="detailsSectionCard"
-                            >
-                              <Link>
-                                <img
-                                  src={Images.common.dotButtton}
-                                  alt="dotmenu"
-                                  className="dotmenu"
-                                />
-                              </Link>
-                              <p className="searchItemTitle">{item?.title}</p>
-                              <p className="productDetailSearch">
-                                {item?.description}
-                              </p>
-                              <p className="priceText">K{item?.buy}</p>
+                    {activePane === 1 ? (
+                      products?.map((item, idx) => {
+                        jsonObj =
+                          item.images.length !== 0 && JSON.parse(item?.images);
+                        return (
+                          <div className="cardSectionSearch" key={idx}>
+                            <Row className="cardRow" gutter={20}>
+                              <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                                <div>
+                                  <img
+                                    src={`${Config.API_BASE_URL}uploads/products/${jsonObj[0]}`}
+                                    alt="searchImg"
+                                    className="searchImg"
+                                  />
+                                </div>
+                              </Col>
+                              <Col
+                                xs={18}
+                                sm={18}
+                                md={18}
+                                lg={18}
+                                xl={18}
+                                className="detailsSectionCard"
+                              >
+                                <Link>
+                                  <img
+                                    src={Images.common.dotButtton}
+                                    alt="dotmenu"
+                                    className="dotmenu"
+                                  />
+                                </Link>
+                                <p className="searchItemTitle">{item?.title}</p>
+                                <p className="productDetailSearch">
+                                  {item?.description}
+                                </p>
+                                <p className="priceText">K{item?.buy}</p>
 
-                              <p className="searchTextSearch buyText valueText">
-                                {item?.province}
-                              </p>
-                              <p className="searchTextSearch buyText valueText">
-                                {item?.town}
-                              </p>
-                            </Col>
-                          </Row>
-                        </div>
-                      );
-                    })}
+                                <p className="searchTextSearch buyText valueText">
+                                  {item?.province}
+                                </p>
+                                <p className="searchTextSearch buyText valueText">
+                                  {item?.town}
+                                </p>
+                              </Col>
+                            </Row>
+                          </div>
+                        );
+                      })
+                    ) : activePane === 2 ? (
+                      products
+                        ?.filter((item) => item.isApprove === "1")
+                        .map((item, idx) => {
+                          jsonObj =
+                            item.images.length !== 0 &&
+                            JSON.parse(item?.images);
+                          return (
+                            <div className="cardSectionSearch" key={idx}>
+                              <Row className="cardRow" gutter={20}>
+                                <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                                  <div>
+                                    <img
+                                      src={`${Config.API_BASE_URL}uploads/products/${jsonObj[0]}`}
+                                      alt="searchImg"
+                                      className="searchImg"
+                                    />
+                                  </div>
+                                </Col>
+                                <Col
+                                  xs={18}
+                                  sm={18}
+                                  md={18}
+                                  lg={18}
+                                  xl={18}
+                                  className="detailsSectionCard"
+                                >
+                                  <Link>
+                                    <img
+                                      src={Images.common.dotButtton}
+                                      alt="dotmenu"
+                                      className="dotmenu"
+                                    />
+                                  </Link>
+                                  <p className="searchItemTitle">
+                                    {item?.title}
+                                  </p>
+                                  <p className="productDetailSearch">
+                                    {item?.description}
+                                  </p>
+                                  <p className="priceText">K{item?.buy}</p>
+
+                                  <p className="searchTextSearch buyText valueText">
+                                    {item?.province}
+                                  </p>
+                                  <p className="searchTextSearch buyText valueText">
+                                    {item?.town}
+                                  </p>
+                                </Col>
+                              </Row>
+                            </div>
+                          );
+                        })
+                    ) : activePane === 3 ? (
+                      products
+                        ?.filter((item) => item.isApprove === 0)
+                        .map((item, idx) => {
+                          jsonObj =
+                            item.images.length !== 0 &&
+                            JSON.parse(item?.images);
+                          return (
+                            <div className="cardSectionSearch" key={idx}>
+                              <Row className="cardRow" gutter={20}>
+                                <Col xs={6} sm={6} md={6} lg={6} xl={6}>
+                                  <div>
+                                    <img
+                                      src={`${Config.API_BASE_URL}uploads/products/${jsonObj[0]}`}
+                                      alt="searchImg"
+                                      className="searchImg"
+                                    />
+                                  </div>
+                                </Col>
+                                <Col
+                                  xs={18}
+                                  sm={18}
+                                  md={18}
+                                  lg={18}
+                                  xl={18}
+                                  className="detailsSectionCard"
+                                >
+                                  <Link>
+                                    <img
+                                      src={Images.common.dotButtton}
+                                      alt="dotmenu"
+                                      className="dotmenu"
+                                    />
+                                  </Link>
+                                  <p className="searchItemTitle">
+                                    {item?.title}
+                                  </p>
+                                  <p className="productDetailSearch">
+                                    {item?.description}
+                                  </p>
+                                  <p className="priceText">K{item?.buy}</p>
+
+                                  <p className="searchTextSearch buyText valueText">
+                                    {item?.province}
+                                  </p>
+                                  <p className="searchTextSearch buyText valueText">
+                                    {item?.town}
+                                  </p>
+                                </Col>
+                              </Row>
+                            </div>
+                          );
+                        })
+                    ) : (
+                      <></>
+                    )}
                   </Col>
                 </Row>
               </TabPanel>

@@ -87,8 +87,21 @@ export default function CreateNewAd() {
     maxFiles: 5,
   });
 
+  const onRemoveImage = (idx) => {
+    let tmp = images;
+    let index = tmp.indexOf(idx);
+
+    const newArray = tmp.splice(index, 1);
+
+    setImages(newArray);
+  };
+
   const thumbs = images.map((file) => (
-    <div style={Styles.thumb} key={file.name}>
+    <div
+      style={Styles.thumb}
+      key={file.name}
+      onClick={() => onRemoveImage(file)}
+    >
       <div style={Styles.thumbInner}>
         <img
           src={URL.createObjectURL(file)}
