@@ -189,16 +189,16 @@ export default function CategorySearch() {
                 <p className="serchTextSearch">"{text}"</p>
                 <div className="searchItemContainer">
                   <div className="btnGroup">
-                    <Row>
+                    <Row >
                       <Col xs={24} sm={24} md={10} lg={12} xl={12}>
                         <div className="btnGroupList">
                           <Button className="searchPageBtn">All Listing</Button>
-                          <Button className="searchPageBtn">Auction</Button>
+                          <Button className="searchPageBtn auction">Auction</Button>
                         </div>
                       </Col>
                       <Col xs={24} sm={24} md={14} lg={12} xl={12}>
                         <div className="btnDrop">
-                          <Row gutter={30}>
+                          <Row gutter={40}>
                             <Col
                               xs={12}
                               sm={12}
@@ -210,7 +210,7 @@ export default function CategorySearch() {
                               <div>
                                 <Dropdown
                                   trigger={["click"]}
-                                  className="searchDropdown"
+                                  className="searchDropdown bestmatch"
                                   menu={{
                                     items,
                                   }}
@@ -233,7 +233,7 @@ export default function CategorySearch() {
                               <div>
                                 <Dropdown
                                   trigger={["click"]}
-                                  className="searchDropdown"
+                                  className="searchDropdown bestmatch"
                                   menu={{
                                     items,
                                   }}
@@ -297,7 +297,7 @@ export default function CategorySearch() {
                             </p>
                           </Col>
                         </Row>
-                        <Divider />
+                     
                       </div>
                     );
                   })}

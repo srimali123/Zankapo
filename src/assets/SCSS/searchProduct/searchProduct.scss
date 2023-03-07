@@ -73,6 +73,10 @@
           border: none;
         }
       }
+      .auction{
+        display: none;
+      }
+     
       .searchDropdown {
         width: 131px;
         height: 40px;
@@ -87,6 +91,10 @@
         align-items: center;
         display: flex;
         overflow: hidden;
+      }
+      .bestmatch {
+        margin-left: 40px;
+        
       }
       .searchTextSearch {
         margin-top: 11px;
@@ -103,8 +111,8 @@
 
       }
       .searchImg {
-        height: 221px;
-        width: 221px;
+        height: 211px;
+        width: 211px;
       }
       .searchItemTitle {
         font-size: 16px;
@@ -146,7 +154,16 @@
         width: 150px;
       }
       .cardRow {
-        padding-bottom: 20px;
+        padding-bottom: 10px;
+border:2px solid $gray19;
+border-right-width:0;
+border-left-width:0;
+padding:15px;
+
+   
+        &:hover {
+          box-shadow: 0 0 5px 0 $gray7
+        }
       }
       .advertisementContainer {
         width: 100%;
@@ -338,6 +355,10 @@
           width: 139px;
           
         }
+        .bestmatch {
+          margin-left: 20px;
+          
+        }
         .searchTextSearch {
          
           font-size: 16px;
@@ -468,6 +489,10 @@
           align-items: center;
           display: flex;
           overflow: hidden;
+        }
+        .bestmatch {
+          margin-left: 30px;
+          
         }
         .searchTextSearch {
           margin-top: 11px;
