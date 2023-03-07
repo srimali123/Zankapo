@@ -8,9 +8,9 @@
       background-size: cover;
       overflow-y: auto;
       width: 100%;
-      height: 100vh;
+      height: 423px;
       .centerContent {
-        height: 100vh;
+        height: 423px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -119,6 +119,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      z-index:-1;
       .blueContText {
         font-size: 12px;
         font-weight: 600;
@@ -241,9 +242,9 @@
   .mainCont {
     .homeMaincontainer {
       .banner {
-        height: 342px;
+       
         .centerContent {
-          height: 342px;
+        
           justify-content: center;
           align-items: center;
           flex-direction: column;
@@ -401,9 +402,9 @@
     .homeMaincontainer {
       .banner {
         width: 100%;
-        height: 500px;
+     
         .centerContent {
-          height: 500px;
+         
           .bannerLogo {
             height: 53px;
           }
@@ -528,9 +529,9 @@
     .homeMaincontainer {
       .banner {
         width: 100%;
-        height: 600px;
+       
         .centerContent {
-          height: 600px;
+          
         }
       }
       .blueconatainer {
