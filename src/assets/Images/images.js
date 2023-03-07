@@ -3,7 +3,7 @@ const Images = {
     addIcon: require("../Images/common/addicon.png"),
     blueLogo: require("../Images/common/bluelogo.png"),
     down: require("../Images/common/Down.png"),
-    banner: require("../Images/common/Hero.png"),
+    banner: require("../Images/common/bannerNew.jpg"),
     orangeColorLogo: require("../Images/common/logoOrange.png"),
     menu: require("../Images/common/menu.png"),
     search: require("../Images/common/Search.png"),

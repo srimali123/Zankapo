@@ -2,15 +2,15 @@
   width: 420px;
 
   overflow-y: auto;
-  z-index: 1;
-  height: 200px;
+  z-index: 1000;
+  height: 100px;
 
   background-color: white;
   padding: 15px;
 
   .serchItemImg {
-    height: 40px;
-    width: 40px;
+    height: 30px;
+    width: 30px;
     margin-right: 10px;
   }
   .serchItemRow {
@@ -23,8 +23,9 @@
   .serchtitle {
     color: $gray7;
     font-family: $poppins;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 400;
+    margin-bottom:0;
   }
 }
 
@@ -32,19 +33,20 @@
   .suggetions {
     top: 43px;
     height: 80px;
+    width:327.5px;
   }
 }
 
 @include tablet-portrait {
   .suggetions {
     top: 62px;
-    height: 120px;
+    height: 100px;
   }
 }
 
 @include tablet-landscape {
   .suggetions {
     top: 62px;
-    height: 160px;
+    height: 100px;
   }
 }
