@@ -88,24 +88,25 @@ export default function CreateNewAd() {
   });
 
   const onRemoveImage = (idx) => {
+    console.log("removing");
     let tmp = images;
+    console.log("images", idx);
     let index = tmp.indexOf(idx);
-
-    const newArray = tmp.splice(index, 1);
-
-    setImages(newArray);
+    console.log("removed", index);
+    if (index > -1 === true) {
+      const newArray = tmp.splice(index, 1);
+      console.log("new img", newArray);
+      setImages(newArray);
+    }
   };
 
   const thumbs = images.map((file) => (
-    <div
-      style={Styles.thumb}
-      key={file.name}
-      onClick={() => onRemoveImage(file)}
-    >
+    <div style={Styles.thumb} key={file.name}>
       <div style={Styles.thumbInner}>
         <img
           src={URL.createObjectURL(file)}
           style={Styles.img}
+          onClick={() => onRemoveImage(file)}
           // Revoke data uri after image is loaded
           onLoad={() => {
             URL.revokeObjectURL(URL.createObjectURL(file));

@@ -12,7 +12,7 @@ export const createPropertyAdvertisment = async (data) => {
 };
 
 export const fetchAdvertisments = async () => {
-  const url = `${Config.API_BASE_URL}api/product/showAll`;
+  const url = `${Config.API_BASE_URL}api/product/approved`;
   const response = await httpClient.get(url);
   return response;
 };

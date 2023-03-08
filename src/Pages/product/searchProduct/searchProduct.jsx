@@ -116,7 +116,7 @@ export default function SearchProduct() {
                 className="dropdownSection"
               >
                 <Row gutter={[0, 20]}>
-                  {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}>
+                  <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <div>
                       <Dropdown
                         trigger={["click"]}
@@ -131,7 +131,7 @@ export default function SearchProduct() {
                         </a>
                       </Dropdown>
                     </div>
-                  </Col> */}
+                  </Col>
                   <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <div>
                       <Dropdown

@@ -130,6 +130,7 @@ export default function Login(props) {
                     className="loginInput "
                     value={userCredential.password}
                     onChange={onInputHandler}
+                    required
                   />
 
                   <div className="detailLogin">

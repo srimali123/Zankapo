@@ -113,8 +113,6 @@ export default function Header(props) {
   //logout function
   const logout = async () => {
     await dispatch(clearUser());
-
-    await dispatch();
     window.location.assign("/");
   };
 
@@ -196,7 +194,7 @@ export default function Header(props) {
             </div>
             <p className="profileName">{user?.fullname}</p>
           </div>
-          <div className="profileMainContTwo" >
+          <div className="profileMainContTwo">
             <div>
               {isAuthenticated ? (
                 <>
@@ -234,11 +232,11 @@ export default function Header(props) {
         <p className="footerText">Sankapo ©2022</p>
       </Modal>
 
-      <Row >
+      <Row>
         <Col xs={24} sm={24} md={24} lg={24} xl={24}>
           <div className="headerMaincontainer">
             <div className="headerSectionOne">
-              <Link to="/">
+              <Link>
                 <img
                   src={Images.common.menu}
                   alt="new"
@@ -255,7 +253,7 @@ export default function Header(props) {
               </Link>
             </div>
 
-            <div className="headerSectionTwo" style={{  position:'relative'}}>
+            <div className="headerSectionTwo" style={{ position: "relative" }}>
               <div className="translateContainer">
                 <Link>
                   <img
@@ -274,36 +272,30 @@ export default function Header(props) {
               </Link>
               {/* when user didnt register or login */}
               {isAuthenticated ? (
-                <div className="confirmcontainerAfterLogin" style={{position:'relative', }}>
-                  {/* <div className="profileContainer">
-                    {" "}
-                    <Link to="/buyProduct" className="link customLink">
-                      Buying
-                    </Link>
-                  </div> */}
-                  {/* <div className="profileContainer">
-                    {" "}
-                    <a href="#" className="link customLink">
-                      Selling
-                    </a>
-                  </div> */}
-
-                  <div className="profileContainer" >
+                <div
+                  className="confirmcontainerAfterLogin"
+                  style={{ position: "relative" }}
+                >
+                  <div className="profileContainer">
                     <img
                       src={Images.common.userColoured}
                       className="userIcon"
                     />
-                    <a className="link nameLink">
+                    <a className="link nameLink" style={{ cursor: "default" }}>
                       {user?.fullname}
                       <Dropdown
-                      style={{position: 'absolute',overflow:'hidden', zIndex: 1,}}
+                        style={{
+                          position: "absolute",
+                          overflow: "hidden",
+                          zIndex: 1,
+                        }}
                         overlay={menu}
-                        trigger={["click"]}
                         overlayClassName="profileDropDown"
                       >
                         <img
                           src={Images.common.orangeDrop}
                           className="userIconDrop"
+                          style={{ cursor: "pointer" }}
                         />
                       </Dropdown>
                     </a>
