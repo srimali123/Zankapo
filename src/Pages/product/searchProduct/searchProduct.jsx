@@ -206,12 +206,12 @@ export default function SearchProduct() {
                       <Col xs={24} sm={24} md={10} lg={12} xl={12}>
                         <div className="btnGroupList">
                           <Button className="searchPageBtn">All Listing</Button>
-                          <Button className="searchPageBtn">Auction</Button>
+                          <Button className="searchPageBtn auction">Auction</Button>
                         </div>
                       </Col>
                       <Col xs={24} sm={24} md={14} lg={12} xl={12}>
                         <div className="btnDrop">
-                          <Row gutter={30}>
+                          <Row gutter={40}>
                             <Col
                               xs={12}
                               sm={12}
@@ -223,7 +223,7 @@ export default function SearchProduct() {
                               <div>
                                 <Dropdown
                                   trigger={["click"]}
-                                  className="searchDropdown"
+                                  className="searchDropdown bestmatch"
                                   menu={{
                                     items,
                                   }}
@@ -246,7 +246,7 @@ export default function SearchProduct() {
                               <div>
                                 <Dropdown
                                   trigger={["click"]}
-                                  className="searchDropdown"
+                                  className="searchDropdown bestmatch"
                                   menu={{
                                     items,
                                   }}
@@ -271,6 +271,7 @@ export default function SearchProduct() {
                       item.images.length !== 0 && JSON.parse(item?.images);
                     return (
                       <div className="cardSectionSearch" key={idx}>
+                       
                         <Row
                           className="cardRow"
                           onClick={() =>
@@ -307,7 +308,7 @@ export default function SearchProduct() {
                             </p>
                           </Col>
                         </Row>
-                        <Divider />
+                      
                       </div>
                     );
                   })}

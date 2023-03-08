@@ -63,6 +63,7 @@
         font-family: $poppins;
         color: $gray7;
         margin-top: 3px;
+        margin-bottom:0;
       }
       .priceNew {
         font-size: 20px;
@@ -70,10 +71,11 @@
         font-family: $poppins;
         color: $green1;
         margin-left: 10px;
+        margin-bottom:0;
       }
       .priceDetail {
         display: flex;
-        align-items: flex-start;
+        align-items: center;
         flex-direction: row;
         width: 200px;
       }
@@ -305,10 +307,9 @@
           font-size: 16px;
         }
         .priceNew {
-          font-size: 24px;
+          font-size: 20px;
           font-weight: 500;
           font-family: $poppins;
-          color: $black;
           margin-left: 10px;
         }
         .orangeBtnBuy {
@@ -490,12 +491,10 @@
           font-size: 20px;
           font-weight: 500;
           font-family: $poppins;
-          color: $black;
           margin-left: 10px;
         }
         .priceDetail {
           display: flex;
-          align-items: flex-start;
           flex-direction: row;
           width: 200px;
         }
@@ -670,12 +669,10 @@
           font-size: 20px;
           font-weight: 500;
           font-family: $poppins;
-          color: $black;
           margin-left: 10px;
         }
         .priceDetail {
           display: flex;
-          align-items: flex-start;
           flex-direction: row;
           width: 200px;
         }

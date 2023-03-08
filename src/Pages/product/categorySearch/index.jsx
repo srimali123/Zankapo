@@ -138,7 +138,7 @@ export default function CategorySearch() {
                   <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <div>
                       <Dropdown
-                        trigger={["click"]}
+                        trigger={["hover"]}
                         className="createDrop"
                         menu={{
                           items: items4,
@@ -154,7 +154,7 @@ export default function CategorySearch() {
                   <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <div>
                       <Dropdown
-                        trigger={["click"]}
+                        trigger={["hover"]}
                         className="createDrop"
                         menu={{
                           items: items3,
@@ -170,7 +170,7 @@ export default function CategorySearch() {
                   <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <div>
                       <Dropdown
-                        trigger={["click"]}
+                        trigger={["hover"]}
                         className="createDrop"
                         menu={{
                           items: items1,
@@ -246,12 +246,14 @@ export default function CategorySearch() {
                           >
                             All Listing
                           </Button>
-                          <Button className="searchPageBtn">Auction</Button>
+                          <Button className="searchPageBtn auction ">
+                            Auction
+                          </Button>
                         </div>
                       </Col>
                       <Col xs={24} sm={24} md={14} lg={12} xl={12}>
                         <div className="btnDrop">
-                          <Row gutter={30}>
+                          <Row gutter={40}>
                             <Col
                               xs={12}
                               sm={12}
@@ -262,8 +264,8 @@ export default function CategorySearch() {
                             >
                               <div>
                                 <Dropdown
-                                  trigger={["click"]}
-                                  className="searchDropdown"
+                                  trigger={["hover"]}
+                                  className="searchDropdown bestmatch"
                                   menu={{
                                     items: items1,
                                   }}
@@ -285,8 +287,8 @@ export default function CategorySearch() {
                             >
                               <div>
                                 <Dropdown
-                                  trigger={["click"]}
-                                  className="searchDropdown"
+                                  trigger={["hover"]}
+                                  className="searchDropdown bestmatch"
                                   menu={{
                                     items: items2,
                                   }}
@@ -358,7 +360,6 @@ export default function CategorySearch() {
                               </p>
                             </Col>
                           </Row>
-                          <Divider />
                         </div>
                       );
                     })}
