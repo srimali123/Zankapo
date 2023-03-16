@@ -14,32 +14,32 @@ export default function BuyProductHeader({ category }) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user, isAuthenticated } = useSelector((state) => state.user);
-  const { advertisments, isLoading, message, isError } = useSelector(
-    (state) => state.advertisments
-  );
+  const { advertisments } = useSelector((state) => state.advertisments);
+  const { categories } = useSelector((state) => state.categories);
   const [isShown, setIsShown] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isModalOpenTwo, setIsModalOpenTwo] = useState(false);
 
   useEffect(() => {
     dispatch(fetchAdvertisments());
   }, [dispatch]);
 
-  console.log("ssss", isAuthenticated);
-
   const handleClick = (event) => {
     setIsShown((current) => !current);
   };
-  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const showModal = () => {
     setIsModalOpen(true);
   };
+
   const handleOk = () => {
     setIsModalOpen(false);
   };
+
   const handleCancel = () => {
     setIsModalOpen(false);
   };
 
-  const [isModalOpenTwo, setIsModalOpenTwo] = useState(false);
   const showModalTwo = () => {
     setIsModalOpenTwo(true);
   };
@@ -94,54 +94,18 @@ export default function BuyProductHeader({ category }) {
       ]}
     />
   );
-  const items = [
-    {
-      key: "1",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.antgroup.com"
-        >
-          1st menu item
-        </a>
-      ),
-    },
-    {
-      key: "2",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.aliyun.com"
-        >
-          2nd menu item
-        </a>
-      ),
-    },
-    {
-      key: "3",
-      label: (
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://www.luohanacademy.com"
-        >
-          3rd menu item
-        </a>
-      ),
-    },
-    {
-      key: "4",
 
-      label: "a danger item",
-    },
-  ];
+  const items = categories?.map((item, idx) => {
+    return {
+      key: idx,
+      label: <a rel="noopener noreferrer">{item.category}</a>,
+    };
+  });
 
   //logout function
   const logout = async () => {
-    await dispatch(clearUser());
-    await dispatch();
+    dispatch(clearUser());
+    dispatch();
     window.location.assign("/");
   };
 
@@ -326,10 +290,12 @@ export default function BuyProductHeader({ category }) {
                         </div>
                       </Col>
                     </Row>
-                    <SearchComponent advertisments={advertisments} positionHome={false} bgColor={'#EFF0F6'}  />
-                   
+                    <SearchComponent
+                      advertisments={advertisments}
+                      positionHome={false}
+                      bgColor={"#EFF0F6"}
+                    />
                   </div>
-                  
                 </div>
 
                 <div className="translateContainer">
@@ -373,7 +339,7 @@ export default function BuyProductHeader({ category }) {
                           trigger={["click"]}
                           overlayClassName="profileDropDown"
                           className="profileDrop"
-                          style={{zIndex: 1,}}
+                          style={{ zIndex: 1 }}
                         >
                           <img
                             src={Images.common.orangeDrop}
@@ -441,14 +407,14 @@ export default function BuyProductHeader({ category }) {
           <Col xs={24} sm={24} md={24} lg={24} xl={24}>
             <div className="grayContainer">
               <div className="iconCont">
-                <a  onClick={() => navigate("/")}>
-                <img
-                  src={Images.common.home}
-                  className="hederIcon"
-                  onClick={() => navigate("/")}
-                />
+                <a onClick={() => navigate("/")}>
+                  <img
+                    src={Images.common.home}
+                    className="hederIcon"
+                    onClick={() => navigate("/")}
+                  />
                 </a>
-                
+
                 <img
                   src={Images.common.forwardNew}
                   className="hederIconForward"

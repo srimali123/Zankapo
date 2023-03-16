@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { toast } from "react-toastify";
 import { Images } from "../../../assets/Images/images.js";
-import { Row, Col, Dropdown, Button, Divider } from "antd";
-import { DownOutlined, SmileOutlined } from "@ant-design/icons";
+import { Row, Col, Dropdown, Button } from "antd";
+import { DownOutlined } from "@ant-design/icons";
 import moment from "moment";
 import { useNavigate } from "react-router-dom";
 
@@ -183,54 +182,6 @@ export default function CategorySearch() {
                       </Dropdown>
                     </div>
                   </Col>
-                  {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                    <div>
-                      <Dropdown
-                        trigger={["click"]}
-                        className="createDrop"
-                        menu={{
-                          items,
-                        }}
-                      >
-                        <a onClick={(e) => e.preventDefault()}>
-                          Type of listing
-                          <DownOutlined />
-                        </a>
-                      </Dropdown>
-                    </div>
-                  </Col> */}
-                  {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                    <div>
-                      <Dropdown
-                        trigger={["click"]}
-                        className="createDrop"
-                        menu={{
-                          items,
-                        }}
-                      >
-                        <a onClick={(e) => e.preventDefault()}>
-                          Type of seller
-                          <DownOutlined />
-                        </a>
-                      </Dropdown>
-                    </div>
-                  </Col> */}
-                  {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                    <div>
-                      <Dropdown
-                        trigger={["click"]}
-                        className="createDrop"
-                        menu={{
-                          items,
-                        }}
-                      >
-                        <a onClick={(e) => e.preventDefault()}>
-                          Shipping
-                          <DownOutlined />
-                        </a>
-                      </Dropdown>
-                    </div>
-                  </Col> */}
                 </Row>
               </Col>
               <Col xs={24} sm={24} md={18} lg={16} xl={16}>
@@ -348,7 +299,12 @@ export default function CategorySearch() {
                               <p className="productDetailSearch">
                                 {item.description}
                               </p>
-                              <p className="priceText">K{item.buy}</p>
+                              <p className="priceText">
+                                {" "}
+                                {`K ${item?.buy
+                                  .toString()
+                                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
+                              </p>
                               <p className="searchTextSearch buyText">
                                 {moment(item.created_at).fromNow()}
                               </p>

@@ -9,8 +9,14 @@
     overflow-y: hidden;
     min-height: 64px;
     max-height: max-content;
-    border-top: 5px solid #F84F3966;
-    border-image: repeating-linear-gradient( 90deg,  rgba(248, 79, 57, 0.7) ,rgba(248, 79, 57, 0.4), rgba(248, 79, 57, 0.8)) 10;
+    border-top: 5px solid #f84f3966;
+    border-image: repeating-linear-gradient(
+        90deg,
+        rgba(248, 79, 57, 0.7),
+        rgba(248, 79, 57, 0.4),
+        rgba(248, 79, 57, 0.8)
+      )
+      10;
     background-color: $white;
     padding-right: 40px;
     padding-left: 40px;
@@ -46,31 +52,7 @@
         align-items: center;
         margin-right: 20px;
         position: relative;
-        // .orangeSection {
-        //   background-color: $orange2;
-        //   width: 170px;
-        //   display: flex;
-        //   flex-direction: row;
-        //   align-items: center;
-        //   justify-content: space-between;
-        //   height: 46px;
-        //   padding-right: 20px;
-        //   padding-left: 20px;
-        //   .down {
-        //     height: 24px;
-        //     width: 24px;
-        //   }
-        //   .searchCategoryText {
-        //     margin: 0;
-        //     font-size: 16px;
-        //     font-weight: 500;
-        //     font-family: $poppins;
-        //     color: $white;
-        //   }
-        //   .menu {
-        //     background-color: red;
-        //   }
-        // }
+
         .orangeSection {
           background-color: $orange2;
           width: 170px;
@@ -100,7 +82,7 @@
           justify-content: space-between;
           padding-right: 20px;
           padding-left: 20px;
-        position: relative;
+          position: relative;
           .search {
             height: 24px;
             width: 24px;
@@ -192,7 +174,7 @@
       }
       .nameLink {
         font-size: 14px;
-        color:  $orange3;
+        color: $orange3;
         font-weight: 500;
         font-family: $poppins;
       }
@@ -221,7 +203,6 @@
     padding-left: 40px;
     top: 64.4px;
     z-index: -1;
-   
 
     .iconCont {
       display: flex;
@@ -244,9 +225,8 @@
         font-family: $poppins;
         margin-bottom: 0;
       }
-     
     }
-    .backCont{
+    .backCont {
       display: none;
 
       .backlink {
@@ -261,7 +241,7 @@
 }
 a .logoutText {
   font-size: 16px;
-  color:$orange2;
+  color: $orange2;
 }
 @include mobile {
   .headerContainerMain {
@@ -326,7 +306,7 @@ a .logoutText {
         }
         .nameLink {
           font-size: 14px;
-          color:  $orange3;
+          color: $orange3;
           font-weight: 500;
           font-family: $poppins;
         }
@@ -365,9 +345,6 @@ a .logoutText {
       padding-right: 22px;
       padding-left: 22px;
     }
-
-
-    
   }
 }
 
@@ -396,19 +373,15 @@ a .logoutText {
         .profileContainer {
           display: flex;
           align-items: center;
-       
 
           margin-right: 15px;
           margin-left: 10px;
-
-         
         }
         .userIcon {
           height: 24px;
           width: 24px;
           margin-right: 15px;
           margin-left: 0px;
-          
         }
         .link {
           font-size: 14px;
@@ -421,7 +394,6 @@ a .logoutText {
           }
         }
         .userIconDrop {
-          
           height: 8px;
           width: 15px;
           margin-left: 10px;
@@ -436,7 +408,7 @@ a .logoutText {
         }
         .nameLink {
           font-size: 14px;
-          color:  $orange3;
+          color: $orange3;
           font-weight: 500;
           font-family: $poppins;
         }
@@ -510,8 +482,6 @@ a .logoutText {
 
           margin-right: 10px;
           margin-left: 10px;
-
-        
         }
         .userIcon {
           height: 24px;
@@ -531,7 +501,7 @@ a .logoutText {
         }
         .nameLink {
           font-size: 14px;
-          color:  $orange3;
+          color: $orange3;
           font-weight: 500;
           font-family: $poppins;
         }

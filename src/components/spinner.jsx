@@ -1,6 +1,6 @@
 import React, { CSSProperties } from "react";
 import BeatLoader from "react-spinners/BeatLoader";
-import { FadeLoader } from "react-spinners";
+import { FadeLoader, MoonLoader } from "react-spinners";
 
 const override: CSSProperties = {
   display: "block",
@@ -21,9 +21,9 @@ const Loader = ({ loading, color = "#ffff" }) => {
   );
 };
 
-const FLoader = ({ loading, color = "#ffff", size = 10 }) => {
+const FLoader = ({ loading, color = "#36d7b7", size = 50 }) => {
   return (
-    <FadeLoader
+    <MoonLoader
       color={color}
       loading={loading}
       cssOverride={override}

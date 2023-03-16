@@ -118,14 +118,6 @@ export default function SignUpPersonal() {
                     required
                   />
                   <p className="labelRegister secondText">Province*</p>
-                  {/* <Input
-                    placeholder="Select"
-                    className="registerInput emailInput"
-                    name="province"
-                    value={personalData.province}
-                    onChange={onInputHandler}
-                    required
-                  /> */}
 
                   <Row>
                     <Col xs={24} sm={24} md={24} lg={24} xl={24}>

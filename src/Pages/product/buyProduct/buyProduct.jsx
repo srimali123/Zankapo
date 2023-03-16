@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Images } from "../../../assets/Images/images.js";
-import { Row, Col, Button, Input, Divider, Checkbox, Carousel } from "antd";
+import { Row, Col, Button, Divider, Carousel } from "antd";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import BuyProductHeader from "../buyProduct/buyProductHeader";
 
@@ -187,11 +187,6 @@ export default function BuyProduct() {
                         </div>
                         <p className="posterText">{advertisment?.title}</p>
                         <div className="priceDetail">
-                          <div>
-                            {" "}
-                            <p className="priceText">Price:</p>
-                          </div>
-
                           <div className="priceDetailText">
                             <p className="priceNew">
                               {`K ${advertisment?.buy
@@ -210,7 +205,7 @@ export default function BuyProduct() {
                               <p className="sellerName">
                                 {advertisment?.sellerName}
                               </p>
-                              <p className="conditonSubText">
+                              <p className="sellerName">
                                 {advertisment?.province}, Zambia
                               </p>
                             </Col>
@@ -264,30 +259,40 @@ export default function BuyProduct() {
                     <p className="serchText">Similar searches</p>
                     <Row gutter={[20, 20]}>
                       {similarProduct
-                        ? similarProduct.slice(0, 3).map((item, idx) => {
-                            jsonObj =
-                              item.images.length !== 0 &&
-                              JSON.parse(item?.images);
-                            return (
-                              <Col
-                                xs={12}
-                                sm={12}
-                                md={8}
-                                lg={8}
-                                xl={8}
-                                key={idx}
-                              >
-                                <PopularAds
-                                  image={`${Config.API_BASE_URL}uploads/products/${jsonObj[0]}`}
-                                  description={item.title}
-                                  price={`K${item.buy}`}
-                                  onAdNavigateHandler={() =>
-                                    onAdNavigateHandler(item.id, item.category)
-                                  }
-                                />
-                              </Col>
-                            );
-                          })
+                        ? similarProduct
+                            .filter((item) => item.id != id)
+                            .slice(0, 3)
+                            .map((item, idx) => {
+                              jsonObj =
+                                item.images.length !== 0 &&
+                                JSON.parse(item?.images);
+                              return (
+                                <Col
+                                  xs={12}
+                                  sm={12}
+                                  md={8}
+                                  lg={8}
+                                  xl={8}
+                                  key={idx}
+                                >
+                                  <PopularAds
+                                    image={`${Config.API_BASE_URL}uploads/products/${jsonObj[0]}`}
+                                    description={item.title}
+                                    price={item.buy}
+                                    location={item.province + ", " + item.town}
+                                    timestamp={moment(
+                                      item?.created_at
+                                    ).fromNow()}
+                                    onAdNavigateHandler={() =>
+                                      onAdNavigateHandler(
+                                        item.id,
+                                        item.category
+                                      )
+                                    }
+                                  />
+                                </Col>
+                              );
+                            })
                         : null}
                     </Row>
                   </Col>

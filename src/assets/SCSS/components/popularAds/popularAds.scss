@@ -25,9 +25,10 @@
   margin-bottom: 50px;
   width: min-content;
   height: 380px;
-  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 2px, rgba(0, 0, 0, 0.2) 0px 1px 0px;
+  // box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 2px, rgba(0, 0, 0, 0.2) 0px 1px 0px;
   padding: 10px;
   overflow: hidden;
+  border: 2px solid $gray17;
   border-radius: 5px;
 
   &:hover .popularAddImg {
@@ -52,12 +53,11 @@
   }
   .fullcard {
     min-height: 230px;
-    max-height:250px;
+    max-height: 250px;
     width: 100%;
   }
   .mobilecardstyle {
-   flex-direction: column;
-
+    flex-direction: column;
   }
 }
 

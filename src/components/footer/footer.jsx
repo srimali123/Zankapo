@@ -51,16 +51,16 @@ export default function Footer(props) {
           xl={12}
           className="socialMediaSection"
         >
-          <a>
+          <a href="https://www.instagram.com/" target="_blank">
             <img src={Images.common.insta} className="socialIcon" />
           </a>
-          <a>
+          <a href="https://www.facebook.com/" target="_blank">
             <img src={Images.common.facebook} className="socialIcon" />
           </a>
-          <a>
+          <a href="https://www.twitter.com/" target="_blank">
             <img src={Images.common.twitter} className="socialIcon" />
           </a>
-          <a>
+          <a href="https://www.linkedin.com/" target="_blank">
             <img src={Images.common.linkedin} className="socialIcon" />
           </a>
 
@@ -75,11 +75,11 @@ export default function Footer(props) {
           xl={12}
           className="btnSectionFooter"
         >
-          <a>
+          <a href="https://play.google.com/" target="_blank">
             {" "}
             <img src={Images.common.playBtn} className="FooterBtn" />
           </a>
-          <a>
+          <a href="https://www.apple.com/app-store/" target="_blank">
             {" "}
             <img src={Images.common.appleBtn} className="FooterBtn appleBtn" />
           </a>

@@ -14,61 +14,26 @@ import BuyProductHeader from "../buyProduct/buyProductHeader";
 import Footer from "../../../components/footer/footer";
 import { FLoader } from "../../../components/spinner.jsx";
 
-const items = [
-  {
-    key: "1",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.antgroup.com"
-      >
-        1st menu item
-      </a>
-    ),
-  },
-  {
-    key: "2",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.aliyun.com"
-      >
-        2nd menu item
-      </a>
-    ),
-  },
-  {
-    key: "3",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.luohanacademy.com"
-      >
-        3rd menu item
-      </a>
-    ),
-  },
-  {
-    key: "4",
+import { conditions, bestMatch, priceRange } from "../../../Utils/Constants.js";
+import { useSelector } from "react-redux";
 
-    label: "a danger item",
-  },
-];
 export default function SearchProduct() {
   let jsonObj;
   const navigate = useNavigate();
   const { id, name } = useParams();
+  const { categories } = useSelector((state) => state.categories);
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const [filterData, setFilterData] = useState([]);
+  const [sortType, setShortType] = useState();
 
   const fecthProducts = async () => {
     setIsLoading(true);
     const response = await fetchProductByCategory(id);
     if (response?.success) {
       setProducts(response?.data?.data);
+      setFilterData(response?.data?.data);
       setIsLoading(false);
     } else {
       toast.error("check your internet connection");
@@ -83,6 +48,76 @@ export default function SearchProduct() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const filterHandler = (text, type) => {
+    let suggetions;
+    if (type === "condition") {
+      suggetions = products.filter((value) => {
+        return value.condition.toLowerCase().includes(text.toLowerCase());
+      });
+    } else if (type === "category") {
+      console.log("cate");
+      suggetions = products.filter((value) => {
+        return value.category.includes(text);
+      });
+    }
+
+    if (text === "") {
+      setFilterData([]);
+    } else {
+      setFilterData(suggetions);
+    }
+  };
+
+  const items1 = conditions.map((item, idx) => {
+    return {
+      key: idx,
+      label: (
+        <a
+          onClick={() => filterHandler(item.name, "condition")}
+          rel="noopener noreferrer"
+        >
+          {item.name}
+        </a>
+      ),
+    };
+  });
+
+  const items2 = bestMatch.map((item, idx) => {
+    return {
+      key: idx,
+      label: (
+        <a onClick={() => setShortType(item.name)} rel="noopener noreferrer">
+          {item.name}
+        </a>
+      ),
+    };
+  });
+
+  const items3 = priceRange.map((item, idx) => {
+    return {
+      key: idx,
+      label: (
+        <a onClick={() => setShortType(item.name)} rel="noopener noreferrer">
+          {item.name}
+        </a>
+      ),
+    };
+  });
+
+  const items4 = categories?.map((item, idx) => {
+    return {
+      key: idx,
+      label: (
+        <a
+          onClick={() => filterHandler(item.id, "category")}
+          rel="noopener noreferrer"
+        >
+          {item.category}
+        </a>
+      ),
+    };
+  });
 
   if (isLoading) {
     return (
@@ -100,7 +135,7 @@ export default function SearchProduct() {
   }
 
   return (
-    <div>
+    <>
       <Row className="serchProductMainContainer">
         <Col xs={24} sm={24} md={24} lg={24} xl={24}>
           <BuyProductHeader category={name} />
@@ -122,7 +157,7 @@ export default function SearchProduct() {
                         trigger={["click"]}
                         className="createDrop"
                         menu={{
-                          items,
+                          items: items4,
                         }}
                       >
                         <a onClick={(e) => e.preventDefault()}>
@@ -138,7 +173,7 @@ export default function SearchProduct() {
                         trigger={["click"]}
                         className="createDrop"
                         menu={{
-                          items,
+                          items: items3,
                         }}
                       >
                         <a onClick={(e) => e.preventDefault()}>
@@ -154,7 +189,7 @@ export default function SearchProduct() {
                         trigger={["click"]}
                         className="createDrop"
                         menu={{
-                          items,
+                          items: items1,
                         }}
                       >
                         <a onClick={(e) => e.preventDefault()}>
@@ -164,38 +199,6 @@ export default function SearchProduct() {
                       </Dropdown>
                     </div>
                   </Col>
-                  {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                    <div>
-                      <Dropdown
-                        trigger={["click"]}
-                        className="createDrop"
-                        menu={{
-                          items,
-                        }}
-                      >
-                        <a onClick={(e) => e.preventDefault()}>
-                          Type of listing
-                          <DownOutlined />
-                        </a>
-                      </Dropdown>
-                    </div>
-                  </Col> */}
-                  {/* <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                    <div>
-                      <Dropdown
-                        trigger={["click"]}
-                        className="createDrop"
-                        menu={{
-                          items,
-                        }}
-                      >
-                        <a onClick={(e) => e.preventDefault()}>
-                          Type of seller
-                          <DownOutlined />
-                        </a>
-                      </Dropdown>
-                    </div>
-                  </Col> */}
                 </Row>
               </Col>
               <Col xs={24} sm={24} md={18} lg={16} xl={16}>
@@ -205,8 +208,15 @@ export default function SearchProduct() {
                     <Row>
                       <Col xs={24} sm={24} md={10} lg={12} xl={12}>
                         <div className="btnGroupList">
-                          <Button className="searchPageBtn">All Listing</Button>
-                          <Button className="searchPageBtn auction">Auction</Button>
+                          <Button
+                            className="searchPageBtn"
+                            onClick={() => setFilterData(products)}
+                          >
+                            All Listing
+                          </Button>
+                          <Button className="searchPageBtn auction">
+                            Auction
+                          </Button>
                         </div>
                       </Col>
                       <Col xs={24} sm={24} md={14} lg={12} xl={12}>
@@ -225,7 +235,7 @@ export default function SearchProduct() {
                                   trigger={["click"]}
                                   className="searchDropdown bestmatch"
                                   menu={{
-                                    items,
+                                    items: items1,
                                   }}
                                 >
                                   <a onClick={(e) => e.preventDefault()}>
@@ -248,7 +258,7 @@ export default function SearchProduct() {
                                   trigger={["click"]}
                                   className="searchDropdown bestmatch"
                                   menu={{
-                                    items,
+                                    items: items2,
                                   }}
                                 >
                                   <a onClick={(e) => e.preventDefault()}>
@@ -264,14 +274,13 @@ export default function SearchProduct() {
                     </Row>
                   </div>
                   <p className="searchTextSearch">
-                    {products?.length} results for {name}
+                    {filterData?.length} results for {name}
                   </p>
-                  {products?.map((item, idx) => {
+                  {filterData?.map((item, idx) => {
                     jsonObj =
                       item.images.length !== 0 && JSON.parse(item?.images);
                     return (
                       <div className="cardSectionSearch" key={idx}>
-                       
                         <Row
                           className="cardRow"
                           onClick={() =>
@@ -299,7 +308,12 @@ export default function SearchProduct() {
                             <p className="productDetailSearch">
                               {item.description}
                             </p>
-                            <p className="priceText">K{item.buy}</p>
+                            <p className="priceText">
+                              {" "}
+                              {`K ${item?.buy
+                                .toString()
+                                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}`}
+                            </p>
                             <p className="searchTextSearch buyText">
                               {moment(item.created_at).fromNow()}
                             </p>
@@ -308,7 +322,6 @@ export default function SearchProduct() {
                             </p>
                           </Col>
                         </Row>
-                      
                       </div>
                     );
                   })}
@@ -327,6 +340,6 @@ export default function SearchProduct() {
         </Col>
         <Footer />
       </Row>
-    </div>
+    </>
   );
 }

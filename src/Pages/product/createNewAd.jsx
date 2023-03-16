@@ -752,7 +752,7 @@ export default function CreateNewAd() {
                             className="cameraIcon"
                             alt="camera"
                           />
-                          <p className="dropText">Drop your images here</p>
+                          <p className="dropText">Select your images here</p>
                         </div>
                         <aside style={Styles.thumbsContainer}>{thumbs}</aside>
                         <p className="conditionText">Conditions</p>
@@ -787,20 +787,6 @@ export default function CreateNewAd() {
                                 onChange={onInputHandler}
                                 required
                                 type="number"
-                              />
-                            </Tabs.TabPane>
-                            <Tabs.TabPane disabled tab="Auction" key="2">
-                              <p className="tabText">Starting bid price</p>
-                              <Input
-                                placeholder="Price"
-                                className="inputCreateAd tabInput"
-                              />
-                              <p className="tabText customtabText">
-                                Bid duration
-                              </p>
-                              <Input
-                                placeholder="Bid duration"
-                                className="inputCreateAd tabInput"
                               />
                             </Tabs.TabPane>
                           </Tabs>

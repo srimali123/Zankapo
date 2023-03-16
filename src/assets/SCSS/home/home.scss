@@ -47,7 +47,7 @@
           position: relative;
           .orangeSection {
             background-color: $orange2;
-            width: 170px;
+            width: 150px;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -59,6 +59,8 @@
             font-weight: 500;
             font-family: $poppins;
             color: $white;
+            border-bottom-left-radius: 10px;
+            border-top-left-radius: 10px;
 
             .down {
               height: 24px;
@@ -79,6 +81,8 @@
             width: 420px;
             height: 64px;
             background-color: $white;
+            border-top-right-radius: 10px;
+            border-bottom-right-radius: 10px;
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -119,7 +123,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      z-index:-1;
+      z-index: -1;
       .blueContText {
         font-size: 12px;
         font-weight: 600;
@@ -176,8 +180,8 @@
         display: flex;
         justify-content: center;
         .seeMoreBtn {
-          height: 56px;
-          max-width: 164px;
+          height: 46px;
+          max-width: 140px;
           width: 100%;
           background-color: $orange2;
           color: $gray11;
@@ -197,8 +201,8 @@
           }
         }
         .forwardIcon {
-          height: 24px;
-          width: 24px;
+          height: 20px;
+          width: 20px;
           margin-left: 16px;
         }
       }
@@ -242,9 +246,7 @@
   .mainCont {
     .homeMaincontainer {
       .banner {
-       
         .centerContent {
-        
           justify-content: center;
           align-items: center;
           flex-direction: column;
@@ -268,6 +270,8 @@
             .whiteSection {
               width: 328px;
               height: 44px;
+              border-bottom-left-radius: 10px;
+              border-top-left-radius: 10px;
 
               .search {
                 height: 16px;
@@ -320,8 +324,8 @@
           display: flex;
           justify-content: center;
           .seeMoreBtn {
-            height: 44px;
-            max-width: 155px;
+            height: 40px;
+            max-width: 120px;
             width: 100%;
             font-size: 14px;
             margin-top: 48px;
@@ -402,9 +406,8 @@
     .homeMaincontainer {
       .banner {
         width: 100%;
-     
+
         .centerContent {
-         
           .bannerLogo {
             height: 53px;
           }
@@ -444,7 +447,7 @@
         .addSection {
           .seeMoreBtn {
             height: 48px;
-            max-width: 164px;
+            max-width: 145px;
             width: 100%;
           }
           .forwardIcon {
@@ -529,9 +532,8 @@
     .homeMaincontainer {
       .banner {
         width: 100%;
-       
+
         .centerContent {
-          
         }
       }
       .blueconatainer {

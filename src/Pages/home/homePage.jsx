@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { Row, Col, Button, Input, Menu, Carousel, Dropdown } from "antd";
+import React, { useEffect, useState, lazy } from "react";
+import { Row, Col, Button, Dropdown } from "antd";
 import Header from "../../components/header/header";
 import DiscoverItem from "../../components/discoverItem";
 import { Images } from "../../assets/Images/images.js";
@@ -9,21 +9,20 @@ import HowItsWork from "../../components/howItsWork";
 import Footer from "../../components/footer/footer";
 import { toast } from "react-toastify";
 import { DownOutlined, SmileOutlined } from "@ant-design/icons";
-import { FLoader, Loader } from "../../components/spinner";
+import { FLoader } from "../../components/spinner";
 import "react-dropdown/style.css";
 import { clearAdvertisments } from "../../Redux/Slices/Advertisment";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchAdvertisments } from "../../Redux/Slices/Advertisment/AdvertismentSlice";
 import { fetchProperty } from "../../Redux/Slices/Property/PropertySlice";
 import { clearProperty } from "../../Redux/Slices/Property";
-import { Category } from "../../Utils/Constants";
 import { Config } from "../../Config";
 import { useNavigate } from "react-router-dom";
 import { fetchCategories } from "../../Redux/Slices/Category/CategorySlice";
 import { SearchComponent } from "../../components/search";
 import PulseText from "react-pulse-text";
 import moment from "moment";
-//import Dropdown from "react-dropdown";
+import { BeatLoader } from "react-spinners";
 
 const contentStyle = {
   margin: 0,
@@ -108,7 +107,7 @@ export default function HomePage(props) {
           height: "100vh",
         }}
       >
-        <FLoader isLoading={true} color={"#F98F21"} />
+        <FLoader isLoading={true} color={"#36d7b7"} />
       </div>
     );
   }
@@ -192,7 +191,6 @@ export default function HomePage(props) {
                         <DiscoverItem
                           image={`${Config.API_BASE_URL}uploads/icons/${item.icon}`}
                           link={item.category}
-                          // style={{ marginRight: 25 }}
                           onClick={() =>
                             navigate(`category/${item.id}/${item.category}`)
                           }
@@ -251,32 +249,17 @@ export default function HomePage(props) {
                   <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                     <div
                       style={{
-                        display: "flex",
-                        flexDirection: "column",
                         justifyContent: "center",
                         width: "100%",
                         alignItems: "center",
                       }}
                     >
-                      <img src={Images.common.noData} className="noDataImg" />
                       <p className="nodataText">No Result Found!</p>
                     </div>
                   </Col>
                   {/* )} */}
                 </Row>
               </Col>
-              {/* {advertisments?.length > next &&
-          (isMoreLoading ? (
-            <Loader
-              loading={isMoreLoading}
-              color="rgba(249, 143, 33, 1)"
-            />
-          ) : (
-            <Button className="seeMoreBtn" onClick={showMoreItems}>
-              See More
-              <img src={Images.common.forward} className="forwardIcon" />
-            </Button>
-          ))} */}
             </Row>
             <div></div>
             {/* recently add */}
@@ -316,7 +299,6 @@ export default function HomePage(props) {
                           alignItems: "center",
                         }}
                       >
-                        <img src={Images.common.noData} className="noDataImg" />
                         <p className="nodataText">No Result Found!</p>
                       </div>
                     </Col>
@@ -326,7 +308,11 @@ export default function HomePage(props) {
               {advertisments?.length > next && (
                 <Button className="seeMoreBtn" onClick={showMoreItems}>
                   {isMoreLoading ? (
-                    <FLoader loading={isMoreLoading} color="#ffff" size={5} />
+                    <BeatLoader
+                      loading={isMoreLoading}
+                      color="#ffff"
+                      size={10}
+                    />
                   ) : (
                     <>
                       {"See More"}
@@ -376,7 +362,6 @@ export default function HomePage(props) {
                           alignItems: "center",
                         }}
                       >
-                        <img src={Images.common.noData} className="noDataImg" />
                         <p className="nodataText">No Result Found!</p>
                       </div>
                     </Col>
@@ -386,7 +371,11 @@ export default function HomePage(props) {
               {properties?.length > next && (
                 <Button className="seeMoreBtn" onClick={showMoreItems}>
                   {isMoreLoading ? (
-                    <FLoader loading={isMoreLoading} color="#ffff" size={5} />
+                    <BeatLoader
+                      loading={isMoreLoading}
+                      color="#ffff"
+                      size={10}
+                    />
                   ) : (
                     <>
                       {"See More"}
