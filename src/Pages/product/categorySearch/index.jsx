@@ -28,6 +28,8 @@ export default function CategorySearch() {
     window.scrollTo(0, 0);
   }, []);
 
+  console.log("pppp", searchData);
+
   useEffect(() => {
     setFilterData(searchData);
   }, []);

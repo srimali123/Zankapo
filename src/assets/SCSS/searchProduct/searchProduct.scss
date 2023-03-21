@@ -73,10 +73,10 @@
           border: none;
         }
       }
-      .auction{
+      .auction {
         display: none;
       }
-     
+
       .searchDropdown {
         width: 131px;
         height: 40px;
@@ -94,11 +94,10 @@
       }
       .bestmatch {
         margin-left: 40px;
-        
       }
       .searchTextSearch {
         margin-top: 11px;
-        color:$gray7;
+        color: $gray7;
         font-size: 14px;
         font-weight: 400;
         font-family: $poppins;
@@ -107,12 +106,11 @@
       .cardSectionSearch {
         margin-top: 30px;
         margin-bottom: 40px;
-       
-
       }
       .searchImg {
         height: 211px;
         width: 211px;
+        object-fit: cover;
       }
       .searchItemTitle {
         font-size: 16px;
@@ -123,15 +121,14 @@
         margin-bottom: 8px;
       }
       .detailsSectionCard {
-      padding-left: 40px;
+        padding-left: 40px;
       }
       .productDetailSearch {
         font-size: 12px;
         font-family: $poppins;
         font-weight: 400;
         color: $gray7;
-       width: 350px;
-
+        width: 350px;
       }
       .btnGroupList {
         margin-bottom: 20px;
@@ -141,7 +138,7 @@
       .priceText {
         font-size: 14px;
         font-weight: 600;
-        font-family:$poppins;
+        font-family: $poppins;
         color: $black;
         margin-bottom: 0px;
       }
@@ -155,14 +152,13 @@
       }
       .cardRow {
         padding-bottom: 10px;
-border:2px solid $gray19;
-border-right-width:0;
-border-left-width:0;
-padding:15px;
+        border: 2px solid $gray19;
+        border-right-width: 0;
+        border-left-width: 0;
+        padding: 15px;
 
-   
         &:hover {
-          box-shadow: 0 0 5px 0 $gray7
+          box-shadow: 0 0 5px 0 $gray7;
         }
       }
       .advertisementContainer {
@@ -177,27 +173,23 @@ padding:15px;
   }
 }
 
-
-
-
-
 @include mobile {
   .serchProductMainContainer {
     width: 100%;
     height: 100%;
     overflow-x: hidden;
     overflow-y: auto;
-  
+
     .searchProductMiddlContainer {
       padding: 0px 16px;
       top: 50px;
       width: 100%;
       position: relative;
       margin-bottom: 100px;
-  
+
       .itemsContainer {
         padding-top: 0px;
-  
+
         padding-bottom: 20px;
         .serchTextSearch {
           font-size: 16px;
@@ -206,9 +198,7 @@ padding:15px;
           margin-bottom: 28px;
         }
         .createDrop {
-
           width: 100%;
-          
         }
         .dropdownSection {
           margin-top: 90px;
@@ -222,7 +212,7 @@ padding:15px;
         }
         .btnGroup {
           display: flex;
-       
+
           align-items: center;
           justify-content: center;
         }
@@ -245,7 +235,7 @@ padding:15px;
           border-width: 1;
           border-style: solid;
           border-color: $gray7;
-  
+
           &:hover,
           &:focus,
           &:active {
@@ -258,14 +248,12 @@ padding:15px;
           width: 100%;
           height: 40px;
           margin-left: 0px;
-          
         }
         .dropCol {
-          
         }
         .searchTextSearch {
           margin-top: 11px;
-          color:$gray7;
+          color: $gray7;
           font-size: 14px;
           font-weight: 400;
           font-family: $poppins;
@@ -274,12 +262,11 @@ padding:15px;
         .cardSectionSearch {
           margin-top: 30px;
           margin-bottom: 40px;
-         
-  
         }
         .searchImg {
           height: 108px;
           width: 108px;
+          object-fit: cover;
         }
         .searchItemTitle {
           font-size: 14px;
@@ -291,13 +278,12 @@ padding:15px;
           font-family: $poppins;
           font-weight: 400;
           color: $gray7;
-         width: 200px;
-  
+          width: 200px;
         }
         .priceText {
           font-size: 14px;
           font-weight: 600;
-          font-family:$poppins;
+          font-family: $poppins;
           color: $black;
           margin-bottom: 0px;
         }
@@ -322,21 +308,15 @@ padding:15px;
 
 @include tablet-portrait {
   .serchProductMainContainer {
-   
     .searchProductMiddlContainer {
       padding: 0px 20px;
-     
-  
+
       .itemsContainer {
-      
         .serchTextSearch {
           font-size: 18px;
-         
         }
         .createDrop {
-         
           width: 100%;
-        
         }
         .dropdownSection {
           margin-top: 90px;
@@ -344,51 +324,43 @@ padding:15px;
         .searchItemContainer {
           border: none;
           padding: 0;
-          
         }
-       
+
         .btnDrop {
           margin-left: 20px;
         }
-       
+
         .searchDropdown {
           width: 139px;
-          
         }
         .bestmatch {
           margin-left: 20px;
-          
         }
         .searchTextSearch {
-         
           font-size: 16px;
-         
         }
         .cardSectionSearch {
           margin-top: 30px;
           margin-bottom: 40px;
-         
-  
         }
         .searchImg {
           height: 221px;
           width: 221px;
+          object-fit: cover;
         }
         .searchItemTitle {
           font-size: 16px;
           width: 250px;
-         
         }
         .detailsSectionCard {
-        padding-left: 105px;
+          padding-left: 105px;
         }
         .productDetailSearch {
           font-size: 12px;
           font-family: $poppins;
           font-weight: 400;
           color: $gray7;
-         width: 220px;
-  
+          width: 220px;
         }
         .btnGroupList {
           margin-bottom: 20px;
@@ -398,33 +370,29 @@ padding:15px;
         .priceText {
           font-size: 14px;
           font-weight: 600;
-          font-family:$poppins;
+          font-family: $poppins;
           color: $black;
           margin-bottom: 0px;
         }
-        
+
         .valueText {
           margin-top: 3px;
           width: 190px;
         }
-       
+
         .advertisementContainer {
-         display: none;
+          display: none;
         }
       }
     }
   }
-  
 }
 
 @include tablet-landscape {
   .serchProductMainContainer {
-   
-  
     .searchProductMiddlContainer {
       padding: 0px 20px;
-      
-  
+
       .itemsContainer {
         .serchTextSearch {
           font-size: 16px;
@@ -433,9 +401,7 @@ padding:15px;
           margin-bottom: 28px;
         }
         .createDrop {
-         
           width: 100%;
-         
         }
         .dropdownSection {
           margin-top: 90px;
@@ -465,7 +431,7 @@ padding:15px;
           border-width: 1;
           border-style: solid;
           border-color: $gray7;
-  
+
           &:hover,
           &:focus,
           &:active {
@@ -492,11 +458,10 @@ padding:15px;
         }
         .bestmatch {
           margin-left: 30px;
-          
         }
         .searchTextSearch {
           margin-top: 11px;
-          color:$gray7;
+          color: $gray7;
           font-size: 14px;
           font-weight: 400;
           font-family: $poppins;
@@ -505,12 +470,11 @@ padding:15px;
         .cardSectionSearch {
           margin-top: 30px;
           margin-bottom: 40px;
-         
-  
         }
         .searchImg {
           height: 221px;
           width: 221px;
+          object-fit: cover;
         }
         .searchItemTitle {
           font-size: 16px;
@@ -521,15 +485,14 @@ padding:15px;
           margin-bottom: 8px;
         }
         .detailsSectionCard {
-        padding-left: 90px;
+          padding-left: 90px;
         }
         .productDetailSearch {
           font-size: 12px;
           font-family: $poppins;
           font-weight: 400;
           color: $gray7;
-         width: 300px;
-  
+          width: 300px;
         }
         .btnGroupList {
           margin-bottom: 20px;
@@ -539,7 +502,7 @@ padding:15px;
         .priceText {
           font-size: 14px;
           font-weight: 600;
-          font-family:$poppins;
+          font-family: $poppins;
           color: $black;
           margin-bottom: 0px;
         }

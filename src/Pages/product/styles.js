@@ -15,6 +15,7 @@ const thumb = {
   height: 100,
   padding: 4,
   boxSizing: "border-box",
+  position: "relative",
 };
 
 const thumbInner = {
@@ -29,4 +30,20 @@ const img = {
   height: "100%",
 };
 
-export { thumbsContainer, thumb, thumbInner, img };
+const closeButton = {
+  position: "absolute",
+  top: -5,
+  right: -5,
+  backgroundColor: "#49B975",
+  width: "20px",
+  height: "20px",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  padding: "2px",
+  opacity: 0.9,
+  borderRadius: 20 / 2,
+  cursor: "pointer",
+};
+
+export { thumbsContainer, thumb, thumbInner, img, closeButton };

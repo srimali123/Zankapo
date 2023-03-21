@@ -55,17 +55,25 @@ export default function CreateNewAd() {
 
   const { user, isAuthenticated } = useSelector((state) => state.user);
 
-  const onDrop = useCallback((acceptedFiles) => {
-    let tmp = images;
-    if (tmp.indexOf(acceptedFiles[0]) > -1 === true) {
-      let index = tmp.indexOf(acceptedFiles[0]);
-      tmp.splice(index, 1);
+  const onDrop = useCallback(
+    (acceptedFiles) => {
+      let tmp = [...images];
+      const fileToAdd = acceptedFiles[0];
+
+      // check if the file already exists in the images array
+      const fileExists = tmp.some((file) => file.name === fileToAdd.name);
+
+      if (fileExists) {
+        // remove the existing file from the array
+        tmp = tmp.filter((file) => file.name !== fileToAdd.name);
+      }
+
+      // add the new file to the array
+      tmp.push(fileToAdd);
       setImages(tmp);
-    } else {
-      tmp.push(acceptedFiles[0]);
-      setImages(tmp);
-    }
-  }, []);
+    },
+    [images]
+  );
 
   const handleFileEvent = async (e) => {
     let tmp = images;
@@ -88,25 +96,23 @@ export default function CreateNewAd() {
   });
 
   const onRemoveImage = (idx) => {
-    console.log("removing");
-    let tmp = images;
-    console.log("images", idx);
+    let tmp = [...images];
     let index = tmp.indexOf(idx);
-    console.log("removed", index);
-    if (index > -1 === true) {
-      const newArray = tmp.splice(index, 1);
-      console.log("new img", newArray);
-      setImages(newArray);
+    if (index > -1) {
+      tmp.splice(index, 1);
+      setImages(tmp);
     }
   };
 
   const thumbs = images.map((file) => (
     <div style={Styles.thumb} key={file.name}>
+      <div style={Styles.closeButton} onClick={() => onRemoveImage(file)}>
+        <div style={{ color: "#ffff" }}>x</div>
+      </div>
       <div style={Styles.thumbInner}>
         <img
           src={URL.createObjectURL(file)}
           style={Styles.img}
-          onClick={() => onRemoveImage(file)}
           // Revoke data uri after image is loaded
           onLoad={() => {
             URL.revokeObjectURL(URL.createObjectURL(file));

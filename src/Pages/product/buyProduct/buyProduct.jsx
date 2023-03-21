@@ -137,28 +137,32 @@ export default function BuyProduct() {
                                 draggable
                                 afterChange={onChange}
                               >
-                                {advertisment?.images.length !== 0 ||
-                                advertisment?.images !== undefined
-                                  ? Array.from(
-                                      JSON.parse(advertisment?.images)
-                                    ).map((item, key) => {
-                                      return (
-                                        <Col
-                                          xs={24}
-                                          sm={24}
-                                          md={24}
-                                          lg={24}
-                                          xl={24}
-                                          key={key}
-                                        >
-                                          <img
-                                            src={`${Config.API_BASE_URL}uploads/products/${item}`}
-                                            className="posterCon"
-                                            alt="ad-img"
-                                          />
-                                        </Col>
-                                      );
-                                    })
+                                {advertisment?.images &&
+                                Array.isArray(
+                                  JSON.parse(advertisment.images)
+                                ) &&
+                                JSON.parse(advertisment.images).length !== 0
+                                  ? JSON.parse(advertisment.images).map(
+                                      (item, key) => {
+                                        console.log("image", item);
+                                        return (
+                                          <Col
+                                            xs={24}
+                                            sm={24}
+                                            md={24}
+                                            lg={24}
+                                            xl={24}
+                                            key={key}
+                                          >
+                                            <img
+                                              src={`${Config.API_BASE_URL}uploads/products/${item}`}
+                                              className="posterCon"
+                                              alt="ad-img"
+                                            />
+                                          </Col>
+                                        );
+                                      }
+                                    )
                                   : null}
                               </Carousel>
                             </Row>
