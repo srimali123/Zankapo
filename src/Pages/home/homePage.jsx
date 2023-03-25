@@ -129,7 +129,7 @@ export default function HomePage(props) {
             className="banner"
             style={{
               backgroundImage: `url(${Images.common.banner})`,
-              objectFit: "cover",
+              // objectFit: "cover",
             }}
           >
             <div className="centerContent">
