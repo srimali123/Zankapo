@@ -21,6 +21,7 @@ import SearchProduct from "../Pages/product/searchProduct/searchProduct";
 import Dashboard from "../Pages/Dashbord/Dashboard";
 import CategorySearch from "../Pages/product/categorySearch";
 import NotFound from "../components/NotFound";
+import TermsCondition from "../Pages/DetailPages/termsOfServices"
 
 export default function AppRoutes() {
   return (
@@ -43,6 +44,8 @@ export default function AppRoutes() {
         <Route path="/search/:text" element={<CategorySearch />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/termsOfServices" element={<TermsCondition/>} />
+
       </Routes>
     </BrowserRouter>
   );
