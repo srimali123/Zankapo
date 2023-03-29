@@ -105,6 +105,16 @@
 .contHead {
   text-align: center;
 }
+.privacyContent {
+display: flex;
+flex-direction: row;
+width: 100%;
+margin-bottom: 10px;
+}
+.informtionHead {
+min-width: max-content;
+margin-right: 5px;
+}
 
 @include mobile {
   .mainFooterContainer {
