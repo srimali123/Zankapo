@@ -10,7 +10,7 @@ export default function Footer(props) {
       <Row gutter={[20, 30]} className="footerContainer">
         <Col xs={12} sm={12} md={6} lg={6} xl={6} className="footerContent">
           <p className="footerMainHead">Buy</p>
-          <a href="#" className="footerLink">
+          <a href="/howToBuy" className="footerLink">
             How to shop
           </a>
           <a className="footerLink" onClick={() => navigate("/placeAd")}>
@@ -28,16 +28,16 @@ export default function Footer(props) {
         </Col>
         <Col xs={12} sm={12} md={6} lg={6} xl={6} className="footerContent">
           <p className="footerMainHead">Contact</p>
-          <a href="#" className="footerLink">
+          <a href="/faq" className="footerLink">
             FAQ
           </a>
-          <a href="#" className="footerLink">
+          <a href="/privacyPolicy" className="footerLink">
             Privacy policy
           </a>
         </Col>
         <Col xs={12} sm={12} md={6} lg={6} xl={6} className="footerContent">
           <p className="footerMainHead">Information</p>
-          <a href="#" className="footerLink">
+          <a href="/termsOfServices" className="footerLink">
             Terms of service
           </a>
         </Col>

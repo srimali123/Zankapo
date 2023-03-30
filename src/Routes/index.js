@@ -21,6 +21,10 @@ import SearchProduct from "../Pages/product/searchProduct/searchProduct";
 import Dashboard from "../Pages/Dashbord/Dashboard";
 import CategorySearch from "../Pages/product/categorySearch";
 import NotFound from "../components/NotFound";
+import TermsCondition from "../Pages/DetailPages/termsOfServices"
+import { PrivacyPolicy } from "../Pages/DetailPages/privacyPolicy";
+import Faq from "../Pages/DetailPages/faq";
+import HowToBuy from "../Pages/DetailPages/howToBuy";
 
 export default function AppRoutes() {
   return (
@@ -43,6 +47,10 @@ export default function AppRoutes() {
         <Route path="/search/:text" element={<CategorySearch />} />
         <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/termsOfServices" element={<TermsCondition/>} />
+        <Route path="/privacyPolicy" element={<PrivacyPolicy/>} />
+        <Route path="/faq" element={<Faq/>} />
+        <Route path="/howToBuy" element={<HowToBuy/>} />
       </Routes>
     </BrowserRouter>
   );
