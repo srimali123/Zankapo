@@ -120,7 +120,7 @@ margin-right: 5px;
   .mainFooterContainer {
     padding: 30px 10px 30px 20px;
 
-    .footerContainer {
+ .footerContainer {
       .footerContent {
         .footerMainHead {
           font-size: 16px;
@@ -162,6 +162,17 @@ margin-right: 5px;
       text-align: center;
     }
   }
+  .termsContainer{
+padding:  20px 16px 100px 20px;
+overflow-x: hidden;
+width: 100%;
+  }
+  .privacyContent{
+flex-direction: column;
+width: 100%;
+  }
+
+ 
 }
 
 @include tablet-portrait {
@@ -225,6 +236,9 @@ margin-right: 5px;
       text-align: center;
     }
   }
+  .termsContainer{
+    padding:  50px 40px 50px 40px;
+      }
 }
 
 @include tablet-landscape {
@@ -271,4 +285,7 @@ margin-right: 5px;
       text-align: center;
     }
   }
+  .termsContainer{
+    padding:  50px 60px 50px 60px;
+      }
 }

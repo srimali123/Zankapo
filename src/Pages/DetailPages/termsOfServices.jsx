@@ -1,7 +1,11 @@
 import React from 'react';
-
+import { Row, Col, Button } from "antd";
 export default function TermsCondition() {
   return (
+    <Row>
+<Col xs={24} sm={24} md={24} lg={24} xl={24}>
+
+  
     <div className='termsContainer'>
         <h1 className='contHead'>Terms of Services and Conditions</h1>
     <p>Welcome to Sankapo.com, a platform for buying and selling items online ("Site"). By accessing or using the Site, you agree to be bound by these terms of service ("Terms"). If you do not agree to these Terms, do not use the Site.</p>
@@ -109,5 +113,7 @@ limitations of liability.</p>
 
 
     </div>
+    </Col>
+    </Row>
   );
 }
