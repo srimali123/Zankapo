@@ -37,7 +37,7 @@ export default function Footer(props) {
         </Col>
         <Col xs={12} sm={12} md={6} lg={6} xl={6} className="footerContent">
           <p className="footerMainHead">Information</p>
-          <a href="/termsOfServices" className="footerLink">
+          <a href="/termsofservices" className="footerLink">
             Terms of service
           </a>
         </Col>
@@ -51,23 +51,26 @@ export default function Footer(props) {
           xl={12}
           className="socialMediaSection"
         >
-          <a href="https://www.instagram.com/" target="_blank">
+          <a href="https://www.instagram.com/sankapo365/" target="_blank">
             <img src={Images.common.insta} className="socialIcon" />
           </a>
-          <a href="https://www.facebook.com/" target="_blank">
+          <a href="https://www.facebook.com/sankapo.buy.sell/" target="_blank">
             <img src={Images.common.facebook} className="socialIcon" />
           </a>
-          <a href="https://www.twitter.com/" target="_blank">
+          {/* <a href="https://www.twitter.com/" target="_blank">
             <img src={Images.common.twitter} className="socialIcon" />
-          </a>
-          <a href="https://www.linkedin.com/" target="_blank">
+          </a> */}
+          <a
+            href="https://www.linkedin.com/showcase/sankapo-add-it-like-it-get-it/?viewAsMember=true"
+            target="_blank"
+          >
             <img src={Images.common.linkedin} className="socialIcon" />
           </a>
 
-          <img src={Images.common.line} className="line" />
+          {/* <img src={Images.common.line} className="line" /> */}
         </Col>
 
-        <Col
+        {/* <Col
           xs={12}
           sm={12}
           md={6}
@@ -83,10 +86,10 @@ export default function Footer(props) {
             {" "}
             <img src={Images.common.appleBtn} className="FooterBtn appleBtn" />
           </a>
-        </Col>
+        </Col> */}
       </Row>
 
-      <p className="customFooterText">2022 copyright Zambian Market</p>
+      <p className="customFooterText">2022 copyright Sankapo</p>
     </div>
   );
 }

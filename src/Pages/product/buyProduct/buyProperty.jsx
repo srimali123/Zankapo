@@ -63,9 +63,9 @@ export default function BuyProperty() {
     console.log(item);
   });
 
-  const onSendMessage = (email) => {
+  const onSendMessage = (mobile) => {
     if (isAuthenticated) {
-      window.location = `mailto:${email}`;
+      window.location = `https://api.whatsapp.com/send?phone=${mobile}`;
     } else {
       toast.error(
         "Login to send your message and keep track of it in your account."
@@ -203,7 +203,9 @@ export default function BuyProperty() {
                               <div className="btnContainer">
                                 <Button
                                   className="orangeBtnBuy"
-                                  onClick={() => onSendMessage(property?.email)}
+                                  onClick={() =>
+                                    onSendMessage(property?.mobile)
+                                  }
                                 >
                                   <img
                                     src={Images.common.message}
@@ -222,9 +224,16 @@ export default function BuyProperty() {
                                     className="messageIcon"
                                   />
 
-                                  {showPhone
-                                    ? property?.mobile
-                                    : " Show phone no"}
+                                  {showPhone ? (
+                                    <a
+                                      style={{ color: "#6E7191" }}
+                                      onClick={() => {
+                                        window.location.href = `tel:${property?.mobile}`;
+                                      }}
+                                    />
+                                  ) : (
+                                    " Show phone no"
+                                  )}
                                 </Button>
                               </div>
                             </Col>

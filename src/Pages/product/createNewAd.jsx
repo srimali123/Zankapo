@@ -68,19 +68,17 @@ export default function CreateNewAd() {
         tmp = tmp.filter((file) => file.name !== fileToAdd.name);
       }
 
-      // add the new file to the array
-      tmp.push(fileToAdd);
-      setImages(tmp);
+      if (fileToAdd.size <= 1048576) {
+        // 1 MB = 1048576 bytes
+        // add the new file to the array
+        tmp.push(fileToAdd);
+        setImages(tmp);
+      } else {
+        toast.error("Please use different size image.");
+      }
     },
     [images]
   );
-
-  const handleFileEvent = async (e) => {
-    let tmp = images;
-
-    tmp.push(e.target.files[0]);
-    setImages(tmp);
-  };
 
   //react dripzone property
   const {
@@ -127,17 +125,6 @@ export default function CreateNewAd() {
     return () =>
       images.forEach((file) => URL.revokeObjectURL(URL.createObjectURL(file)));
   }, []);
-
-  const fileRejectionItems = fileRejections.map(({ file, errors }) => (
-    <li key={file.path}>
-      {file.path} - {file.size} bytes
-      <ul>
-        {errors.map((e) => (
-          <li key={e.code}>{e.message}</li>
-        ))}
-      </ul>
-    </li>
-  ));
 
   //input handling
   const onInputHandler = (e) => {
@@ -698,11 +685,11 @@ export default function CreateNewAd() {
                           <p className="shipingText">
                             The buyer will pay for shipping
                           </p>
-                          <Link to="/PreviewAd">
+                          {/* <Link to="/PreviewAd">
                             <Button className="shipingButton previewBtn">
                               Preview ad
                             </Button>
-                          </Link>
+                          </Link> */}
                           <Button className="shipingButton" htmlType="submit">
                             {loading ? <Loader loading={loading} /> : "Post Ad"}
                           </Button>
@@ -806,11 +793,11 @@ export default function CreateNewAd() {
                           <p className="shipingText">
                             The buyer will pay for shipping
                           </p>
-                          <Link to="/PreviewAd">
+                          {/* <Link to="/PreviewAd">
                             <Button className="shipingButton previewBtn">
                               Preview ad
                             </Button>
-                          </Link>
+                          </Link> */}
                           <Button className="shipingButton" htmlType="submit">
                             {loading ? <Loader loading={loading} /> : "Post Ad"}
                           </Button>

@@ -94,13 +94,13 @@ export default function Register(props) {
                   <p className="labelRegister secondText">Phone number*</p>
                   <Input
                     name="phonenumber"
-                    placeholder="+260"
+                    placeholder="96XXXXXXX"
                     className="registerInput emailInput"
                     type="text"
                     value={userData.phonenumber}
                     onChange={onInputHandler}
                     required
-                    maxLength={10}
+                    maxLength={9}
                   />
 
                   <p className="labelRegister secondText">NRC Number*</p>

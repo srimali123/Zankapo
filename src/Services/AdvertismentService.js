@@ -46,3 +46,9 @@ export const fetchProductByCategory = async (id) => {
   const response = await httpClient.get(url);
   return response;
 };
+
+export const getBanner = async () => {
+  const url = `${Config.API_BASE_URL}api/banner/approved`;
+  const response = await httpClient.get(url);
+  return response;
+};

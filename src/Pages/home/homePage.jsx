@@ -24,6 +24,8 @@ import PulseText from "react-pulse-text";
 import moment from "moment";
 import { BeatLoader } from "react-spinners";
 
+import { getBanner } from "../../Services/AdvertismentService";
+
 const contentStyle = {
   margin: 0,
   height: "160px",
@@ -42,7 +44,7 @@ let jsonObj;
 
 export default function HomePage(props) {
   const [open, setOpen] = useState(false);
-  const [next, setNext] = useState(4);
+  const [next, setNext] = useState(8);
   const [isMoreLoading, setMoreLoading] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -51,6 +53,8 @@ export default function HomePage(props) {
   );
   const { properties } = useSelector((state) => state.property);
   const { categories } = useSelector((state) => state.categories);
+
+  const [banner, setBanner] = useState();
 
   useEffect(() => {
     if (isError) {
@@ -64,6 +68,14 @@ export default function HomePage(props) {
       dispatch(clearProperty());
     };
   }, [dispatch]);
+
+  useEffect(() => {
+    const getBannerAds = async () => {
+      const response = await getBanner();
+      setBanner(response?.data?.data[1].bannerImage);
+    };
+    getBannerAds();
+  }, []);
 
   const items = categories?.map((item, idx) => {
     return {
@@ -83,7 +95,7 @@ export default function HomePage(props) {
   const showMoreItems = async () => {
     setMoreLoading(true);
     setTimeout(() => {
-      setNext((prevvalue) => prevvalue + 16);
+      setNext((prevvalue) => prevvalue + 8);
       setMoreLoading(false);
     }, 1000);
   };
@@ -202,7 +214,7 @@ export default function HomePage(props) {
               </Col>
             </Row>
             {/* sponsored ad */}
-            <Row>
+            {/* <Row>
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <div
                   className="sponContainer"
@@ -213,7 +225,7 @@ export default function HomePage(props) {
                   <div className="adcont">Sponsored ads</div>
                 </div>
               </Col>
-            </Row>
+            </Row> */}
             {/* popular adds */}{" "}
             <p className="discoverItemText secondSectionText spinnerCont">
               Popular ads now
@@ -388,118 +400,16 @@ export default function HomePage(props) {
                 </Button>
               )}
             </Row>
-            {/* how its work */}
-            {/* <div className="howItsWorkWeb">
-              <p className="discoverItemText secondSectionText thirdsectionText">
-                how it works
-              </p>
-              <Row gutter={0} className="addSection trendingSection howItsWork">
-                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                  <Row gutter={[20, 50]}>
-                    <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                      <HowItsWork
-                        image={Images.common.ad2}
-                        title={"How to buy"}
-                      />
-                    </Col>
-                    <Col xs={24} sm={24} md={12} lg={12} xl={12}>
-                      <HowItsWork
-                        image={Images.common.ad2}
-                        title={"How to post Ads"}
-                      />
-                    </Col>
-                  </Row>
-                </Col>
-              </Row>
-            </div> */}
-            {/* how its work end */}
-            {/* how its work mobile */}
-            {/* <div className="howItsWorkMobile">
-              <p className="discoverItemText secondSectionText thirdsectionText">
-                how it works
-              </p>
-              <Row gutter={0} className="addSection trendingSection howItsWork">
-                <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                  <Row>
-                    <Carousel swipeToSlide draggable afterChange={onChange}>
-                      <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                        <HowItsWork
-                          image={Images.common.ad2}
-                          title={"How to buy"}
-                        />
-                      </Col>
-                      <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                        <HowItsWork
-                          image={Images.common.ad2}
-                          title={"How to post Ads"}
-                        />
-                      </Col>
-                    </Carousel>
-                  </Row>
-                </Col>
-              </Row>
-            </div> */}
-            {/* how its work mobile end */}
-            {/* This is trending web*/}
-            {/* <div className="thisIsTrendingWeb">
-        <p className="discoverItemText secondSectionText thirdsectionText">
-          This is Trending
-        </p>
-        <Row gutter={0} className="addSection trendingSection">
-          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <Row gutter={[10, 50]}>
-              <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                <Card image={Images.common.ad2} title={"Wrist watches"} />
-              </Col>
-              <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                <Card image={Images.common.ad2} title={"Salaula shoes"} />
-              </Col>
-              <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                <Card image={Images.common.ad2} title={"Home Goods"} />
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-      </div> */}
-            {/* <div className="thisIsTrendingMobile">
-        <p className="discoverItemText secondSectionText thirdsectionText">
-          This is Trending
-        </p>
-        <Row gutter={0} className="addSection trendingSection">
-          <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-            <Row gutter={[10, 50]}>
-              <Carousel swipeToSlide draggable afterChange={onChange}>
-                <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                  <Card
-                    image={Images.common.ad2}
-                    title={"Wrist watches"}
-                  />
-                </Col>
-                <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                  <Card
-                    image={Images.common.ad2}
-                    title={"Salaula shoes"}
-                  />
-                </Col>
-                <Col xs={24} sm={24} md={12} lg={8} xl={8}>
-                  <Card image={Images.common.ad2} title={"Home Goods"} />
-                </Col>
-              </Carousel>
-            </Row>
-          </Col>
-        </Row>
-      </div> */}
             {/* sponsored ad */}
             <Row>
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                <div
-                  className="sponContainer"
-                  style={{
-                    backgroundImage: `url(${Images.common.advertist})`,
-                  }}
-                >
+                <div className="sponContainer">
                   <div className="adcont">Sponsored ads</div>
                 </div>
+                <img
+                  src={`${Config.API_BASE_URL}uploads/banners/${banner}}`}
+                  alt=""
+                />
               </Col>
             </Row>
           </div>

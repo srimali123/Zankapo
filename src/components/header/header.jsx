@@ -1,4 +1,9 @@
 import React, { useState } from "react";
+import {
+  CountryDropdown,
+  RegionDropdown,
+  CountryRegionData,
+} from "react-country-region-selector";
 
 import { Row, Col, Modal, Dropdown, Menu } from "antd";
 import { Link } from "react-router-dom";
@@ -137,17 +142,6 @@ export default function Header(props) {
               Popular on sankapo
             </Link>
           </div>
-          <div className="modalCont">
-            {" "}
-            <Link to="/" className="linkModal">
-              <img
-                src={Images.common.clock}
-                alt="clock"
-                className="headerMenuIcon"
-              />
-              Last chance bid
-            </Link>
-          </div>
           <div className="modalCont customCont">
             {" "}
             <Link onClick={handleClick} className="linkModal">
@@ -220,12 +214,6 @@ export default function Header(props) {
                 </Link>
               )}
             </div>
-            {/* <div>
-              <Link className="orangeDropText" onClick={() => logout()}>
-                <img src={Images.common.logout} className="logout" />
-                Logout
-              </Link>
-            </div> */}
           </div>
         </div>
 
@@ -262,6 +250,10 @@ export default function Header(props) {
                     className="translateImg"
                   />
                 </Link>
+                {/* <div>
+                  <CountryDropdown />
+                  <RegionDropdown />
+                </div> */}
               </div>
 
               <Link className="addBtn" to={"/placeAd"}>
@@ -335,8 +327,12 @@ export default function Header(props) {
                   />
                 </Link>
                 <div>
-                  <img src={Images.common.mobileAcc} className="userIconAcc" />
-                  <Link to="/">
+                  <img
+                    src={Images.common.mobileAcc}
+                    onClick={showModalTwo}
+                    className="userIconAcc"
+                  />
+                  <Link>
                     <img
                       src={Images.common.darkdrop}
                       className="userIconAccDrop"

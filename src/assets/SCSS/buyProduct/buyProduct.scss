@@ -18,10 +18,10 @@
       .posterCon {
         background-size: cover;
         background-repeat: no-repeat;
-        background-position: bottom left center;
+        background-position: center center;
         height: 564px;
         width: 100%;
-        object-fit: cover;
+        object-fit: contain;
       }
       .posterText {
         font-size: 20px;

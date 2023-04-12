@@ -4,6 +4,8 @@ import { Row, Col, Button, Divider, Carousel } from "antd";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import BuyProductHeader from "../buyProduct/buyProductHeader";
 
+import ReactWhatsapp from "react-whatsapp";
+
 import Footer from "../../../components/footer/footer.jsx";
 import { toast } from "react-toastify";
 import { FLoader } from "../../../components/spinner.jsx";
@@ -59,9 +61,9 @@ export default function BuyProduct() {
     window.scrollTo(0, 0);
   }, []);
 
-  const onSendMessage = (email) => {
+  const OnSendMessage = (mobile) => {
     if (isAuthenticated) {
-      window.location = `mailto:${email}`;
+      window.location = `https://api.whatsapp.com/send?phone=${mobile}`;
     } else {
       toast.error(
         "Login to send your message and keep track of it in your account."
@@ -144,7 +146,6 @@ export default function BuyProduct() {
                                 JSON.parse(advertisment.images).length !== 0
                                   ? JSON.parse(advertisment.images).map(
                                       (item, key) => {
-                                        console.log("image", item);
                                         return (
                                           <Col
                                             xs={24}
@@ -218,7 +219,7 @@ export default function BuyProduct() {
                                 <Button
                                   className="orangeBtnBuy"
                                   onClick={() =>
-                                    onSendMessage(advertisment?.email)
+                                    OnSendMessage(advertisment?.mobile)
                                   }
                                 >
                                   <img
@@ -238,9 +239,18 @@ export default function BuyProduct() {
                                     className="messageIcon"
                                   />
 
-                                  {showPhone
-                                    ? advertisment?.mobile
-                                    : " Show phone no"}
+                                  {showPhone ? (
+                                    <a
+                                      style={{ color: "#6E7191" }}
+                                      onClick={() => {
+                                        window.location.href = `tel:${advertisment?.mobile}`;
+                                      }}
+                                    >
+                                      {advertisment?.mobile}
+                                    </a>
+                                  ) : (
+                                    " Show phone no"
+                                  )}
                                 </Button>
                               </div>
                             </Col>
