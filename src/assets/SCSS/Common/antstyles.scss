@@ -116,6 +116,7 @@ input:-webkit-autofill:focus {
     font-weight: 600;
     margin-top: 150px;
   }
+  
   @include tablet-portrait {
     width: 165px;
     left: 601px !important;
@@ -476,4 +477,14 @@ input:-webkit-autofill:focus {
       }
     }
   }
+}
+.ant-picker-dropdown {
+  .ant-picker-panel {
+    .ant-picker-footer{
+      .ant-picker-today-btn {
+        display: none;
+      }
+    }
+  }
+ 
 }

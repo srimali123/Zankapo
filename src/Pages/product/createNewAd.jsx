@@ -759,6 +759,7 @@ export default function CreateNewAd() {
                             Used
                           </Button>
                           <Button
+                          
                             className="usedBtn"
                             onClick={() =>
                               setPostAd({ ...postAd, condition: "New" })
