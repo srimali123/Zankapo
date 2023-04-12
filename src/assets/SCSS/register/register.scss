@@ -110,6 +110,21 @@
             border-radius: 9.4px;
             font-size: 14px;
             color: $gray3;
+            padding-left: 10px;
+          }
+          .mobileFlex {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          
+          }
+          .mask {
+         border: none;
+          }
+          .translateImgReg {
+            height: 30px;
+            width: 30px;
+            margin-right: 10px;
           }
           .dropdownProvince {
             width: 100%;
