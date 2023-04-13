@@ -100,7 +100,10 @@
   padding: 100px 200px 100px 200px;
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   overflow: auto;
+  overflow-x: hidden;
+  width: 100%;
 }
 .contHead {
   text-align: center;
