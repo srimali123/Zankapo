@@ -6,7 +6,7 @@ import { Button, Row, Col, Spin, Input, Modal } from "antd";
 import loginImg from "../../../../assets/Images/common/bottomcover.png";
 import logo from "../../../../assets/Images/common/LOGO.png";
 import logoBlue from "../../../../assets/Images/common/bluelogo.png";
-import InputMask from 'react-input-mask';
+import InputMask from "react-input-mask";
 
 import { saveUser } from "../../../../Redux/Slices/Signup/UserSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -93,52 +93,34 @@ export default function Register(props) {
                     required
                   />
                   <p className="labelRegister secondText">Phone number*</p>
-                  
-                  {/* <Input
-                    name="phonenumber"
-                    placeholder="96XXXXXXX"
-                    className="registerInput emailInput"
-                    type="text"
-                    value={userData.phonenumber}
-                    onChange={onInputHandler}
-                    required
-                    maxLength={9}
-                  /> */}
-                   <div className="registerInput emailInput mobileFlex ">
-                   <img
-                    src={Images.common.translate}
-                    alt="new"
-                    className="translateImgReg"
-                  />
-                  <InputMask name="phonenumber"
-                    placeholder="96XXXXXXX"  mask="(99)9999999"  
-                    value={userData.phonenumber}
-                    onChange={onInputHandler}
-                    required
-                    className="mask"
+
+                  <div className="registerInput emailInput mobileFlex ">
+                    <img
+                      src={Images.common.translate}
+                      alt="new"
+                      className="translateImgReg"
                     />
-                    </div>
+                    <InputMask
+                      name="phonenumber"
+                      placeholder="96XXXXXXX"
+                      mask="(99)9999999"
+                      value={userData.phonenumber}
+                      onChange={onInputHandler}
+                      required
+                      className="mask"
+                    />
+                  </div>
                   <p className="labelRegister secondText">NRC Number*</p>
-                 
-                  <InputMask mask="999999/99/9"  name="nrc"
-                    placeholder="eg. 617394/10/1"
-                    className="registerInput emailInput"
-                    value={userData.nrc}
-                    onChange={onInputHandler}
-                    required
-                    />
-               
-                  
-                  {/* <Input
+
+                  <InputMask
+                    mask="999999/99/9"
                     name="nrc"
                     placeholder="eg. 617394/10/1"
                     className="registerInput emailInput"
-                    type="text"
                     value={userData.nrc}
                     onChange={onInputHandler}
                     required
-                    maxLength={9}
-                  /> */}
+                  />
 
                   <p className="labelRegister passwordText">Password</p>
                   <Input.Password

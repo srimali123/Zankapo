@@ -54,7 +54,7 @@ export default function HomePage(props) {
   const { properties } = useSelector((state) => state.property);
   const { categories } = useSelector((state) => state.categories);
 
-  const [banner, setBanner] = useState();
+  const [banner, setBanner] = useState("");
 
   useEffect(() => {
     if (isError) {
@@ -72,7 +72,7 @@ export default function HomePage(props) {
   useEffect(() => {
     const getBannerAds = async () => {
       const response = await getBanner();
-      setBanner(response?.data?.data[1].bannerImage);
+      setBanner(response?.data?.data[0].bannerImage);
     };
     getBannerAds();
   }, []);
@@ -141,7 +141,6 @@ export default function HomePage(props) {
             className="banner"
             style={{
               backgroundImage: `url(${Images.common.banner})`,
-              // objectFit: "cover",
             }}
           >
             <div className="centerContent">
@@ -213,69 +212,40 @@ export default function HomePage(props) {
                 </Row>
               </Col>
             </Row>
-            {/* sponsored ad */}
-            {/* <Row>
-              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                <div
-                  className="sponContainer"
-                  style={{
-                    backgroundImage: `url(${Images.common.advertist})`,
-                  }}
-                >
-                  <div className="adcont">Sponsored ads</div>
-                </div>
-              </Col>
-            </Row> */}
             {/* popular adds */}{" "}
-            <p className="discoverItemText secondSectionText spinnerCont">
+            {/* <p className="discoverItemText secondSectionText spinnerCont">
               Popular ads now
-            </p>
+            </p> */}
             <Row gutter={0} className="addSection">
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                <Row gutter={[20, 10]}>
-                  {/* {advertisments ? (
-              advertisments
-                ?.slice(0, next)
-                .sort((a, b) =>
-                  a.title
-                    .toLowerCase()
-                    .localeCompare(b.title.toLowerCase())
-                )
-                .map((item, key) => {
-                  jsonObj =
-                    item.images.length !== 0 && JSON.parse(item?.images);
-                  return (
-                    <Col key={key} xs={12} sm={12} md={8} lg={6} xl={6}>
-                      <PopularAds
-                        image={`${Config.API_BASE_URL}uploads/images/${jsonObj[0]}`}
-                        description={item.title}
-                        price={`K${item.buy}`}
-                        onAdNavigateHandler={() =>
-                          onAdNavigateHandler(item.id)
-                        }
-                      />
-                    </Col>
-                  );
-                })
-            ) : ( */}
-                  <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                    <div
-                      style={{
-                        justifyContent: "center",
-                        width: "100%",
-                        alignItems: "center",
-                      }}
-                    >
-                      <p className="nodataText">No Result Found!</p>
-                    </div>
-                  </Col>
-                  {/* )} */}
-                </Row>
+                {/* <Row gutter={[20, 10]}>
+                  {advertisments
+                    ?.slice(0, next)
+                    .sort((a, b) =>
+                      a.title.toLowerCase().localeCompare(b.title.toLowerCase())
+                    )
+                    .map((item, key) => {
+                      jsonObj =
+                        item.images.length !== 0 && JSON.parse(item?.images);
+                      return (
+                        <Col key={key} xs={12} sm={12} md={8} lg={6} xl={6}>
+                          <PopularAds
+                            image={`${Config.API_BASE_URL}uploads/images/${jsonObj[0]}`}
+                            description={item.title}
+                            price={`K${item.buy}`}
+                            onAdNavigateHandler={() =>
+                              onAdNavigateHandler(item.id)
+                            }
+                          />
+                        </Col>
+                      );
+                    })}
+                </Row> */}
               </Col>
             </Row>
             <div></div>
             {/* recently add */}
-            <p className="discoverItemText secondSectionText thirdsectionText spinnerCont">
+            <p className="discoverItemText secondSectionText  spinnerCont">
               Recently added
             </p>
             <Row gutter={0} className="addSection">
@@ -403,13 +373,14 @@ export default function HomePage(props) {
             {/* sponsored ad */}
             <Row>
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                <div className="sponContainer">
+                <div
+                  className="sponContainer"
+                  style={{
+                    backgroundImage: `url(${Config.API_BASE_URL}uploads/banners/${banner})`,
+                  }}
+                >
                   <div className="adcont">Sponsored ads</div>
                 </div>
-                <img
-                  src={`${Config.API_BASE_URL}uploads/banners/${banner}}`}
-                  alt=""
-                />
               </Col>
             </Row>
           </div>

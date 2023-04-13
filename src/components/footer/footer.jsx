@@ -22,23 +22,30 @@ export default function Footer(props) {
           <a href="#" className="footerLink">
             How to sell
           </a>
-          <a href="#" className="footerLink">
-            Prices
-          </a>
         </Col>
         <Col xs={12} sm={12} md={6} lg={6} xl={6} className="footerContent">
           <p className="footerMainHead">Contact</p>
-          <a href="/faq" className="footerLink">
-            FAQ
+          <a href="tel:+260777000723" className="footerLink">
+            (+260) 777000723
           </a>
-          <a href="/privacyPolicy" className="footerLink">
-            Privacy policy
+          <a href="mailto:we@sankapo.com" className="footerLink">
+            we@sankapo.com
           </a>
+          <p className="footerLink">
+            Chainama Road Olympia <br />
+            Lusaka, Zambia
+          </p>
         </Col>
         <Col xs={12} sm={12} md={6} lg={6} xl={6} className="footerContent">
           <p className="footerMainHead">Information</p>
           <a href="/termsofservices" className="footerLink">
             Terms of service
+          </a>
+          <a href="/faq" className="footerLink">
+            FAQ
+          </a>
+          <a href="/privacyPolicy" className="footerLink">
+            Privacy policy
           </a>
         </Col>
       </Row>
@@ -57,36 +64,14 @@ export default function Footer(props) {
           <a href="https://www.facebook.com/sankapo.buy.sell/" target="_blank">
             <img src={Images.common.facebook} className="socialIcon" />
           </a>
-          {/* <a href="https://www.twitter.com/" target="_blank">
-            <img src={Images.common.twitter} className="socialIcon" />
-          </a> */}
+
           <a
             href="https://www.linkedin.com/showcase/sankapo-add-it-like-it-get-it/?viewAsMember=true"
             target="_blank"
           >
             <img src={Images.common.linkedin} className="socialIcon" />
           </a>
-
-          {/* <img src={Images.common.line} className="line" /> */}
         </Col>
-
-        {/* <Col
-          xs={12}
-          sm={12}
-          md={6}
-          lg={12}
-          xl={12}
-          className="btnSectionFooter"
-        >
-          <a href="https://play.google.com/" target="_blank">
-            {" "}
-            <img src={Images.common.playBtn} className="FooterBtn" />
-          </a>
-          <a href="https://www.apple.com/app-store/" target="_blank">
-            {" "}
-            <img src={Images.common.appleBtn} className="FooterBtn appleBtn" />
-          </a>
-        </Col> */}
       </Row>
 
       <p className="customFooterText">2022 copyright Sankapo</p>

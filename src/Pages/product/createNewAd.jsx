@@ -60,17 +60,13 @@ export default function CreateNewAd() {
       let tmp = [...images];
       const fileToAdd = acceptedFiles[0];
 
-      // check if the file already exists in the images array
       const fileExists = tmp.some((file) => file.name === fileToAdd.name);
 
       if (fileExists) {
-        // remove the existing file from the array
         tmp = tmp.filter((file) => file.name !== fileToAdd.name);
       }
 
-      if (fileToAdd.size <= 1048576) {
-        // 1 MB = 1048576 bytes
-        // add the new file to the array
+      if (fileToAdd.size <= 3048576) {
         tmp.push(fileToAdd);
         setImages(tmp);
       } else {
@@ -80,14 +76,7 @@ export default function CreateNewAd() {
     [images]
   );
 
-  //react dripzone property
-  const {
-    acceptedFiles,
-    fileRejections,
-    getRootProps,
-    getInputProps,
-    isDragActive,
-  } = useDropzone({
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: { "image/png": [".png", ".jpeg", ".jpg", ".HEIC"] },
     maxFiles: 5,
@@ -121,7 +110,6 @@ export default function CreateNewAd() {
   ));
 
   useEffect(() => {
-    // Make sure to revoke the data uris to avoid memory leaks, will run on unmount
     return () =>
       images.forEach((file) => URL.revokeObjectURL(URL.createObjectURL(file)));
   }, []);
@@ -131,7 +119,6 @@ export default function CreateNewAd() {
     setPostAd({ ...postAd, [e.target.name]: e.target.value });
   };
 
-  //chnage tab
   const onChangeTab = (activeKey) => {
     setActiveTab(activeKey);
   };
@@ -759,7 +746,6 @@ export default function CreateNewAd() {
                             Used
                           </Button>
                           <Button
-                          
                             className="usedBtn"
                             onClick={() =>
                               setPostAd({ ...postAd, condition: "New" })

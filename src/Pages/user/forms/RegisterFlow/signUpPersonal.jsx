@@ -58,7 +58,7 @@ export default function SignUpPersonal() {
 
     let user = {
       email: savedUser.email,
-      phonenumber: +260 + savedUser.phonenumber,
+      phonenumber: `+260${savedUser.phonenumber}`,
       nrc: savedUser.nrc,
       password: savedUser.password,
       fullname: personalData.fullname,
