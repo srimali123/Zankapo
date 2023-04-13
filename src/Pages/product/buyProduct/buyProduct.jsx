@@ -165,13 +165,14 @@ export default function BuyProduct() {
                                       }
                                     )
                                   : null}
+                                  
                               </Carousel>
                             </Row>
                           </Col>
                         </Row>
                       </div>
 
-                      <Divider />
+                      <Divider  />
                       <div className="stopWebContent">
                         <div className="stopContiner">
                           <img

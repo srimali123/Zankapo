@@ -47,6 +47,13 @@ export default function Footer(props) {
           <a href="/privacyPolicy" className="footerLink">
             Privacy policy
           </a>
+          <a href="/vendorAgreements" className="footerLink">
+            Vendor Agreements
+          </a>
+          <a href="/cancelPolicies" className="footerLink">
+          Return, Refund, and Cancellation policies 
+          </a>
+
         </Col>
       </Row>
       <Row className="socialMediaContainer">

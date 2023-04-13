@@ -25,6 +25,8 @@ import TermsCondition from "../Pages/DetailPages/termsOfServices";
 import { PrivacyPolicy } from "../Pages/DetailPages/privacyPolicy";
 import Faq from "../Pages/DetailPages/faq";
 import HowToBuy from "../Pages/DetailPages/howToBuy";
+import VendorAgreements from "../Pages/DetailPages/vendorAgreements";
+import Cancellation from "../Pages/DetailPages/cancellattion";
 
 export default function AppRoutes() {
   return (
@@ -51,6 +53,8 @@ export default function AppRoutes() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/howToBuy" element={<HowToBuy />} />
         <Route path="*" element={<NotFound />} />
+        <Route path="/vendorAgreements" element={<VendorAgreements/>} />
+        <Route path="/cancelPolicies" element={<Cancellation/>} />
       </Routes>
     </BrowserRouter>
   );

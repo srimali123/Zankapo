@@ -1,9 +1,15 @@
 import React from 'react'
-
+import { Row, Col, Button, Dropdown } from "antd";
 function Faq() {
   return (
-  
+      
         <div className="termsContainer">
+           <Row >
+        <Col xs={24}
+          sm={24}
+          md={24}
+          lg={24}
+          xl={24}>
       <h1 className="contHead">FAQ for Sankapo.com</h1>
 
       <h4>1. Q :  Is it free to use Sankapo.com? A: Yes, it is free to browse and place ads on Sankapo.com. However, there are optional paid services to promote your ads or feature them prominently on the site.</h4>
@@ -16,7 +22,11 @@ function Faq() {
       <h4>8. Q :  What items are prohibited on Sankapo.com? A: Illegal or restricted items, such as weapons, drugs, or stolen goods, are not allowed on Sankapo.com. You can report suspicious ads using the "Report Ad" button.</h4>
       <h4>9. Q :  Is there a Sankapo.com mobile app? A: Yes, Sankapo.com offers a mobile app for added convenience. The app is available for download on both iOS and Android devices.</h4>
       <h4>10. Q : How can I receive notifications about new items or messages on Sankapo.com? A: Sankapo.com offers a notification system to keep you informed about new items or messages related to your interests. You can enable notifications in your account settings.</h4>
+      
+       </Col>
+      </Row>
       </div>
+     
     
   )
 }
