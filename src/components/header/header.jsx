@@ -152,11 +152,15 @@ export default function Header(props) {
               />
               Categories
             </Link>
-            {isShown && (
+            {!isShown && (
               <div className="linkContainer">
                 {categories?.map((item, idx) => {
                   return (
-                    <Link to={"/searchProduct"} className="linkNew" key={idx}>
+                    <Link
+                      to={`category/${item.id}/${item.category}`}
+                      className="linkNew"
+                      key={idx}
+                    >
                       {item.category}
                     </Link>
                   );

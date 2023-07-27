@@ -19,6 +19,7 @@
     "react-dropzone": "^14.2.3",
     "react-flags-select": "^2.2.3",
     "react-image-file-resizer": "^0.4.8",
+    "react-input-mask": "^2.0.4",
     "react-pulse-text": "^1.0.8",
     "react-rating-stars-component": "^2.2.0",
     "react-redux": "^8.0.5",

@@ -109,6 +109,10 @@ export default function HomePage(props) {
     navigate(`/buyproperty/${id}`);
   };
 
+  const latestAds = Object.values(advertisments)?.sort((a, b) => {
+    return new Date(b.created_at) - new Date(a.created_at);
+  });
+
   if (isLoading) {
     return (
       <div
@@ -252,7 +256,7 @@ export default function HomePage(props) {
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Row gutter={[40, 10]}>
                   {advertisments ? (
-                    advertisments?.slice(0, next).map((item, key) => {
+                    latestAds?.slice(0, next).map((item, key) => {
                       jsonObj =
                         item.images.length !== 0 && JSON.parse(item?.images);
                       return (
@@ -337,14 +341,13 @@ export default function HomePage(props) {
                     <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                       <div
                         style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          justifyContent: "center",
                           width: "100%",
                           alignItems: "center",
                         }}
                       >
-                        <p className="nodataText">No Result Found!</p>
+                        <p className="nodataText">
+                          We did not find any result in Property!
+                        </p>
                       </div>
                     </Col>
                   )}

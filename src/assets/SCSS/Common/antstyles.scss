@@ -85,7 +85,7 @@ input:-webkit-autofill:focus {
 }
 .ant-dropdown {
   z-index: 1 !important;
-  }
+}
 
 .hederdropdown {
   // left: 264px !important;
@@ -100,9 +100,9 @@ input:-webkit-autofill:focus {
   z-index: 1;
   right: 0px !important;
   left: 1180px !important;
-  .ant-dropdown-menu{
-    position:fixed;
-    right:40px;
+  .ant-dropdown-menu {
+    position: fixed;
+    right: 40px;
   }
   .ant-dropdown-menu-title-content {
     color: $gray7;
@@ -116,7 +116,7 @@ input:-webkit-autofill:focus {
     font-weight: 600;
     margin-top: 150px;
   }
-  
+
   @include tablet-portrait {
     width: 165px;
     left: 601px !important;
@@ -132,17 +132,14 @@ input:-webkit-autofill:focus {
 
 @include tablet-portrait {
   .profileDropDown {
-   
-    .ant-dropdown-menu{
-      position:fixed;
-      right:40px;
+    .ant-dropdown-menu {
+      position: fixed;
+      right: 40px;
     }
+  }
 }
-}
-
 
 .homedropdown {
-
   // width: 165px;
   // left: 392px !important;
   // top: 445px !important;
@@ -160,7 +157,6 @@ input:-webkit-autofill:focus {
   //   top: 411px !important;
   // }
 }
-
 
 // .selectDropddown {
 //   top: 500px !important;
@@ -261,8 +257,7 @@ input:-webkit-autofill:focus {
   }
 }
 
-
-.buyProductCarousel{
+.buyProductCarousel {
   .ant-carousel {
     color: rgba(0, 0, 0, 0.85);
     font-family: $poppins;
@@ -480,11 +475,10 @@ input:-webkit-autofill:focus {
 }
 .ant-picker-dropdown {
   .ant-picker-panel {
-    .ant-picker-footer{
+    .ant-picker-footer {
       .ant-picker-today-btn {
         display: none;
       }
     }
   }
- 
 }

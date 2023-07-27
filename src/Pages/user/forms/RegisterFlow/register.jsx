@@ -28,6 +28,11 @@ export default function Register(props) {
     setUserData({ ...userData, [e.target.name]: e.target.value });
   };
 
+  const onInputPhoneNumberHandler = (e) => {
+    const unmaskedValue = e.target.value.replace(/\D+/g, "");
+    setUserData({ ...userData, phonenumber: unmaskedValue });
+  };
+
   //user register
   const onSignup = async (e) => {
     e.preventDefault();
@@ -105,7 +110,7 @@ export default function Register(props) {
                       placeholder="96XXXXXXX"
                       mask="(99)9999999"
                       value={userData.phonenumber}
-                      onChange={onInputHandler}
+                      onChange={onInputPhoneNumberHandler}
                       required
                       className="mask"
                     />

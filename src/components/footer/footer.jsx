@@ -16,6 +16,9 @@ export default function Footer(props) {
           <a className="footerLink" onClick={() => navigate("/placeAd")}>
             Categories
           </a>
+          <a href="/howToBuy" className="footerLink">
+            How to Buy
+          </a>
         </Col>
         <Col xs={12} sm={12} md={6} lg={6} xl={6} className="footerContent">
           <p className="footerMainHead">Sell</p>
@@ -51,9 +54,8 @@ export default function Footer(props) {
             Vendor Agreements
           </a>
           <a href="/cancelPolicies" className="footerLink">
-          Return, Refund, and Cancellation policies 
+            Return & Refund, <br /> Cancellation policies
           </a>
-
         </Col>
       </Row>
       <Row className="socialMediaContainer">

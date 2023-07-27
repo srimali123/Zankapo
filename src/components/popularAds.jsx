@@ -9,7 +9,10 @@ const PopularAds = (props) => {
       <div className="adcontainer">
         <img src={image} className="popularAddImg" />
       </div>
-      <div style={{ display: "flex", justifyContent: "space-between"  }} className="mobilecardstyle">
+      <div
+        style={{ display: "flex", justifyContent: "space-between" }}
+        className="mobilecardstyle"
+      >
         <a style={{ fontSize: "10px", fontFamily: "400", color: "GrayText" }}>
           {location}
         </a>
@@ -17,7 +20,7 @@ const PopularAds = (props) => {
           {timestamp}
         </a>
       </div>
-      <p className="descriptionText">{description.substring(0, 20)}</p>
+      <p className="descriptionText">{description.substring(0, 30)}</p>
 
       <p className="priceText">
         K {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}

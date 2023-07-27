@@ -165,14 +165,12 @@ export default function BuyProduct() {
                                       }
                                     )
                                   : null}
-                                  
                               </Carousel>
                             </Row>
                           </Col>
                         </Row>
                       </div>
 
-                      <Divider  />
                       <div className="stopWebContent">
                         <div className="stopContiner">
                           <img
@@ -315,12 +313,13 @@ export default function BuyProduct() {
               </Col>
               <Col xs={24} sm={24} md={0} lg={6} xl={6}>
                 <Button className="advertisemntBtn">Advertisement</Button>
-                <div
-                  className="advertisementContainer"
-                  style={{
-                    backgroundImage: `url(${Images.common.advertist})`,
-                  }}
-                ></div>
+                <div className="advertisementContainer">
+                  <script
+                    async
+                    src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5412073295664767"
+                    crossorigin="anonymous"
+                  />
+                </div>
               </Col>
             </Row>
           </div>

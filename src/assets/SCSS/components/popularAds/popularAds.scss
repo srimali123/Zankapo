@@ -1,5 +1,5 @@
 .descriptionText {
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 600;
   font-family: $poppins;
   color: $brown;
@@ -21,7 +21,6 @@
   background-position: center center center;
   transition: transform 0.25s;
   margin-bottom: 10px;
-
 }
 .fullcard {
   margin-bottom: 50px;
@@ -32,7 +31,6 @@
   overflow: hidden;
   border: 2px solid $gray17;
   border-radius: 5px;
-
 
   &:hover .popularAddImg {
     transform: scale(1.1);
@@ -45,7 +43,7 @@
 
 @include mobile {
   .descriptionText {
-    font-size: 13px;
+    font-size: 12px;
   }
   .priceText {
     font-size: 16px;
@@ -55,7 +53,7 @@
     width: 100%;
   }
   .fullcard {
-   height: max-content;
+    height: max-content;
     max-height: fit-content;
     width: 100%;
     border: none;
@@ -68,7 +66,7 @@
 
 @include tablet-portrait {
   .descriptionText {
-    font-size: 14px;
+    font-size: 12px;
   }
   .priceText {
     font-size: 18px;
@@ -85,7 +83,7 @@
 
 @include tablet-landscape {
   .descriptionText {
-    font-size: 14px;
+    font-size: 12px;
   }
   .priceText {
     font-size: 18px;

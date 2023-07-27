@@ -34,10 +34,10 @@ export default function AppRoutes() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/forgetpassword" element={<ForgetPassword />} />
+        <Route path="/forgetpassword" element={<ForgetPassword />} />{" "}
         <Route path="/verifyemaillogin" element={<VerifyEmail />} />
         <Route path="/createpassword" element={<CreatePassword />} />
-        <Route path="/register" element={<Register />} />
+        <Route path="/register" element={<Register />} />{" "}
         <Route path="/personal" element={<SignUpPersonal />} />
         <Route path="/verifyemailregister" element={<VerifyEmailRegister />} />
         <Route path="/placeAd" element={<PostNewAd />} />
@@ -53,8 +53,8 @@ export default function AppRoutes() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/howToBuy" element={<HowToBuy />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="/vendorAgreements" element={<VendorAgreements/>} />
-        <Route path="/cancelPolicies" element={<Cancellation/>} />
+        <Route path="/vendorAgreements" element={<VendorAgreements />} />
+        <Route path="/cancelPolicies" element={<Cancellation />} />
       </Routes>
     </BrowserRouter>
   );
